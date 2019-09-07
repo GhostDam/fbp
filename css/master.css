@@ -1,0 +1,43 @@
+html {                                  /*Este Snippet "Corrige" un buen uso del paddin sin afectar el width */
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+header{
+  text-align: center;
+}
+section{
+  background-color: #0791e6;
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+div{
+  padding: 20px;
+  width: 50%;
+}
+
+.elementos{
+  width: 100%;
+}
+.third{
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+div.elem{
+  width: 33%!important;
+}
+p{
+  margin: 0;
+  margin-bottom: 10px;
+}
+.class1{
+  background-color: #fd7d7a;
+}
+.class2{
+  background-color: #95c73f;
+}
