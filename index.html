@@ -166,7 +166,9 @@
         <li>Archivos Untracked: Son archivos que NO viven dentro de Git, solo en el disco duro. Nunca han sido afectados por git add, así que Git no tiene registros de su existencia.
           Recuerda que hay un caso muy raro donde los archivos tienen dos estados al mismo tiempo: Staged y Untracked. Esto pasa guardas los cambios de un archivo en el área de Staging (con el comando git add) pero, antes de hacer commit para guardar los cambios en el repositorio, haces nuevos cambios que todavía no han sido guardados en el área de Staging (en realidad, todo sigue funcionando igual pero es un poco divertido).</li>
         </ul>
-        <p>Comandos para mover archivos entre los estados de Git:</p>
+      </div>
+      <div>
+        <h2>Comandos para mover archivos entre los estados de Git:</h2>
         <ul>
           <li>git status: Nos permite ver el estado de todos nuestros archivos y carpetas.</li>
           <li>git add: Nos ayuda a mover archivos del Untracked o Unstaged al estado Staged. Podemos usar git nombre-del-archivo-o-carpeta para añadir archivos y carpetas individuales o git add -A para mover todos los archivos de nuestro proyecto (tanto Untrackeds como unstageds).</li>
@@ -180,14 +182,30 @@
         </ul>
       </div>
       <div>
-        <h2>Cambios y Retornos</h2>
-        <ul>
-          <li>git log : historia de commits</li>
-          <li>git show +arch : ultimos cambios en el archivo</li>
-          <li>git diff +idcommit +idcommit : ver diferencias entre commits “el orden importa”</li>
-        </ul>
-      </div>
-    </section>
-
-  </body>
-  </html>
+        <h2>Cambios y Retornos(12)</h2>
+        <p>El comando git checkout + ID del commit nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y movernos entre ellas.
+          También hay una forma de hacerlo un poco más “ruda”: usando el comando git reset. En este caso, no solo “volvemos en el tiempo”, sino que borramos los cambios que hicimos después de este commit.
+          Hay dos formas de usar git reset: con el argumento --hard, borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre). O, un poco más seguro, con el argumento --soft, que mantiene allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.</p>
+          <ul>
+            <li>git log : historia de commits</li>
+            <li>git show +arch : ultimos cambios en el archivo</li>
+            <li>git diff sin parametros muetra los cambios entre docs en staging y docs en la carpeta</li>
+            <li>git diff -commit- -commit- : ver diferencias entre commits “el orden importa”</li>
+            <li>git reset: soft o hard, hard reset elimina el historial de commits hasta el commint indicado en el reset "git reset -commit(hjka4371h)-"</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Importacion de repositorios de un servidor remoto</h2>
+          <p>Estos servidores remotos pueden estar alojados en GitHub, GitLab, BitBucket, entre otros. Lo que van a hacer es guardar el mismo repositorio que tienes en tu computadora y darnos una URL con la que todos podremos acceder a los archivos del proyecto para descargarlos, hacer cambios y volverlos a enviar al servidor remoto para que otras personas vean los cambios, comparen sus versiones y creen nuevas propuestas para el proyecto.</p>
+          <p>Esto significa que debes aprender algunos nuevos comandos:</p>
+          <ul>
+            <li>git clone url_del_servidor_remoto: Nos permite descargar los archivos de la última versión de la rama principal y todo el historial de cambios en la carpeta .git.</li>
+            <li>git push: Luego de hacer git add y git commit debemos ejecutar este comando para mandar los cambios al servidor remoto.</li>
+            <li>git fetch: Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local (en caso de que hayan, por supuesto).</li>
+            <li>git merge: También usamos el comando git fetch con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.</li>
+            <li>git pull: Básicamente, git fetch y git merge al mismo tiempo.</li>
+          </ul>
+        </div>
+      </section>
+    </body>
+    </html>
