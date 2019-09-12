@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $("section.1").hide();  
   $("h2.1").click(function(){
     $("section.1").toggle("slow")
   });
