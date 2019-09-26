@@ -16,17 +16,22 @@
     <p>Aprender significa apoderarse de algo, no solo es adquirir conocimiento como dijimos anteriormente. También significa darle sentido a ese concepto y hacerlo más poderoso para luego compartirlo y generar opiniones acerca de él.</p>
     <p>Psicología, pedagogía y neurociencias son estas ciencias que se encargan de estudiar cómo funcionan los procesos de aprendizaje en nuestro cerebro. A lo largo de este curso veremos algunos métodos y descubrimiento científicos de cómo podemos mejorar nuestra capacidad de aprender.</p>
   </header>
-  <h2 class="1">Procesos de aprendizaje</h2>
-  <section class="1 class1">
+  <nav>
+    <h2 href="#sect1">Procesos de aprendizaje</h2>
+    <h2 href="#sect2">Git y GitHub</h2>
+    <h2 href="#sect3">Fundamentos de JavaScript</h2>
+  </nav>
+
+  <section id="sect1">
     <div class="tipos">
-      <h2>Tipos de pensamiento</h2>
+      <h3>Tipos de pensamiento</h3>
       <p>La neurociencia es el campo de la ciencia que se encarga de estudiar el sistema nervioso. Hay muchos estudios e investigaciones al respecto pero todavía no tenemos certeza total de cómo funciona nuestro cerebro.</p>
       <p>Según la doctora Barbara Oakley existen dos tipos de pensamientos:</p>
       <p><strong>Enfocado:</strong> Cuando nos concentramos en un largo periodo de tiempo ininterrumpido. Podrías concentrarte tratando de aprender algo por muchas horas. Este tipo de pensamiento es adecuado cuando ya tienes una base de conocimiento.</p>
       <p><strong>Difuso:</strong> Cuando nos encontramos ante problemas nuevos. Cuando partes desde cero y quieres aprender algo nuevo. Lo mejor es usar este tipo de pensamiento cuando estudias algo nuevo (por ejemplo, en Platzi). Se trata de estudiar con interrupciones de tiempo. La técnica pomodoro te ayudará mucho en este tipo de pensamiento.</p>
     </div>
     <div class="etapas">
-      <h2>Etapas del Aprendizaje</h2>
+      <h3>Etapas del Aprendizaje</h3>
       <p>En la entrada de información tenemos dos tipos de experiencia:</p>
       <p><strong>Experiencia concreta (EC):</strong> Es un perfil que le gusta involucrarse y de tener la experiencia.</p>
       <p><strong>Observación reflexiva (OR):</strong> Es un perfil que le gusta comenzar su aprendizaje por medio de la lectura o la teoría.</p>
@@ -35,7 +40,7 @@
       <p><strong>Experimentación activa (EA):</strong> Son ese tipo de alumnos pragmáticos donde comienzan a través de la experiencia y a partir de ahí pueden generar nuevas experiencias para aplicarlo a nuevas.</p>
     </div>
     <div class="alumnos">
-      <h2>Tipos de Alumnos</h2>
+      <h3>Tipos de Alumnos</h3>
       <strong>Alumnos Activos</strong>
       <p>Estos alumnos prefieren iniciar su conocimiento con algo práctico, aunque sea pequeño o básico. Los tipos de cursos que verás aquí son cursos básicos pero totalmente prácticos, idealmente donde desarrollas un proyecto entero, con pocos o nulos fundamentos teóricos.</p>
       <strong>Alumnos Reflexivos</strong>
@@ -46,7 +51,7 @@
       <p>Normalmente los cursos que verás aquí son cursos que desarrollan proyectos avanzados pues se asume que ya se aprendió la teoría necesaria y es hora de experimentar.</p>
     </div>
     <div class="reglas">
-      <h2>Reglas del aprendizaje</h2>
+      <h3>Reglas del aprendizaje</h3>
       <strong>Aprender individualmente:</strong>
       <ul>
         <li>Interioriza lo aprendido</li>
@@ -65,7 +70,7 @@
         Ten la oportunidad de que alguien cuestione el conocimiento que adquiriste</p>
       </div>
       <div class="elementos">
-        <h2>Elementos del aprendizaje</h2>
+        <h3>Elementos del aprendizaje</h3>
         <p>El aprendizaje individual es el que se genera únicamente entre el estudiante y el profesor o cualquier otra figura que nos esté enseñando algo. Los 3 elementos importantes son: <strong> inteligencia, atención y memoria.</strong></p>
         <div class="third">
           <div class="elem">
@@ -96,7 +101,7 @@
         </div>
       </div>
       <div>
-        <h2>Notas de Cornell(v14)</h2>
+        <h3>Notas de Cornell(v14)</h3>
         <p>Las Notas de Cornell son uno de los métodos más efectivos (y desconocidos) para guardar nuestros apuntes efectivamente, debemos seguir los siguientes lineamientos:</p>
         <ul>
           <li>Tema, Título o Materia: ¿Qué vamos a estudiar? Esto lo vas a escribir en la parte superior de tu libreta o donde guardes tus notas.</li>
@@ -109,10 +114,9 @@
         <img src="md/notas.png" alt="" width="100%" height="80%">
       </div>
     </section>
-    <h2 class="2">Git y GitHub</h2>
-    <section class="2 class2">
+    <section id="sect2">
       <div>
-        <h2>Que es Git?</h2>
+        <h3>Que es Git?</h3>
         <p>Git es un sistema de control de versiones que nos permite llevar un control de cambios y desarrollo de nuestros proyecto,
           Un sistema de control de versiones como Git nos ayuda a guardar el historial de cambios y crecimiento de los archivos de nuestro proyecto.</p>
           <p>En realidad, los cambios y diferencias entre las versiones de nuestros proyecto pueden tener similitudes, algunas veces los cambios pueden ser solo una palabra o una parte específica de un archivo específico. Git está optimizado para guardar todos estos cambios de forma atómica e incremental, o sea, aplicando cambios sobre los últimos cambios, estos sobre los cambios anteriores y así hasta el inicio de nuestro proyecto.</p>
@@ -147,7 +151,7 @@
         <p>*<small>Recuerda que podemos descubrir todos los argumentos de un comando con el argumento --help (por ejemplo, cat --help).</small></p>
       </div>
       <div>
-        <h2>¿Qué es staging, repositorios y cuál es el ciclo básico de trabajo en GitHub?</h2>
+        <h3>¿Qué es staging, repositorios y cuál es el ciclo básico de trabajo en GitHub?</h3>
         <p>Para iniciar un repositorio, o sea, activar el sistema de control de versiones de Git en tu proyecto, solo debes ejecutar el comando git init.</p>
         <p>Este comando se encargará de dos cosas: primero, crear una carpeta .git donde se guardará toda la base de datos con cambios atómicos de nuestro proyecto; y segundo, crear un área en la memoria RAM, que conocemos como Staging, que guardará temporalmente nuestros archivos (cuando ejecutemos un comando especial para eso) y nos permitirá, más adelante, guardar estos cambios en el repositorio (también con un comando especial).</p>
         <p>Ciclo de vida o estados de los archivos en Git:</p>
@@ -161,7 +165,7 @@
           </ul>
         </div>
         <div>
-          <h2>Comandos para mover archivos entre los estados de Git:</h2>
+          <h3>Comandos para mover archivos entre los estados de Git:</h3>
           <ul>
             <li><strong>git init</strong> Inicia el repositorio (Lo crea)</li>
             <li><strong>git add</strong> Agrega los archivos al área de preparación Nos ayuda a mover archivos del Untracked o Unstaged al estado Staged. Podemos usar git -archivo- para añadir archivos y carpetas individuales o git add -A para mover todos los archivos de nuestro proyecto (tanto Untrackeds como unstageds).</li>
@@ -189,7 +193,7 @@
           </ul>
         </div>
         <div>
-          <h2>Cambios y Retornos(12)</h2>
+          <h3>Cambios y Retornos(12)</h3>
           <p>El comando git checkout + ID del commit nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y movernos entre ellas.
             También hay una forma de hacerlo un poco más “ruda”: usando el comando git reset. En este caso, no solo “volvemos en el tiempo”, sino que borramos los cambios que hicimos después de este commit.
             Hay dos formas de usar git reset: con el argumento --hard, borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre). O, un poco más seguro, con el argumento --soft, que mantiene allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.</p>
@@ -201,7 +205,7 @@
             </ul>
           </div>
           <div>
-            <h2>Importacion de repositorios de un servidor remoto</h2>
+            <h3>Importacion de repositorios de un servidor remoto</h3>
             <p>Estos servidores remotos pueden estar alojados en GitHub, GitLab, BitBucket, entre otros. Lo que van a hacer es guardar el mismo repositorio que tienes en tu computadora y darnos una URL con la que todos podremos acceder a los archivos del proyecto para descargarlos, hacer cambios y volverlos a enviar al servidor remoto para que otras personas vean los cambios, comparen sus versiones y creen nuevas propuestas para el proyecto.</p>
             <p>Esto significa que debes aprender algunos nuevos comandos:</p>
             <ul>
@@ -212,7 +216,7 @@
             </ul>
           </div>
           <div>
-            <h2>Creacion de Ramas</h2>
+            <h3>Creacion de Ramas</h3>
             <ul>
               <li><strong>git branch css</strong>  Creacion de la rama con nombre css (se crea mas no se mueve a)</li>
               <li><strong>git checkout css</strong>  Moverse al area de trabajo (rama) css</li>
@@ -221,27 +225,32 @@
             </ul>
             <p>En caso de haber conflicto al momento de darse el <strong>merge</strong>, este se visualizara en el codigo de la siguiente mantera:<br>
               <<<<<<< HEAD (Datos de la rama actual)<br>
-                font-family: Courier; <br>
+              font-family: Courier; <br>
               ======= <br>
-                font-family: Arial; <br>
+              font-family: Arial; <br>
               >>>>>>> css (Datos de la rama a Unir)<br>
 
 
             </p>
           </div>
           <div>
-            <h2>Visualizar</h2>
-            <p>Master-----C1(index sin css)-----------C2(h2, ft, small)----------------CS(Merge)</p>
+            <h3>Visualizar</h3>
+            <p>Master-----C1(index sin css)-----------C2(h3, ft, small)----------------CS(Merge)</p>
 
             <p>Branch-----S1(primer css en css)-----------S2(add P)--(al dar merge se "finaliza" esta rama y se une al Master)</p>
           </div>
           <div>
-            <h2>Seguridad con llaves (19)</h2>
+            <h3>Seguridad con llaves (19)</h3>
             <p>Configuracion de Git</p>
             <ul>
               <li><strong>git config -l</strong> Visualizar Configuracion de Git</li>
               <li><strong>git config --global user.email "thel@hot.com"</strong> Configuracion del correo de usuario de Git</li>
             </ul>
+          </div>
+        </section>
+        <section id="sect3">
+          <div>
+            <h3>Clase de fundamentos de JavaScript</h3>
           </div>
         </section>
       </body>

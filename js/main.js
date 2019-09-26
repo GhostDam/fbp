@@ -1,11 +1,11 @@
 $(document).ready(function(){
-  $("section.1").hide();  
-  $("h2.1").click(function(){
-    $("section.1").toggle("slow")
+  $("section").hide();
+  $("h2").click(function(){
+    var ref = $(this).attr("href")
+    var color = $(ref).css( "background-color" );
+    $("h2").css( "background-color", "#ffffff" );  
+    $(this).css( "background-color", color );
+    $("section").hide();
+    $(ref).show();
   });
-  $("h2.2").click(function(){
-    console.log("done")
-    $("section.2").toggle("slow")
-  });
-
 });
