@@ -17,6 +17,8 @@ h2 {
   padding: 20px;
   margin: 0;
   cursor: pointer;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;  
 }
 div{
   padding: 20px;
@@ -42,7 +44,7 @@ nav{
   margin: 0 auto;
   max-width: 80%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 #sect1{
   background-color: #fd7d7a;
