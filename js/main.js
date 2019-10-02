@@ -10,148 +10,208 @@ $(document).ready(function(){
   });
 });
 //*codigo de clase*//
-var nombre = {nombre: "bryan",
-              apellido: "reyes",
-              edad: 23,
-              peso: 70
-            };
+/*Constructores/Clases*/
+//Se crea la funcion que sera el constructor, se indican los parametros que recibira
+//  y se asignan los atributos
+function pkm(tipo, generacion, nombre){
+  this.type = tipo
+  this.gen = generacion
+  this.name = nombre
+  this.damage = 150
+}
+//prototype es como definir aun accion(fn) a un objeto
+pkm.prototype.atacar= function(){
+  console.log(`${this.name} has dealed ${this.damage} ponits`)
+}
 
-console.log(`al principio ${nombre.nombre} pesa ${nombre.peso} kilos`)
+//aqui unicamente se especifican los valores de los objetos creados a base del constructor
+var char = new  pkm("fuego", "primera", "chrmndr")
+var cyn = new  pkm("fuego", "segunda", "cyndql")
+var chk = new  pkm("planta", "segunda", "chkrt")
 
+cyn.atacar()
+
+
+// var bryan = {nombre: "bryan",
+//               apellido: "reyes",
+//               edad: 23,
+//               peso: 70
+//             };
+// var emile = {nombre: "Emlie",
+//               apellido: "Valen",
+//               edad: 20,
+//               peso: 60
+//             };
+// var omar = {nombre: "Omar",
+//               apellido: "Samp",
+//               edad: 21,
+//               peso: 62
+//             };
+// var erick = {nombre: "Erick",
+//               apellido: "Zaavedra",
+//               edad: 26,
+//               peso: 75
+//             };
+// var people = [bryan, emile, omar, erick]
+// /*map retorna un nuevo array con una fn que hayamos asignado*/
+// const masViejos = personas => {
+//   return{
+//     ...personas,
+//     edad: personas.edad *= 10
+//   }
+// }
+// var envejecer =  people.map(masViejos)
+// console.log(envejecer)
+// /*map retorna un nuevo array con una fn que hayamos asignado*/
+
+
+
+// /*Filtros*/
+// const esViejo = (persona) => {
+//     return persona.edad > 22
+// }
+// var viejos = people.filter(esViejo);
+// console.log(viejos)
+// /*Filtros*/
+
+// for (var i = 0; i < people.length; i++) {
+//   console.log(`${people[i].nombre} tiene ${people[i].edad} años`)
+// }
+// console.log(`al principio ${nombre.nombre} pesa ${nombre.peso} kilos`)
 // function PUERKAPERKINS(persona){
 //   return persona.peso +=200
 // }  =====
-const incremento = 0.2
-const puerkaPerkins = persona =>   nombre.peso += incremento
-const gataPerkins = persona =>   nombre.peso -= incremento
-const seatasca = () => Math.random() < 0.3
-const noseatasca = () => Math.random() < 0.4
-const aqf = nombre.peso - 3
-var dias = 0
-
-while (nombre.peso > aqf) {
-  if (seatasca()) {
-    puerkaPerkins(nombre)
-  }
-  if (noseatasca()) {
-    gataPerkins(nombre)
-  }
-  dias += 1
-}
-console.log(`pasaron ${dias} hasta que ${nombre.nombre} perdio 3 kilos`)
+// const incremento = 0.2
+// const puerkaPerkins = persona =>   nombre.peso += incremento
+// const gataPerkins = persona =>   nombre.peso -= incremento
+// const seatasca = () => Math.random() < 0.3
+// const noseatasca = () => Math.random() < 0.4
+// const aqf = nombre.peso - 3
+// var dias = 0
+//
+// while (nombre.peso > aqf) {
+//   if (seatasca()) {
+//     puerkaPerkins(nombre)
+//   }
+//   if (noseatasca()) {
+//     gataPerkins(nombre)
+//   }
+//   dias += 1
+// }
+// console.log(`pasaron ${dias} hasta que ${nombre.nombre} perdio 3 kilos`)
 /*switch */
-var signoZodiacal = prompt("Escriba aquí su signo zodiacal");
-
-switch(signoZodiacal){
-
-    case'aries':
-        alert("Trabajo y negocios: el horizonte tendrá señales favorables. Aproveche. Sus ingresos crecerán. Amor: la relación necesita un cambio pero no se anima a sugerirlo ¡Lo hará bien!.");
-    break
-
-    case'tauro':
-        alert("Trabajo y negocios: habrá estabilidad en su economía y podrá planificar metas más ambiciosas. Amor: su encanto brillará. Estará atento a las sugerencias de su pareja. Dulces vivencias.");
-    break
-
-    case'geminis':
-    case'géminis':
-        alert("Trabajo y negocios: verá con claridad las ventajas de una inversión. Ganará la confianza de gente influyente. Amor: querrá desapegarse de la pareja y divertirse con amigos; le hará bien.");
-    break
-
-    case'cancer':
-    case'cáncer':
-        alert("Trabajo y negocios: se suceden eventos que favorecen a sus intereses. Sus ganancias crecerán como nunca. Amor: seguirá su instinto en un amor a primera vista y el romance será un hecho.");
-    break
-
-    case'leo':
-        alert("Trabajo y negocios: se conduce con audacia y los logros no tardan en llegar. Los riesgos serán mínimos. Amor: se destacará por escuchar con atención y dar confianza a su pareja. Armonía.");
-    break
-
-    case'virgo':
-        alert("Trabajo y negocios: reordenará las tareas que parecen complicadas y se vuelven productivas. Amor: disfrutará hoy del crecimiento de la pareja y lo compartirá celebrando con amigos.");
-    break
-
-    case'libra':
-        alert("Trabajo y negocios: las mudanzas de casa o las reformas serán propicias hoy. Su creatividad brillará. Amor: le ataca el desapego y siente que el amor alguna vez termina. Reflexione.");
-    break
-
-    case'escorpio':
-        alert("Trabajo y negocios: toma una decisión y pone las manos a la obra. Sus negocios serán los más beneficiados. Amor: su energía parece trabada y siente que hace daño; un amigo confidente ayudará.");
-    break
-
-    case'sagitario':
-        alert("Trabajo y negocios: hoy cosechará los frutos de su esfuerzo. Lo que necesita llega y se cumple. Amor: se pondrá dramático ante una situación. Vívalo riendo y estará irresistible.");
-    break
-
-    case'capricornio':
-        alert("Trabajo y negocios: detectará manejos erróneos cuando le propongan un cambio de planes. Amor: le estimula y le atrae el aspecto misterioso que rodea a alguien de su entorno.");
-    break
-
-    case'acuario':
-        alert("Trabajo y negocios: su habilidad para obtener negocios estará al máximo. Momento para celebrar. Amor: la pareja recuperará el fuego en la intimidad luego de sinceras confesiones.");
-    break
-
-    case'piscis':
-        alert("Trabajo y negocios: las cosas parecen estar en su contra pero no todo estará mal. Llega dinero extra. Amor: dejará de lado relaciones ocasionales y optará por la dulzura de la estabilidad.");
-    break
-
-    default:
-        var signoZodiacal = prompt("Signo zodiacal incorrecto, favor escriba otro");
-        switch(signoZodiacal){
-
-            case'aries':
-                alert("Trabajo y negocios: el horizonte tendrá señales favorables. Aproveche. Sus ingresos crecerán. Amor: la relación necesita un cambio pero no se anima a sugerirlo ¡Lo hará bien!.");
-            break
-
-            case'tauro':
-                alert("Trabajo y negocios: habrá estabilidad en su economía y podrá planificar metas más ambiciosas. Amor: su encanto brillará. Estará atento a las sugerencias de su pareja. Dulces vivencias.");
-            break
-
-            case'geminis':
-            case'géminis':
-                alert("Trabajo y negocios: verá con claridad las ventajas de una inversión. Ganará la confianza de gente influyente. Amor: querrá desapegarse de la pareja y divertirse con amigos; le hará bien.");
-            break
-
-            case'cancer':
-            case'cáncer':
-                alert("Trabajo y negocios: se suceden eventos que favorecen a sus intereses. Sus ganancias crecerán como nunca. Amor: seguirá su instinto en un amor a primera vista y el romance será un hecho.");
-            break
-
-            case'leo':
-                alert("Trabajo y negocios: se conduce con audacia y los logros no tardan en llegar. Los riesgos serán mínimos. Amor: se destacará por escuchar con atención y dar confianza a su pareja. Armonía.");
-            break
-
-            case'virgo':
-                alert("Trabajo y negocios: reordenará las tareas que parecen complicadas y se vuelven productivas. Amor: disfrutará hoy del crecimiento de la pareja y lo compartirá celebrando con amigos.");
-            break
-
-            case'libra':
-                alert("Trabajo y negocios: las mudanzas de casa o las reformas serán propicias hoy. Su creatividad brillará. Amor: le ataca el desapego y siente que el amor alguna vez termina. Reflexione.");
-            break
-
-            case'escorpio':
-                alert("Trabajo y negocios: toma una decisión y pone las manos a la obra. Sus negocios serán los más beneficiados. Amor: su energía parece trabada y siente que hace daño; un amigo confidente ayudará.");
-            break
-
-            case'sagitario':
-                alert("Trabajo y negocios: hoy cosechará los frutos de su esfuerzo. Lo que necesita llega y se cumple. Amor: se pondrá dramático ante una situación. Vívalo riendo y estará irresistible.");
-            break
-
-            case'capricornio':
-                alert("Trabajo y negocios: detectará manejos erróneos cuando le propongan un cambio de planes. Amor: le estimula y le atrae el aspecto misterioso que rodea a alguien de su entorno.");
-            break
-
-            case'acuario':
-                alert("Trabajo y negocios: su habilidad para obtener negocios estará al máximo. Momento para celebrar. Amor: la pareja recuperará el fuego en la intimidad luego de sinceras confesiones.");
-            break
-
-            case'piscis':
-                alert("Trabajo y negocios: las cosas parecen estar en su contra pero no todo estará mal. Llega dinero extra. Amor: dejará de lado relaciones ocasionales y optará por la dulzura de la estabilidad.");
-            break
-
-        }
-    break
-
-}
+// var signoZodiacal = prompt("Escriba aquí su signo zodiacal");
+// switch(signoZodiacal){
+//
+//     case'aries':
+//         alert("Trabajo y negocios: el horizonte tendrá señales favorables. Aproveche. Sus ingresos crecerán. Amor: la relación necesita un cambio pero no se anima a sugerirlo ¡Lo hará bien!.");
+//     break
+//
+//     case'tauro':
+//         alert("Trabajo y negocios: habrá estabilidad en su economía y podrá planificar metas más ambiciosas. Amor: su encanto brillará. Estará atento a las sugerencias de su pareja. Dulces vivencias.");
+//     break
+//
+//     case'geminis':
+//     case'géminis':
+//         alert("Trabajo y negocios: verá con claridad las ventajas de una inversión. Ganará la confianza de gente influyente. Amor: querrá desapegarse de la pareja y divertirse con amigos; le hará bien.");
+//     break
+//
+//     case'cancer':
+//     case'cáncer':
+//         alert("Trabajo y negocios: se suceden eventos que favorecen a sus intereses. Sus ganancias crecerán como nunca. Amor: seguirá su instinto en un amor a primera vista y el romance será un hecho.");
+//     break
+//
+//     case'leo':
+//         alert("Trabajo y negocios: se conduce con audacia y los logros no tardan en llegar. Los riesgos serán mínimos. Amor: se destacará por escuchar con atención y dar confianza a su pareja. Armonía.");
+//     break
+//
+//     case'virgo':
+//         alert("Trabajo y negocios: reordenará las tareas que parecen complicadas y se vuelven productivas. Amor: disfrutará hoy del crecimiento de la pareja y lo compartirá celebrando con amigos.");
+//     break
+//
+//     case'libra':
+//         alert("Trabajo y negocios: las mudanzas de casa o las reformas serán propicias hoy. Su creatividad brillará. Amor: le ataca el desapego y siente que el amor alguna vez termina. Reflexione.");
+//     break
+//
+//     case'escorpio':
+//         alert("Trabajo y negocios: toma una decisión y pone las manos a la obra. Sus negocios serán los más beneficiados. Amor: su energía parece trabada y siente que hace daño; un amigo confidente ayudará.");
+//     break
+//
+//     case'sagitario':
+//         alert("Trabajo y negocios: hoy cosechará los frutos de su esfuerzo. Lo que necesita llega y se cumple. Amor: se pondrá dramático ante una situación. Vívalo riendo y estará irresistible.");
+//     break
+//
+//     case'capricornio':
+//         alert("Trabajo y negocios: detectará manejos erróneos cuando le propongan un cambio de planes. Amor: le estimula y le atrae el aspecto misterioso que rodea a alguien de su entorno.");
+//     break
+//
+//     case'acuario':
+//         alert("Trabajo y negocios: su habilidad para obtener negocios estará al máximo. Momento para celebrar. Amor: la pareja recuperará el fuego en la intimidad luego de sinceras confesiones.");
+//     break
+//
+//     case'piscis':
+//         alert("Trabajo y negocios: las cosas parecen estar en su contra pero no todo estará mal. Llega dinero extra. Amor: dejará de lado relaciones ocasionales y optará por la dulzura de la estabilidad.");
+//     break
+//
+//     default:
+//         var signoZodiacal = prompt("Signo zodiacal incorrecto, favor escriba otro");
+//         switch(signoZodiacal){
+//
+//             case'aries':
+//                 alert("Trabajo y negocios: el horizonte tendrá señales favorables. Aproveche. Sus ingresos crecerán. Amor: la relación necesita un cambio pero no se anima a sugerirlo ¡Lo hará bien!.");
+//             break
+//
+//             case'tauro':
+//                 alert("Trabajo y negocios: habrá estabilidad en su economía y podrá planificar metas más ambiciosas. Amor: su encanto brillará. Estará atento a las sugerencias de su pareja. Dulces vivencias.");
+//             break
+//
+//             case'geminis':
+//             case'géminis':
+//                 alert("Trabajo y negocios: verá con claridad las ventajas de una inversión. Ganará la confianza de gente influyente. Amor: querrá desapegarse de la pareja y divertirse con amigos; le hará bien.");
+//             break
+//
+//             case'cancer':
+//             case'cáncer':
+//                 alert("Trabajo y negocios: se suceden eventos que favorecen a sus intereses. Sus ganancias crecerán como nunca. Amor: seguirá su instinto en un amor a primera vista y el romance será un hecho.");
+//             break
+//
+//             case'leo':
+//                 alert("Trabajo y negocios: se conduce con audacia y los logros no tardan en llegar. Los riesgos serán mínimos. Amor: se destacará por escuchar con atención y dar confianza a su pareja. Armonía.");
+//             break
+//
+//             case'virgo':
+//                 alert("Trabajo y negocios: reordenará las tareas que parecen complicadas y se vuelven productivas. Amor: disfrutará hoy del crecimiento de la pareja y lo compartirá celebrando con amigos.");
+//             break
+//
+//             case'libra':
+//                 alert("Trabajo y negocios: las mudanzas de casa o las reformas serán propicias hoy. Su creatividad brillará. Amor: le ataca el desapego y siente que el amor alguna vez termina. Reflexione.");
+//             break
+//
+//             case'escorpio':
+//                 alert("Trabajo y negocios: toma una decisión y pone las manos a la obra. Sus negocios serán los más beneficiados. Amor: su energía parece trabada y siente que hace daño; un amigo confidente ayudará.");
+//             break
+//
+//             case'sagitario':
+//                 alert("Trabajo y negocios: hoy cosechará los frutos de su esfuerzo. Lo que necesita llega y se cumple. Amor: se pondrá dramático ante una situación. Vívalo riendo y estará irresistible.");
+//             break
+//
+//             case'capricornio':
+//                 alert("Trabajo y negocios: detectará manejos erróneos cuando le propongan un cambio de planes. Amor: le estimula y le atrae el aspecto misterioso que rodea a alguien de su entorno.");
+//             break
+//
+//             case'acuario':
+//                 alert("Trabajo y negocios: su habilidad para obtener negocios estará al máximo. Momento para celebrar. Amor: la pareja recuperará el fuego en la intimidad luego de sinceras confesiones.");
+//             break
+//
+//             case'piscis':
+//                 alert("Trabajo y negocios: las cosas parecen estar en su contra pero no todo estará mal. Llega dinero extra. Amor: dejará de lado relaciones ocasionales y optará por la dulzura de la estabilidad.");
+//             break
+//
+//         }
+//     break
+//
+// }
+/*switch */
 
 
 //var i es un contador iniciado en 1; mientras i sea menor a 365; i se incrementara en 1 y el codigo se ejecutara
