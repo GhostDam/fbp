@@ -10,38 +10,40 @@ $(document).ready(function(){
   });
 });
 //*codigo de clase*//
+//De esta manera se obtiene datos de la api SWAPI.
+
 /*Constructores/Clases*/
 //Se crea la funcion que sera el constructor, se indican los parametros que recibira
 //  y se asignan los atributos
-class Pkm {
-  constructor(tipo, generacion, nombre) {
-    this.type = tipo
-    this.gen = generacion
-    this.name = nombre
-    this.damage = 150
-  }
-  atacar(){
-    console.log(`${this.name} has dealed ${this.damage} ponits`)
-  }
-}
-class warrior extends Pkm {
-  constructor(nombre, tipo, dps) {
-    super(nombre, tipo, dps)
-  };
-  speakType(){
-    console.log(`${this.name} is ${this.type} type`)
-  }
-}
-//prototype es como definir aun accion(fn) a un objeto
-
-//aqui unicamente se especifican los valores de los objetos creados a base del constructor
-var char = new  Pkm("fuego", "primera", "chrmndr")
-var cyn = new  Pkm("fuego", "segunda", "cyndql")
-var chk = new  Pkm("planta", "segunda", "chkrt")
-
-var war = new  warrior("eleas", "guerrero", "100")
-var mage = new  warrior("phinis", "mago", "140")
-var tief = new  warrior("runa", "ladron", "55")
+// class Pkm {
+//   constructor(tipo, generacion, nombre) {
+//     this.type = tipo
+//     this.gen = generacion
+//     this.name = nombre
+//     this.damage = 150
+//   }
+//   atacar(){
+//     console.log(`${this.name} has dealed ${this.damage} ponits`)
+//   }
+// }
+// class warrior extends Pkm {
+//   constructor(nombre, tipo, dps) {
+//     super(nombre, tipo, dps)
+//   };
+//   speakType(){
+//     console.log(`${this.name} is ${this.type} type`)
+//   }
+// }
+// //prototype es como definir aun accion(fn) a un objeto
+//
+// //aqui unicamente se especifican los valores de los objetos creados a base del constructor
+// var char = new  Pkm("fuego", "primera", "chrmndr")
+// var cyn = new  Pkm("fuego", "segunda", "cyndql")
+// var chk = new  Pkm("planta", "segunda", "chkrt")
+//
+// var war = new  warrior("eleas", "guerrero", "100")
+// var mage = new  warrior("phinis", "mago", "140")
+// var tief = new  warrior("runa", "ladron", "55")
 
 // var bryan = {nombre: "bryan",
 //               apellido: "reyes",
