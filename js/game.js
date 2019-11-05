@@ -106,6 +106,9 @@ class Juego {
           this.ganarJuego()
         } else{
           setTimeout(this.siguienteNivel, 1500)
+          this.puntuacion();
+          /*****/
+          /*****/
         }
       }
     }else {
@@ -122,6 +125,12 @@ class Juego {
       this.eliminarClicks()
       this.inicializar()
     })
+  }
+  puntuacion(){
+    const message = document.getElementById('message')
+    let puntos = this.subnivel
+    message.innerHtML = puntos;
+    console.log(message.innerHtML = puntos)
   }
 }
 
