@@ -444,13 +444,51 @@ switch(signoZodiacal){ <br>
           <small>En caso de errores con el CMD o rendimiento, se cierra el server Node en taskmgr</small>
         </div>
         <div>
+
           <h3>comandos</h3>
           <p><strong>npm install -g create-react-app</strong></p>
           <p><strong>create-react-app Nombre Proyecto</strong></p>
           <p>*entrar al directorio*</p>
           <p><strong>npm (run) start</strong></p>
-          <p><strong></strong></p>
-
+          <p>En caso de ser un proyecto importado se requerirá nuevamente un npm instal (actualizar bibliotecas)</p>
+        </div>
+        <div class="elementos">
+          <h1>Primeramente vimos la explicacion de JSX y el ReactDOM.render</h1>
+        </div>
+        <div>
+          <h1>Renderizado en DOM mediante JavaScript Clasico</h1>
+            <p>
+              // const element = document.createElement('h1') <br>
+              // element.innerText = 'Hello platzi Badges'; <br>
+              // const container = document.getElementById('app') <br>
+              // container.appendChild(element) <br>
+              //Classic JS <br>
+            </p>
+        </div>
+        <div>
+          <h1>renderizado por medio de React</h1>
+          <p>
+              import React from 'react';             //create element **escencial para JSX <br>
+              import ReactDOM from 'react-dom';      //append child <br>
+              <br>
+              const name = "Joe momma"<br>
+              <br>
+              const element = &#60;h5>Hello!, Platzi Badges... from react, i´m {name}&#60;/h5> //**JSX */<br>
+              const container = document.getElementById('app')<br>
+              <br>
+              //ReactDOM.render(que, donde)<br>
+              ReactDOM.render(element, container)<br>
+          </p>
+        </div>
+        <div class="elementos">
+          <h1>Componenetes y elementos</h1>
+        </div>
+        <div>
+          <h3>componente</h3>
+          <img src="md/componentejpg.jpg" alt="" width="100%">
+        </div>
+        <div>
+          <h3>elemento</h3>
         </div>
       </section>
       </body>
