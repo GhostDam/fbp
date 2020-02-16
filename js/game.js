@@ -6,6 +6,7 @@ const verde = document.getElementById('verde')
 const btnEmpezar = document.getElementById('btnEmpezar')
 const ULTIMO_NIVEL = 4
 
+
 class Juego {
   constructor() {
     this.inicializar = this.inicializar.bind(this)
@@ -127,10 +128,10 @@ class Juego {
     })
   }
   puntuacion(){
-    const message = document.getElementById('message')
     let puntos = this.subnivel
-    message.innerHtML = puntos;
-    console.log(message.innerHtML = puntos)
+    const message = document.getElementById('message')
+    message.innerText = puntos;
+    console.log(message) 
   }
 }
 

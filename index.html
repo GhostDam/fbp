@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="js/main.js" charset="utf-8"></script>
   <title>FB Beca Developer Circles</title>
 </head>
@@ -17,10 +18,14 @@
     <p>Psicología, pedagogía y neurociencias son estas ciencias que se encargan de estudiar cómo funcionan los procesos de aprendizaje en nuestro cerebro. A lo largo de este curso veremos algunos métodos y descubrimiento científicos de cómo podemos mejorar nuestra capacidad de aprender.</p>
   </header>
   <nav>
-    <h2 href="#sect1">Procesos de aprendizaje</h2>
-    <h2 href="#sect2">Git y GitHub</h2>
-    <h2 href="#sect3">Fundamentos de JavaScript</h2>
-    <h2 href="#sect4">React Js</h2>
+    <h4 href="#sect1">Procesos de aprendizaje</h4>
+    <h4 href="#sect2">Desarrollo web</h4 >
+    <h4 href="#sect3">Git y GitHub</h4 >
+    <h4 href="#sect4">Fundamentos de JavaScript</h4>
+    <h4 href="#sect5">React Js</h4>
+    <h4 href="#sect6">Redux</h4>
+    <h4 href="#sect11">Node Js</h4>
+
   </nav>
       <section id="sect1">
         <div class="tipos">
@@ -115,140 +120,195 @@
           </div>
         </section>
       <section id="sect2">
-        <div>
-          <h3>Que es Git?</h3>
-          <p>Git es un sistema de control de versiones que nos permite llevar un control de cambios y desarrollo de nuestros proyecto,
-            Un sistema de control de versiones como Git nos ayuda a guardar el historial de cambios y crecimiento de los archivos de nuestro proyecto.</p>
-            <p>En realidad, los cambios y diferencias entre las versiones de nuestros proyecto pueden tener similitudes, algunas veces los cambios pueden ser solo una palabra o una parte específica de un archivo específico. Git está optimizado para guardar todos estos cambios de forma atómica e incremental, o sea, aplicando cambios sobre los últimos cambios, estos sobre los cambios anteriores y así hasta el inicio de nuestro proyecto.</p>
-            <p>Para ello, requerimos descargar e instalar <strong> <a href="https://git-scm.com/">Git</a></strong>, el cual funciona principalmente por medio de comandos mediante la consola, auunque tambien cuenta con el apoyo de una interfaz grafica</p>
-            <p>Diferencias entre la estructura de archivos de Windows, Mac o Linux.</p>
-          </p>La ruta principal en Windows es C:\, en UNIX es solo /.</p>
-          <p>Windows no hace diferencia entre mayúsculas y minúsculas pero UNIX sí.</p>
-          <p>Recuerda que GitBash usa la ruta /c para dirigirse a C:\ (o /d para dirigirse a D:\) en Windows. Por lo tanto, la ruta del usuario con el que estás trabajando es /c/Users/Nombre de tu usuario</p>
+        <div class="row">
+          <div class="col-md-6">
+            <div><strong>Etiquetas</strong></div>
+              <p>Las etiquetas son la representación básica de la información en un documento html. Sirven para crear y organizar el contenido.<br>
+            La sintaxis general de una etiqueta es:</p>
+            <pre>
+              <code>
+                &lt;<span>nombre</span>&gt;</span>contenido<span>&lt;/<span>nombre</span>&gt;</span>
+            </code>
+          </pre>
+            <p>Hay ciertas etiquetas que tienen una sintaxis diferente, ya que se cierran en sí mismas; es decir, no tienen etiqueta de cierre:</p>
+            <pre><code ><span class="hljs-tag">&lt;<span class="hljs-name">nombre</span> /&gt;</span>
+            </code></pre>
         </div>
-        <div>
-          <strong>Comandos básicos en la terminal:</strong>
-          <ul>
-            <li>pwd: Nos muestra la ruta de carpetas en la que te encuentras ahora mismo.</li>
-            <li>mkdir: Nos permite crear carpetas (por ejemplo, mkdir Carpeta-Importante).</li>
-            <li>touch: Nos permite crear archivos (por ejemplo, touch archivo.txt).</li>
-            <li>rm: Nos permite borrar un archivo o carpeta (por ejemplo, rm archivo.txt). Mucho cuidado con este comando, puedes borrar todo tu disco duro.</li>
-            <li>cat: Ver el contenido de un archivo (por ejemplo, cat nombre-archivo.txt).</li>
-            <li>ls: Nos permite cambiar ver los archivos de la carpeta donde estamos ahora mismo. Podemos usar uno o más argumentos para ver más información sobre estos archivos (los argumentos pueden ser -- + el nombre del argumento o - + una sola letra o shortcut por cada argumento).</li>
-            <li>- ls -a: Mostrar todos los archivos, incluso los ocultos.</li>
-            <li>- ls -l: Ver todos los archivos como una lista.</li>
-            <p>cd: Nos permite navegar entre carpetas.</p>
-            <li>- cd /: Ir a la ruta principal:</li>
-            <li>- cd o cd ~: Ir a la ruta de tu usuario</li>
-            <li>- cd carpeta/subcarpeta: Navegar a una ruta dentro de la carpeta donde estamos ahora mismo.</li>
-            <li>- cd .. (cd + dos puntos): Regresar una carpeta hacia atrás.</li>
-            <li>- Si quieres referirte al directorio en el que te encuentras ahora mismo puedes usar cd . (cd + un punto).</li>
-            <li>history: Ver los últimos comandos que ejecutamos y un número especial con el que podemos repetir su ejecución.</li>
-            <li>! + número: Ejecutar algún comando con el número que nos muestra el comando history (por ejemplo, !72).</li>
-            <li>clear: Para limpiar la terminal. También podemos usar los atajos de teclado Ctrl + L o Command + L.</li>
+          <div class="col-md-6">
+              <p>Algunas de las etiquetas más conocidas y usadas son:</p>
+              <p><strong>Etiquetas de cabecera (head):</strong></p>
+              <ul>
+              <li><strong><code>doctype</code></strong>: indica al navegador el tipo de documento que se está mostrando.</li>
+              <li><strong><code>html</code></strong>: es la etiqueta que envuelve todo el documento</li>
+              <li><strong><code>head</code></strong>: es la cabecera del documento y contiene sub etiquetas que describen al documento o incluyen recursos adicionales.</li>
+              </ul>
+              <p><strong>Etiquetas del cuerpo del documento (body):</strong></p>
+              <ul>
+              <li><strong><code>article</code></strong>: diferencia partes del contenido que pueden vivir por sí mismas.</li>
+              <li><strong><code>nav</code></strong>: para hacer menús de navegación.</li>
+              <li><strong><code>aside</code></strong>: contenido menos relevante, como publicidad, etc.</li>
+              <li><strong><code>section</code></strong>: sirve para diferenciar las secciones principales del contenido.</li>
+              <li><strong><code>header</code></strong>: cabecera del documento.</li>
+              <li><strong><code>footer</code></strong>: pie de página del documento.</li>
+              <li><strong><code>h1 - h6</code></strong>: títulos de nuestro sitio web.</li>
+              <li><strong><code>table</code></strong>: tablas de contenidos, similar a la estructura de las hojas de calculo.</li>
+              <li><strong><code>ul y ol</code></strong>: listas de items.</li>
+              <li><strong><code>div</code></strong>: cualquier división para organizar el contenido.</li>
+        </section>
+      <section id='sect3'>
+        <div class='row'>
+          <div class='col-md-6'>
+            <h3>Que es Git?</h3>
+            <p>Git es un sistema de control de versiones que nos permite llevar un control de cambios y desarrollo de nuestros proyecto,
+              Un sistema de control de versiones como Git nos ayuda a guardar el historial de cambios y crecimiento de los archivos de nuestro proyecto.</p>
+              <p>En realidad, los cambios y diferencias entre las versiones de nuestros proyecto pueden tener similitudes, algunas veces los cambios pueden ser solo una palabra o una parte específica de un archivo específico. Git está optimizado para guardar todos estos cambios de forma atómica e incremental, o sea, aplicando cambios sobre los últimos cambios, estos sobre los cambios anteriores y así hasta el inicio de nuestro proyecto.</p>
+              <p>Para ello, requerimos descargar e instalar <strong> <a href="https://git-scm.com/">Git</a></strong>, el cual funciona principalmente por medio de comandos mediante la consola, auunque tambien cuenta con el apoyo de una interfaz grafica</p>
+              <p>Diferencias entre la estructura de archivos de Windows, Mac o Linux.</p>
+            </p>La ruta principal en Windows es C:\, en UNIX es solo /.</p>
+            <p>Windows no hace diferencia entre mayúsculas y minúsculas pero UNIX sí.</p>
+            <p>Recuerda que GitBash usa la ruta /c para dirigirse a C:\ (o /d para dirigirse a D:\) en Windows. Por lo tanto, la ruta del usuario con el que estás trabajando es /c/Users/Nombre de tu usuario</p>    
+          </div>
+          <div class="col-md-6">
+            <strong>Comandos básicos en la terminal:</strong>
+            <ul>
+              <li><strong>Windows</strong></li>
+              <li>dir: Muetra el listado de archivos de la carpeta</li>
+              <li>cd: Nos permite navegar entre carpetas.</li>
+              <li>cls: Limpiar consola.</li>
+              <li>mkdir: Nos permite crear carpetas (por ejemplo, mkdir Carpeta-Importante).</li>
+
+              <li>node: para entrar a nodejs, ctrl + c 2 veces para salir</li>
+    
+              <li><strong>Linux - Mac</strong></li>
+              <li>EL USO DE MAYUS MINUS IMPORTA</li>
+              <li>pwd: Nos muestra la ruta de carpetas en la que te encuentras ahora mismo.</li>
+    
+              <li>touch: Nos permite crear archivos (por ejemplo, touch archivo.txt).</li>
+              <li>rm: Nos permite borrar un archivo o carpeta (por ejemplo, rm archivo.txt). Mucho cuidado con este comando, puedes borrar todo tu disco duro.</li>
+              <li>cat: Ver el contenido de un archivo (por ejemplo, cat nombre-archivo.txt).</li>
+              <li>ls: Nos permite cambiar ver los archivos de la carpeta donde estamos ahora mismo. Podemos usar uno o más argumentos para ver más información sobre estos archivos (los argumentos pueden ser -- + el nombre del argumento o - + una sola letra o shortcut por cada argumento).</li>
+              <li>- ls -a: Mostrar todos los archivos, incluso los ocultos.</li>
+              <li>- ls -l: Ver todos los archivos como una lista.</li>
+              <li>- cd /: Ir a la ruta principal:</li>
+              <li>- cd o cd ~: Ir a la ruta de tu usuario</li>
+              <li>- cd carpeta/subcarpeta: Navegar a una ruta dentro de la carpeta donde estamos ahora mismo.</li>
+              <li>- cd .. (cd + dos puntos): Regresar una carpeta hacia atrás.</li>
+              <li>- Si quieres referirte al directorio en el que te encuentras ahora mismo puedes usar cd . (cd + un punto).</li>
+              <li>history: Ver los últimos comandos que ejecutamos y un número especial con el que podemos repetir su ejecución.</li>
+              <li>! + número: Ejecutar algún comando con el número que nos muestra el comando history (por ejemplo, !72).</li>
+              <li>clear: Para limpiar la terminal. También podemos usar los atajos de teclado Ctrl + L o Command + L.</li>
+            </ul>
+            <p>Todos estos comandos tiene una función de autocompletado, o sea, puedes escribir la primera parte y presionar la tecla Tab para que la terminal nos muestre todas las posibles carpetas o comandos que podemos ejecutar. Si presionas la tecla Arriba puedes ver el último comando que ejecutamos.</p>
+            <p>*<small>Recuerda que podemos descubrir todos los argumentos de un comando con el argumento --help (por ejemplo, cat --help).</small></p>
+          </div>
+            </div>
+      <div>
+        <h3>¿Qué es staging, repositorios y cuál es el ciclo básico de trabajo en GitHub?</h3>
+        <p>Para iniciar un repositorio, o sea, activar el sistema de control de versiones de Git en tu proyecto, solo debes ejecutar el comando git init.</p>
+        <p>Este comando se encargará de dos cosas: primero, crear una carpeta .git donde se guardará toda la base de datos con cambios atómicos de nuestro proyecto; y segundo, crear un área en la memoria RAM, que conocemos como Staging, que guardará temporalmente nuestros archivos (cuando ejecutemos un comando especial para eso) y nos permitirá, más adelante, guardar estos cambios en el repositorio (también con un comando especial).</p>
+        <p>Ciclo de vida o estados de los archivos en Git:</p>
+        <p>Cuando trabajamos con Git, nuestros archivos pueden vivir y moverse entre 4 diferentes estados (cuando trabajamos con repositorios remotos pueden ser más estados pero lo estudiaremos más adelante):</p>
+        <ul>
+          <li>Archivos Tracked: Son los archivos que viven dentro de Git, no tienen cambios pendientes y sus últimas actualizaciones han sido guardadas en el repositorio gracias a los comandos git add y git commit.</li>
+          <li>Archivos Staged: Son archivos en Staging. Viven dentro de Git y hay registro de ellos porque han sido afectados por el comando git add, aunque no sus últimos cambios. Git ya sabe de la existencia de estos últimos cambios pero todavía no han sido guardados definitivamente en el repositorio porque falta ejecutar el comando git commit.</li>
+          <li>Archivos Unstaged: Entiendelos como archivos “Tracked pero Unstaged”. Son archivos que viven dentro de Git pero no han sido afectados por el comando git add ni mucho menos por git commit. Git tiene un registro de estos archivos pero está desactualizado, sus últimas versiones solo están guardadas en el disco duro.</li>
+          <li>Archivos Untracked: Son archivos que NO viven dentro de Git, solo en el disco duro. Nunca han sido afectados por git add, así que Git no tiene registros de su existencia.
+            Recuerda que hay un caso muy raro donde los archivos tienen dos estados al mismo tiempo: Staged y Untracked. Esto pasa guardas los cambios de un archivo en el área de Staging (con el comando git add) pero, antes de hacer commit para guardar los cambios en el repositorio, haces nuevos cambios que todavía no han sido guardados en el área de Staging (en realidad, todo sigue funcionando igual pero es un poco divertido).</li>
           </ul>
-          <p>Todos estos comandos tiene una función de autocompletado, o sea, puedes escribir la primera parte y presionar la tecla Tab para que la terminal nos muestre todas las posibles carpetas o comandos que podemos ejecutar. Si presionas la tecla Arriba puedes ver el último comando que ejecutamos.</p>
-          <p>*<small>Recuerda que podemos descubrir todos los argumentos de un comando con el argumento --help (por ejemplo, cat --help).</small></p>
         </div>
         <div>
-          <h3>¿Qué es staging, repositorios y cuál es el ciclo básico de trabajo en GitHub?</h3>
-          <p>Para iniciar un repositorio, o sea, activar el sistema de control de versiones de Git en tu proyecto, solo debes ejecutar el comando git init.</p>
-          <p>Este comando se encargará de dos cosas: primero, crear una carpeta .git donde se guardará toda la base de datos con cambios atómicos de nuestro proyecto; y segundo, crear un área en la memoria RAM, que conocemos como Staging, que guardará temporalmente nuestros archivos (cuando ejecutemos un comando especial para eso) y nos permitirá, más adelante, guardar estos cambios en el repositorio (también con un comando especial).</p>
-          <p>Ciclo de vida o estados de los archivos en Git:</p>
-          <p>Cuando trabajamos con Git, nuestros archivos pueden vivir y moverse entre 4 diferentes estados (cuando trabajamos con repositorios remotos pueden ser más estados pero lo estudiaremos más adelante):</p>
+          <h3>Comandos para mover archivos entre los estados de Git:</h3>
+
+          Nuevo repor 
+          git init
+          git add README.md
+          git commit -m "first commit"
+          git remote add origin https://github.com/GhostDam/Apocrypha.git
+          git push -u origin master
+
           <ul>
-            <li>Archivos Tracked: Son los archivos que viven dentro de Git, no tienen cambios pendientes y sus últimas actualizaciones han sido guardadas en el repositorio gracias a los comandos git add y git commit.</li>
-            <li>Archivos Staged: Son archivos en Staging. Viven dentro de Git y hay registro de ellos porque han sido afectados por el comando git add, aunque no sus últimos cambios. Git ya sabe de la existencia de estos últimos cambios pero todavía no han sido guardados definitivamente en el repositorio porque falta ejecutar el comando git commit.</li>
-            <li>Archivos Unstaged: Entiendelos como archivos “Tracked pero Unstaged”. Son archivos que viven dentro de Git pero no han sido afectados por el comando git add ni mucho menos por git commit. Git tiene un registro de estos archivos pero está desactualizado, sus últimas versiones solo están guardadas en el disco duro.</li>
-            <li>Archivos Untracked: Son archivos que NO viven dentro de Git, solo en el disco duro. Nunca han sido afectados por git add, así que Git no tiene registros de su existencia.
-              Recuerda que hay un caso muy raro donde los archivos tienen dos estados al mismo tiempo: Staged y Untracked. Esto pasa guardas los cambios de un archivo en el área de Staging (con el comando git add) pero, antes de hacer commit para guardar los cambios en el repositorio, haces nuevos cambios que todavía no han sido guardados en el área de Staging (en realidad, todo sigue funcionando igual pero es un poco divertido).</li>
+            <li><strong>git init</strong> Inicia el repositorio (Lo crea)</li>
+            <li><strong>git add</strong> Agrega los archivos al área de preparación Nos ayuda a mover archivos del Untracked o Unstaged al estado Staged. Podemos usar git -archivo- para añadir archivos y carpetas individuales o git add -A para mover todos los archivos de nuestro proyecto (tanto Untrackeds como unstageds).</li>
+            <li><strong>git commit -m "(mensaje)"</strong> Envía los archivos al repositorio local, Git nos pedirá que dejemos un mensaje para recordar los cambios que hicimos y los archivos son guardados o actualizados en el repositorio.</li>
+            <li><strong>git commit -am ""</strong> Funciona como add y commit en conjunto, con la diferencia de que solo funciona sobre archivos a los que se haya hecho add anteriormente.</li>
+
+            <li><strong>git remote add origin https://github.com/GhostDam/Ghost.git</strong> agrega el servidor remoto al cual se guardara/actualizara el repositorio local</li>
+            <li><strong>git push -u origin master</strong> Envía los archivos del repositorio a un servidor remoto</li>
+            <li><strong>git status</strong> Muestra el estado de los archivos </li>
+            <li><strong>git show</strong> Muestra los cambios hechos </li>
+            <li><strong>git log</strong> Muestra los cambios de los archivos </li>
+            <li><strong>git log --stat</strong> Muestra los cambios a detalle, lienas modificadas </li>
+
+            <li><strong>git log --oneline</strong> Muestra los commits en una sola línea</li>
+            <li><strong>git status</strong> Nos permite ver el estado de todos nuestros archivos y carpetas.</li>
+
+            <li><strong>git restore</strong> Restaura en archivo a su ultimo commit</li>
+
+            <li><strong>git reset HEAD</strong> Nos ayuda a sacar archivos del estado Staged para devolverlos a su estado anterior. Si los archivos venían de Unstaged, vuelven allí. Y lo mismo se venían de Untracked.</li>
+          </ul>
+          <p>git rm: Este comando necesita alguno de los siguientes argumentos para poder ejecutarse correctamente:</p>
+          <ul>
+            <li><strong>git rm --cached</strong> Mueve los archivos que le indiquemos al estado Untracked!.</li>
+            <li><strong>git rm --force</strong> Elimina los archivos de Git y del disco duro. Git guarda el registro de la existencia de los archivos, por lo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Cambios y Retornos(12)</h3>
+          <p>El comando git checkout + ID del commit nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y movernos entre ellas.
+            También hay una forma de hacerlo un poco más “ruda”: usando el comando git reset. En este caso, no solo “volvemos en el tiempo”, sino que borramos los cambios que hicimos después de este commit.
+            Hay dos formas de usar git reset: con el argumento --hard, borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre). O, un poco más seguro, con el argumento --soft, que mantiene allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.</p>
+            <ul>
+              <li><strong>git show</strong>  ultimos cambios en el archivo</li>
+              <li><strong>git diff</strong> sin parametros muetra los cambios entre docs en staging y docs en la carpeta</li>
+              <li><strong>git diff -commit- -commit-</strong> ver diferencias entre commits “el orden importa”</li>
+              <li><strong>git reset</strong> soft o hard, hard reset elimina el historial de commits hasta el commint indicado en el reset "git reset -commit(hjka4371h)-"</li>
             </ul>
           </div>
           <div>
-            <h3>Comandos para mover archivos entre los estados de Git:</h3>
+            <h3>Importacion de repositorios de un servidor remoto</h3>
+            <p>Estos servidores remotos pueden estar alojados en GitHub, GitLab, BitBucket, entre otros. Lo que van a hacer es guardar el mismo repositorio que tienes en tu computadora y darnos una URL con la que todos podremos acceder a los archivos del proyecto para descargarlos, hacer cambios y volverlos a enviar al servidor remoto para que otras personas vean los cambios, comparen sus versiones y creen nuevas propuestas para el proyecto.</p>
+            <p>Esto significa que debes aprender algunos nuevos comandos:</p>
             <ul>
-              <li><strong>git init</strong> Inicia el repositorio (Lo crea)</li>
-              <li><strong>git add</strong> Agrega los archivos al área de preparación Nos ayuda a mover archivos del Untracked o Unstaged al estado Staged. Podemos usar git -archivo- para añadir archivos y carpetas individuales o git add -A para mover todos los archivos de nuestro proyecto (tanto Untrackeds como unstageds).</li>
-              <li><strong>git commit -m "(mensaje)"</strong> Envía los archivos al repositorio local, Git nos pedirá que dejemos un mensaje para recordar los cambios que hicimos y los archivos son guardados o actualizados en el repositorio.</li>
-              <li><strong>git commit -am ""</strong> Funciona como add y commit en conjunto, con la diferencia de que solo funciona sobre archivos a los que se haya hecho add anteriormente.</li>
-
-              <li><strong>git remote add origin https://github.com/GhostDam/Ghost.git</strong> agrega el servidor remoto al cual se guardara/actualizara el repositorio local</li>
-              <li><strong>git push -u origin master</strong> Envía los archivos del repositorio a un servidor remoto</li>
-              <li><strong>git status</strong> Muestra el estado de los archivos </li>
-              <li><strong>git show</strong> Muestra los cambios hechos </li>
-              <li><strong>git log</strong> Muestra los cambios de los archivos </li>
-              <li><strong>git log --stat</strong> Muestra los cambios a detalle, lienas modificadas </li>
-
-              <li><strong>git log --oneline</strong> Muestra los commits en una sola línea</li>
-              <li><strong>git status</strong> Nos permite ver el estado de todos nuestros archivos y carpetas.</li>
-
-              <li><strong>git restore</strong> Restaura en archivo a su ultimo commit</li>
-
-              <li><strong>git reset HEAD</strong> Nos ayuda a sacar archivos del estado Staged para devolverlos a su estado anterior. Si los archivos venían de Unstaged, vuelven allí. Y lo mismo se venían de Untracked.</li>
-            </ul>
-            <p>git rm: Este comando necesita alguno de los siguientes argumentos para poder ejecutarse correctamente:</p>
-            <ul>
-              <li><strong>git rm --cached</strong> Mueve los archivos que le indiquemos al estado Untracked!.</li>
-              <li><strong>git rm --force</strong> Elimina los archivos de Git y del disco duro. Git guarda el registro de la existencia de los archivos, por lo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).</li>
+              <li><strong>git clone https://github.com/GhostDam/Ghost.git </strong> Nos permite descargar los archivos de la última versión de la rama principal y todo el historial de cambios en la carpeta .git.</li>
+              <li><strong>git fetch</strong> Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local (en caso de que hayan, por supuesto).</li>
+              <li><strong>git merge</strong> También usamos el comando git fetch con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.</li>
+              <li><strong>git pull</strong> Básicamente, git fetch y git merge al mismo tiempo.</li>
             </ul>
           </div>
           <div>
-            <h3>Cambios y Retornos(12)</h3>
-            <p>El comando git checkout + ID del commit nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y movernos entre ellas.
-              También hay una forma de hacerlo un poco más “ruda”: usando el comando git reset. En este caso, no solo “volvemos en el tiempo”, sino que borramos los cambios que hicimos después de este commit.
-              Hay dos formas de usar git reset: con el argumento --hard, borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre). O, un poco más seguro, con el argumento --soft, que mantiene allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.</p>
-              <ul>
-                <li><strong>git show</strong>  ultimos cambios en el archivo</li>
-                <li><strong>git diff</strong> sin parametros muetra los cambios entre docs en staging y docs en la carpeta</li>
-                <li><strong>git diff -commit- -commit-</strong> ver diferencias entre commits “el orden importa”</li>
-                <li><strong>git reset</strong> soft o hard, hard reset elimina el historial de commits hasta el commint indicado en el reset "git reset -commit(hjka4371h)-"</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Importacion de repositorios de un servidor remoto</h3>
-              <p>Estos servidores remotos pueden estar alojados en GitHub, GitLab, BitBucket, entre otros. Lo que van a hacer es guardar el mismo repositorio que tienes en tu computadora y darnos una URL con la que todos podremos acceder a los archivos del proyecto para descargarlos, hacer cambios y volverlos a enviar al servidor remoto para que otras personas vean los cambios, comparen sus versiones y creen nuevas propuestas para el proyecto.</p>
-              <p>Esto significa que debes aprender algunos nuevos comandos:</p>
-              <ul>
-                <li><strong>git clone https://github.com/GhostDam/Ghost.git </strong> Nos permite descargar los archivos de la última versión de la rama principal y todo el historial de cambios en la carpeta .git.</li>
-                <li><strong>git fetch</strong> Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local (en caso de que hayan, por supuesto).</li>
-                <li><strong>git merge</strong> También usamos el comando git fetch con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.</li>
-                <li><strong>git pull</strong> Básicamente, git fetch y git merge al mismo tiempo.</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Creacion de Ramas</h3>
-              <ul>
-                <li><strong>git branch css</strong>  Creacion de la rama con nombre css (se crea mas no se mueve a)</li>
-                <li><strong>git checkout css</strong>  Moverse al area de trabajo (rama) css</li>
-                <li><strong>git branch</strong>  Te permite ver un listado de las ramas existentes, ademas de resaltar la rama del Head</li>
-                <li><strong>git merge</strong>  Merge se encargara de fusionar las ramas, tomando como linea principal la rama donde se encuentre actualmente</li>
-              </ul>
-              <p>En caso de haber conflicto al momento de darse el <strong>merge</strong>, este se visualizara en el codigo de la siguiente mantera:<br>
-                <<<<<<< HEAD (Datos de la rama actual)<br>
-                font-family: Courier; <br>
-                ======= <br>
-                font-family: Arial; <br>
-                >>>>>>> css (Datos de la rama a Unir)<br>
+            <h3>Creacion de Ramas</h3>
+            <ul>
+              <li><strong>git branch css</strong>  Creacion de la rama con nombre css (se crea mas no se mueve a)</li>
+              <li><strong>git checkout css</strong>  Moverse al area de trabajo (rama) css</li>
+              <li><strong>git branch</strong>  Te permite ver un listado de las ramas existentes, ademas de resaltar la rama del Head</li>
+              <li><strong>git merge</strong>  Merge se encargara de fusionar las ramas, tomando como linea principal la rama donde se encuentre actualmente</li>
+            </ul>
+            <p>En caso de haber conflicto al momento de darse el <strong>merge</strong>, este se visualizara en el codigo de la siguiente mantera:<br>
+              <<<<<<< HEAD (Datos de la rama actual)<br>
+              font-family: Courier; <br>
+              ======= <br>
+              font-family: Arial; <br>
+              >>>>>>> css (Datos de la rama a Unir)<br>
 
 
-              </p>
-            </div>
-            <div>
-              <h3>Visualizar</h3>
-              <p>Master-----C1(index sin css)-----------C2(h3, ft, small)----------------CS(Merge)</p>
+            </p>
+          </div>  
+          <div>
+            <h3>Visualizar</h3>
+            <p>Master-----C1(index sin css)-----------C2(h3, ft, small)----------------CS(Merge)</p>
 
-              <p>Branch-----S1(primer css en css)-----------S2(add P)--(al dar merge se "finaliza" esta rama y se une al Master)</p>
-            </div>
-            <div>
-              <h3>Seguridad con llaves (19)</h3>
-              <p>Configuracion de Git</p>
-              <ul>
-                <li><strong>git config -l</strong> Visualizar Configuracion de Git</li>
-                <li><strong>git config --global user.email "thel@hot.com"</strong> Configuracion del correo de usuario de Git</li>
-              </ul>
-            </div>
-          </section>
-      <section id="sect3">
+            <p>Branch-----S1(primer css en css)-----------S2(add P)--(al dar merge se "finaliza" esta rama y se une al Master)</p>
+          </div>
+          <div>
+            <h3>Seguridad con llaves (19)</h3>
+            <p>Configuracion de Git</p>
+            <ul>
+              <li><strong>git config -l</strong> Visualizar Configuracion de Git</li>
+              <li><strong>git config --global user.email "thel@hot.com"</strong> Configuracion del correo de usuario de Git</li>
+            </ul>
+          </div>
+        </section>
+      <section id="sect4">
         <div class="third">
           <div class="elem">
           <h3>Definicion de variables</h3>
@@ -432,7 +492,7 @@ switch(signoZodiacal){ <br>
           <a href="game.html">Juega Aqui!</a>
         </div>
       </section>
-      <section id="sect4">
+      <section id="sect5">
         <div>
           <h3>Requerimentos</h3>
           <p>Para inicializar un proyecto con React JS se Necesita primeramente instalar, eso se hace mediante el CMD y con el comando <br>
@@ -491,5 +551,45 @@ switch(signoZodiacal){ <br>
           <h3>elemento</h3>
         </div>
       </section>
-      </body>
+      <section id="sect6">
+        <div class='row'>
+          <div class="col-md-12">
+            <h1>Utilizar Redux</h1>
+              <h2>Requerimentos</h2>
+              <p>Para accesar a Redux se requiere la instalacion</p>
+              <p><strong>npm install redux react-redux</strong></p>
+              <p>Actions must be plain objects. Use custom middleware for async actions.</p>
+              <p>i dunno wtf is middleware</p>
+              <p><strong>npm install redux-thunk</strong></p>
+          </div>
+          <div class="col-md-12">
+            <img src='md/redux1.jpg' />
+          </div>
+          <div class="col-md-12">
+            <h2>Ciclo</h2>
+            <p>Componente => Actions => Reducers</p>
+            <img src='md/redux2.jpg' />
+          </div>
+
+        </div>
+      </section>
+      <section id="sect11">
+        <div class="row">
+            <div class="col-md-6">
+              <h3>comandos y estructura package json</h3>
+              <p><strong>npm install -g express</strong></p>
+              <p>instala una dependencia globalmente, es decir disponible para cualquier posible uso futuro</p>
+              <p><strong>npm install express --save-dev || -D</strong></p>
+              <p>se vuelve una instalacion unicamente para la utilidad del desarrollo</p>
+              <p><strong>packaje.json -dependencies: </strong></p>
+              <p>El codigo del servidor depende de las bibliotecas en -dependencies (por ejemplo express en producion)</p>
+              <p><strong>packaje.json -DevDependencies: </strong></p>
+              <p>Modulos de ayuda para el desarrollo (por ejemplo Nodemon en desarrollo)</p>
+
+              <p><strong>npx Nodemon es que no esta instalado en todo el sistema</strong></p>
+
+            </div>
+        </div> 
+      </section>
+    </body>
       </html>
