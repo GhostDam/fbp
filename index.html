@@ -167,6 +167,7 @@
             </p>La ruta principal en Windows es C:\, en UNIX es solo /.</p>
             <p>Windows no hace diferencia entre mayúsculas y minúsculas pero UNIX sí.</p>
             <p>Recuerda que GitBash usa la ruta /c para dirigirse a C:\ (o /d para dirigirse a D:\) en Windows. Por lo tanto, la ruta del usuario con el que estás trabajando es /c/Users/Nombre de tu usuario</p>    
+            <p>al dar commit sin -m (texto azul) el texto (amarillo) sobre # es el msn (vim)</p>
           </div>
           <div class="col-md-6">
             <strong>Comandos básicos en la terminal:</strong>
@@ -175,8 +176,10 @@
               <li>dir: Muetra el listado de archivos de la carpeta</li>
               <li>cd: Nos permite navegar entre carpetas.</li>
               <li>cls: Limpiar consola.</li>
-              <li>mkdir: Nos permite crear carpetas (por ejemplo, mkdir Carpeta-Importante).</li>
+              <li>mkdir: Permite crear carpetas (mkdir carpeta).</li>
+              <li>type: Ver el contenido de un archivo (type nombre-archivo.txt).</li>
 
+              <li>doskey shortcut=git log --all: crear shortcuts para comandos extensos</li>
               <li>node: para entrar a nodejs, ctrl + c 2 veces para salir</li>
     
               <li><strong>Linux - Mac</strong></li>
@@ -189,22 +192,24 @@
               <li>ls: Nos permite cambiar ver los archivos de la carpeta donde estamos ahora mismo. Podemos usar uno o más argumentos para ver más información sobre estos archivos (los argumentos pueden ser -- + el nombre del argumento o - + una sola letra o shortcut por cada argumento).</li>
               <li>- ls -a: Mostrar todos los archivos, incluso los ocultos.</li>
               <li>- ls -l: Ver todos los archivos como una lista.</li>
-              <li>- cd /: Ir a la ruta principal:</li>
-              <li>- cd o cd ~: Ir a la ruta de tu usuario</li>
-              <li>- cd carpeta/subcarpeta: Navegar a una ruta dentro de la carpeta donde estamos ahora mismo.</li>
-              <li>- cd .. (cd + dos puntos): Regresar una carpeta hacia atrás.</li>
               <li>- Si quieres referirte al directorio en el que te encuentras ahora mismo puedes usar cd . (cd + un punto).</li>
               <li>history: Ver los últimos comandos que ejecutamos y un número especial con el que podemos repetir su ejecución.</li>
               <li>! + número: Ejecutar algún comando con el número que nos muestra el comando history (por ejemplo, !72).</li>
-              <li>clear: Para limpiar la terminal. También podemos usar los atajos de teclado Ctrl + L o Command + L.</li>
             </ul>
-            <p>Todos estos comandos tiene una función de autocompletado, o sea, puedes escribir la primera parte y presionar la tecla Tab para que la terminal nos muestre todas las posibles carpetas o comandos que podemos ejecutar. Si presionas la tecla Arriba puedes ver el último comando que ejecutamos.</p>
             <p>*<small>Recuerda que podemos descubrir todos los argumentos de un comando con el argumento --help (por ejemplo, cat --help).</small></p>
           </div>
             </div>
       <div>
+        <h3>Configuraciones de Git</h3>
+        <ul>
+          <li><strong>git config</strong> muestra el listado de todo lo configurable</li>
+          <li><strong>git config --list</strong> muestra la configuracion actual de git</li>
+          <li><strong>git config --global user.name "my name"</strong>Setear el nombre de usuario</li>
+          <li><strong>git config --global user.email "my email"</strong>Setear el email de usuario</li>
+        </ul>
+      </div>      
+      <div>
         <h3>¿Qué es staging, repositorios y cuál es el ciclo básico de trabajo en GitHub?</h3>
-        <p>Para iniciar un repositorio, o sea, activar el sistema de control de versiones de Git en tu proyecto, solo debes ejecutar el comando git init.</p>
         <p>Este comando se encargará de dos cosas: primero, crear una carpeta .git donde se guardará toda la base de datos con cambios atómicos de nuestro proyecto; y segundo, crear un área en la memoria RAM, que conocemos como Staging, que guardará temporalmente nuestros archivos (cuando ejecutemos un comando especial para eso) y nos permitirá, más adelante, guardar estos cambios en el repositorio (también con un comando especial).</p>
         <p>Ciclo de vida o estados de los archivos en Git:</p>
         <p>Cuando trabajamos con Git, nuestros archivos pueden vivir y moverse entre 4 diferentes estados (cuando trabajamos con repositorios remotos pueden ser más estados pero lo estudiaremos más adelante):</p>
@@ -218,31 +223,47 @@
         </div>
         <div>
           <h3>Comandos para mover archivos entre los estados de Git:</h3>
-
-          Nuevo repor 
-          git init
-          git add README.md
-          git commit -m "first commit"
-          git remote add origin https://github.com/GhostDam/Apocrypha.git
-          git push -u origin master
-
           <ul>
             <li><strong>git init</strong> Inicia el repositorio (Lo crea)</li>
             <li><strong>git add</strong> Agrega los archivos al área de preparación Nos ayuda a mover archivos del Untracked o Unstaged al estado Staged. Podemos usar git -archivo- para añadir archivos y carpetas individuales o git add -A para mover todos los archivos de nuestro proyecto (tanto Untrackeds como unstageds).</li>
-            <li><strong>git commit -m "(mensaje)"</strong> Envía los archivos al repositorio local, Git nos pedirá que dejemos un mensaje para recordar los cambios que hicimos y los archivos son guardados o actualizados en el repositorio.</li>
+            <li><strong>git commit -m "mensaje"</strong> Envía los archivos al repositorio local, Git nos pedirá que dejemos un mensaje para recordar los cambios que hicimos y los archivos son guardados o actualizados en el repositorio.</li>
             <li><strong>git commit -am ""</strong> Funciona como add y commit en conjunto, con la diferencia de que solo funciona sobre archivos a los que se haya hecho add anteriormente.</li>
 
-            <li><strong>git remote add origin https://github.com/GhostDam/Ghost.git</strong> agrega el servidor remoto al cual se guardara/actualizara el repositorio local</li>
-            <li><strong>git push -u origin master</strong> Envía los archivos del repositorio a un servidor remoto</li>
-            <li><strong>git status</strong> Muestra el estado de los archivos </li>
-            <li><strong>git show</strong> Muestra los cambios hechos </li>
-            <li><strong>git log</strong> Muestra los cambios de los archivos </li>
-            <li><strong>git log --stat</strong> Muestra los cambios a detalle, lienas modificadas </li>
+            <li><strong>Nuevo repo</strong></li>
 
+            <li><strong>git remote add origin https://github.com/GhostDam/Ghost.git</strong> agrega el servidor remoto al cual se "pusheara" el repositorio local</li>
+            <li><strong>git push -u origin (master-branch)</strong> Envía los archivos del repositorio a un servidor remoto, si no esta configurado, se pedira login de github</li>
+            <p><small>*si es la primera vez que se hace, y el origen tiene archivos, se pedira traer los archivos antes  de poder hacer push para integrar cambios, es decir...</small></p>
+            <li><strong>git pull origin master</strong> traer los archivos del origin a la rama master </li>
+            <li><strong>git pull origin master --allow-unrelated-histories</strong> solución a <code>fatal: refusing to merge unrelated histories</code></li>
+            <p><small>*despues de esto se pedira un commit de confirmacion  y despues....</small></p>
+            <li><strong>git push origin master</strong> Envio de los archivos</li>
+          </ul>
+          <h3>Helpers</h3>
+            <ul>
+            <li><strong>git status</strong> Muestra el estado de los archivos </li>
+            <li><strong>git show</strong> Muestra los cambios hechos (diff actual/ultimo commit)</li>
+            <li><strong>git diff 1234 5678</strong> comparar commits (idcommit1  idcommit2)</li>
+
+            <li><strong>git log</strong> Muestra los cambios de los archivos</li>
+            <li><strong>git log --all</strong> historial completo</li>
+            <li><strong>git log --all</strong> historial completo, simplificado</li>
+            <li><strong>git log --all --graph</strong> historial completo, simplificado, ramificado</li>
+            <li><strong>git log --all --graph --decorate --oneline</strong> historial completo, simplificado, ramificado y (visual?)</li>
+
+            <li><strong>git log --stat</strong> Muestra los cambios a detalle, lienas modificadas </li>
             <li><strong>git log --oneline</strong> Muestra los commits en una sola línea</li>
             <li><strong>git status</strong> Nos permite ver el estado de todos nuestros archivos y carpetas.</li>
 
             <li><strong>git restore</strong> Restaura en archivo a su ultimo commit</li>
+
+            <li><strong>git reset 11commit11 --soft</strong> regresa al commit con el id otorgado pero mantiene los archivos en staging</li>
+            <li><strong>git reset 22commit22 --hard</strong> regresa al commit con el id otorgado y elimina los commits posteriores permanentemente</li>
+
+            <li><strong>git checkout idcommit file.txt</strong> trae el estado del archivo en ese commit a la rama actual</li>
+            <li><strong>git checkout branch file.txt</strong> trae el estado del archivo en en el ultimo commit de la rama</li>
+            <li><strong>git merge branchname</strong>Es la union de ramas, y se tiene que hacer en la rama principal (estar en html para recibir css y terminar css) y se comporta como un commit</li>
+            <p><small>*Al darse un conflicto, se revisa el codigo, se resuelve y se hace un commit</small></p>
 
             <li><strong>git reset HEAD</strong> Nos ayuda a sacar archivos del estado Staged para devolverlos a su estado anterior. Si los archivos venían de Unstaged, vuelven allí. Y lo mismo se venían de Untracked.</li>
           </ul>
@@ -251,6 +272,17 @@
             <li><strong>git rm --cached</strong> Mueve los archivos que le indiquemos al estado Untracked!.</li>
             <li><strong>git rm --force</strong> Elimina los archivos de Git y del disco duro. Git guarda el registro de la existencia de los archivos, por lo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).</li>
           </ul>
+         <h3>Git tags (versiones)</h3> 
+          <p><small>"doskey ramas=git log --all --graph --decorate --oneline", crea un "alias" o un shortcut para un comando largo resumido en una sola palabra</small></p>
+         <ul>
+          <li><strong>git tag -a V1.0 -m "primera version" H45H</strong>Agregara un tag con un mensaje, a un hash especifico de un commit</li>
+          <li><strong>git tag</strong>Ver el listado de tags</li>
+          <li><strong>git show-ref --tags</strong> listado de tags mas especifico con el hash al que pertenece</li>
+          <p><small>cuando se crea un tag, aunque en git status no se aprecia como tal un cambio, se tiene que realizar el push</small></p>
+
+        </ul>
+
+
         </div>
         <div>
           <h3>Cambios y Retornos(12)</h3>
@@ -278,17 +310,22 @@
           <div>
             <h3>Creacion de Ramas</h3>
             <ul>
+
               <li><strong>git branch css</strong>  Creacion de la rama con nombre css (se crea mas no se mueve a)</li>
               <li><strong>git checkout css</strong>  Moverse al area de trabajo (rama) css</li>
+              <li><strong>git checkout -b css</strong> Crea la rama y se mueve a ella a la par</li>
+
               <li><strong>git branch</strong>  Te permite ver un listado de las ramas existentes, ademas de resaltar la rama del Head</li>
               <li><strong>git merge</strong>  Merge se encargara de fusionar las ramas, tomando como linea principal la rama donde se encuentre actualmente</li>
             </ul>
             <p>En caso de haber conflicto al momento de darse el <strong>merge</strong>, este se visualizara en el codigo de la siguiente mantera:<br>
-              <<<<<<< HEAD (Datos de la rama actual)<br>
-              font-family: Courier; <br>
-              ======= <br>
-              font-family: Arial; <br>
-              >>>>>>> css (Datos de la rama a Unir)<br>
+              <code>
+                <<<<<<< HEAD (Datos de la rama actual)<br>
+                font-family: Courier; <br>
+                ======= <br>
+                font-family: Arial; <br>
+                >>>>>>> css (Datos de la rama a Unir)<br>
+              </code>
 
 
             </p>
@@ -300,12 +337,9 @@
             <p>Branch-----S1(primer css en css)-----------S2(add P)--(al dar merge se "finaliza" esta rama y se une al Master)</p>
           </div>
           <div>
-            <h3>Seguridad con llaves (19)</h3>
-            <p>Configuracion de Git</p>
-            <ul>
-              <li><strong>git config -l</strong> Visualizar Configuracion de Git</li>
-              <li><strong>git config --global user.email "thel@hot.com"</strong> Configuracion del correo de usuario de Git</li>
-            </ul>
+            <h3>La creacion de llaves</h3>
+            <p>La creacion de llaves ssh parece ser ajena al entorno de Git, pero fines relacionados con, el comando para hacer creacion de esta es, estando en el home <strong>ssh-keygen -t rsa -b 4096 -C "micorreo"</strong>, pedira confirmacion de sitio para guardar (enter) y contraseña adicional (enter)</p>
+            <p>para evaluar que el servicio de llaves esta corriendo se ejecuta <strong>eval $(ss-agent -s)</strong> y para agregar la ruta al sistema es <strong>ssh-add "ruta/.ssh/id_rsa</strong>, no la que termine en .pub</p>
           </div>
         </section>
       <section id="sect4">
