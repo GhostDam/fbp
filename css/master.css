@@ -27,9 +27,19 @@ nav{
   display: flex!important;
   justify-content: space-between;
 }
-pre, code {
+/* pre, code {
   white-space: pre-line;
   color: black!important;
+} */
+/* code { 
+  background: hsl(220, 80%, 90%);  
+} */
+pre {
+  /* white-space: pre-wrap; */
+  /* background: hsl(30,80%,90%); */
+  background: #333333;
+  color: #ffffff!important;
+  tab-size: 2;
 }
 #sect1{
   background-color: #fd7d7a;

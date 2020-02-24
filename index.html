@@ -421,49 +421,91 @@
         <div class="third">
           <div class="elem">
           <h3>Definicion de variables</h3>
-              <strong>se definen las variables goblaes</strong>
-              <p>var nombre = {nombre: "bryan", apellido: "reyes", edad: 23}</p>
-              <p>var otronombre = {nombre: "emile", apellido: "perez", edad: 21}</p>
+              <p>Una variable es un espacio en memoria que te permite almacenar información, y esta puede ser de varios tipos y contener tipos distintos de información</p>
+              <p>los tipos pudeden ser <i>var, const y let</i></p>
+              <pre>
+                <code>
+                  var string = "texto plano"
+                  var number = 22
+                  var bool = true
+                  var object = {key: "valor"}
+                  var array = [1, 2 ,3 ]
+                </code></pre>
           </div>
           <div class="elem">
-            <h3>descripcion de funciones</h3>
-              <strong>se crea una funcion establecida, que recibira un parametro, y el que se hara con ese parametro</strong>
-              <p>function hace(recibe) { <br>
-                var {nombre} = recibe <br>
-                var {apellido} = recibe <br>
-                var {edad} = recibe <br>
-                var muestra = document.getElementById('code'); <br>
-                muestra.innerHTML = `mi prr nombre es ${nombre} y tengo ${edad} años`; <br>
-                console.log(`mi prr nombre es ${nombre} y tengo ${edad} años`) <br>
-              }</p>
+            <h3>definición de funciones</h3>
+            <p>Una funcion es un conjunto de "instrucciones" escritas, que se llamaran al momento de ejecutar la funcion</p>
+            <p>se crea una funcion que recibira un parametro, y el que se hara con ese parametro</p>
+              <pre><code>
+                function nombreFuncion(parametro) {
+                  alert(parametro)
+                }
+              </code></pre>
           </div>
           <div class="elem">
             <h3>Ejecucion de funciones</h3>
-          <strong>se llama la funcion con una actividad establecida, y le aplica el parametro</strong>
-              <p>hace(otronombre);</p>
+            <p>se llama la funcion con una actividad establecida, y le aplica el parametro</p>
+              <pre><code>
+                nombreFuncion(otronombre)
+              </code></pre>
+            <p>JavaScript es un lenguaje debilmente tipado, es decir que no espera que todo este definido, podemos no pasar parametros e igual intentara ejecutarse, es un lenguaje interpretado, tratara de leer y ejecutar el programa a medida que se lo vamos indicando</p>
           </div>
         </div>
-        <div class="third">
-          <div class="elementos">
+        <div>
+          <h3>Alcance de funciones</h3>
+          <pre><code>
+            var nombre = 'nombre'
+
+            funcion setMayus(){
+              nombre = nombre.toUppercase()
+              console.log(nombre)
+            }
+
+            setMayus()
+
+          </code></pre>
+          <p>En la funcion de arriba, la funcion puede acceder a <i>nombre</i> sin haberla pasado por parametros, porque la variable esta escrita fuera del cuerpo de una funcion, lo que se traduce a que es una variable global, lo que tambien significa que esta asignada al objeto global, es decir el entorno en el que se esta ejecutando JS (Window en browser, server en Node)</p>
+          <p>al ejecutar la funcion, lo que tambien hizo (side effect) fue modificar la variable</p>
+        </div>
+        <div>
+          <h3>objetos</h3>
+          <p>un objeto es una relacion clave - valor</p>
+          <pre><code>
+            var objeto = {
+              llave : "valor",
+              llave2: "valor2"
+            }
+
+           console.log(objeto.llave) //"valor" 
+           console.log({llave}) //"valor" 
+
+          </code></pre>
+          <p>y se puede acceder a ellos mediante un punto, objeto.llave = "valor", o bien mediante desestructuracion </p>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <h3>Arrow Functions</h3>
           </div>
-          <div class="elem">
+          <div class="col-md-4">
             <h3>Estructura usual</h3>
-            <p>var funcion = function nombreFuncion(parametro){ <br>
-              return persona.edad > 22<br>
-            }<br></p>
+            <pre><code>
+              var funcion = function nombreFuncion(parametro){
+                    return persona.edad > 22
+              }
+            </code></pre>
           </div>
-          <div class="elem">
+          <div class="col-md-4">
             <h3>Arrow</h3>
-            <p>const funcion = (persona) => {<br>
-                return persona.edad > 22<br>
-            }<br></p>
+            <pre><code>
+              const funcion = (persona) => {
+                  return persona.edad > 22
+              }
+            </code></pre>
           </div>
-          <div class="elem">
+          <div class="col-md-4">
             <h3>Arrow simplificada</h3>
             <p>Si es solo un parametro, se omiten los () y si es return, se omite return y {}</p>
-            <p>const funcion = persona => persona.edad > 22
-            </p>
+            <pre><code>const funcion = persona => persona.edad > 22</code></pre>
           </div>
         </div>
         <div>
@@ -659,6 +701,187 @@ switch(signoZodiacal){ <br>
         <div>
           <h3>elemento</h3>
         </div>
+        <div>
+          <h1>React Hooks - Filtro de busqueda</h1>
+          <h3>1.- Los hooks de react solo funcionan sobre compnentes funcionales</h3>
+          <pre><code>
+            function Componente (props){
+                return (
+                    &lt;div&gt;&lt;h3&gt;Header&lt;/h3&gt;&lt;/div&gt;                
+                      )
+            }
+            export default Component
+          </code></pre>
+        <h3>2.- busqueda</h3>
+          <p>Para esto, el &lt;input&gt; requerira 2 propiedades, <i>value</i> y <i>onChange</i></p>
+          <p><small>*hasta aqui, nos regresara el valor del input letra por letra v,a,l,u,e</small></p>
+          <pre><code>
+            function Componente (props){
+                return (
+                    &lt;div&gt;
+                    &lt;laber&gt;Nombre&lt;/label&gt;
+                    &lt;input
+                    value=""
+                    onChange={(e)=>{console.log(e.target.value)}}
+                    /&gt;
+                    &lt;/div&gt;
+                  )
+            }
+            export default Component
+          </code></pre>
+
+        <h3>3.- pimer hook</h3>
+        <p>usaremos un hook para tomar y leer el valor del input</p>
+        <pre><code>
+          function Componente (props){
+            //uso de primer hook
+            const [value, setValue] = React.useState('')
+            return (
+              &lt;div&gt;
+              &lt;laber&gt;Nombre&lt;/label&gt;
+              &lt;input
+              value={value}
+              onChange={(e)=>{setValue(e.target.value)}}
+              /&gt;
+              &lt;/div&gt;
+              )
+            }
+            export default Component
+          </code></pre>
+          <h3>4.- pasar al filtro</h3>
+          <p>Usaremos el value como condicion en el filtro para obtener un nuevo .map() con los elementos del <i>value</i></p>
+          <pre><code>
+            function Componente (props){
+              //uso de primer hook
+              const [value, setValue] = React.useState('')
+
+             <i>//respuesta va a ser igual a un filtro, que de parametro tendra una funcion
+             //que regresara los elementos que contentan el value
+             //los `` son para pasar entre varias posibilidades, toLowerCase para mejor busqueda</i>
+             const respuestaFiltrada = elemmento.filter( elem =>{
+                return `${elem.elem1}${elem.elem2}`.toLowerCase.inlcudes(value.toLowerCase())
+             })
+
+              return (
+                &lt;div&gt;
+                  &lt;div&gt;
+                    &lt;laber&gt;Nombre&lt;/label&gt;
+                    &lt;input
+                    value={value}
+                    onChange={(e)=>{setValue(e.target.value)}}
+                    /&gt;
+                  &lt;/div&gt;
+                  
+                  <i>//y esta respuesta filtrada sera la que sera mapeada</i>
+                  &lt;div&gt;
+                    {respuestaFiltrada.map((ingrediente)=>(
+                      &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
+                      ))}
+                  &lt;/div&gt;
+
+                &lt;/div&gt;
+                )
+              }
+              export default Component
+            </code></pre>
+            <p>Hasta aqui, es una busqueda utilitaria, pero costosa en procesamiento, en caso de que la lista aumente, implicara un costo de procesamient aun mayor, esto se soluciona, u optmiza median el uso de React.useMemo()</p>
+            <h2>Mismo estado en useMemo</h2>
+            <p>React.useMemo() recibe 3 parametros</p>
+            <p><i>React.useMemo( (()=>{}), [lista, valor] )</i></p>
+            <p>(elementoMemorizado), [lista, valor], si la lista o el valor cambia, se recalcula el elementoMemorizado</p>
+
+            <pre><code>
+              function Componente (props){
+                //uso de primer hook
+                const [value, setValue] = React.useState('') //hook para sacar el valor a buscar
+
+                const [listaFiltrada, setListaFiltrada] = React.useState(lista)  //<i>se sacar el valor de use memo por medio de hooks</i>
+
+                React.useMemo(()=>{
+                  const resultado = elemento.filter(elem=>{
+                    return `${elem.cont1}`.toLowerCase().includes(value.toLowerCase())
+                  })
+
+                  setListaFiltrada(resultado)                                   //<i>aqui se saca el valor mandandolor por hook</i>
+
+                }, [lista, value])
+                  
+                return (
+                  &lt;div&gt;
+                    &lt;div&gt;
+                      &lt;laber&gt;Nombre&lt;/label&gt;
+                      &lt;input
+                      value={value}
+                      onChange={(e)=>{setValue(e.target.value)}}
+                      /&gt;
+                    &lt;/div&gt;
+                    
+                    <i>//y esta respuesta filtrada sera la que sera mapeada</i>
+                    &lt;div&gt;
+                      {listaFiltrada.map((ingrediente)=>(
+                        &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
+                        ))}
+                    &lt;/div&gt;
+  
+                  &lt;/div&gt;
+                  )
+                }
+                export default Component
+              </code></pre>
+              
+              <h2>Sacar todo nuevamente a otro custom Hook</h2>
+              <p>empaquetar todo el trabajo hecho a un nuevo hook</p>
+
+              <pre><code>
+                //se saca la funcion del componente y se crea la funcion que recibira una lista
+                function useBusqueda(lista){
+
+                  const [value, setValue] = React.useState('') //hook para sacar el valor a buscar
+                  const [listaFiltrada, setListaFiltrada] = React.useState(lista) 
+  
+                  React.useMemo(()=>{
+                    const resultado = elemento.filter(elem=>{
+                      return `${elem.cont1}`.toLowerCase().includes(value.toLowerCase())
+                    })
+  
+                    setListaFiltrada(resultado)                                   
+  
+                  }, [lista, value])
+
+                  //se retorna el como setear el valor, y la lista filtrada
+                  return [value, setValue, listaFiltrada]
+                }
+
+
+                function Componente (props){
+                  //y se usa como funcion dentro del componente, pasandole como parametro la lista
+                  const {value, setValue, listaFiltrada} = useBusqueda(lista)
+                    
+                  return (
+                    &lt;div&gt;
+                      &lt;div&gt;
+                        &lt;laber&gt;Nombre&lt;/label&gt;
+                        &lt;input
+                        value={value}
+                        onChange={(e)=>{setValue(e.target.value)}}
+                        /&gt;
+                      &lt;/div&gt;
+                      
+                      <i>//y esta respuesta filtrada sera la que sera mapeada</i>
+                      &lt;div&gt;
+                        {listaFiltrada.map((ingrediente)=>(
+                          &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
+                          ))}
+                      &lt;/div&gt;
+    
+                    &lt;/div&gt;
+                    )
+                  }
+                  export default Component
+                </code></pre>
+  
+
+            </div>
       </section>
       <section id="sect6">
         <div class='row'>
