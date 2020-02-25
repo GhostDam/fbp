@@ -482,22 +482,71 @@
           </code></pre>
           <p>y se puede acceder a ellos mediante un punto, objeto.llave = "valor", o bien mediante desestructuracion </p>
         </div>
+        <div>
+          <h3>Objetos como parametros y retornar nuevo objeto</h3>
+          <p>cuando se pasa un objeto como parametro, este se modificara fuera de la funcion, para evitar este comportamiento se puede regresar un objeto nuevo en vez de afectar al ya establecido</p>
+          <pre><code>
+            var luis = {nombre : "luis", edad: 24}
+
+            function aumentarEdad(persona){
+                persona.edad += 1
+            } 
+            //esto afecta al objeto global, volviendo a la persona un año mas grande
+            //pero sin regresar nada como tal
+
+            function aumentarEdad(persona){
+              return {
+                ...persona             //... implica que recibira todo lo que contenia persona
+                edad: persona.edad +1
+              }
+            } 
+            //esto regresara una nueva persona de un año mayor, 
+            //diferente a la persona del primer caso
+            //y esto se puede guardar en una nueva variable
+
+            var personaMayor = aumentarEdad(persona)
+          </code></pre>
+        </div>
+        <div>
+          <h3>comparacion y asignacion de valores de variables</h3>
+          <pre><code>
+            var x = 4
+            var y = "4"
+            x == y = true
+           
+            //esto sucede porque estamos usando un "==" para la comparacion, es decir estamos comparando su valor, 
+            //mas no el tipo de valor que estan guardando
+
+            //pero si se hiciese x === y daria false porque uno es string y el otro es un numero
+
+            var persona = {nombre: "luis", edad: 24}
+            var Otrapersona = {nombre: "luis", edad: 24}
+
+            //cuando se hace una comparacion "persona==Otrapersona" en objetos, resulta falso, porque pregunta por la referencia 
+            //(espacio en memoria ram)
+            //si queremos que esto como tal sea true, la asignacion deberia de ser
+
+            var persona = {nombre: "luis", edad: 24}
+            var Otrapersona = persona
+
+            //esto porque ambas variables apuntan al mismo espacio en memoria ram (misma referencia
+          </code></pre>
+        </div>
         <div class="row">
           <div class="col-md-12">
             <h3>Arrow Functions</h3>
+            <p>Una arrow function permite asignar una funcion a una variable, pasa a ser una funcion anonima, pero vinculada a una variable que sí posee un nombre</p>
           </div>
           <div class="col-md-4">
             <h3>Estructura usual</h3>
-            <pre><code>
-              var funcion = function nombreFuncion(parametro){
-                    return persona.edad > 22
+            <pre><code>var funcion = function nombreFuncion(parametro){
+              return persona.edad > 22
               }
             </code></pre>
           </div>
           <div class="col-md-4">
             <h3>Arrow</h3>
-            <pre><code>
-              const funcion = (persona) => {
+            <pre><code>const funcion = (persona) => {
                   return persona.edad > 22
               }
             </code></pre>
@@ -508,6 +557,10 @@
             <pre><code>const funcion = persona => persona.edad > 22</code></pre>
           </div>
         </div>
+        <div>
+          <h3>Estructura For<h3>
+        </div>
+
         <div>
           <h3>While</h3>
           <p>El codigo se ejecutara y dira cuanto tiempo paso hasta que la persona perdio 3 kilos</p>
@@ -641,6 +694,9 @@ switch(signoZodiacal){ <br>
         </div>
         <div class="">
           <a href="game.html">Juega Aqui!</a>
+        </div>
+        <div>
+          <h3>Closures</h3>
         </div>
       </section>
       <section id="sect5">
