@@ -11,11 +11,7 @@
 <body>
   <header>
     <h1>Sistemas de Aprendizaje - Becas FB Dev</h1>
-    <p>¿Qué es el aprendizaje?</p>
-    <p>Aprender es la capacidad de adquirir conocimiento.</p>
-    <p>Si quisiéramos abstraer la palabra aprender necesitamos definir tres palabras: Perseguir, Atrapar o Prender. Estamos tratando de perseguir o atrapar algún conocimiento o dato específico.</p>
-    <p>Aprender significa apoderarse de algo, no solo es adquirir conocimiento como dijimos anteriormente. También significa darle sentido a ese concepto y hacerlo más poderoso para luego compartirlo y generar opiniones acerca de él.</p>
-    <p>Psicología, pedagogía y neurociencias son estas ciencias que se encargan de estudiar cómo funcionan los procesos de aprendizaje en nuestro cerebro. A lo largo de este curso veremos algunos métodos y descubrimiento científicos de cómo podemos mejorar nuestra capacidad de aprender.</p>
+    <p><strong>Todos los grandes desarrolladores llegaron ahi resolviendo probleamas que no estaban calificados para resolver, hasta que en realidad lo hicieron</strong></p>
   </header>
   <nav>
     <h4 href="#sect1">Procesos de aprendizaje</h4>
@@ -29,6 +25,12 @@
   </nav>
       <section id="sect1">
         <div class="tipos">
+          <h3>¿Qué es el aprendizaje?</h3>
+          <p>Aprender es la capacidad de adquirir conocimiento.</p>
+          <p>Si quisiéramos abstraer la palabra aprender necesitamos definir tres palabras: Perseguir, Atrapar o Prender. Estamos tratando de perseguir o atrapar algún conocimiento o dato específico.</p>
+          <p>Aprender significa apoderarse de algo, no solo es adquirir conocimiento como dijimos anteriormente. También significa darle sentido a ese concepto y hacerlo más poderoso para luego compartirlo y generar opiniones acerca de él.</p>
+          <p>Psicología, pedagogía y neurociencias son estas ciencias que se encargan de estudiar cómo funcionan los procesos de aprendizaje en nuestro cerebro. A lo largo de este curso veremos algunos métodos y descubrimiento científicos de cómo podemos mejorar nuestra capacidad de aprender.</p>
+      
           <h3>Tipos de pensamiento</h3>
           <p>La neurociencia es el campo de la ciencia que se encarga de estudiar el sistema nervioso. Hay muchos estudios e investigaciones al respecto pero todavía no tenemos certeza total de cómo funciona nuestro cerebro.</p>
           <p>Según la doctora Barbara Oakley existen dos tipos de pensamientos:</p>
@@ -766,6 +768,8 @@ switch(signoZodiacal){ <br>
           <p>*entrar al directorio*</p>
           <p><code>npm (run) start</code></p>
           <p>En caso de ser un proyecto importado se requerirá nuevamente un npm instal (actualizar bibliotecas)</p>
+          <p><small> ya no es recomendable usar npm i -g create-react-app y después correr el comando create-react-app.</small></p>
+          <p><small>La solución a esto es correr: npm uninstall -g create-react-app para desinstalar la dependencia global de create-react-app y así evitar conflictors y luego crear la aplicación con: npx create-react-app</small></p>
         </div>
         <div class="elementos">
           <h1>Primeramente vimos la explicacion de JSX y el ReactDOM.render</h1>
@@ -802,12 +806,61 @@ switch(signoZodiacal){ <br>
           <h1>Componenetes</h1>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <h3>componente</h3>
             <img src="md/componentejpg.jpg" alt="" width="100%">
           </div>
         </div>
         <div>
+          <h3>sintaxis</h3>
+          <p>Los componentes se escriben por medio de funciones y pueden ser de 2 tipos</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>StateLess</strong></p>
+            <pre><code>
+            import React from 'react'
+
+            const App = () = {
+              const function = ()=>{
+
+              }
+
+              return (
+                &lt;h1>Return en stateLess{function()}&lt;/h1>
+              )
+  
+            }
+
+            export default App
+            </code></pre>
+            <p>la diferencia entre caso A: x = () => {} y caso B: x = () => () es el tipo de informacion que regresaran, si la funcion solo retornara html se utiliza el caso B, si la funcion requiere manejo de información (funciones) dentro de si misma, se utiliza el caso A y se agregara un return { return (&lt;h1>textlt;h1>)}</p>
+            <p>Para declarar funciones dentro de componentes funcionales, se debe empezar con <i>const</i> y no se utiliza <i>this</i></p>
+          </div>  
+          <div class="col-md-6">
+            <p><strong>Statefull</strong></p>
+            <pre><code>
+            import React from 'react'
+
+            class App extends React.Component {
+              function = ()=>{
+
+              }
+
+              Render(){
+                return (
+                  &lt;h1>Return en stateLess{this.function()}&lt;/h1>
+                )
+              }
+            }
+
+            export default App
+            </code></pre>
+            <p>En componentes class, no se necesitan definir las funciones, es decir, se omite el "const"</p>
+
+          </div>
+        </div>
+      <div>
           <h3>Props</h3>
           <p>Props (properties) son los argunentos que puede recibir un componentes</p>
           <p>componente</p>
@@ -848,6 +901,21 @@ switch(signoZodiacal){ <br>
               )
             }
           }  
+          </code></pre>
+        </div>
+        <div>
+          <h3>Llamadas a API's y promesas</h3>
+          <p>El llamado de informacion externa en React (llamado a apis) se hace mediante funciones asincronas,  estas se hacen el estado <i>ComponentDidMount</i> del ciclo de vida de React y en esto recibira una promesa</p>
+          <pre><code>
+            ComponentDidMount(){
+              const respuesta = axios.get('url_to_fetch');
+              console.log('respuesta', respuesta)           //esto regresa Promise {&lt;pending>}
+            }
+
+            async ComponentDidMount(){
+              const respuesta = await axios.get('url_to_fetch');
+              console.log('respuesta', respuesta)           //esto regresa el contenido de la consulta
+            }
           </code></pre>
         </div>
         <div>
@@ -909,7 +977,7 @@ switch(signoZodiacal){ <br>
                 &lt;input 
                 name="pocion" 
                 value={form.pocion} //soluciona info duplicada
-                onChange={this.handleChange} 
+                onChange={handleChange} 
                 />
                 &lt;input 
                 name='apellidos'
@@ -1184,40 +1252,228 @@ switch(signoZodiacal){ <br>
       <section id="sect6">
         <div class='row'>
           <div class="col-md-12">
-            <h1>Utilizar Redux</h1>
+            <h1>Redux</h1>
+              <p>Redux es utilizado para almacenar informacion de la aplicacion de manera centralizada, y de igual manera inmutable (se crearan nuevos estados en lugar de sobreescribir los existentes)</p>
+              <h2>Fases de Redux</h2>
+                <ul>
+                  <li><strong>1.- Store:</strong> Almacenamiento, aqui se almacena toda la informacion/estados</li>
+                  <li><strong>2.- Reducers:</strong> Estados, dependiendo del componente, es la informacion que se manejará</li>
+                  <li><strong>3.- Action Creators:</strong> Funciones, lo que se ejecutara para pedir información</li>
+                  <li><strong>4.- Component:</strong> Código JSX </li>
+                </ul>
+                <p>El Componente se comunica con el Action Creator, y el Action Creator se comunica con el reducer y da la informacion requerida, este ultimo obtiene la información y la regresa al componente</p>
               <h2>Requerimentos</h2>
+              <p>iniciar una app de react</p>
+              <pre><code>npx create-react-app app_name</code></pre>
+              <p>esto crea una app de React sin la necesidad de instalar <i>npm i -g create-react-app</i> ademas de asegurar que se estara usando la ultia version de CRA</p>
+
               <p>Para accesar a Redux se requiere la instalacion</p>
-              <p><strong>npm install redux react-redux</strong></p>
+              <pre><code>npm install redux react-redux</code></pre>
+
               <p>Actions must be plain objects. Use custom middleware for async actions.</p>
-              <p>i dunno wtf is middleware</p>
-              <p><strong>npm install redux-thunk</strong></p>
+              <p>este error es porque las actions deben ser objetos planos y nosotros estamos regresando otra funcion en usuariosActions, esto se soluciona con un middleware redux-thunk</p>
+              <p><small>i dunno wtf is middleware</small></p>
+              <pre><code>npm install redux-thunk</code></pre>
+
+            </div>
+          <div class="col-md-12">
+            <h3>1.- Store</h3>
+            <p>Una vez instalado Redux, par accesar a las funcionalidades, se crea el <i>store</i> en el index.js de la aplicacion</p>
+            <pre><code>
+                                    //middleware -- redux-thunk
+              import { createStore , applyMiddleware} from 'redux'
+              import { provider } from 'react-redux'
+              
+              import reduxThunk from 'redux-thunk'
+              
+              import reducers from './reducers'
+
+              
+              
+              //createStore es una funcion que recibe 2 parametros principales, y un tercero como middleware
+              const store = createStore(
+                reducers,     //reducers de la app
+                {},     //estado incial de la app
+                applyMiddleware(reduxThunk)  
+              )
+
+              //y aqui proveemos la store a la App
+              ReactDOM.render(
+                &lt;Provider store={store}>         //al poner App dentro del provider, le estamos 
+                  &lt;App />  
+                &lt;/Provider>,                     //dando acceso a todo el contenido de la store
+                document.getElementById('root')
+              )
+            </code></pre>
+            <p>La estructura de carpetas, sera dentro de SRC</p>
+            <ul>
+              <li><strong>reducers</strong> -> index.js -> aqui se combinaran todos los reducers necesarios para la aplicacion</li>
+              <p><small>dentro de reducers tambien se crea usuariosReducer.js que contendra la información de los usuarios, es decir su estado inicial</small></p>
+              <li><strong>actions</strong> -> usuariosActions.js -> aqui se crea una accion la cual el componente va a llamar y la accion regresara algo</li>
+
+              <li><strong>types</strong> -> usuariosTypes.js -> este servira para "normalizar" las variables enviadas de actions<-> reducer <-> componente</li>
+
+            </ul>
           </div>
           <div class="col-md-12">
-            <img src='md/redux1.jpg' />
+            <h3>2.- Reducers</h3>
+            <p>Combinar los reducers, en este archivo se hara un listado de los reducers utilizados (reducers/index.js)</p>
+            <pre><code>
+              import { combineReducers } from 'redux' 
+              import usuariosReducer from './usuariosReducer'
+              //crear un objeto vacio es "valido" para usarse como reducer
+              export default combineReducers({
+                  usuariosReducer
+              })
+            </code></pre>
+            <p>reducer de Usuarios, que contendra la información del componente Usuarios (reducers/usuariosReducer.js)</p>
+            <pre><code>
+              //se declara un estado inicial para el componente
+              import { TRAER_TODOS } from '../types/usuariosTypes'
+
+              const INITIAL_STATE = {
+                usuarios:[],            //los reducers deben manejar
+                cargando : false,       //los 3 estados de una peticion
+                error: ""               //cargando, datos y error
+              }
+
+              //se manda por defecto el estado inicial
+              export default (state = INITIAL_STATE, action) =>{
+                switch (action.type){
+                  case TRAER_TODOS:
+                    //recibe la accion, y recibe todo el estado(...) cambiando solo usuarios por el payload del action
+                    return {
+                        ...state, 
+                        usuarios: action.payload,
+                        cargando: false 
+                        }
+                  case CARGANDO:
+                      return {...state, cargando: true}
+          
+                  case ERROR:
+                      return {...state, error: action.payload, cargando: false}
+                              return state;
+                }
+              }
+            </code></pre>
           </div>
           <div class="col-md-12">
-            <h2>Ciclo</h2>
-            <p>Componente => Actions => Reducers</p>
-            <img src='md/redux2.jpg' />
+            <h3>3.- Action Creators</h3>
+            <p>Aqui se crean las funciones que llamará el componente</p>
+            <p><small>el dispatch es el que va a disparar la llamada y va a contactar al reducer para que haga el cambio de estado</small></p>
+            <pre><code>
+              //esto tendra 2 funciones, la segunda funcion tendra
+              //como parametro el dispatch
+              import axios from 'axios'
+              import { TRAER_TODOS, CARGANDO, ERROR} from '../types/usuariosTypes //variable traida de types para evitar
+                                                                  //error de syntaxis
+
+
+              export const traerTodos = () => async (dispatch) =>{
+                //primero regresa un estado de carga
+                  dispatch({
+                      type: CARGANDO
+                  })
+
+                  //intenta hacer el fetch de datos
+                  try {
+                      const respuesta = await Axios.get('url_to_fetch');
+                      dispatch({
+                          type: TRAER_TODOS,               //case
+                          payload: respuesta.data          //return  
+                      })
+                  
+                  } catch (error) {
+                      console.log('error', error.message)
+                      dispatch({
+                          type: ERROR,
+                          payload:  'Alguin salio mal'+ error.message
+                      })
+                  }
+              }
+            </code></pre>
+          </div>
+          <div class="col-md-12">
+            <h3>4.- Componentes</h3>
+            <p>Esta es la manera en que los componentes se comunicaran con Redux</p>
+            <pre><code>
+              import React from 'react' 
+              import axios from 'axios'
+
+              //conexion 
+              import { connect } from 'react-redux
+ 
+              //actions                   use/comp/  
+              import * as usuariosActions from '../../actions/usuariosActions'
+              class Usuarios extends React.Component{
+                //Constructor(){        //se puede prescindir del Constructor ya que
+                //  super()             //el estado inicial se definio en usuariosReducer.js
+                //  this.state = {
+                //    usuarios : []
+                //  }
+                //}
+
+                ComponentDidMount(){
+                  this.props.traerTodos()     //esta funcion se obtiene como props
+                }                             //y provine de usuariosActions.js         
+                //hasta aqui regresa error porque las actions deben ser objetos planos
+                //y nosotros estamos regresando otra funcion, esto se soluciona con un middleware 
+                //redux-thunk
+
+
+                componentDidMount(){
+                  this.props.TraerTodos()     //llama al action
+                }
+              
+                ponerContenido = () =>{
+                  if(this.props.cargando){
+                    return &lt;Loading />
+                  }
+                  if(this.props.error){
+                    return (&lt;Error  mensaje={this.props.error} />)
+                  }
+                  return &lt;Tabla />
+                }
+              
+
+                render(){
+                  return ({this.ponerContenido})
+                }
+              }
+
+              //la conexion se hace antes de exportar el componente
+              //el primer parametro que debe recibir connect es
+              //todos los reducers que el provider va a entregar al usuario
+              // y el segundo seran las acciones
+              const mapStateToProps = (reducers) =>{
+                return reducers.usuariosReducer
+              }
+
+              export default connect(mapStateToProps, usuariosActions)(Usuarios)
+              //esto pasara la info del state de usuariosReducer al componente 
+              //Usuarios como props
+            </code></pre>
           </div>
 
+        </div>
+        <div class="col-md-12">
+          <h3>Consejos</h3>
+          <p>Para evitar tener problemas de syntaxis, es recomendable tener una carpeta de Types (const = strings) en la cual podremos evitar escribir mal un mismo string en 2 sitios</p>
         </div>
       </section>
       <section id="sect11">
         <div class="row">
             <div class="col-md-6">
               <h3>comandos y estructura package json</h3>
-              <p><strong>npm install -g express</strong></p>
-              <p>instala una dependencia globalmente, es decir disponible para cualquier posible uso futuro</p>
-              <p><strong>npm install express --save-dev || -D</strong></p>
-              <p>se vuelve una instalacion unicamente para la utilidad del desarrollo</p>
-              <p><strong>packaje.json -dependencies: </strong></p>
-              <p>El codigo del servidor depende de las bibliotecas en -dependencies (por ejemplo express en producion)</p>
-              <p><strong>packaje.json -DevDependencies: </strong></p>
-              <p>Modulos de ayuda para el desarrollo (por ejemplo Nodemon en desarrollo)</p>
-
-              <p><strong>npx Nodemon es que no esta instalado en todo el sistema</strong></p>
-
+              <p>Para checar la version instalada de Node se utiliza node -v</p>
+              <ul>
+                <li><strong>npx create-react-app name_app</strong> crea la aplicacion localmente sin la necesidad de intalar globalmente <i>create-react-app</i></li>
+                <li><strong>npm install -g express</strong>instala una dependencia globalmente, es decir disponible para cualquier posible uso futuro</li>
+                <li><strong>npm install express --save-dev || -D</strong> se vuelve una instalacion unicamente para la utilidad del desarrollo</li>
+                <li><strong>packaje.json -dependencies </strong>El codigo del servidor depende de las bibliotecas en -dependencies (por ejemplo express en producion)</li>
+                <li><strong>packaje.json -DevDependencies:</strong>Modulos de ayuda para el desarrollo (por ejemplo Nodemon en desarrollo)</li>
+                <li><strong>npx Nodemon</strong> es que no esta instalado en todo el sistema</li>
+              </ul>
             </div>
         </div> 
       </section>
