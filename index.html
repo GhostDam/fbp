@@ -21,6 +21,8 @@
     <h4 href="#sect5">React Js</h4>
     <h4 href="#sect6">Redux</h4>
     <h4 href="#sect11">Node Js</h4>
+    <h4 href="#sect12">React Native</h4>
+    <h4 href="#sect13">IRC server</h4>
 
   </nav>
       <section id="sect1">
@@ -1477,5 +1479,228 @@ switch(signoZodiacal){ <br>
             </div>
         </div> 
       </section>
+
+      <section id="sect12">
+        <h1>React Native</h1>
+      </section>
+      <section id="sect13">
+        <h1>IRC Server</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <p><strong>Como instalar y configurar UnrealIRCD en una maquina virtual</strong></p>
+            <p>Para montar nuestro servidor de chat en una maquina virtual, requeriremos varios componentes escenciales</p>
+            <ul>
+              <li><strong>Maquina virtual:</strong> Oracle vBox- creara la maquina virtual en la cual correra el servidor</li>
+              <li><strong>Sistema Operativo:</strong> SO Ubuntu- el cual correra en la maquina virtual</li>
+              <li><strong>Servidor de Chat:</strong> UnrealIRCD- Servidor que dará vida al chat</li>
+              <li><strong>Servicios del servidos:</strong> Anope- Servicios para utilidad del servidor de chat</li>
+              <li><strong>Cliente:</strong> mIRC - cliente de chat que se conectará al servidor</li>
+            </ul>
+            <p><strong>Configuración de la maquina virtual</strong></p>
+            <p>una vez descargado <i>Oracle vBox-</i> que será nuestra maquina virtual, tendremos que realizar ciertas configuraciones para el correcto funcionamiento de esta</p>
+
+            <ul>
+              <li><strong>Sistema Linux:</strong> Ubuntu 64bits  (basado en el SO)</li>
+              <li><strong>RAM:</strong> La Ram no debe sobrepasar el 50% de la ram del sistema Host</li>
+              <li><strong>Disco virtual:</strong> Crear disco virtual -> VDI(VirtualBox Disc Image) -> reservado dinamicamente</li>
+            </ul>
+
+            <p>Configuración del almacenamiento de la maquina virual una vez creada</p>
+            <p>confg->almacenamiento->controlador IDE -> ISO (archivo descargado) del SO </p>
+            <p>Iniciar y seleccionar el disco de arranque </p>
+
+            <p><strong>una vez instalado el SO se debe configurar la Red Vbox para poder acceder al server desde maquinas externas esta configuracion deberá quedar</strong></p>
+
+            <p><i>desde VBox dispositivo->red->preferencias conectado a: adaptador puente y reiniciar la VM </i></p>
+            <p><strong>Para instalar UnrealIRCD</strong></p>
+            <p>segun la documentacion, se especifica que para la instalacion y uso de UIRC no se debe de correr este con permisos de usuario ROOT por motivos de seguridad, para esto se explica que se debe crear un usuario, desde la consola de la maquina virtual usaremos</p>
+            <pre><code><i>sudo adduser unrealircd</i></code></pre>
+            <p>Con esto, sera creado un nuevo usuario en el SO de la maquina virtual sin permisos ROOT, desde el cual realizaremos la instalacion del Server</p>
+
+            <h1><strong>.txt</strong></h1>
+            <p>
+              DESCARGA UnrealIRCD en Ubuntu
+              descargar el source .tar desde la pagina, 
+              o por consola
+              wget --trust-server-names https://www.unrealircd.org/downloads/unrealircd-latest.tar.gz
+              
+              una vez descargado correr
+              tar xzvf unrealircd-version.tar.gz  //esto descimprirmira el archivo
+              cd unrealircd-version
+              
+              una vez dentro correr la configuracion, esto hara preguntas
+              en todas por defecto la respuesta es enter, en caso de interrupcion, checar requerimentos
+              ./Config
+              
+              CERTIFICADO SSL PARA UNREALIRCD
+              countryname : MX
+              state : CDMX
+              locality: CDMX
+              organization name: IMJ
+              organization unit name: GOB
+              common name: imjserver.com
+              
+              despues de esto correr para compilar
+              make
+              
+              despues instalar el servidor
+              make install 
+              
+              MOVERSE A LA CARPETA DE UNREAL	
+              en la carpeta de unreal, para incializar el servidor se requiere 
+              ./unrealircd start
+              
+              para crear el archivo de configuraion, dentro de unreal/conf/xamples
+              copiar example.conf, llevarlo a unreal/conf y renombrarlo a unrealircd.conf
+              y correr
+              ./unrealircd start
+              
+              si lo anterior va bien, dará errores de configuracion 
+              443:cloack-keys
+              453:kline-adress
+              150:oper
+              y procederemos a configurar el 
+              archivo unrealircd.conf
+              CONFIGURACION UNREALIRCD.CONF
+              //oper
+              oper luisr{
+                password: "123456"	
+              }
+              //cloak-keys
+              set{
+                cloak-keys{
+                  generadas por consola
+                }
+              }
+              //kline
+              set{
+                kline-adress: "soporte@imjserver.com"
+              }
+              
+              HASTA AQUI YA TE DEBERIA DEJAR ACCEDER AL SERVER DESDE EL MIRC
+              EL ADDRES QUE SE INGRESARA EN MIRC DEBE SER LA IP DEL EQUIPO VIRTUAL
+              ifconfig ->intet 172.16.0.142 
+              
+              CONFIGURACIONES DE SERVIDOR
+              bloques me {} && admin{} define la informacion a mostar en MIRC acerca del nombre del server
+              y de los administradores a ver en /admin
+              
+              me{
+                name: "irc.imjserver.com";
+                info:	"serviddor irc de pruebas";
+                sid: "001";
+              }
+              admin {
+                "luis ramirez"
+                "L"
+                "thele@hot.com"	
+              }
+              
+              
+              SERVICIOS
+              para dar de alta los servicios usaremos anope
+              descargar anope de github/anope/anope/releases
+              descomprimir y entrar a la carpeta y correr
+              
+              ./Config
+              
+              cd build
+              make			//esto llevara varios minutos
+              make install
+              
+              entrar a la carpeta services
+              copiar y renombrar examples.conf a services.conf
+               y editar
+              
+              para correr, 
+              cd services/bin
+              ./services
+              
+              hasta aqui, si todo va bien debe dar error de configuracion
+              
+              CONFIGURAR UNREALIRCD PARA SERVICIOS
+              en la seccion de puerrtos se agrega uno mas para anope
+              listen {
+                ip *;
+                port 7000;
+                options {serversonly;} 
+              }
+              /*******/
+              link services.localhost.net {		//esta linea debera llamarse igual que en ./services -define
+                incoming { mask 172.16.0.142;};	//mask debe ser la ip
+                password "123456"
+                class servers;
+              }
+              ulines {
+                services.localhost.net;
+              }
+              /*y agregar linea de policy*/
+              set{
+                plaintext-policy{
+                  user allow;
+                  oper warn;
+                  server allow;
+                }
+              }
+              
+              CONFIGURAR SERVICES.CONF (ANOPE) PARA LINKEAR CON UNREALIRCD
+              module{
+                name = "unreal4"
+              }
+              
+              uplink {
+                host = "127.0.0.1" /*se debe dar la ip en la que corre unreal*/
+                ipv6 = no
+                ssl = no
+                port = 7000
+                password = "123456"
+              }
+              
+              
+              EXTRA CONFG
+              ulines{} en unrealircd "agrega" servicios al servidor, parece ser que se puede prescindir de esta
+              linea siempre y cuando se de el nombre esperado en ulines en la configuracion de network 
+              
+              CONCEPTOS	
+              Network es la "RED MADRE" de servidores a configurar, en este caso los distintos 
+              servidores deberan compartir las cloak-keys para comunicarse entre si
+              y el bloque me {} es el que especifica la informacion de cada server en particular
+              cada servidor en la network debe tener su propio SID
+              
+              
+              
+              !!!DONE
+              
+              
+              
+              
+              //dependencias para el correcto funcionamiento de la VM
+              requerimento 				solucion
+              open ssl binary				
+              open ssl development			sudo apt-get install libssl-dev
+              
+              make					sudo apt-get install build-essential
+              cmake 					sudo spt-ger install cmake
+              
+              ifconfig				sudo apt install net-tools
+              fullscreen				desde VBox->dispositivos->insertar CD Guest Adittions y reiniciar
+              
+              generales 				
+              sudo apt-get update && sudo apt-get upgrade
+              buscara y actualizara los paquetes ya instalados por defecto
+              
+              
+              
+              AGREGAR ALIAS
+              sudo gedit ~/.bashrc		/abre la conf del bash con el editor de texto
+              
+              en la conf del bash, en la parte final del documento se agrega
+              #custom aliases
+              alias ircstart='~/unrealircd/unrealircd start && ~/services/bin/services'
+              alias ircstop='~/unrealircd/unrealircd stop'</p>
+          </div>
+        </div>
+      </section>
+
     </body>
       </html>
