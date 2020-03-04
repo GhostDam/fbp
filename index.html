@@ -162,6 +162,78 @@
             </div>
         </div>              
         <div>
+          <h3>Layout basico con Flex-Box</h3>
+          <p>Para el Layout basico usaremos 3 elementos html, en el cual padre <i>body</i> contara con <i>display:flex</i></p>
+          <pre><code>
+            &lt;header class='header'>&lt;/header>
+            &lt;section class='container'>&lt;/section>
+            &lt;footer class='footer'>&lt;/footer>
+          </code></pre>
+          <p>y su css</p>
+          <pre><code>
+            //este selector aplica los estilos a todos los elementos de la página
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box; 
+            }
+
+            .header{
+              outline: 1px dashed lime;
+              height: 4rem;
+            }
+            .contenedor{
+              outline: 1px dashed rebeccapurple;
+              display: flex;                    /*un flex-item puede ser tambien un flex container*/
+              height: 100%;
+            }
+            .contenido{
+              outline: 1px dashed red;
+              flex: 1;
+            }
+            .aside{
+              outline: 1px dashed blue;
+              flex-basis: 30%;
+              /* flex: flex-grow, flex-shrink, flex-basis; */
+              /*puede crecer, puede reducirse, ancho fijo inicial*/  
+            }
+            .footer{
+              outline: 1px dashed royalblue;
+              margin-top: auto;                 /*un margin-top: auto; dentro de un hijo flex,  
+            }                                   //posicionara el elemento hasta el final */
+            .menu{
+              display: flex;
+              height: inherit;                  /*hereda la altura del header*/
+              padding-left: 0;
+            }
+            .menu-item{
+              list-style: none;
+              outline: 1px dashed magenta;
+              line-height: 4rem;                /*tener el line-height: altura-del-padre; 
+              flex: 1;                          //alinea automaticamente el texto al centro*/
+              text-align: center;
+              transition: flex  0.5s ease-in-out; /*elemento animado, duracion, efecto*/
+            }
+            .menu-item:hover{
+              flex: 8;
+            }          </code></pre>
+          <div id='layout'> 
+            <div class='header'>
+              <ul class='menu'>
+                <li class="menu-item">Home</li>
+                <li class="menu-item">galeria</li>
+                <li class="menu-item">contacto</li>
+                <li class="menu-item">about</li>
+              </ul>
+            </div>
+            <div class='contenedor'>
+              <div class="contenido">contendido</div>
+              <div class="aside">aside</div>
+            </div>
+            <div class='footer'>footer</div>
+          </div>
+        </div>
+        <div>
           <h3>Responsive design</h3>
           <p>Para el responsive design es imprescindible contar con la siguiente etiqueta</p>
           <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1" />

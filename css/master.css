@@ -27,20 +27,62 @@ nav{
   display: flex!important;
   justify-content: space-between;
 }
-/* pre, code {
-  white-space: pre-line;
-  color: black!important;
-} */
-/* code { 
-  background: hsl(220, 80%, 90%);  
-} */
 pre {
-  /* white-space: pre-wrap; */
-  /* background: hsl(30,80%,90%); */
   background: #333333;
   color: #ffffff!important;
   tab-size: 2;
 }
+/*  LAYOUT EXAMPLE  */
+#layout{
+  display: flex;
+  height: 40vh;
+  flex-direction: column;           /*posiciona elementos uno sobre otro*/
+
+
+  background-color: white;
+}
+.header{
+  outline: 1px dashed lime;
+  height: 4rem;
+}
+.contenedor{
+  outline: 1px dashed rebeccapurple;
+  display: flex;                    /*un flex-item puede ser tambien un flex container*/
+  height: 100%;
+}
+.contenido{
+  outline: 1px dashed red;
+  flex: 1;
+}
+.aside{
+  outline: 1px dashed blue;
+  flex-basis: 30%;
+  /* flex: flex-grow, flex-shrink, flex-basis; */
+  /*puede crecer, puede reducirse, ancho fijo inicial*/  
+}
+.footer{
+  outline: 1px dashed royalblue;
+  margin-top: auto;                 /*un margin-top: auto; dentro de un hijo flex, posicionara el elemento hasta el final */  
+}
+.menu{
+  display: flex;
+  height: inherit;                  /*hereda la altura del header*/
+  padding-left: 0;
+}
+.menu-item{
+  list-style: none;
+  outline: 1px dashed magenta;
+  line-height: 4rem;                /*tener el line-height: altura-del-padre; alinea automaticamente el texto al centro*/
+  flex: 1;
+  text-align: center;
+  transition: flex  0.5s ease-in-out; /*elemento animado, duracion, efecto*/
+}
+.menu-item:hover{
+  flex: 2;
+}
+
+/*  LAYOUT EXAMPLE  */
+
 #sect1{
   background-color: #fd7d7a;
 }
