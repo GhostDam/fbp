@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/master.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -23,7 +24,6 @@
     <h4 href="#sect11">Node Js</h4>
     <h4 href="#sect12">React Native</h4>
     <h4 href="#sect13">IRC server</h4>
-
   </nav>
       <section id="sect1">
         <div class="tipos">
@@ -137,7 +137,15 @@
             <p>Hay ciertas etiquetas que tienen una sintaxis diferente, ya que se cierran en sí mismas; es decir, no tienen etiqueta de cierre:</p>
             <pre><code ><span class="hljs-tag">&lt;<span class="hljs-name">nombre</span> /&gt;</span>
             </code></pre>
-        </div>
+            <p>Las etiquetas meta son las que otorgan informacion al navegador y al motor de busqueda, 3 ejemplos de estas son</p>
+
+            <pre><code >&lt;meta name="description" content="descripcion de la pagina"/&gt;
+&lt;meta name="author" content="autor de la pag"/&gt;
+&lt;meta name="keywords" content="palabras, clave, de la , pagina"/&gt;
+            </code></pre>
+
+
+          </div>
           <div class="col-md-6">
               <p>Algunas de las etiquetas más conocidas y usadas son:</p>
               <p><strong>Etiquetas de cabecera (head):</strong></p>
@@ -590,6 +598,7 @@
           </code></pre>
           <p>En la funcion de arriba, la funcion puede acceder a <i>nombre</i> sin haberla pasado por parametros, porque la variable esta escrita fuera del cuerpo de una funcion, lo que se traduce a que es una variable global, lo que tambien significa que esta asignada al objeto global, es decir el entorno en el que se esta ejecutando JS (Window en browser, server en Node)</p>
           <p>al ejecutar la funcion, lo que tambien hizo (side effect) fue modificar la variable</p>
+          <p>JavaScript debilmente tipado que espera que las cosas no siempre esten definidas y a pesar de ello js intentara ejecutarlo igua, ya que es un lenguaje interpretado, es decir que ira leyendo  ejecuntando a medidad que le vamos diciendo que ejeutar, sin fijarse obligacion o tipo de variables</p>
         </div>
         <div>
           <h3>objetos</h3>
@@ -600,11 +609,27 @@
               llave2: "valor2"
             }
 
-           console.log(objeto.llave) //"valor" 
-           console.log({llave}) //"valor" 
+           console.log(objeto.llave)  //"valor" 
+           console.log({llave})       //"valor" 
+
+          function darObjeto(objeto){
+            console.log(objeto.llave)
+          }  
 
           </code></pre>
           <p>y se puede acceder a ellos mediante un punto, objeto.llave = "valor", o bien mediante desestructuracion </p>
+
+          <pre><code>
+          var persona = {
+            nombre: "luis",
+            edad: 25
+          }          
+          function setAge( persona ){
+            var {nombre, edad} = persona
+            console.log(`me llamo ${nombre} y tengo ${edad}`)
+          }
+          setAge(persona)
+        </code></pre>
         </div>
         <div>
           <h3>Objetos como parametros y retornar nuevo objeto</h3>
@@ -656,6 +681,25 @@
             //esto porque ambas variables apuntan al mismo espacio en memoria ram (misma referencia
           </code></pre>
         </div>
+        <div>
+          <h3>Funciones que retornan valores</h3>
+          <pre><code>
+
+            function cumpleMayoria(persona){
+              return persona.edad>18 //regresara true o false para usarse
+            }                        //en otra funcion
+
+            functon esMayorDeEdad(persona){
+              if(cumpleMayoria(persona)){ //hace la pregunta a otra funcion
+                console.log("es mayor de edad")
+              }else{
+                console.log("es menor de edad")
+              }
+            }
+
+          </code></pre>
+          <p>la palabra <i>return</i> implica que regresara un valor disponnible para otras funciones</p>
+        </div>
         <div class="row">
           <div class="col-md-12">
             <h3>Arrow Functions</h3>
@@ -682,139 +726,192 @@
           </div>
         </div>
         <div>
-          <h3>Estructura For<h3>
-        </div>
+          <h3>Estructura For</h3>
+          <pre><code>
+            // expresion inicial; condicion; incremento 
+            var yo = {
+              nombre: "luis",
+              dinero: 1000 
+            }
 
+            console.log(`${yo.nombre} tiene ${yo.dinero} pesos al incio`)
+
+            const ingresos = (persona) => {persona.dinero += 200 }
+            const egresos = (persona) => {persona.dinero -= 200 }
+
+            for (i=1; i&lt;10; i++){
+              economia =  Math.random()
+              if (economia &lt; 0.25 ) {
+                //ingresos
+                ingresos(yo)
+              } else if (economia &lt; 0.50) {
+                //egresos
+                egresos(yo)
+              }
+            }
+
+            console.log(`y ${yo.nombre} termino con ${yo.dinero} pesos al final`)
+
+          //si la condicional esta en elementos de un Array
+          for(var i in response){
+            ....
+          }
+          </code></pre>
+        </div>
         <div>
           <h3>While</h3>
-          <p>El codigo se ejecutara y dira cuanto tiempo paso hasta que la persona perdio 3 kilos</p>
-            <p>var nombre = {nombre: "bryan", <br>
-                          apellido: "reyes",  <br>
-                          edad: 23, <br>
-                          peso: 70  <br>
-                        }; <br>
-                        const incremento = 0.2 <br>
-                        const puerkaPerkins = persona =>   nombre.peso += incremento <br>
-                        const gataPerkins = persona =>   nombre.peso -= incremento <br>
-                        const seatasca = () => Math.random() < 0.3 <br>
-                        const noseatasca = () => Math.random() < 0.4 <br>
+          <p>El codigo se ejecutara y dira cuanto tiempo paso hasta que la persona llego a su meta</p>
+          <pre><code>
+          const incremento = 5000
+          const ahorra = persona =>   persona.dinero += incremento
+          const gasta = persona =>   persona.dinero -= incremento
+          const paga = () => Math.random() &lt; .25
+          const cobra = () => Math.random() &lt; .50
+          const meta = 400000
+          var dias = 0
 
-                        const aqf = nombre.peso - 3 <br>
-                        var dias = 0 <br>
-
-
-                        while (nombre.peso > aqf) { <br>
-                          if (seatasca()) { <br>
-                            puerkaPerkins(nombre) <br>
-                          } <br>
-                          if (noseatasca()) { <br>
-                            gataPerkins(nombre) <br>
-                          } <br>
-                          dias += 1 <br>
-                        }
-            </p>
-
+          while (persona.dinero &lt; meta) {
+            //debugger ejemplo del debugger
+            if (cobra()) {
+              ahorra(persona)
+            }
+            if (paga()) {
+              gasta(persona)
+            }
+            dias += 1
+          }
+          console.log(`pasaron ${dias} quincenas hasta que ${persona.nombre} compro el terreno`)
+          </code></pre>
         </div>
         <div>
-          <h3>Resultados</h3>
-          <p>console.log(`pasaron ${dias} hasta que ${nombre.nombre} perdio 3 kilos`)</p>
+          <h3>Do While</h3>
+          <pre><code>
+            var contador = 0
+            const lluvia = () => Math.Random() > 25
+
+            do{
+              contador++
+            }while(!lluvia)
+
+            //la logica de esto es
+            //do{
+            //  incrementa el contador
+            //}mientras(no llueva)
+            console.log(`se checo ${contador} veces si llovia`)
+          </code></pre>
+        </div>
+        <div>
+          <h3>Debugger</h3>
+          <p>El debugger es una palabra reservada que pausara la ejecucion del codigo cada vez que esta palabra sea encontrada en el mismo</p>
+          <pre><code>debugger</code></pre>
+          <p>las opciones en orden son las siguientes</p>
+          <ul>
+            <li>Resume Script Execution: Seguir la ejecucion del programa hasta que termine o se encuentre con otro debugger</li>
+            <li>Step Over Next Function: pasa a la siguiente linea</li>
+            <li>Step into Next Function Call: entra a la funcion que se esta llamando</li>
+            <li>Step Out of Current Functio: Sale de la funcion y te regresa a donde fue llamada</li>
+          </ul>
+          <p>Dar clicks en los numeros de linea de codigo funcionara como breackpoints o debuggers</p>
         </div>
         <div>
           <h3>switch</h3>
-          <p>var signoZodiacal = prompt("Escriba aquí su signo zodiacal"); <br>
-switch(signoZodiacal){ <br>
-    case'aries':<br>
-        alert("Trabajo y negocios: el horizonte tendrá señales favorables. Aproveche. Sus ingresos crecerán. Amor: la relación necesita un cambio pero no se anima a sugerirlo ¡Lo hará bien!.");<br>
-    break<br>
-
-    case'tauro':<br>
-        alert("Trabajo y negocios: habrá estabilidad en su economía y podrá planificar metas más ambiciosas. Amor: su encanto brillará. Estará atento a las sugerencias de su pareja. Dulces vivencias.");<br>
-    break<br>
-
-    case'geminis':<br>
-    case'géminis':<br>
-        alert("Trabajo y negocios: verá con claridad las ventajas de una inversión. Ganará la confianza de gente influyente. Amor: querrá desapegarse de la pareja y divertirse con amigos; le hará bien.");<br>
-    break<br>
-
-    case'cancer':<br>
-    case'cáncer':<br>
-        alert("Trabajo y negocios: se suceden eventos que favorecen a sus intereses. Sus ganancias crecerán como nunca. Amor: seguirá su instinto en un amor a primera vista y el romance será un hecho.");<br>
-    break<br>
-
-    case'leo':<br>
-        alert("Trabajo y negocios: se conduce con audacia y los logros no tardan en llegar. Los riesgos serán mínimos. Amor: se destacará por escuchar con atención y dar confianza a su pareja. Armonía.");<br>
-    break<br>
-
-    case'virgo':<br>
-        alert("Trabajo y negocios: reordenará las tareas que parecen complicadas y se vuelven productivas. Amor: disfrutará hoy del crecimiento de la pareja y lo compartirá celebrando con amigos.");<br>
-    break<br>
-
-    case'libra':<br>
-        alert("Trabajo y negocios: las mudanzas de casa o las reformas serán propicias hoy. Su creatividad brillará. Amor: le ataca el desapego y siente que el amor alguna vez termina. Reflexione.");<br>
-    break<br>
-
-    case'escorpio':<br>
-        alert("Trabajo y negocios: toma una decisión y pone las manos a la obra. Sus negocios serán los más beneficiados. Amor: su energía parece trabada y siente que hace daño; un amigo confidente ayudará.");<br>
-    break<br>
-
-    case'sagitario':<br>
-        alert("Trabajo y negocios: hoy cosechará los frutos de su esfuerzo. Lo que necesita llega y se cumple. Amor: se pondrá dramático ante una situación. Vívalo riendo y estará irresistible.");<br>
-    break<br>
-
-    case'capricornio':<br>
-        alert("Trabajo y negocios: detectará manejos erróneos cuando le propongan un cambio de planes. Amor: le estimula y le atrae el aspecto misterioso que rodea a alguien de su entorno.");<br>
-    break<br>
-
-    case'acuario':<br>
-        alert("Trabajo y negocios: su habilidad para obtener negocios estará al máximo. Momento para celebrar. Amor: la pareja recuperará el fuego en la intimidad luego de sinceras confesiones.");<br>
-    break<br>
-
-    case'piscis':<br>
-        alert("Trabajo y negocios: las cosas parecen estar en su contra pero no todo estará mal. Llega dinero extra. Amor: dejará de lado relaciones ocasionales y optará por la dulzura de la estabilidad.");<br>
-    break<br>
-
-    default: mensaje predeterminado<br></p>
-        </div>
-        <div>
-          <h3>Resultado</h3>
-          <p>Alerts!</p>
+          <pre><code>
+            var signoZodiacal = prompt("cual es tu signo")
+            switch (signoZodiacal){
+             case 'tauro':
+                alert('para tauro....')
+                break
+             case 'virgo':
+                alert('para virgo....')
+                break
+              default:
+                alert('creo que no respondite...')
+                break
+            }
+          </code></pre>
         </div>
         <div>
           <h3>Arrays</h3>
-        <p>var bryan = {nombre: "bryan", <br>
-                      apellido: "reyes", <br>
-                      edad: 23, <br>
-                      peso: 70 <br>
-                    }; <br>
-        var emile = {nombre: "Emlie", <br>
-                      apellido: "Valen", <br>
-                      edad: 20, <br>
-                      peso: 60 <br>
-                    }; <br>
-        var omar = {nombre: "Omar", <br>
-                      apellido: "Samp", <br>
-                      edad: 21, <br>
-                      peso: 62 <br>
-                    }; <br>
-        var erick = {nombre: "Erick", <br>
-                      apellido: "Zaavedra", <br>
-                      edad: 26, <br>
-                      peso: 75 <br>
-                    }; <br>
-        var people = [bryan, emile, omar, erick] <br>
-      </p>
+          <pre><code>
+            var bryan = {
+              nombre: "bryan",
+              apellido: "reyes",
+              edad: 23,
+              peso: 70
+            };
+            var angus = {
+              nombre: "angus",
+              apellido: "Valen",
+              edad: 20,
+              peso: 60
+            };
+
+            var people = [bryan, angus]
+
+            console.log(people[0]) // {...}
+            console.log(people[0].nombre) // "bryan"
+
+            people[0].nombre === people[0]['nombre']
+          
+          </code></pre>
+          <p>para declarar un array se utilizan corchetes <i>[]</i> y es una coleccion de objetos, y se recorre en los arrays por medio de la estructura <i>for</i></p>
+          <p>array.lenght indica el conteo de elementos en el array</p>
+          <p>Tambien para filtrar elementos en un array se utiliza la palabra <i>filter</i></p>
+          <pre><code>
+          //var estanGordos = people.filter(condicion)
+
+          const condicion = (people) => people.peso > 60
+          var estanGordos = people.filter(condicion)
+          
+          </code></pre>
         </div>
         <div>
-          <h3>info</h3>
-          <p>array.lenght indica el conteo de elementos en el array</p>
-          <p>for (var i = 0; i < people.length; i++) { <br>
-            console.log(`${people[i].nombre} tiene ${people[i].edad} años`)<br>
-          }</p>
-          <p>Resultado</p>
-          <p>bryan tiene 23 años <br>
-             Emlie tiene 20 años <br>
-             Omar tiene 21 años <br>
-             Erick tiene 26 años</p>
+          <h3>Array Map</h3>
+          <p>array.map() devuelve un nuevo array con elementos modificados del array original</p>
+          <pre><code>            
+            //nuevo array de = people.map(condicion)
+            //condicion      //recibe el array
+            const setMayus = persona => ({
+                //lo desglosa
+                ...persona,
+                //modifica o pisa el atributo nombre
+                nombre: persona.nombre.toUpperCase()
+                //y retorna un nuevo array con datos modificados
+            })
+
+            //manera original, usar parentesis evita doble return
+            // const setMayus = persona => {
+            //   return{
+            //     ...persona,
+            //     nombre: persona.nombre.toUpperCase()
+            //   }
+            // }
+
+            //modificacion de array existente
+            const setMayus = persona => {
+                persona.nombre = persona.nombre.toUpperCase()
+                return persona
+            }
+          
+            var peopleMys = people.map(setMayus)
+          </code></pre>
+        </div>
+        <div>
+          <h3>Array Reduce</h3>
+          <p>reduce los elementos de un array a un solo objeto</p>
+          <pre><code>
+ 
+                    //acumulador, cada una de las personas
+           const  reducer =  ( acumulador,  personas ) => {
+             return acumulador + persona.peso 
+           }
+ 
+ 
+            //                             reducer, valor inicial acumulador 
+            var totalKilos = people.reduce(reducer, 0)
+
+          </code></pre>
+
         </div>
         <div class="">
           <a href="game.html">Juega Aqui!</a>
@@ -1319,8 +1416,16 @@ switch(signoZodiacal){ <br>
                   }
                   export default Component
                 </code></pre>
-  
-
+            </div>
+            <div>
+              <h2>Extras</h2>
+              <p><strong>Problemas con protocolos HTTPS</strong></p>
+              <p>En package.json</p>
+              <p>"set HTTPS=true&&react-scripts start"</p>
+              <p>
+                For folks who end up here from Google, while waiting for a patch you can manually edit node_modules/react-dev-utils/webpackHotDevClient.js to fix this problem without downgrading to 3.2. Here's the code you'll want at line 62 of that file:
+                protocol: window.location.protocol === 'https:' ? 'wss' : 'ws',
+              </p>
             </div>
       </section>
       <section id="sect6">

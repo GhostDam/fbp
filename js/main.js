@@ -270,3 +270,135 @@ $(document).ready(function(){
 // hace(nombre);
 //
 // })
+// var persona = {
+//   nombre: "luis",
+//   edad: 25
+// }
+
+
+
+// function setAge( persona ){
+//   var {nombre, edad} = persona
+//   console.log(`me llamo ${nombre} y tengo ${edad}`)
+// }
+// setAge(persona)
+
+
+// // expresion inicial; condicion; incremento 
+// var yo = {
+//   nombre: "luis",
+//   dinero: 1000 
+// }
+// console.log(`${yo.nombre} tiene ${yo.dinero} pesos al incio`)
+// const ingresos = (persona) => {persona.dinero += 200 }
+// const egresos = (persona) => {persona.dinero -= 200 }
+// for (i=1; i<10; i++){
+//   economia =  Math.random()
+//   if (economia < 0.25 ) {
+//     //ingresos
+//     ingresos(yo)
+//   } else if (economia < 0.50) {
+//     //egresos
+//     egresos(yo)
+//   }
+// }
+// console.log(`y ${yo.nombre} termino con ${yo.dinero} pesos al final`)
+
+var persona = {
+  nombre: "luis",
+  dinero: 0 
+}
+
+
+
+// const incremento = 5000
+// const ahorra = persona =>   persona.dinero += incremento
+// const gasta = persona =>   persona.dinero -= incremento
+// const paga = () => Math.random() < .25
+// const cobra = () => Math.random() < .50
+// const meta = 400000
+// var dias = 0
+
+// while (persona.dinero < meta) {
+//   // debugger
+//   if (cobra()) {
+//     ahorra(persona)
+//   }
+//   if (paga()) {
+//     gasta(persona)
+//   }
+//   dias += 1
+// }
+// console.log(`pasaron ${dias} quincenas hasta que ${persona.nombre} compro el terreno`)
+
+// var signoZodiacal = prompt("cual es tu signo")
+// switch (signoZodiacal){
+//   case 'tauro':
+//     alert('para tauro....')
+//     break
+//   case 'virgo':
+//     alert('para virgo....')
+//     break
+//   default:
+//     alert('creo que no respondite...')
+//     break
+// }
+
+
+var bryan = {
+  nombre: "bryan",
+  apellido: "reyes",
+  edad: 23,
+  peso: 70
+};
+var angus = {
+  nombre: "angus",
+  apellido: "Valen",
+  edad: 20,
+  peso: 60
+};
+var yo = {
+  nombre: "luis",
+  apellido: "Valen",
+  edad: 20,
+  peso: 65
+};
+
+var people = [bryan, angus, yo]
+
+
+// //condicion      //recibe el array
+// const setMayus = persona => ({
+//     //lo desglosa
+//     ...persona,
+//     //modifica o pisa el atributo nombre
+//     nombre: persona.nombre.toUpperCase()
+//     //y retorna un nuevo array con datos modificados
+// })
+
+// //manera original, usar parentesis evita doble return
+// // const setMayus = persona => {
+// //   return{
+// //     ...persona,
+// //     nombre: persona.nombre.toUpperCase()
+// //   }
+// // }
+
+// const setMayus = persona => {
+//     persona.nombre = persona.nombre.toUpperCase()
+//     return persona
+// }
+
+// //nuevo array de = people.map(condicion)
+// var peopleMys = people.map(setMayus)
+
+
+//acumulador, cada una de las personas
+// const  reducer =  ( acumulador,  persona ) => {
+//   return acumulador + persona.peso 
+// }
+
+
+//   //                             reducer, valor inicial acumulador 
+//   var totalKilos = people.reduce(reducer, 0)
+         
