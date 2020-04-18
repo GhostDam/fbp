@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/master.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="js/main.js" charset="utf-8"></script>
@@ -24,6 +24,7 @@
     <h4 href="#sect11">Node Js</h4>
     <h4 href="#sect13">IRC server</h4>
     <h4 href="#sect14">Eng Course</h4>
+    <h4 href="#sect15">XAMPP stack</h4>
 
   </nav>
       <section id="sect1">
@@ -126,6 +127,9 @@
         </section>
       <section id="sect2">
         <div class="row">
+          <div class="col-md-12">
+              <h3>HTML</h3>
+          </div>
           <div class="col-md-6">
             <div><strong>Etiquetas</strong></div>
               <p>Las etiquetas son la representación básica de la información en un documento html. Sirven para crear y organizar el contenido.<br>
@@ -169,7 +173,27 @@
               <li><strong><code>div</code></strong>: cualquier división para organizar el contenido.</li>
               </ul>
             </div>
-        </div>              
+        </div>
+        <div>
+          <h3>CSS</h3>
+            <p>CSS 1 se consolido en el 96</p>
+            <p>Una pequeña guia <a target="_blank" href="http://apps.workflower.fi/vocabs/css/es#comment">Aqui</a></p>
+            <p>Para declarar variables en CSS se declaran de la siguiente manera</p>
+            <pre><code>
+              /* las variables se declaran en root*/
+              :root{
+                --color: red
+              }
+
+              /* y su uso seria */
+              body{
+                background: var(--color)
+              }
+              h1{
+                color: var(--color)
+              }
+            </code></pre>
+          </div>
         <div>
           <h3>Layout basico con Flex-Box</h3>
           <p>Para el Layout basico usaremos 3 elementos html, en el cual padre <i>body</i> contara con <i>display:flex</i></p>
@@ -813,6 +837,7 @@
             <li>Step Out of Current Functio: Sale de la funcion y te regresa a donde fue llamada</li>
           </ul>
           <p>Dar clicks en los numeros de linea de codigo funcionara como breackpoints o debuggers</p>
+          <p>hacer <i>hover</i> sobre las variables (ejemplo con this.var) apuntara a su valor o contexto</p>
         </div>
         <div>
           <h3>switch</h3>
@@ -914,6 +939,225 @@
           </code></pre>
 
         </div>
+        <div>
+          <h3>Clases en JS</h3>
+          <p>Las clases como tal no existen en JS, si no que se utiliza algo llamado prototipos</p>
+          <pre><code>
+            //una funcion normal "creara" la clase
+            function Persona(nombre, apellido) {
+              //la palabra this referenciara los parametros dentro del objeto
+              this.nombre = nombre
+              this.apellido = apellido
+              //implicitamente regresa un
+              //this {...} como objeto
+            }
+
+            //class.prototype.metodo
+            //es la manera de crear metodos dentro de clases  
+            Persona.prototype.saludar = function () {
+              console.log(`me llamo ${this.nombre} ${this.apellido}`)
+            }
+
+            //en arrow functios this.nombre hace referencia
+            //a window.nombre, el cual no existe (recordar que window es el obj global)
+            Persona.prototype.despedir = () => {
+              console.log(`weno bie ${this.nombre}`)
+            }
+            //
+            //this => aqui apuntaria la arrow func
+            
+
+            //la palabra new accedera a Persona como clase
+            //y haraque por defecto regrese un objeto
+            const luis = new Persona("luis", "Ramirez")
+            luis.saludar()
+          </code></pre>
+        </div>
+        <div>
+          <h3>Prototipos como herencia</h3>
+          <p>La herencia de clases como tal no existe en JavaScript, esto es algo que se logra mdediante la herencia prototipal</p>
+          <pre><code>
+            //se hace la funcion de "herencia"
+            function heredaDe(prototipoHijo, prototipoPadre) {
+              var fn = function () {}
+              fn.prototype = prototipoPadre.prototype
+              prototipoHijo.prototype = new fn
+              prototipoHijo.prototype.constructor = prototipoHijo
+            }
+            
+            //se tiene una primer clase con sus metodos
+            function Persona(nombre, apellido, altura) {
+              this.nombre = nombre
+              this.apellido = apellido
+              this.altura = altura
+            }
+            
+            Persona.prototype.saludar = function () {
+              console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+            }
+            
+            Persona.prototype.soyAlto = function () {
+              return this.altura > 1.8
+            }
+            
+            //y una segunda clase sin metodo
+            function Desarrollador(nombre, apellido) {
+              this.nombre = nombre
+              this.apellido = apellido
+            }
+            
+            //se pasa la funcion en la que la segunda clase heredará los metodos
+            heredaDe(Desarrollador, Persona)
+            
+
+            //y se pisa el metodo saludar() de persona por el saludar() de desarrollador
+            Desarrollador.prototype.saludar = function () {
+              console.log(`Hola, me llamo ${this.nombre} ${this.apellido} y soy desarrollador/a`)
+            }
+
+            //y aqui desarrollador ya tiene acceso a los metodos de persona, pisando
+            //el metodo de saludar por uno propio
+          </code></pre>
+        </div>
+        <div>
+          <h3>Usando prototipos con la palabra <i>Class</i></h3>
+          <p>Para evitar todo lo confuso que puede ser crear clases mediante prototypes E15 introduce el uso de la palabra <i>class</i></p>
+          <pre><code>
+            //se crea la clase con la palabra class
+            class Persona{
+              //constructor el metodo que se ejecuta cuando se crean objetos de la clase (new)
+              constructor(nombre, apellido, altura){
+                this.nombre = nombre
+                this.apellido = apellido
+                this.altura = altura
+              }
+              
+              //tiene metodos
+              saludar(){
+                  console.log(`me llamo ${this.nombre} ${this.apellido}`)
+              }
+
+              //tiene metodos
+              soyAlto(){
+                return this.altura > 1.8
+              }
+            }
+
+            //se crea la clase que heredara (extends) de otra clase 
+            class Desarrollador extends Persona{
+              constructor(nombre, apellido, altura){
+                super(nombre, apellido, altura) //super() llama al constructor de la clase padre
+                // this.nombre = nombre         //y permite prescindir de this
+                // this.apellido = apellido
+                // this.altura = altura
+              }
+              //se pisa el metodo saludar de la clase padre
+              saludar(){
+                console.log(`me llamo ${this.nombre} ${this.apellido} pero soy desarrollador`)
+              }
+            }
+          </code></pre>
+        </div>
+        <div>
+          <h3>Funciones como paramettros</h3>
+          <p>los metodos en una clase pueden recibir funciones como parametros y ser respondidas internamente</p>
+          <pre><code>
+
+            class Desarrollador {
+              ...
+              //metodo dentro de desarrollador recibiendo una fn como parametro
+              saludar(fn){
+                console.log(`me llamo ${this.nombre} ${this.apellido} pero soy desarrollador`)
+              //se evalua si recibe o no la funcion
+              if (fn) {
+              //y de recibirse, se "responde"
+                  fn(this.nombre, this.apellido, true)
+                }
+            
+            }
+
+
+            //funcion a enviar como parametro
+            function response(nombre, apelldo, dev) {
+              console.log(`hey, como estas ${nombre}`)
+              if (dev) {
+                console.log(`como esta el trabajo`)
+              }
+            }
+            
+            //nuevos objetos de clases
+            var isaac = new Persona("Isaac", "lopez", 1.75)
+            var daniel = new Persona("Daniel", "Mendez", 1.55)
+            var Luis = new Desarrollador("Luis", "Ramirez", 1.75)
+            
+            //llamado a los metodos
+            isaac.saludar()
+            daniel.saludar(response)
+            Luis.saludar(response)
+          </code></pre>
+        </div>
+        <div>
+          <h3>Tiempo (Asincronia) en JS</h3>
+          <p>En JS todas las ejecuciones son en un solo hilo llamado eventLoop,</p>
+          <pre><code>
+            // console.log("a")
+            // console.log("b")
+            // console.log("c")
+            //a
+            //b
+            //c
+
+            console.log("a")
+            setTimeout(()=>console.log("b"), 0)
+            console.log("c")
+            setTimeout(()=>console.log("d"), 0)
+
+            //a
+            //c   //esto se debe a que setTimeot() se mando a una cola
+            //b   //de tareas que no empezo hasta terminar con clg("c")
+            //d
+          </code></pre>
+        </div>
+        <div>
+          <h3>callbacks</h3>
+          <p>un Callback es una funcion pasada como parametro posterior a la ejecucion de una funcion, en el caso siguiente lo que se hizo fue, una funcion de busque de Pkm, (<i>obtainPkm()</i>)una vez obtenido un resultado, se uso un callback para una segunda funcion, ya que el callback era la unica manera de comprobar que los pkm se obtubieran de manera correcta</p>
+          <pre><code>
+            const opts = {crossDomain:true}
+
+            //pasaremos un callback la funcion de obtener pkm
+
+            function obtainPkm(pkm, callback) {
+              const url = `https://pokeapi.co/api/v2/pokemon/${pkm}` 
+              $.get(url, opts, function (data) { 
+                console.log(data.name)
+                if (callback) {
+                  callback()    
+                }
+              })
+            }
+
+            //el motivo por el cual no se ejecuta como
+            //obtainPkm(4,obtainPkm(5))
+            //es porque se ejecutaria inmediatamente 5
+            //por ello se usa una funcion anonima
+
+            obtainPkm(4, function() {
+              obtainPkm(5, function() {
+                obtainPkm(6)    
+              })  
+            })
+
+            //la estructura obtenida es el denominado
+            //callback hell
+
+            //de haberse usado la funcion sin callback 
+            //hubise sido algo como
+            obtainPkm(4)
+            obtainPkm(5)
+            obtainPkm(6)
+            //pero esto generaba desorden en los resulados (5,6,4...)
+          </code></pre>
+        </div>
         <div class="">
           <a href="game.html">Juega Aqui!</a>
         </div>
@@ -942,6 +1186,28 @@
           <p>En caso de ser un proyecto importado se requerirá nuevamente un npm instal (actualizar bibliotecas)</p>
           <p><small> ya no es recomendable usar npm i -g create-react-app y después correr el comando create-react-app.</small></p>
           <p><small>La solución a esto es correr: npm uninstall -g create-react-app para desinstalar la dependencia global de create-react-app y así evitar conflictors y luego crear la aplicación con: npx create-react-app</small></p>
+          <p>Adicional a CRA, para la navegacion entre pestañas dentro de la SPA requeriremos React Router</p>
+          <pre><code>
+          npm i react-router-dom
+          
+          import {BrowserRouter, Route, Switch } from 'react-router-dom'
+
+          function App() {
+            return (
+                &lt;BrowserRouter>
+                    &lt;Navbar />
+                      &lt;Switch>
+                        &lt;Route exact path="/" component={Header} />
+                        &lt;Route exact path="/other" component={OtherHeader} />
+                        &lt;Route component={NotFound}/>  
+                      &lt;/Switch>
+                &lt;/BrowserRouter>
+            );
+          }
+          
+          export default App;
+          
+          </code></pre>          
         </div>
         <div class="elementos">
           <h1>Primeramente vimos la explicacion de JSX y el ReactDOM.render</h1>
@@ -2053,6 +2319,40 @@
               <li>too many tasks</li>
             </ul>
           </div>
+        </div>
+      </section>
+      <section id="sect15">
+        <div>
+          <h3>Xammp Stack</h3>
+        </div>
+        <div>
+          <h3>configurar PhpMyAdmin</h3>
+          <p>Para configurar PMA para inicio mediante login y seleccion de servidores</p>
+          <p><strong>Inicio mediante login</strong></p>
+          <p>en el archivo de configuracion <i>xampp\phpMyAdmin\config.inc.php</i></p>
+          <pre><code>
+            //configuracion predeterminada
+            $cfg['Servers'][$i]['auth_type'] = 'config';
+
+            //por login
+            $cfg['Servers'][$i]['auth_type'] = 'cookie';
+          </code></pre>
+          <p><strong>Selector de servidores</strong></p>
+          <p>en el mismo archivo de configuracion, agregar estas lineas con su correspondiente configuracion antes de terminar el contenido del archivo <i>/* End of servers configuration */</i></p>
+          <pre><code>
+            /* adding custom conections */
+
+            $i++;
+            $cfg['Servers'][$i]['host']          = 'noop';
+            $cfg['Servers'][$i]['port']          = 'noop';
+            $cfg['Servers'][$i]['socket']        = '';
+            $cfg['Servers'][$i]['connect_type']  = 'tcp';
+            $cfg['Servers'][$i]['extension']     = 'mysql';
+            $cfg['Servers'][$i]['compress']      = FALSE;
+            $cfg['Servers'][$i]['auth_type']     = 'config';
+            $cfg['Servers'][$i]['user']          = 'username';
+            $cfg['Servers'][$i]['password']      = 'password';
+          </code></pre>
         </div>
       </section>
     </body>

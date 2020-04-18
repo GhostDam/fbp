@@ -42,6 +42,24 @@ nav{
   overflow: auto;
   justify-content: space-between;
 }
+/*barra general*/
+nav::-webkit-scrollbar{
+  height: 5px;
+}
+/*fondo de barra*/
+nav::-webkit-scrollbar-track{
+  background: rgba(0, 0, 0, .1);
+}
+/*posicion en la barra*/
+nav::-webkit-scrollbar-thumb{
+  background: rgba(0, 0, 0, .5);
+  border-radius: 10px;
+}
+/*hover posicion de barra*/
+nav::-webkit-scrollbar-thumb:hover{
+  background: steelblue;
+}
+
 pre {
   background: #333333;
   color: #ffffff!important;
@@ -123,4 +141,7 @@ pre {
 }
 #sect14{
   background-color: #aa3d36;
+}
+#sect15{
+  background-color: #fb7a24;
 }
