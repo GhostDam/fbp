@@ -193,7 +193,197 @@
                 color: var(--color)
               }
             </code></pre>
-          </div>
+              <p>Selectores CSS</p>
+              <pre><code>
+                /* por tag */
+                h1 { 
+                  color: blue;
+                }
+
+                /* por clase */
+                .clase {
+                  color: blue;
+                }
+
+                /* universal */
+                * {
+                  color: blue;
+                }
+
+                div * {  
+                  color: blue;
+                }
+              </code></pre>
+              <p>Los selectores de tag son case insensitive, los selectores de clase (atributo) son case sensitive</p>
+              <p><strong>Compuestos</strong></p>
+              <ul>
+                <li><strong>agrupados .a, .b </strong>Selectores agrupados para aplicar el mismo estilo a ambas clases</li>
+                <li><strong>descendientes .a .b </strong>recorrera elementos dentro de la clase .a y si encuentra el elemento con clase .b y aplicara los estilos</li>
+                <li><strong>hijo directo .a > .b > .c</strong>.c que sea hijo de .b que sea hijo de .a</li>
+                <li><strong>hermano siguiente .a + .b || .a + .c </strong>tendra diferente caracteristica dependiendo de quien sea el hermano directo</li>
+                <li><strong>hermanos siguientes .a ~ .b || .a ~ .c </strong>como el anterior, pero aplica a todos los hermanos y no solo al primero</li>
+                <li><strong>de atributos [type="text"]{} [required]{} </strong>Selecciona los elementos con los atributos marcados</li>
+                <li><strong>de atributos comienza con [href^="http"] [href^="./"] </strong>Selecciona los elementos cuyo atributo empieze con...</li>
+                <li><strong>de atributos termina con [href$=".pdf"] </strong>Selecciona los elementos cuyo atributo termine con...</li>
+                <li><strong>de atributos contiene [class*="button"] </strong>Selecciona los elementos cuyo atributo contenga...</li>
+              </ul>
+              <p>Ejemplo de input checked toggle con CSS sin JS</p>
+              <div class="css-toggler">
+                <input type="checkbox" class="toggler">
+                <span class="enabled">true</span>
+                <span class="disabled">false</span>
+              </div>
+              <pre><code>
+                .enabled{          /* true oculto por defecto */
+                  display: none;
+                }
+                
+                .toggler:checked ~ .enabled{ /* en checked true se muestra*/
+                  display: block;
+                }
+                
+                .toggler:checked ~ .disabled{ /* en checked false se oculta */
+                  display: none;
+                }                
+              </code></pre>
+        </div>
+        <div>
+          <h3>Especificidad, herencia y cascada</h3>
+          <p>En caso de usar Frameworks, NO ES RECOMENDABLE agregar mas css para problemas con CSS</p>
+          <blockquote>es como poner curita sobre curita mientras la herida en el fondo se infecta</blockquote>
+          <p>La especificidad es la "fuerza" que tiene un bloque CSS al ser declarado, un ejemplo de la calculadora <a target="_blank" href="https://specificity.keegan.st/">aqui</a> y una manera grafica es mas o menos esta</p>
+          <pre><code>
+            #main .post p{
+              color: red
+            }
+            /* a pesar de la cascada, la declaracion anterior
+               tiene mas peso debido a especificidad */
+            p{
+              color: green
+            }
+          </code></pre>
+          <p><strong>especificidad > cascada</strong></p>
+          <p>Tambien hay generadores graficos de especificiad, en los cuales los picos regrepresentan algo "negativo" y esta <a target="_blank" href="https://jonassebastianohlsson.com/specificity-graph/">aqui</a></p>
+          <p>COMPUTED en el inspector ayuda a tener una vista detallada de cada elemento usado, ademas de checar si es que tiene algun conflicto de especificidad </p>
+          <p><strong>Herencia</strong></p>
+          <pre><code>
+            inherit  obliga a heredar propiedades de los padres
+
+            initial  resetea los valores por defecto del elemento
+          </code></pre>
+        </div>
+        <div>
+          <h3>Inline y Bloque</h3>
+            <ul>
+                <li><strong>Elemento Inline</strong></li>
+                <li>No crea nuevas lineas para cada elemento</li>
+                <li>Tiene ancho pero no alto (tamaño depende del contenido</li>
+                <li>Se ajustan al contenido</li>
+            </ul>
+            <ul>
+              <li><strong>Elemento Bloque</strong></li>
+              <li>Crea nuevas lineas para cada elemento</li>
+              <li>Ocupa todo el espacio horizontal</li>
+              <li>Tiene ancho y alto</li>
+            </ul>
+            <p><strong>Box-model: </strong>Modelo de caja</p>
+            <ul>
+              <li><strong>Contenido: </strong>content-box</li>
+              <li><strong>Padding: </strong>padding-box - separacion del contenido con el borde de la caja</li>
+              <li><strong>Borde: </strong>border-box</li>
+              <li><strong>Margen: </strong>Separacion con otras cajaass</li>
+              <li><strong>outline: </strong>No forma parte del modelo de caja, se dibuja siempre fuera de este</li>
+            </ul>
+            <pre><code>
+              *, *::before, *::after{             /* este snippet hace el uso de padding y border
+                box-sizing: border-box;            * no aumente el tamaño de caja como lo haria
+              }                                   /* por defecto 
+
+              #box-model{
+                padding: 1px;                      /* padding "simbolico" para evitar el colapsado de margen vertical */
+                height: 300px;
+                background-color: whitesmoke;
+              }
+              .box{
+                margin-top: 50px;                  /* si el padre no tiene un padding, este margen se encima verticalmente */
+                width: 150px;                      /* ancho fijo */
+                height: 150px;                     /* altura fija */
+                background-color: red;             /* color de fondo */
+                border: 10px dotted black;         /* el borde se crea dentro del modelo de caja (box-sizing: border-box;) */
+                padding: 10px;                     /* el padding es espaciado entre contenido y borde */ 
+                margin-left: auto;                 /* teoricamente, es la manera correcta de centrar un elemento */
+                margin-right: auto;
+              }
+              .box-2{                              /* triangulo */
+                background-color: transparent;     /* reseteo el color de fondo */
+                padding: 0;                        /* elimino padding */
+                border: 75px solid;                /* doy color al borde */
+                border-color: teal transparent transparent;  /* solo dejo el triangulo */
+              }
+              
+              El tamaño declarado por width y height sera el border box, es decir la caja externa 
+            </code></pre>
+            <div id="box-model">
+              <div class="box">
+                contenido
+              </div>
+              <div class="box-2"></div>
+            </div>
+            <p>Por defecto el box-sizing del navegador es interpretado como content-box, el cual hace que las propiedades aplicadas a la caja (contenido, padding, borde) se sumen creando dificultades para una correcta maquetacion, usar border-box ayuda a tener mejor control de los elementos creados<p>
+            <p>El colapasado de margenes verticales (que el margen de un h1 provoque un espacio en blanco arriba) se soluciona con un uso de padding, que corrige ese detalle</p>
+            <p>En padding en porcentaje, es relativo al width del padre, </p>
+            <p>Las alturas, solo dependen del papá con tamaño definido, no para automatico (min-height aunque parece definido es automatico)</p>
+        </div>
+        <div>
+          <h3>Bordes</h3>
+          <p>El borde se dibuja por dentro de la caja</p>
+          <pre><code>
+                    /* grosor, estilos, color */
+            border: 10px solid black
+
+            border-width:
+            border-style: solid dotted dashed double
+            border-color: /* tiene por defecto la propiedad de la caja color: --; */
+
+          </code></pre>
+          <h3>Box-shadow</h3>
+          <pre><code>
+            /* desplazamiento horizontal, vertical, difuminado, expansion, color*/
+            box-shadow: 0 0 0 10px green,
+                        0 0 0 20px red,  /* acepta multiples sobras */
+
+            box-shadow: 0 0 0 10px green inset: /* interno */ 
+          </code></pre>
+        </div>
+        <div>
+          <h3>Background</h3>
+          <ul>
+            <li><strong>background-image: </strong>url('image.jpg')</li>
+            <li><strong>background-repeat: </strong>repeat | no-repeat | repeat-x | repeat-y</li>
+            <li><strong>background-clip: </strong>border-box | padding-box | content-box (que parte de la caja es cubierta por el fondo)</li>
+            <li><strong>background-origin: </strong>border-box | padding-box | content-box (desde donde se empieza a dibujar el fondo)</li>
+            <li><strong>background-size: </strong>width (calcula height) | width height | contain (el mayor espacio que pueda ocupar) | cover | auto (px, pxw, pxh)</li>
+            <li><strong>background-size: </strong>width (calcula height) | width height | contain (el mayor espacio que pueda ocupar) | cover | auto (rellena la caja estirandola)</li>
+            <li><strong>background-postion: </strong> x (con y centrado auto) | x y | left | center | right (con unidades, eje x) | top | center | bottom (con unidades, eje y)</li>
+            <li><strong>background-attachment: </strong>fixed (fija la imagen al centro de la caja)</li>
+            <li><strong>background: </strong>SHORTHAND: image position / size repeat attachment origin clip</li>
+          </ul>
+          <p>Si la imagen es mas grande la caja, esta se vera cortada por defecto (size: auto)</p>
+          <p>Si el elemento no tiene un height definido, la propiedad contanin (size: contain) no funcionara correctamente, por ejemplo con un body</p>
+          <p>Para multiples fondos background: url('fondo1'), url('fondo3'), url('fondo3') y posiciones background-position: 1px, 2xp, 3xp<p>
+        </div>
+        <div>
+          <h3>Textos</h3>
+          <p>El tamaño base del body es de 16 px</p>
+          <ul>
+            <li><i>em</i> unidad relativa al tamaño de fuente especificada mas cercana (contexto)</li>
+            <li><i>rem</i> unidad relativa al tamaño de fuente especificada en el ancestro mas lejano (html, body, :root)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Postition</h3>
+          <p>Un Ejemplo mas detallado <a target="_blank" href="https://es.learnlayout.com/position.html">Aqui</a></p>
+        </div>
         <div>
           <h3>Layout basico con Flex-Box</h3>
           <p>Para el Layout basico usaremos 3 elementos html, en el cual padre <i>body</i> contara con <i>display:flex</i></p>
@@ -279,8 +469,6 @@
           </ul>
           <p><strong>Conceptos</strong></p>
           <ul>
-            <li><i>em</i> unidad relativa al tamaño de fuente especificada mas cercana</li>
-            <li><i>rem</i> unidad relativa al tamaño de fuente especificada en el ancestro mas lejano (html, body)</li>
             <li><i>vw, vh</i> unidad relativa al tamaño del viewport</li>
           </ul>
         </div>
@@ -1158,8 +1346,179 @@
             //pero esto generaba desorden en los resulados (5,6,4...)
           </code></pre>
         </div>
+        <div>
+          <h3>Promesas</h3>
+          <p>Como una solucion a los Callback Hells fue que se realizaron las promesas en JS, asi es como luce el codigo de una</p>
+          <pre><code>
+            new Promise(function(resolve, reject){
+              ...
+            }).then(valor =>{
+              ...
+            }).catch(err =>{
+              ...
+            })
+          </code></pre>
+          <p>Entonces usando el ejemplo de arriba reescribimos la funcion adaptandola a una promesa</p>
+          <pre><code>
+            const opts = {crossDomain:true}
+            //pasaremos un callback la funcion de obtener pkm
+            function obtainPkm(pkm) {
+              return new Promise((resolve, reject) =>{
+                const url = `https://pokeapi.co/api/v2/pokemon/${pkm}` 
+                $.get(url, opts, function (data) { 
+                  //confirmamos el resolve pasando la data de la consulta
+                  resolve(data)
+                })
+                  //o damos el error con el elemento buscado
+                .fail(() =>{reject(id)})
+              })
+            }
+
+            //y ejecutamos una primera busqueda
+            obtainPkm(1)
+              .then((data)=>console.log(data.name))
+              .catch((err)=>console.log(id))
+
+            //ahora para encadenar las promesas solo se regresa la
+            //funcion dentro del then y se agrega un nuevo then
+
+            obtainPkm(1)
+            .then(data=>{
+              console.log(`pkm 1 ${data.name}`)
+              return obtainPkm(2)
+              })
+            .then(data=>{
+              console.log(`pkm 2 ${data.name}`)
+              return obtainPkm(3)
+              })
+            .then(data=>{
+              console.log(`pkm 3 ${data.name}`)
+              })
+            .catch((err)=>console.log(id))
+          </code></pre>
+          <p>una forma aun mas secilla de encadenar las promesas es convertirlas en un array y utilizar un metodo llamado <i>All()</i> de las promesas</p>
+          <pre><code>
+            //damos los datos que buscaremos
+            var ids = [1,2,3,4,5,6]
+            //mapeamos el array de datos para obtener una promesa 
+            //por cada uno de los datos
+            var promises = ids.map( id => obtainPkm(id))
+
+            Promise
+              .all(promises)    //y pasamos el array de datos al metodo all
+              .then((pkm) =>{
+                for (i in pkm){
+                  console.log(pkm[i].name)
+                }
+              })
+              .catch(err=>console.log(err))
+
+          </code></pre>
+        </div>
+        <div>
+          <h3>Async Await con Try Catch</h3>
+          <p>Basado en el codigo de arriba, una manera de optimizarlo aun mas seria usar async await</p>
+          <pre><code>
+            async function obtenerPersonajes() {
+              var ids = [1,2,3,4,5,6]
+              var promises = ids.map( id => obtainPkm(id))  
+              try {
+                var pokemones = await Promise.all(promises)
+                console.log(pokemones)
+              } catch (error) {
+                  console.log(error)
+                }
+            }
+            
+            obtenerPersonajes()
+          </code></pre>
+        </div>
+        <div>
+          <h3>Programacion de un juego llamado Simon Dice</h3>
+          <p>Para el juego simon dice, usaremos elementos de html para hacer un tablero</p>
+          <pre><code>
+            &lt;!-- mensaje de puntuacion -->
+            &lt;div id="message">
+            &lt;/div>
+
+            &lt;!-- Tablero del juego -->
+
+            &lt;div class="gameboard">
+              &lt;div id="celeste" class="color celeste left" data-color="celeste">&lt;/div>
+              &lt;div id="violeta" class="color violeta right" data-color="violeta">&lt;/div>
+              &lt;div id="naranja" class="color naranja left" data-color="naranja">&lt;/div>
+              &lt;div id="verde" class="color verde right" data-color="verde">&lt;/div>
+
+            &lt;!-- La funcion para iniciar se llamara en el boton -->
+
+              &lt;button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!&lt;/button>
+            &lt;/div>
+        
+          </code></pre>
+        </div>
         <div class="">
           <a href="game.html">Juega Aqui!</a>
+        </div>
+        <div>
+          <h3>Recursividad</h3>
+          <p>Se habla de recursividad cuando una funcion se llama a si misma</p>
+          <pre><code>
+            /* creacion de division
+                13 entre 4
+
+                13 - 4 = 9  |
+                9  - 4 = 5  |
+                5  - 4 = 1  |
+                1  - 4 =-3  0  --> caso base
+            */
+            function dividir(dividendo, divisor) {
+                //si el caso base se cumple, termina
+                if (dividendo < divisor) {
+                    return 0
+                }else{
+                  //y si no, la funcion se llama a si misma
+                  return 1 + dividir(dividendo-divisor, divisor)
+                }
+            }
+          </code></pre>
+        </div>
+        <div>
+          <h3>Memoizacion, ahorro de computo</h3>
+          <p>Almacenamiento de procesos ya realizados en memoria</p>
+          <pre><code>
+            /*
+              Factorial,
+              un factorial es un num que se multiplica 
+              por sus "antepasados"
+
+              factorial de 6
+
+              !6 = * 5 * 4 * 3 * 2 * 1 = 720
+
+              !12 = 12 * ... * 5 * 4 * 3 * 2 * 1 = 
+
+            */ 
+
+            function factorial(n) {
+              //si no existe
+              //se crea el objeto de guardado
+              if (!this.cache) {
+                this.cache = {}
+              }
+
+              //si existe regresa lo
+              //guardado
+              if (this.cache[n]) {
+                return this.cache[n]
+              }
+
+              if (n===1) {
+                  return 1
+                }
+              this.cache[n] = n * factorial(n - 1)
+              return this.cache[n]
+            }
+          </code></pre>
         </div>
         <div>
           <h3>Closures</h3>
@@ -1243,12 +1602,57 @@
         <div>
           <h1>Componenetes</h1>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <h3>componente</h3>
-            <img src="md/componentejpg.jpg" alt="" width="100%">
-          </div>
+        <div>
+          <h3>Estados en React</h3>
+          <p>Los estados en React son la manera de almacenar y manejar informacion para un componente, este se puede inicializar de las 2 siguientes maneras</p>
+
         </div>
+        <div class="row">
+            <div class="col-md-6">
+              <p><strong>Dentro del constructor</strong></p>
+              <pre><code>
+                class Component extends React.Component{
+                    constructor(){
+                      super(props)
+                        this.state= {
+                          data: "",
+                          moreData: ""
+                        }
+                    }
+
+                    render(){
+                      return(
+                        ....
+                      )
+                    }
+
+                }
+                </code></pre>
+                <p>Cuando el componente clase es creado, el metodo <i>constructor</i> es el primer metodo llamado asi que es el mejor sitio para inicializar todo (state incluido)</p>
+                <p>Al hacerlo de esta manera y utilizar <i>this.setState()</i> es como React sabra que algo ha cambiado y ejecutara nuevamente el metodo Render</p>
+                <p>Una nota importante de usar el constructor es que siempre tenemos que llamar <i>super(props)</i> Al escribir su propio (constructor), está anulando el comportamiento predeterminado, y a menos que llame (super) por sí mismo, podría generar errores si el padre necesitara una inicialización.</p>
+              </div>
+            <div class="col-md-6">
+              <p><strong>Fuera del constructor</strong></p>
+              <pre><code>
+              class Component extends React.Component{
+                  state= {
+                    data: "",
+                    moreData: ""
+                  }
+
+
+                  render(){
+                    return(
+                      ....
+                    )
+                  }
+
+              }
+              </code></pre>
+            </div>
+
+          </div>
         <div>
           <h3>sintaxis</h3>
           <p>Los componentes se escriben por medio de funciones y pueden ser de 2 tipos</p>
@@ -1723,12 +2127,13 @@
 
             </div>
           <div class="col-md-12">
+            <h2>CICLO BASICO DE REDUX</h2>
             <h3>1.- Store</h3>
             <p>Una vez instalado Redux, par accesar a las funcionalidades, se crea el <i>store</i> en el index.js de la aplicacion</p>
             <pre><code>
                                     //middleware -- redux-thunk
               import { createStore , applyMiddleware} from 'redux'
-              import { provider } from 'react-redux'
+              import { Provider } from 'react-redux'
               
               import reduxThunk from 'redux-thunk'
               
@@ -1738,9 +2143,9 @@
               
               //createStore es una funcion que recibe 2 parametros principales, y un tercero como middleware
               const store = createStore(
-                reducers,     //reducers de la app
-                {},     //estado incial de la app
-                applyMiddleware(reduxThunk)  
+                reducers,                     //reducers de la app
+                {},                           //estado incial de la app
+                applyMiddleware(reduxThunk)   //middleware de la app
               )
 
               //y aqui proveemos la store a la App
@@ -1772,19 +2177,24 @@
                   usuariosReducer
               })
             </code></pre>
-            <p>reducer de Usuarios, que contendra la información del componente Usuarios (reducers/usuariosReducer.js)</p>
+            <p>reducer del Componente, que contendra la información del componente (Usuarios) (reducers/usuariosReducer.js)</p>
             <pre><code>
-              //se declara un estado inicial para el componente
+              //se importan los types para evitar errores
               import { TRAER_TODOS } from '../types/usuariosTypes'
-
+              
+              //se declara un estado inicial para el componente
               const INITIAL_STATE = {
                 usuarios:[],            //los reducers deben manejar
                 cargando : false,       //los 3 estados de una peticion
                 error: ""               //cargando, datos y error
               }
 
-              //se manda por defecto el estado inicial
+              //se manda por defecto el estado inicial y action
               export default (state = INITIAL_STATE, action) =>{
+
+
+                //switch es setup por default y action
+                //action se evaluara y sin datos por defecto se retorna state
                 switch (action.type){
                   case TRAER_TODOS:
                     //recibe la accion, y recibe todo el estado(...) cambiando solo usuarios por el payload del action
@@ -1799,7 +2209,9 @@
                   case ERROR:
                       return {...state, error: action.payload, cargando: false}
                               return state;
-                }
+
+                    default: return state
+                  }
               }
             </code></pre>
           </div>
@@ -1851,7 +2263,8 @@
  
               //actions                   use/comp/  
               import * as usuariosActions from '../../actions/usuariosActions'
-              class Usuarios extends React.Component{
+
+              class Component extends React.Component{
                 //Constructor(){        //se puede prescindir del Constructor ya que
                 //  super()             //el estado inicial se definio en usuariosReducer.js
                 //  this.state = {
@@ -1895,9 +2308,9 @@
                 return reducers.usuariosReducer
               }
 
-              export default connect(mapStateToProps, usuariosActions)(Usuarios)
+              export default connect(mapStateToProps, usuariosActions)(Component)
               //esto pasara la info del state de usuariosReducer al componente 
-              //Usuarios como props
+              //Component como props
             </code></pre>
           </div>
 

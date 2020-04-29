@@ -65,6 +65,8 @@ pre {
   color: #ffffff!important;
   tab-size: 2;
 }
+
+
 /*  LAYOUT EXAMPLE  */
 #layout{
   display: flex;
@@ -111,8 +113,46 @@ pre {
 .menu-item:hover{
   flex: 2;
 }
-
 /*  LAYOUT EXAMPLE  */
+
+
+/* TOGGLER EXAMPLE */
+.css-toggler{
+  background-color: lightseagreen;
+}
+.enabled{          /* true oculto por defecto */
+  display: none;
+}
+.toggler:checked ~ .enabled{ /* en checked true se muestra*/
+  display: inline-block;
+}
+.toggler:checked ~ .disabled{ /* en checked false se oculta */
+  display: none;
+}
+/* TOGGLER EXAMPLE */
+
+/* BOX-MODEL EXAMPLE */
+#box-model{
+  padding: 1px;                      /* padding "simbolico" para evitar el colapsado de margen vertical */
+  height: 300px;
+  background-color: whitesmoke;
+}
+[class^="box"]{
+  margin-top: 0;                     /* si el padre no tiene un padding, este margen se encima verticalmente */
+  width: 150px;                      /* ancho fijo */
+  height: 150px;                     /* altura fija */
+  background-color: red;           /* color de fondo */
+  border: 10px dotted black;       /* el borde se crea dentro del modelo de caja (box-sizing: border-box;) */
+  padding: 10px;                     /* el padding es espaciado entre contenido y borde */ 
+  margin-left: auto;                 /* teoricamente, es la manera correcta de centrar un elemento */
+  margin-right: auto;
+}
+.box-2{
+  background-color: transparent;
+  padding: 0;
+  border: 75px solid;
+  border-color: teal transparent transparent;
+}
 
 #sect1{
   background-color: #fd7d7a;

@@ -10,33 +10,36 @@ $(document).ready(function(){
   });
 });
 //*codigo de clase*//
-//De esta manera se obtiene datos de la api SWAPI.
 
+/*
+  Factorial,
+  un factorial es un num que se multiplica 
+  por sus "antepasados"
 
+  factorial de 6
 
+   !6 = * 5 * 4 * 3 * 2 * 1 = 720
 
-const opts = {crossDomain:true}
-//pasaremos un callback la funcion de obtener pkm
-function obtainPkm(pkm, callback) {
-  const url = `https://pokeapi.co/api/v2/pokemon/${pkm}` 
-  $.get(url, opts, function (data) { 
-    console.log(data.name)
-      if (callback) {
-        callback()    
-      }
-  })
+   !12 = 12 * ... * 5 * 4 * 3 * 2 * 1 = 
+
+*/ 
+
+function factorial(n) {
+  //si no existe
+  //se crea el objeto de guardado
+  if (!this.cache) {
+    this.cache = {}
+  }
+
+  //si existe regresa lo
+  //guardado
+  if (this.cache[n]) {
+    return this.cache[n]
+  }
+
+  if (n===1) {
+      return 1
+    }
+  this.cache[n] = n * factorial(n - 1)
+  return this.cache[n]
 }
-
-//el motivo por el cual no se ejecuta como
-//obtainPkm(4,obtainPkm(5))
-//es porque se ejecutaria inmediatamente 5
-//por ello se usa una funcion anonima
-obtainPkm(4, function() {
-  obtainPkm(5, function() {
-    obtainPkm(6)    
-  })  
-})
-
-//la estructura obtenida es el denominado
-//callback hell
-
