@@ -5,6 +5,10 @@ html {                                  /*Este Snippet "Corrige" un buen uso del
   box-sizing: inherit;
 }
 
+body{
+  height: 100%;
+}
+
 header{
   text-align: center;
 }
@@ -172,6 +176,10 @@ pre {
 #sect6{
   background-color: #65f49f;
 }
+#sect10{
+  background-color: #d7972c;
+}
+
 #sect11{
   background-color: #026e00;
 }
@@ -184,4 +192,38 @@ pre {
 }
 #sect15{
   background-color: #fb7a24;
+}
+
+iframe{
+  width: 100%;
+}
+
+/* Notas de Cornell */
+.cornell{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border: crimson 1px dotted;
+  background-color: honeydew;
+}
+.tema{
+  width: 100%;
+  height: 3rem;
+  border: cyan 1px dotted;
+}
+.contenido{
+  display: flex;
+  border: darkviolet 1px dotted;
+}
+.notas{
+  flex: 1;
+  border: green 1px dotted;
+}
+.glosario{
+  flex-basis: 20%;
+  border: red 1px dotted;
+}
+.resumen{
+  height: 20vh;
+  border: blueviolet 1px dotted;
 }
