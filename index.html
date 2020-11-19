@@ -2,30 +2,53 @@
 <html lang="es" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <!-- icons for WebApp-->
+  <link rel="apple-touch-icon" sizes="57x57" href="md/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="md/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="md/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="md/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="md/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="md/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="md/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="md/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="md/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="md/icons//android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="md/icons//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="md/icons//favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="md/icons//favicon-16x16.png">
+  <!-- manifest -->
+  <link rel="manifest" href="md/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="md/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <!-- icons -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/master.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="librerias/jquery.js"></script>
+  <link rel="stylesheet" href="librerias/bootstrap.css">
+  
   <script src="js/main.js" charset="utf-8"></script>
   <title>FB Beca Developer Circles</title>
 </head>
 <body>
   <header>
     <h1>Sistemas de Aprendizaje - Becas FB Dev</h1>
-    <p><strong>Todos los grandes desarrolladores llegaron ahi resolviendo probleamas que no estaban calificados para resolver, hasta que en realidad lo hicieron</strong></p>
+    <p><strong>Todos los grandes desarrolladores llegaron ahi resolviendo problemas que no estaban calificados para resolver, hasta que en realidad lo hicieron</strong></p>
   </header>
   <nav>
-    <h4 href="#sect1">Procesos de aprendizaje</h4>
-    <h4 href="#sect2">Desarrollo web & responsive design</h4 >
-    <h4 href="#sect3">Git y GitHub</h4 >
-    <h4 href="#sect4">Fundamentos de JavaScript</h4>
-    <h4 href="#sect5">React Js</h4>
-    <h4 href="#sect6">Redux</h4>
-    <h4 href="#sect11">Node Js</h4>
-    <h4 href="#sect13">IRC server</h4>
-    <h4 href="#sect14">Eng Course</h4>
-    <h4 href="#sect15">XAMPP stack</h4>
-
+    <h4 class="temas" href="#sect1">Procesos de aprendizaje</h4>
+    <h4 class="temas" href="#sect2">Desarrollo web & responsive design</h4 >
+    <h4 class="temas" href="#sect3">Git y GitHub</h4 >
+    <h4 class="temas" href="#sect4">Fundamentos de JavaScript</h4>
+    <h4 class="temas" href="#sect5">React Js</h4>
+    <h4 class="temas" href="#sect6">Redux</h4>
+    <h4 class="temas" href="#sect10">Trading</h4>
+    <h4 class="temas" href="#sect11">Node Js</h4>
+    <h4 class="temas" href="#sect13">IRC server</h4>
+    <h4 class="temas" href="#sect14">Eng Course</h4>
+    <h4 class="temas" href="#sect15">XAMPP stack</h4>
   </nav>
       <section id="sect1">
         <div class="tipos">
@@ -122,7 +145,26 @@
             </ul>
           </div>
           <div>
-            <img src="md/notas.png" alt="" width="100%" height="80%">
+            <div class="cornell">
+              <div class="tema">Temas / Materia / Titulo</div>
+                <div class="contenido">
+                  <div class="glosario">
+                    <ul>
+                      Glosario
+                      <li>Preguntas</li>
+                      <li>Definiciones</li>
+                      <li>Conceptos</li>
+                    </ul>
+                  </div>                  
+                  <div class="notas">
+                    Notas, parafrasis, no oraciones largas
+                  </div>
+                </div>
+              <div class="resumen">
+                Resumen
+                <p>Idea Principal</p>
+              </div>
+            </div>
           </div>
         </section>
       <section id="sect2">
@@ -2345,6 +2387,29 @@
           <p>Para evitar tener problemas de syntaxis, es recomendable tener una carpeta de Types (const = strings) en la cual podremos evitar escribir mal un mismo string en 2 sitios</p>
         </div>
       </section>
+      <section id="sect10">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Breve historia de inversion y mercado</h3>
+            <p><strong>Todo empezo en Mesopotamia...</strong></p>
+            <p>Hace el año 2250 - 2000 BC, comenzaron las leyes de intercambio y los conceptos como interes.</p>
+            <p>En Grecia, una platica entre Socrates y Critobulus, escrita por Xenofon, da indicios de los primeros contratos para managers de tierras, en el que una persona experimentada con conocimiento es encargada del manejo de las tierras</p>
+            <p>Surge otro libro: “Alegorías de la granja, de Grecia a Roma” donde se inicia a comprar tierras con problemas, para después trabajarlas y las vendían con alguien interesado (así surgen los márgenes de ganancia).
+              Nota: House flipping: Es la actividad de comprar propiedades arruinadas, se trabajan y se mejoran, para luego venderlas con un margen atractivo (lo que hoy conocemos como inversionistas de bienes raíces).
+            Poniendo especial atencion, al padre de un tal Ischomachus, como posiblemente la primer persona en practicar el FlippingHouse</p>
+          </div>
+          <div class="col-md-6">
+            <h3>Traders: Objetivos y estrategias</h3>
+            <p>El santo patrono de un inversionista es el Tiempo. Sea cual sea el instrumento de inversión, el objetivo es generar valor en el tiempo. Mediano plazo o largo plazo. No es tan importante el corto plazo.
+              Gracias al tiempo existe el interés compuesto: Valor adicional sobre el capital principal, que va creciendo con el tiempo. Interés sobre interés. </p>
+            <p><strong>Interes Compuesto:</strong></p>
+            <p>digamos que un un fondo de pension tengo un fondo de inversion de 1000 Dolares, mas 50 dolares por mes, con un interes anual del 6% e inflacion del 2%, al paso de los años tendre 19,694, a pesar de que la inversion total fue solamente de 7000 dlrs, esto se construye dado que el interes anual del 6% se aplica tanto el capital incial, mas los intereses sobre los 50dlrs mesuales</p>
+            <p><strong>Dividendos</strong></p>
+            <p>Es un ingreso pasivo de la empresa a los accionistas, generalmente de manera trimestral</p>
+
+          </div>
+        </div>
+      </section>
       <section id="sect11">
         <div class="row">
             <div class="col-md-6">
@@ -2357,6 +2422,16 @@
                 <li><strong>packaje.json -dependencies </strong>El codigo del servidor depende de las bibliotecas en -dependencies (por ejemplo express en producion)</li>
                 <li><strong>packaje.json -DevDependencies:</strong>Modulos de ayuda para el desarrollo (por ejemplo Nodemon en desarrollo)</li>
                 <li><strong>npx Nodemon</strong> es que no esta instalado en todo el sistema</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h3>Iniciar Package.json desde terminal</h3>
+              <p><strong>npm init -y</strong></p>
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
               </ul>
             </div>
         </div> 
