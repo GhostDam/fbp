@@ -44,15 +44,3 @@ function factorial(n) {
   return this.cache[n]
 }
 
-//*Service worker
-if('serviceWorker' in navigator){
-	navigator.serviceWorker.register('./sw.js')
-							.then(res => console.log('serviceWorker cargado correctamente', res))
-							.then(function(reg){
-								console.log("Se logro");
-							})
-							.catch(err => console.log('No se ha podido regsitrar el serviceWorker', err));
-
-}else{
-	console.log('No tienes acceso a los serviceWorker en tu navegador');
-}
