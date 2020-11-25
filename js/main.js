@@ -3,8 +3,7 @@ $(document).ready(function(){
   //   $(this).toggleClass('open') 
   //   $(this).next().toggleClass('visible') 
   // })
-  $("section").hide();
-  
+  $("section").hide();  
   $("h4").click(function(){
     var ref = $(this).attr("href")
     var color = $(ref).css( "background-color" );

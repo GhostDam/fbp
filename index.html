@@ -1991,7 +1991,7 @@ display: block;
       </pre></code>
       <p>Para evitar conflictos y luego crearla mediante el siguiente codigo</p>  
         <pre><code>
-    npx create-react-app
+    npx create-react-app app_name
         </pre></code>
       <p>En caso de ser un proyecto importado se requerirá nuevamente un npm instal (actualizar bibliotecas)</p>
         <small>En caso de errores con el CMD o rendimiento, se cierra el server Node en taskmgr</small>
@@ -2437,7 +2437,7 @@ display: block;
     </code></pre>
       <p>Hasta aqui, es una busqueda utilitaria, pero costosa en procesamiento, en caso de que la lista aumente,
         implicara un costo de procesamient aun mayor, esto se soluciona, u optmiza median el uso de React.useMemo()</p>
-      <strong>Mismo estado en useMemo</h2>
+      <strong>Mismo estado en useMemo</strong>
       <p>React.useMemo() recibe 3 parametros</p>
       <p><i>React.useMemo( (()=>{}), [lista, valor] )</i></p>
       <p>(elementoMemorizado), [lista, valor], si la lista o el valor cambia, se recalcula el elementoMemorizado</p>
@@ -2544,12 +2544,11 @@ display: block;
     </div>
   </section>
   <section id="sect6"> <!-- Redux -->
-    <div class='row'>
-      <div class="col-md-12">
-        <h1>Redux</h1>
+    <div class="encabezado">
+        <h3>Redux</h3>
         <p>Redux es utilizado para almacenar informacion de la aplicacion de manera centralizada, y de igual manera
           inmutable (se crearan nuevos estados en lugar de sobreescribir los existentes)</p>
-        <h2>Fases de Redux</h2>
+        <strong>Fases de Redux</strong>
         <ul>
           <li><strong>1.- Store:</strong> Almacenamiento, aqui se almacena toda la informacion/estados</li>
           <li><strong>2.- Reducers:</strong> Estados, dependiendo del componente, es la informacion que se manejará</li>
@@ -2558,229 +2557,212 @@ display: block;
         </ul>
         <p>El Componente se comunica con el Action Creator, y el Action Creator se comunica con el reducer y da la
           informacion requerida, este ultimo obtiene la información y la regresa al componente</p>
-        <h2>Requerimentos</h2>
+        <h3>Requerimentos</h3>
         <p>iniciar una app de react</p>
         <pre><code>npx create-react-app app_name</code></pre>
         <p>esto crea una app de React sin la necesidad de instalar <i>npm i -g create-react-app</i> ademas de asegurar
-          que se estara usando la ultia version de CRA</p>
-
-        <p>Para accesar a Redux se requiere la instalacion</p>
-        <pre><code>npm install redux react-redux</code></pre>
+          que se estara usando la ultima version de CRA</p>
+        <p>Para accesar a Redux se requiere la instalacion de Redux y su middleware</p>
+        <pre><code>
+    npm install redux react-redux
+    npm install redux-thunk  
+        </code></pre>
 
         <p>Actions must be plain objects. Use custom middleware for async actions.</p>
         <p>este error es porque las actions deben ser objetos planos y nosotros estamos regresando otra funcion en
           usuariosActions, esto se soluciona con un middleware redux-thunk</p>
         <p><small>i dunno wtf is middleware</small></p>
-        <pre><code>npm install redux-thunk</code></pre>
-
-      </div>
-      <div class="col-md-12">
-        <h2>CICLO BASICO DE REDUX</h2>
-        <h3>1.- Store</h3>
-        <p>Una vez instalado Redux, par accesar a las funcionalidades, se crea el <i>store</i> en el index.js de la
+        <h3>CICLO BASICO DE REDUX</h3>
+        <strong>1.- Store</strong>
+        <p>Una vez instalado Redux, para accesar a las funcionalidades, se crea el <i>store</i> en el index.js de la
           aplicacion</p>
         <pre><code>
-                                    //middleware -- redux-thunk
-              import { createStore , applyMiddleware} from 'redux'
-              import { Provider } from 'react-redux'
-              
-              import reduxThunk from 'redux-thunk'
-              
-              import reducers from './reducers'
+                          //middleware -- redux-thunk
+    import { createStore , applyMiddleware} from 'redux'
+    import { Provider } from 'react-redux'
+    
+    import reduxThunk from 'redux-thunk'
+    
+    import reducers from './reducers'
 
-              
-              
-              //createStore es una funcion que recibe 2 parametros principales, y un tercero como middleware
-              const store = createStore(
-                reducers,                     //reducers de la app
-                {},                           //estado incial de la app
-                applyMiddleware(reduxThunk)   //middleware de la app
-              )
+    
+    //createStore es una funcion que recibe 2 parametros principales, y un tercero como middleware
+    const store = createStore(
+      reducers,                     //reducers de la app
+      {},                           //estado incial de la app
+      applyMiddleware(reduxThunk)   //middleware de la app
+    )
 
-              //y aqui proveemos la store a la App
-              ReactDOM.render(
-                &lt;Provider store={store}>         //al poner App dentro del provider, le estamos 
-                  &lt;App />  
-                &lt;/Provider>,                     //dando acceso a todo el contenido de la store
-                document.getElementById('root')
-              )
+    //y aqui proveemos la store a la App
+    ReactDOM.render(
+      &lt;Provider store={store}>         //al poner App dentro del provider, le estamos 
+        &lt;App />  
+      &lt;/Provider>,                     //dando acceso a todo el contenido de la store
+      document.getElementById('root')
+    )
             </code></pre>
         <p>La estructura de carpetas, sera dentro de SRC</p>
         <ul>
           <li><strong>reducers</strong> -> index.js -> aqui se combinaran todos los reducers necesarios para la
-            aplicacion</li>
-          <p><small>dentro de reducers tambien se crea usuariosReducer.js que contendra la información de los usuarios,
-              es decir su estado inicial</small></p>
+            aplicacion, dentro de reducers tambien se crea usuariosReducer.js que contendra la información de los usuarios,
+            es decir su estado inicial</li>
           <li><strong>actions</strong> -> usuariosActions.js -> aqui se crea una accion la cual el componente va a
             llamar y la accion regresara algo</li>
-
           <li><strong>types</strong> -> usuariosTypes.js -> este servira para "normalizar" las variables enviadas de
             actions<-> reducer <-> componente</li>
-
         </ul>
-      </div>
-      <div class="col-md-12">
-        <h3>2.- Reducers</h3>
+        <strong>2.- Reducers</strong>
         <p>Combinar los reducers, en este archivo se hara un listado de los reducers utilizados (reducers/index.js)</p>
         <pre><code>
-              import { combineReducers } from 'redux' 
-              import usuariosReducer from './usuariosReducer'
-              //crear un objeto vacio es "valido" para usarse como reducer
-              export default combineReducers({
-                  usuariosReducer
-              })
-            </code></pre>
+    import { combineReducers } from 'redux' 
+    import usuariosReducer from './usuariosReducer'
+    //crear un objeto vacio es "valido" para usarse como reducer
+    export default combineReducers({
+        usuariosReducer
+    })
+        </code></pre>
         <p>reducer del Componente, que contendra la información del componente (Usuarios) (reducers/usuariosReducer.js)
         </p>
         <pre><code>
-              //se importan los types para evitar errores
-              import { TRAER_TODOS } from '../types/usuariosTypes'
-              
-              //se declara un estado inicial para el componente
-              const INITIAL_STATE = {
-                usuarios:[],            //los reducers deben manejar
-                cargando : false,       //los 3 estados de una peticion
-                error: ""               //cargando, datos y error
+    //se importan los types para evitar errores
+    import { TRAER_TODOS } from '../types/usuariosTypes'
+    
+    //se declara un estado inicial para el componente
+    const INITIAL_STATE = {
+      usuarios:[],            //los reducers deben manejar
+      cargando : false,       //los 3 estados de una peticion
+      error: ""               //cargando, datos y error
+    }
+
+    //se manda por defecto el estado inicial y action
+    export default (state = INITIAL_STATE, action) =>{
+
+
+      //switch es setup por default y action
+      //action se evaluara y sin datos por defecto se retorna state
+      switch (action.type){
+        case TRAER_TODOS:
+          //recibe la accion, y recibe todo el estado(...) cambiando solo usuarios por el payload del action
+          return {
+              ...state, 
+              usuarios: action.payload,
+              cargando: false 
               }
+        case CARGANDO:
+            return {...state, cargando: true}
 
-              //se manda por defecto el estado inicial y action
-              export default (state = INITIAL_STATE, action) =>{
+        case ERROR:
+            return {...state, error: action.payload, cargando: false}
+                    return state;
 
-
-                //switch es setup por default y action
-                //action se evaluara y sin datos por defecto se retorna state
-                switch (action.type){
-                  case TRAER_TODOS:
-                    //recibe la accion, y recibe todo el estado(...) cambiando solo usuarios por el payload del action
-                    return {
-                        ...state, 
-                        usuarios: action.payload,
-                        cargando: false 
-                        }
-                  case CARGANDO:
-                      return {...state, cargando: true}
-          
-                  case ERROR:
-                      return {...state, error: action.payload, cargando: false}
-                              return state;
-
-                    default: return state
-                  }
-              }
+          default: return state
+        }
+    }
             </code></pre>
-      </div>
-      <div class="col-md-12">
-        <h3>3.- Action Creators</h3>
+        <strong>3.- Action Creators</strong>
         <p>Aqui se crean las funciones que llamará el componente</p>
         <p><small>el dispatch es el que va a disparar la llamada y va a contactar al reducer para que haga el cambio de
             estado</small></p>
         <pre><code>
-              //esto tendra 2 funciones, la segunda funcion tendra
-              //como parametro el dispatch
-              import axios from 'axios'
-              import { TRAER_TODOS, CARGANDO, ERROR} from '../types/usuariosTypes //variable traida de types para evitar
-                                                                  //error de syntaxis
+    //esto tendra 2 funciones, la segunda funcion tendra
+    //como parametro el dispatch
+    import axios from 'axios'
+    import { TRAER_TODOS, CARGANDO, ERROR} from '../types/usuariosTypes //variable traida de types para evitar
+                                                        //error de syntaxis
 
 
-              export const traerTodos = () => async (dispatch) =>{
-                //primero regresa un estado de carga
-                  dispatch({
-                      type: CARGANDO
-                  })
+    export const traerTodos = () => async (dispatch) =>{
+      //primero regresa un estado de carga
+        dispatch({
+            type: CARGANDO
+        })
 
-                  //intenta hacer el fetch de datos
-                  try {
-                      const respuesta = await Axios.get('url_to_fetch');
-                      dispatch({
-                          type: TRAER_TODOS,               //case
-                          payload: respuesta.data          //return  
-                      })
-                  
-                  } catch (error) {
-                      console.log('error', error.message)
-                      dispatch({
-                          type: ERROR,
-                          payload:  'Alguin salio mal'+ error.message
-                      })
-                  }
-              }
+        //intenta hacer el fetch de datos
+        try {
+            const respuesta = await Axios.get('url_to_fetch');
+            dispatch({
+                type: TRAER_TODOS,               //case
+                payload: respuesta.data          //return  
+            })
+        
+        } catch (error) {
+            console.log('error', error.message)
+            dispatch({
+                type: ERROR,
+                payload:  'Alguin salio mal'+ error.message
+            })
+        }
+    }
             </code></pre>
-      </div>
-      <div class="col-md-12">
-        <h3>4.- Componentes</h3>
+        <strong>4.- Componentes</strong>
         <p>Esta es la manera en que los componentes se comunicaran con Redux</p>
         <pre><code>
-              import React from 'react' 
-              import axios from 'axios'
+    import React from 'react' 
+    import axios from 'axios'
 
-              //conexion 
-              import { connect } from 'react-redux
- 
-              //actions                   use/comp/  
-              import * as usuariosActions from '../../actions/usuariosActions'
+    //conexion 
+    import { connect } from 'react-redux
 
-              class Component extends React.Component{
-                //Constructor(){        //se puede prescindir del Constructor ya que
-                //  super()             //el estado inicial se definio en usuariosReducer.js
-                //  this.state = {
-                //    usuarios : []
-                //  }
-                //}
+    //actions                   use/comp/  
+    import * as usuariosActions from '../../actions/usuariosActions'
 
-                ComponentDidMount(){
-                  this.props.traerTodos()     //esta funcion se obtiene como props
-                }                             //y provine de usuariosActions.js         
-                //hasta aqui regresa error porque las actions deben ser objetos planos
-                //y nosotros estamos regresando otra funcion, esto se soluciona con un middleware 
-                //redux-thunk
+    class Component extends React.Component{
+      //Constructor(){        //se puede prescindir del Constructor ya que
+      //  super()             //el estado inicial se definio en usuariosReducer.js
+      //  this.state = {
+      //    usuarios : []
+      //  }
+      //}
+
+      ComponentDidMount(){
+        this.props.traerTodos()     //esta funcion se obtiene como props
+      }                             //y provine de usuariosActions.js         
+      //hasta aqui regresa error porque las actions deben ser objetos planos
+      //y nosotros estamos regresando otra funcion, esto se soluciona con un middleware 
+      //redux-thunk
 
 
-                componentDidMount(){
-                  this.props.TraerTodos()     //llama al action
-                }
-              
-                ponerContenido = () =>{
-                  if(this.props.cargando){
-                    return &lt;Loading />
-                  }
-                  if(this.props.error){
-                    return (&lt;Error  mensaje={this.props.error} />)
-                  }
-                  return &lt;Tabla />
-                }
-              
+      componentDidMount(){
+        this.props.TraerTodos()     //llama al action
+      }
+    
+      ponerContenido = () =>{
+        if(this.props.cargando){
+          return &lt;Loading />
+        }
+        if(this.props.error){
+          return (&lt;Error  mensaje={this.props.error} />)
+        }
+        return &lt;Tabla />
+      }
+    
 
-                render(){
-                  return ({this.ponerContenido})
-                }
-              }
+      render(){
+        return ({this.ponerContenido})
+      }
+    }
 
-              //la conexion se hace antes de exportar el componente
-              //el primer parametro que debe recibir connect es
-              //todos los reducers que el provider va a entregar al usuario
-              // y el segundo seran las acciones
-              const mapStateToProps = (reducers) =>{
-                return reducers.usuariosReducer
-              }
+    //la conexion se hace antes de exportar el componente
+    //el primer parametro que debe recibir connect es
+    //todos los reducers que el provider va a entregar al usuario
+    // y el segundo seran las acciones
+    const mapStateToProps = (reducers) =>{
+      return reducers.usuariosReducer
+    }
 
-              export default connect(mapStateToProps, usuariosActions)(Component)
-              //esto pasara la info del state de usuariosReducer al componente 
-              //Component como props
+    export default connect(mapStateToProps, usuariosActions)(Component)
+    //esto pasara la info del state de usuariosReducer al componente 
+    //Component como props
             </code></pre>
-      </div>
-
-    </div>
-    <div class="col-md-12">
-      <h3>Consejos</h3>
-      <p>Para evitar tener problemas de syntaxis, es recomendable tener una carpeta de Types (const = strings) en la
-        cual podremos evitar escribir mal un mismo string en 2 sitios</p>
+    <strong>Consejos</strong>
+    <p>Para evitar tener problemas de syntaxis, es recomendable tener una carpeta de Types (const = strings) en la
+              cual podremos evitar escribir mal un mismo string en 2 sitios</p>
     </div>
   </section>
   <section id="sect10"> <!-- Trading -->
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Breve historia de inversion y mercado</h3>
-        <p><strong>Todo empezo en Mesopotamia...</strong></p>
+    <div class="encabezado">
+      <h3>historia de inversion y mercado</h3>
+        <strong>Todo empezo en Mesopotamia...</strong>
         <p>Hace el año 2250 - 2000 BC, comenzaron las leyes de intercambio y los conceptos como interes.</p>
         <p>En Grecia, una platica entre Socrates y Critobulus, escrita por Xenofon, da indicios de los primeros
           contratos para managers de tierras, en el que una persona experimentada con conocimiento es encargada del
@@ -2791,8 +2773,6 @@ display: block;
           venderlas con un margen atractivo (lo que hoy conocemos como inversionistas de bienes raíces).
           Poniendo especial atencion, al padre de un tal Ischomachus, como posiblemente la primer persona en practicar
           el FlippingHouse</p>
-      </div>
-      <div class="col-md-6">
         <h3>Traders: Objetivos y estrategias</h3>
         <p>El santo patrono de un inversionista es el Tiempo. Sea cual sea el instrumento de inversión, el objetivo es
           generar valor en el tiempo. Mediano plazo o largo plazo. No es tan importante el corto plazo.
@@ -2805,14 +2785,11 @@ display: block;
           capital incial, mas los intereses sobre los 50dlrs mesuales</p>
         <p><strong>Dividendos</strong></p>
         <p>Es un ingreso pasivo de la empresa a los accionistas, generalmente de manera trimestral</p>
-
-      </div>
     </div>
   </section>
   <section id="sect11"> <!-- NodeJS -->
-    <div class="row">
-      <div class="col-md-6">
-        <h3>comandos y estructura package json</h3>
+    <div class="encabezado">
+        <h3>Comandos y estructura package json</h3>
         <p>Para checar la version instalada de Node se utiliza node -v</p>
         <ul>
           <li><strong>npx create-react-app name_app</strong> crea la aplicacion localmente sin la necesidad de intalar
@@ -2827,8 +2804,6 @@ display: block;
             desarrollo)</li>
           <li><strong>npx Nodemon</strong> es que no esta instalado en todo el sistema</li>
         </ul>
-      </div>
-      <div class="col-md-6">
         <h3>Iniciar Package.json desde terminal</h3>
         <p><strong>npm init -y</strong></p>
         <ul>
@@ -2837,13 +2812,11 @@ display: block;
           <li></li>
           <li></li>
         </ul>
-      </div>
     </div>
   </section>
   <section id="sect13"> <!-- IRC Server -->
-    <h1>IRC Server</h1>
-    <div class="row">
-      <div class="col-md-12">
+    <div class="encabezado">
+      <h3>IRC Server</h3>
         <p><strong>Como instalar y configurar UnrealIRCD en una maquina virtual</strong></p>
         <p>Para montar nuestro servidor de chat en una maquina virtual, requeriremos varios componentes escenciales</p>
         <ul>
@@ -3062,15 +3035,11 @@ display: block;
           #custom aliases
           alias ircstart='~/unrealircd/unrealircd start && ~/services/bin/services'
           alias ircstop='~/unrealircd/unrealircd stop'</p>
-      </div>
     </div>
   </section>
   <section id="sect14"> <!-- English Course -->
-    <div class="row">
-      <div class="col-md-12">
+    <div class="encabezado">
         <h3>Glosario basico </h3>
-      </div>
-      <div class="col-md-6">
         <p>Analysis: Detailed examination of something</p>
         <p>Bachelor degree: Is an undergraduate degree awarded by universities</p>
         <p>Backend developer: A programmer who creates the backend of a website, software or information system</p>
@@ -3114,8 +3083,6 @@ display: block;
         <p>Leader: A person who commands a group</p>
         <p>Logic: Reasoning conducted according to strict parameters of validity</p>
         <p>Marketing professional: A person who is in charge of running marketing campaigns</p>
-      </div>
-      <div class="col-md-6">
         <p>Master’s degree: A degree awarded by university upon the completion of a course of study demonstrating master
           knowledge of a field</p>
         <p>Portfolio: A folder which contains samples of work, like drawings, projects and outcomes</p>
@@ -3158,8 +3125,6 @@ display: block;
         <p>Webinars: A seminar conducted over the internet</p>
         <p>Workflows: A sequence of processes to complete a specific task</p>
         <p>Workplace: The physical place in which a person performs his or her work</p>
-      </div>
-      <div class="col-md-6">
         <ul>
           <li><strong>programmer</strong>Computer, science</li>
           <li><strong>sales, communications</strong>marketing professional - grow team</li>
@@ -3167,19 +3132,13 @@ display: block;
           <li><strong>business and social relations</strong>Entrepreneur, Start-up</li>
           <li><strong>projects</strong>product areas, manager</li>
         </ul>
-      </div>
-      <div class="col-md-6">
         <ul>
           <li><strong>What field do you like?</strong>i´d like to programming </li>
           <li><strong>What is your position in this moment?</strong>at this moment i´m a scholar (or fellow, google
             translate didn´t help too much) at the IMJUVE development area </li>
           <li><strong>What do you want to be in the future?</strong>i would love to be a videogames designer </li>
         </ul>
-      </div>
-      <div class='col-md-12'>
-        <h1 class="text-center">hot to create my professional profile</h1>
-      </div>
-      <div class='col-md-6'>
+        <h3>hot to create my professional profile</h3>
         <ul>
           <li><strong>i can</strong></li>
           <li><strong>i like</strong></li>
@@ -3203,9 +3162,6 @@ display: block;
         <p><strong>Telephone number: </strong> 55 22 55 44 33</p>
         <p><strong>Facebook: </strong> facebook/Lrs</p>
         <p><strong>LinkedIn: </strong> Luis Ramirez</p>
-        <h3>education....</h3>
-      </div>
-      <div class='col-md-6'>
         <h3>Software</h3>
         <p><strong>VS Code</strong></p>
         <p><strong>Xammp</strong></p>
@@ -3232,26 +3188,19 @@ display: block;
         </ul>
         <h3>Then realizaed proyects</h3>
         <a href="https://reactivejs.netlify.com" target="_blank">Check this</a>
-      </div>
-      <div class="col-md-12">
-        <h3 class="text-center">Job Interview</h3>
-      </div>
-      <div class="col-md-6">
+        <h3>Job Interview</h3>
         <p>Strengths</p>
         <ul>
           <li>goal Goal-oriented</li>
           <li>Curious</li>
           <li>Organized</li>
         </ul>
-      </div>
-      <div class="col-md-6">
         <p>Weaknesses</p>
         <ul>
           <li>not good at all working under presure</li>
           <li>unpunctual (working on it)</li>
           <li>too many tasks</li>
         </ul>
-      </div>
     </div>
   </section>
   <section id="sect15"> <!-- Xammp Stack -->
