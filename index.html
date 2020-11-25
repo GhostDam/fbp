@@ -19,6 +19,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="md/icons//favicon-16x16.png">
   <!-- manifest -->
   <link rel="manifest" href="manifest.json">
+
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="md/icons/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
@@ -859,11 +860,9 @@ display: block;
 </code></pre>
 </div>
   </section>
-  <section id='sect3'>
-    <!-- Git & GitHub -->
-    <div class='row'>
-      <div class='col-md-6'>
-        <h3>Que es Git?</h3>
+  <section id='sect3'>    <!-- Git & GitHub -->
+    <div class='encabezado'>
+      <h3>¿Que es Git?</h3>
         <p>Git es un sistema de control de versiones que nos permite llevar un control de cambios y desarrollo de
           nuestros proyecto,
           Un sistema de control de versiones como Git nos ayuda a guardar el historial de cambios y crecimiento de los
@@ -881,9 +880,9 @@ display: block;
         <p>Recuerda que GitBash usa la ruta /c para dirigirse a C:\ (o /d para dirigirse a D:\) en Windows. Por lo
           tanto, la ruta del usuario con el que estás trabajando es /c/Users/Nombre de tu usuario</p>
         <p>al dar commit sin -m (texto azul) el texto (amarillo) sobre # es el msn (vim)</p>
-      </div>
-      <div class="col-md-6">
-        <strong>Comandos básicos en la terminal:</strong>
+    </div>
+    <div class="encabezado">
+        <h3>Comandos básicos en la terminal:</h3>
         <ul>
           <li><strong>Windows</strong></li>
           <li>dir: Muetra el listado de archivos de la carpeta</li>
@@ -917,9 +916,8 @@ display: block;
         </ul>
         <p>*<small>Recuerda que podemos descubrir todos los argumentos de un comando con el argumento --help (por
             ejemplo, cat --help).</small></p>
-      </div>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Configuraciones de Git</h3>
       <ul>
         <li><strong>git //command// --help</strong> manual para comando ingresado</li>
@@ -931,7 +929,7 @@ display: block;
           que se entrara como <strong>git stats</strong></li>
       </ul>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>¿Qué es staging, repositorios y cuál es el ciclo básico de trabajo en GitHub?</h3>
       <p>Este comando se encargará de dos cosas: primero, crear una carpeta .git donde se guardará toda la base de datos
         con cambios atómicos de nuestro proyecto; y segundo, crear un área en la memoria RAM, que conocemos como
@@ -958,7 +956,7 @@ display: block;
           guardados en el área de Staging (en realidad, todo sigue funcionando igual pero es un poco divertido).</li>
       </ul>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Comandos para mover archivos entre los estados de Git:</h3>
       <ul>
         <li><strong>gitk</strong> Inicia la interfaz visual</li>
@@ -1074,10 +1072,9 @@ display: block;
         </li>
 
       </ul>
-
-
     </div>
-    <div>
+
+    <div class="encabezado">
       <h3>Cambios y Retornos(12)</h3>
       <p>El comando git checkout + ID del commit nos permite viajar en el tiempo. Podemos volver a cualquier versión
         anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y
@@ -1096,7 +1093,7 @@ display: block;
           en el reset "git reset -commit(hjka4371h)-"</li>
       </ul>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Importacion de repositorios de un servidor remoto</h3>
       <p>Estos servidores remotos pueden estar alojados en GitHub, GitLab, BitBucket, entre otros. Lo que van a hacer es
         guardar el mismo repositorio que tienes en tu computadora y darnos una URL con la que todos podremos acceder a
@@ -1113,7 +1110,7 @@ display: block;
         <li><strong>git pull</strong> Básicamente, git fetch y git merge al mismo tiempo.</li>
       </ul>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Creacion de Ramas</h3>
       <ul>
         <li><strong>git branch css</strong> Creacion de la rama con nombre css (se crea mas no se mueve a)</li>
@@ -1153,14 +1150,14 @@ display: block;
 
       </p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Visualizar</h3>
       <p>Master-----C1(index sin css)-----------C2(h3, ft, small)----------------CS(Merge)</p>
 
       <p>Branch-----S1(primer css en css)-----------S2(add P)--(al dar merge se "finaliza" esta rama y se une al Master)
       </p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>La creacion de llaves</h3>
       <p>La creacion de llaves ssh parece ser ajena al entorno de Git, pero fines relacionados con, el comando para
         hacer creacion de esta es, estando en el home <strong>ssh-keygen -t rsa -b 4096 -C "micorreo"</strong>, pedira
@@ -1168,7 +1165,7 @@ display: block;
       <p>para evaluar que el servicio de llaves esta corriendo se ejecuta <strong>eval $(ss-agent -s)</strong> y para
         agregar la ruta al sistema es <strong>ssh-add "ruta/.ssh/id_rsa</strong>, no la que termine en .pub</p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Adicion de colaboradores</h3>
       <p>para agrgar colaboradores, se dirijie a settings, collaborator, y agrega (por correo o username, para el
         correo, este debe ser publico)</p>
@@ -1197,7 +1194,7 @@ display: block;
         <li><strong>git pull upstream master</strong> pull del upstream a nuestra rama master</li>
       </ul>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>git ignore</h3>
       <p>Para ignorar arhivos, debe existir un archivo en la raiz del proyecto llamado .gitignore y esto funcionara asi
       </p>
@@ -1207,64 +1204,58 @@ display: block;
         <li><strong>*.jpg</strong>ignorará todos los archivos jpg</li>
       </ul>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>github pages</h3>
       <p>sencillamente ingresar a usuario.github.io/repositorio, y en el repositorio enmarcar la rama a mostrar</p>
       <p>para que cargue en la raiz usuario.github.io, el repositorio tiene que tener el mismo nombre usuario.github.io
       </p>
     </div>
   </section>
-  <section id="sect4">
-    <!-- JavaScript -->
-    <div class="third">
-      <div class="elem">
+  <section id="sect4"> <!-- JavaScript -->
+    <div class="encabezado">
         <h3>Definicion de variables</h3>
         <p>Una variable es un espacio en memoria que te permite almacenar información, y esta puede ser de varios tipos
           y contener tipos distintos de información</p>
         <p>los tipos pudeden ser <i>var, const y let</i></p>
-        <pre>
-                <code>
-                  var string = "texto plano"
-                  var number = 22
-                  var bool = true
-                  var object = {key: "valor"}
-                  var array = [1, 2 ,3 ]
-                </code></pre>
-      </div>
-      <div class="elem">
-        <h3>definición de funciones</h3>
+
+        <pre><code>
+    var string = "texto plano"
+    var number = 22
+    var bool = true
+    var object = {key: "valor"}
+    var array = [1, 2 ,3 ]
+        </code></pre>
+
+        <strong>definición de funciones</strong>
         <p>Una funcion es un conjunto de "instrucciones" escritas, que se llamaran al momento de ejecutar la funcion</p>
         <p>se crea una funcion que recibira un parametro, y el que se hara con ese parametro</p>
         <pre><code>
-                function nombreFuncion(parametro) {
-                  alert(parametro)
-                }
-              </code></pre>
-      </div>
-      <div class="elem">
-        <h3>Ejecucion de funciones</h3>
+    function nombreFuncion(parametro) {
+      alert(parametro)
+    }
+        </code></pre>
+        <strong>Ejecucion de funciones</strong>
         <p>se llama la funcion con una actividad establecida, y le aplica el parametro</p>
         <pre><code>
-                nombreFuncion(otronombre)
-              </code></pre>
+    nombreFuncion(otronombre)
+        </code></pre>
         <p>JavaScript es un lenguaje debilmente tipado, es decir que no espera que todo este definido, podemos no pasar
           parametros e igual intentara ejecutarse, es un lenguaje interpretado, tratara de leer y ejecutar el programa a
           medida que se lo vamos indicando</p>
-      </div>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Alcance de funciones</h3>
       <pre><code>
-            var nombre = 'nombre'
+    var nombre = 'nombre'
 
-            funcion setMayus(){
-              nombre = nombre.toUppercase()
-              console.log(nombre)
-            }
+    funcion setMayus(){
+      nombre = nombre.toUppercase()
+      console.log(nombre)
+    }
 
-            setMayus()
+    setMayus()
 
-          </code></pre>
+      </code></pre>
       <p>En la funcion de arriba, la funcion puede acceder a <i>nombre</i> sin haberla pasado por parametros, porque la
         variable esta escrita fuera del cuerpo de una funcion, lo que se traduce a que es una variable global, lo que
         tambien significa que esta asignada al objeto global, es decir el entorno en el que se esta ejecutando JS
@@ -1274,209 +1265,203 @@ display: block;
         ejecutarlo igua, ya que es un lenguaje interpretado, es decir que ira leyendo ejecuntando a medidad que le vamos
         diciendo que ejeutar, sin fijarse obligacion o tipo de variables</p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>objetos</h3>
       <p>un objeto es una relacion clave - valor</p>
       <pre><code>
-            var objeto = {
-              llave : "valor",
-              llave2: "valor2"
-            }
+    var objeto = {
+          llave : "valor",
+          llave2: "valor2"
+          }
 
-           console.log(objeto.llave)  //"valor" 
-           console.log({llave})       //"valor" 
+    console.log(objeto.llave)  //"valor" 
+    console.log({llave})       //"valor" 
 
-          function darObjeto(objeto){
-            console.log(objeto.llave)
-          }  
-
-          </code></pre>
+    function darObjeto(objeto){
+      console.log(objeto.llave)
+    }
+      </code></pre>
       <p>y se puede acceder a ellos mediante un punto, objeto.llave = "valor", o bien mediante desestructuracion </p>
 
       <pre><code>
-          var persona = {
-            nombre: "luis",
-            edad: 25
-          }          
-          function setAge( persona ){
-            var {nombre, edad} = persona
-            console.log(`me llamo ${nombre} y tengo ${edad}`)
-          }
-          setAge(persona)
+    var persona = {
+      nombre: "luis",
+      edad: 25
+    }          
+
+    function setAge( persona ){
+      var {nombre, edad} = persona
+      console.log(`me llamo ${nombre} y tengo ${edad}`)
+    }
+
+    setAge(persona)
         </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Objetos como parametros y retornar nuevo objeto</h3>
       <p>cuando se pasa un objeto como parametro, este se modificara fuera de la funcion, para evitar este
         comportamiento se puede regresar un objeto nuevo en vez de afectar al ya establecido</p>
       <pre><code>
-            var luis = {nombre : "luis", edad: 24}
+    var luis = {nombre : "luis", edad: 24}
 
-            function aumentarEdad(persona){
-                persona.edad += 1
-            } 
-            //esto afecta al objeto global, volviendo a la persona un año mas grande
-            //pero sin regresar nada como tal
+    function aumentarEdad(persona){
+        persona.edad += 1
+    } 
+    //esto afecta al objeto global, volviendo a la persona un año mas grande
+    //pero sin regresar nada como tal
 
-            function aumentarEdad(persona){
-              return {
-                ...persona             //... implica que recibira todo lo que contenia persona
-                edad: persona.edad +1
-              }
-            } 
-            //esto regresara una nueva persona de un año mayor, 
-            //diferente a la persona del primer caso
-            //y esto se puede guardar en una nueva variable
+    function aumentarEdad(persona){
+      return {
+        ...persona             //... implica que recibira todo lo que contenia persona
+        edad: persona.edad +1
+      }
+    } 
+    //esto regresara una nueva persona de un año mayor, 
+    //diferente a la persona del primer caso
+    //y esto se puede guardar en una nueva variable
 
-            var personaMayor = aumentarEdad(persona)
-          </code></pre>
+    var personaMayor = aumentarEdad(persona)
+      </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>comparacion y asignacion de valores de variables</h3>
       <pre><code>
-            var x = 4
-            var y = "4"
-            x == y = true
-           
-            //esto sucede porque estamos usando un "==" para la comparacion, es decir estamos comparando su valor, 
-            //mas no el tipo de valor que estan guardando
+    var x = 4
+    var y = "4"
+    x == y = true
+      </code></pre>
+    <p>esto sucede porque estamos usando un "==" para la comparacion, es decir estamos comparando su valor, 
+    mas no el tipo de valor que estan guardando, pero si se hiciese x === y daria false porque uno es string y el otro es un numero.</p>
 
-            //pero si se hiciese x === y daria false porque uno es string y el otro es un numero
+    <pre><code>
+    var persona = {nombre: "luis", edad: 24}
+    var Otrapersona = {nombre: "luis", edad: 24}
 
-            var persona = {nombre: "luis", edad: 24}
-            var Otrapersona = {nombre: "luis", edad: 24}
+    //cuando se hace una comparacion "persona==Otrapersona" en objetos, resulta falso, porque pregunta por la referencia 
+    //(espacio en memoria ram)
+    //si queremos que esto como tal sea true, la asignacion deberia de ser
 
-            //cuando se hace una comparacion "persona==Otrapersona" en objetos, resulta falso, porque pregunta por la referencia 
-            //(espacio en memoria ram)
-            //si queremos que esto como tal sea true, la asignacion deberia de ser
+    var persona = {nombre: "luis", edad: 24}
+    var Otrapersona = persona
 
-            var persona = {nombre: "luis", edad: 24}
-            var Otrapersona = persona
-
-            //esto porque ambas variables apuntan al mismo espacio en memoria ram (misma referencia
-          </code></pre>
+    //esto porque ambas variables apuntan al mismo espacio en memoria ram (misma referencia
+      </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Funciones que retornan valores</h3>
       <pre><code>
+    function cumpleMayoria(persona){
+      return persona.edad>18 //regresara true o false para usarse
+    }                        //en otra funcion
 
-            function cumpleMayoria(persona){
-              return persona.edad>18 //regresara true o false para usarse
-            }                        //en otra funcion
-
-            functon esMayorDeEdad(persona){
-              if(cumpleMayoria(persona)){ //hace la pregunta a otra funcion
-                console.log("es mayor de edad")
-              }else{
-                console.log("es menor de edad")
-              }
-            }
-
-          </code></pre>
+    functon esMayorDeEdad(persona){
+      if(cumpleMayoria(persona)){ //hace la pregunta a otra funcion
+        console.log("es mayor de edad")
+      }else{
+        console.log("es menor de edad")
+      }
+    }
+      </code></pre>
       <p>la palabra <i>return</i> implica que regresara un valor disponnible para otras funciones</p>
     </div>
-    <div class="row">
-      <div class="col-md-12">
+    <div class="encabezado">
         <h3>Arrow Functions</h3>
         <p>Una arrow function permite asignar una funcion a una variable, pasa a ser una funcion anonima, pero vinculada
           a una variable que sí posee un nombre</p>
-      </div>
-      <div class="col-md-4">
-        <h3>Estructura usual</h3>
-        <pre><code>var funcion = function nombreFuncion(parametro){
-              return persona.edad > 22
-              }
-            </code></pre>
-      </div>
-      <div class="col-md-4">
-        <h3>Arrow</h3>
-        <pre><code>const funcion = (persona) => {
-                  return persona.edad > 22
-              }
-            </code></pre>
-      </div>
-      <div class="col-md-4">
-        <h3>Arrow simplificada</h3>
+        <strong>Estructura usual</strong>
+        <pre><code>
+    var funcion = function nombreFuncion(parametro){
+        return persona.edad > 22
+        }
+        </code></pre>
+        <strong>Arrow</strong>
+        <pre><code>
+    const funcion = (persona) => {
+            return persona.edad > 22
+        }
+        </code></pre>
+      <strong>Arrow simplificada</strong>
         <p>Si es solo un parametro, se omiten los () y si es return, se omite return y {}</p>
-        <pre><code>const funcion = persona => persona.edad > 22</code></pre>
-      </div>
+        <pre><code>
+    const funcion = persona => persona.edad > 22
+        </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Estructura For</h3>
       <pre><code>
-            // expresion inicial; condicion; incremento 
-            var yo = {
-              nombre: "luis",
-              dinero: 1000 
-            }
+    var yo = {
+      nombre: "luis",
+      dinero: 1000 
+    }
 
-            console.log(`${yo.nombre} tiene ${yo.dinero} pesos al incio`)
+    console.log(`${yo.nombre} tiene ${yo.dinero} pesos al incio`)
 
-            const ingresos = (persona) => {persona.dinero += 200 }
-            const egresos = (persona) => {persona.dinero -= 200 }
+    const ingresos = (persona) => {persona.dinero += 200 }
+    const egresos = (persona) => {persona.dinero -= 200 }
 
-            for (i=1; i&lt;10; i++){
-              economia =  Math.random()
-              if (economia &lt; 0.25 ) {
-                //ingresos
-                ingresos(yo)
-              } else if (economia &lt; 0.50) {
-                //egresos
-                egresos(yo)
-              }
-            }
+    // for(expresion inicial; condicion; incremento)
+    for (i=1; i&lt;10; i++){
+      economia =  Math.random()
+      if (economia &lt; 0.25 ) {
+        //ingresos
+        ingresos(yo)
+      } else if (economia &lt; 0.50) {
+        //egresos
+        egresos(yo)
+      }
+    }
 
-            console.log(`y ${yo.nombre} termino con ${yo.dinero} pesos al final`)
+    console.log(`y ${yo.nombre} termino con ${yo.dinero} pesos al final`)
 
-          //si la condicional esta en elementos de un Array
-          for(var i in response){
-            ....
-          }
+  //si la condicional esta en elementos de un Array
+  for(var i in response){
+    ....
+  }
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>While</h3>
       <p>El codigo se ejecutara y dira cuanto tiempo paso hasta que la persona llego a su meta</p>
       <pre><code>
-          const incremento = 5000
-          const ahorra = persona =>   persona.dinero += incremento
-          const gasta = persona =>   persona.dinero -= incremento
-          const paga = () => Math.random() &lt; .25
-          const cobra = () => Math.random() &lt; .50
-          const meta = 400000
-          var dias = 0
+    const incremento = 5000
+    const ahorra = persona =>   persona.dinero += incremento
+    const gasta = persona =>   persona.dinero -= incremento
+    const paga = () => Math.random() &lt; .25
+    const cobra = () => Math.random() &lt; .50
+    const meta = 400000
+    var dias = 0
 
-          while (persona.dinero &lt; meta) {
-            //debugger ejemplo del debugger
-            if (cobra()) {
-              ahorra(persona)
-            }
-            if (paga()) {
-              gasta(persona)
-            }
-            dias += 1
-          }
-          console.log(`pasaron ${dias} quincenas hasta que ${persona.nombre} compro el terreno`)
-          </code></pre>
+    while (persona.dinero &lt; meta) {
+      //debugger ejemplo del debugger
+      if (cobra()) {
+        ahorra(persona)
+      }
+      if (paga()) {
+        gasta(persona)
+      }
+      dias += 1
+    }
+    console.log(`pasaron ${dias} quincenas hasta que ${persona.nombre} compro el terreno`)
+      </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Do While</h3>
       <pre><code>
-            var contador = 0
-            const lluvia = () => Math.Random() > 25
+    var contador = 0
+    const lluvia = () => Math.Random() > 25
 
-            do{
-              contador++
-            }while(!lluvia)
+    do{
+      contador++
+    }while(!lluvia)
 
-            //la logica de esto es
-            //do{
-            //  incrementa el contador
-            //}mientras(no llueva)
-            console.log(`se checo ${contador} veces si llovia`)
-          </code></pre>
+    //la logica de esto es
+    //do{
+    //  incrementa el contador
+    //}mientras(no llueva)
+    console.log(`se checo ${contador} veces si llovia`)
+      </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Debugger</h3>
       <p>El debugger es una palabra reservada que pausara la ejecucion del codigo cada vez que esta palabra sea
         encontrada en el mismo</p>
@@ -1492,620 +1477,680 @@ display: block;
       <p>Dar clicks en los numeros de linea de codigo funcionara como breackpoints o debuggers</p>
       <p>hacer <i>hover</i> sobre las variables (ejemplo con this.var) apuntara a su valor o contexto</p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>switch</h3>
       <pre><code>
-            var signoZodiacal = prompt("cual es tu signo")
-            switch (signoZodiacal){
-             case 'tauro':
-                alert('para tauro....')
-                break
-             case 'virgo':
-                alert('para virgo....')
-                break
-              default:
-                alert('creo que no respondite...')
-                break
-            }
-          </code></pre>
+    var signoZodiacal = prompt("cual es tu signo")
+
+    switch (signoZodiacal){
+      case 'tauro':
+        alert('para tauro....')
+        break
+      case 'virgo':
+        alert('para virgo....')
+        break
+      default:
+        alert('creo que no respondite...')
+        break
+    }
+      </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Arrays</h3>
       <pre><code>
-            var bryan = {
-              nombre: "bryan",
-              apellido: "reyes",
-              edad: 23,
-              peso: 70
-            };
-            var angus = {
-              nombre: "angus",
-              apellido: "Valen",
-              edad: 20,
-              peso: 60
-            };
+    var bryan = {
+      nombre: "bryan",
+      apellido: "reyes",
+      edad: 23,
+      peso: 70
+    };
+    var angus = {
+      nombre: "angus",
+      apellido: "Valen",
+      edad: 20,
+      peso: 60
+    };
 
-            var people = [bryan, angus]
+    var people = [bryan, angus]
 
-            console.log(people[0]) // {...}
-            console.log(people[0].nombre) // "bryan"
+    console.log(people[0]) // {...}
+    console.log(people[0].nombre) // "bryan"
 
-            people[0].nombre === people[0]['nombre']
-          
-          </code></pre>
+    people[0].nombre === people[0]['nombre']          
+    </code></pre>
       <p>para declarar un array se utilizan corchetes <i>[]</i> y es una coleccion de objetos, y se recorre en los
         arrays por medio de la estructura <i>for</i></p>
       <p>array.lenght indica el conteo de elementos en el array</p>
       <p>Tambien para filtrar elementos en un array se utiliza la palabra <i>filter</i></p>
       <pre><code>
-          //var estanGordos = people.filter(condicion)
+    //var estanGordos = people.filter(condicion)
 
-          const condicion = (people) => people.peso > 60
-          var estanGordos = people.filter(condicion)
-          
-          </code></pre>
+    const condicion = (people) => people.peso > 60
+    var estanGordos = people.filter(condicion)
+      </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Array Map</h3>
       <p>array.map() devuelve un nuevo array con elementos modificados del array original</p>
       <pre><code>            
-            //nuevo array de = people.map(condicion)
-            //condicion      //recibe el array
-            const setMayus = persona => ({
-                //lo desglosa
-                ...persona,
-                //modifica o pisa el atributo nombre
-                nombre: persona.nombre.toUpperCase()
-                //y retorna un nuevo array con datos modificados
-            })
+    //nuevo array de = people.map(condicion)
+    //condicion      //recibe el array
+    const setMayus = persona => ({
+        //lo desglosa
+        ...persona,
+        //modifica o pisa el atributo nombre
+        nombre: persona.nombre.toUpperCase()
+        //y retorna un nuevo array con datos modificados
+    })
 
-            //manera original, usar parentesis evita doble return
-            // const setMayus = persona => {
-            //   return{
-            //     ...persona,
-            //     nombre: persona.nombre.toUpperCase()
-            //   }
-            // }
+    //manera original, usar parentesis evita doble return
+    // const setMayus = persona => {
+    //   return{
+    //     ...persona,
+    //     nombre: persona.nombre.toUpperCase()
+    //   }
+    // }
 
-            //modificacion de array existente
-            const setMayus = persona => {
-                persona.nombre = persona.nombre.toUpperCase()
-                return persona
-            }
-          
-            var peopleMys = people.map(setMayus)
+    //modificacion de array existente
+    const setMayus = persona => {
+        persona.nombre = persona.nombre.toUpperCase()
+        return persona
+    }
+    var peopleMys = people.map(setMayus)
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Array Reduce</h3>
       <p>reduce los elementos de un array a un solo objeto</p>
-      <pre><code>
- 
-                    //acumulador, cada una de las personas
-           const  reducer =  ( acumulador,  personas ) => {
-             return acumulador + persona.peso 
-           }
- 
- 
-            //                             reducer, valor inicial acumulador 
-            var totalKilos = people.reduce(reducer, 0)
+      <pre><code> 
+            //acumulador, cada una de las personas
+    const  reducer =  ( acumulador,  personas ) => {
+      return acumulador + persona.peso 
+    }
 
-          </code></pre>
+
+    //                             reducer, valor inicial acumulador 
+    var totalKilos = people.reduce(reducer, 0)
+        </code></pre>
 
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Clases en JS</h3>
       <p>Las clases como tal no existen en JS, si no que se utiliza algo llamado prototipos</p>
       <pre><code>
-            //una funcion normal "creara" la clase
-            function Persona(nombre, apellido) {
-              //la palabra this referenciara los parametros dentro del objeto
-              this.nombre = nombre
-              this.apellido = apellido
-              //implicitamente regresa un
-              //this {...} como objeto
-            }
+    //una funcion normal "creara" la clase
+    function Persona(nombre, apellido) {
+      //la palabra this referenciara los parametros dentro del objeto
+      this.nombre = nombre
+      this.apellido = apellido
+      //implicitamente regresa un
+      //this {...} como objeto
+    }
 
-            //class.prototype.metodo
-            //es la manera de crear metodos dentro de clases  
-            Persona.prototype.saludar = function () {
-              console.log(`me llamo ${this.nombre} ${this.apellido}`)
-            }
+    //class.prototype.metodo
+    //es la manera de crear metodos dentro de clases  
+    Persona.prototype.saludar = function () {
+      console.log(`me llamo ${this.nombre} ${this.apellido}`)
+    }
 
-            //en arrow functios this.nombre hace referencia
-            //a window.nombre, el cual no existe (recordar que window es el obj global)
-            Persona.prototype.despedir = () => {
-              console.log(`weno bie ${this.nombre}`)
-            }
-            //
-            //this => aqui apuntaria la arrow func
-            
+    //en arrow functios this.nombre hace referencia
+    //a window.nombre, el cual no existe (recordar que window es el obj global)
+    Persona.prototype.despedir = () => {
+      console.log(`weno bie ${this.nombre}`)
+    }
+    //
+    //this => aqui apuntaria la arrow func
+    
 
-            //la palabra new accedera a Persona como clase
-            //y haraque por defecto regrese un objeto
-            const luis = new Persona("luis", "Ramirez")
-            luis.saludar()
+    //la palabra new accedera a Persona como clase
+    //y haraque por defecto regrese un objeto
+    const luis = new Persona("luis", "Ramirez")
+    luis.saludar()
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Prototipos como herencia</h3>
       <p>La herencia de clases como tal no existe en JavaScript, esto es algo que se logra mdediante la herencia
         prototipal</p>
       <pre><code>
-            //se hace la funcion de "herencia"
-            function heredaDe(prototipoHijo, prototipoPadre) {
-              var fn = function () {}
-              fn.prototype = prototipoPadre.prototype
-              prototipoHijo.prototype = new fn
-              prototipoHijo.prototype.constructor = prototipoHijo
-            }
-            
-            //se tiene una primer clase con sus metodos
-            function Persona(nombre, apellido, altura) {
-              this.nombre = nombre
-              this.apellido = apellido
-              this.altura = altura
-            }
-            
-            Persona.prototype.saludar = function () {
-              console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
-            }
-            
-            Persona.prototype.soyAlto = function () {
-              return this.altura > 1.8
-            }
-            
-            //y una segunda clase sin metodo
-            function Desarrollador(nombre, apellido) {
-              this.nombre = nombre
-              this.apellido = apellido
-            }
-            
-            //se pasa la funcion en la que la segunda clase heredará los metodos
-            heredaDe(Desarrollador, Persona)
-            
+    //se hace la funcion de "herencia"
+    function heredaDe(prototipoHijo, prototipoPadre) {
+      var fn = function () {}
+      fn.prototype = prototipoPadre.prototype
+      prototipoHijo.prototype = new fn
+      prototipoHijo.prototype.constructor = prototipoHijo
+    }
+    
+    //se tiene una primer clase con sus metodos
+    function Persona(nombre, apellido, altura) {
+      this.nombre = nombre
+      this.apellido = apellido
+      this.altura = altura
+    }
+    
+    Persona.prototype.saludar = function () {
+      console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+    }
+    
+    Persona.prototype.soyAlto = function () {
+      return this.altura > 1.8
+    }
+    
+    //y una segunda clase sin metodo
+    function Desarrollador(nombre, apellido) {
+      this.nombre = nombre
+      this.apellido = apellido
+    }
+    
+    //se pasa la funcion en la que la segunda clase heredará los metodos
+    heredaDe(Desarrollador, Persona)
+    
 
-            //y se pisa el metodo saludar() de persona por el saludar() de desarrollador
-            Desarrollador.prototype.saludar = function () {
-              console.log(`Hola, me llamo ${this.nombre} ${this.apellido} y soy desarrollador/a`)
-            }
+    //y se pisa el metodo saludar() de persona por el saludar() de desarrollador
+    Desarrollador.prototype.saludar = function () {
+      console.log(`Hola, me llamo ${this.nombre} ${this.apellido} y soy desarrollador/a`)
+    }
 
-            //y aqui desarrollador ya tiene acceso a los metodos de persona, pisando
-            //el metodo de saludar por uno propio
+    //y aqui desarrollador ya tiene acceso a los metodos de persona, pisando
+    //el metodo de saludar por uno propio
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Usando prototipos con la palabra <i>Class</i></h3>
       <p>Para evitar todo lo confuso que puede ser crear clases mediante prototypes E15 introduce el uso de la palabra
         <i>class</i></p>
       <pre><code>
-            //se crea la clase con la palabra class
-            class Persona{
-              //constructor el metodo que se ejecuta cuando se crean objetos de la clase (new)
-              constructor(nombre, apellido, altura){
-                this.nombre = nombre
-                this.apellido = apellido
-                this.altura = altura
-              }
-              
-              //tiene metodos
-              saludar(){
-                  console.log(`me llamo ${this.nombre} ${this.apellido}`)
-              }
+    //se crea la clase con la palabra class
+    class Persona{
+      //constructor el metodo que se ejecuta cuando se crean objetos de la clase (new)
+      constructor(nombre, apellido, altura){
+        this.nombre = nombre
+        this.apellido = apellido
+        this.altura = altura
+      }
+      
+      //tiene metodos
+      saludar(){
+          console.log(`me llamo ${this.nombre} ${this.apellido}`)
+      }
 
-              //tiene metodos
-              soyAlto(){
-                return this.altura > 1.8
-              }
-            }
+      //tiene metodos
+      soyAlto(){
+        return this.altura > 1.8
+      }
+    }
 
-            //se crea la clase que heredara (extends) de otra clase 
-            class Desarrollador extends Persona{
-              constructor(nombre, apellido, altura){
-                super(nombre, apellido, altura) //super() llama al constructor de la clase padre
-                // this.nombre = nombre         //y permite prescindir de this
-                // this.apellido = apellido
-                // this.altura = altura
-              }
-              //se pisa el metodo saludar de la clase padre
-              saludar(){
-                console.log(`me llamo ${this.nombre} ${this.apellido} pero soy desarrollador`)
-              }
-            }
+    //se crea la clase que heredara (extends) de otra clase 
+    class Desarrollador extends Persona{
+      constructor(nombre, apellido, altura){
+        super(nombre, apellido, altura) //super() llama al constructor de la clase padre
+        // this.nombre = nombre         //y permite prescindir de this
+        // this.apellido = apellido
+        // this.altura = altura
+      }
+      //se pisa el metodo saludar de la clase padre
+      saludar(){
+        console.log(`me llamo ${this.nombre} ${this.apellido} pero soy desarrollador`)
+      }
+    }
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Funciones como paramettros</h3>
       <p>los metodos en una clase pueden recibir funciones como parametros y ser respondidas internamente</p>
       <pre><code>
+    class Desarrollador {
+      ...
+      //metodo dentro de desarrollador recibiendo una fn como parametro
+      saludar(fn){
+        console.log(`me llamo ${this.nombre} ${this.apellido} pero soy desarrollador`)
+      //se evalua si recibe o no la funcion
+      if (fn) {
+      //y de recibirse, se "responde"
+          fn(this.nombre, this.apellido, true)
+        }
+    
+    }
 
-            class Desarrollador {
-              ...
-              //metodo dentro de desarrollador recibiendo una fn como parametro
-              saludar(fn){
-                console.log(`me llamo ${this.nombre} ${this.apellido} pero soy desarrollador`)
-              //se evalua si recibe o no la funcion
-              if (fn) {
-              //y de recibirse, se "responde"
-                  fn(this.nombre, this.apellido, true)
-                }
-            
-            }
 
-
-            //funcion a enviar como parametro
-            function response(nombre, apelldo, dev) {
-              console.log(`hey, como estas ${nombre}`)
-              if (dev) {
-                console.log(`como esta el trabajo`)
-              }
-            }
-            
-            //nuevos objetos de clases
-            var isaac = new Persona("Isaac", "lopez", 1.75)
-            var daniel = new Persona("Daniel", "Mendez", 1.55)
-            var Luis = new Desarrollador("Luis", "Ramirez", 1.75)
-            
-            //llamado a los metodos
-            isaac.saludar()
-            daniel.saludar(response)
-            Luis.saludar(response)
+    //funcion a enviar como parametro
+    function response(nombre, apelldo, dev) {
+      console.log(`hey, como estas ${nombre}`)
+      if (dev) {
+        console.log(`como esta el trabajo`)
+      }
+    }
+    
+    //nuevos objetos de clases
+    var isaac = new Persona("Isaac", "lopez", 1.75)
+    var daniel = new Persona("Daniel", "Mendez", 1.55)
+    var Luis = new Desarrollador("Luis", "Ramirez", 1.75)
+    
+    //llamado a los metodos
+    isaac.saludar()
+    daniel.saludar(response)
+    Luis.saludar(response)
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Tiempo (Asincronia) en JS</h3>
       <p>En JS todas las ejecuciones son en un solo hilo llamado eventLoop,</p>
       <pre><code>
-            // console.log("a")
-            // console.log("b")
-            // console.log("c")
-            //a
-            //b
-            //c
+    // console.log("a")
+    // console.log("b")
+    // console.log("c")
+    //a
+    //b
+    //c
 
-            console.log("a")
-            setTimeout(()=>console.log("b"), 0)
-            console.log("c")
-            setTimeout(()=>console.log("d"), 0)
+    console.log("a")
+    setTimeout(()=>console.log("b"), 0)
+    console.log("c")
+    setTimeout(()=>console.log("d"), 0)
 
-            //a
-            //c   //esto se debe a que setTimeot() se mando a una cola
-            //b   //de tareas que no empezo hasta terminar con clg("c")
-            //d
+    //a
+    //c   //esto se debe a que setTimeot() se mando a una cola
+    //b   //de tareas que no empezo hasta terminar con clg("c")
+    //d
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>callbacks</h3>
       <p>un Callback es una funcion pasada como parametro posterior a la ejecucion de una funcion, en el caso siguiente
         lo que se hizo fue, una funcion de busque de Pkm, (<i>obtainPkm()</i>)una vez obtenido un resultado, se uso un
         callback para una segunda funcion, ya que el callback era la unica manera de comprobar que los pkm se obtubieran
         de manera correcta</p>
       <pre><code>
-            const opts = {crossDomain:true}
+    const opts = {crossDomain:true}
 
-            //pasaremos un callback la funcion de obtener pkm
+    //pasaremos un callback la funcion de obtener pkm
 
-            function obtainPkm(pkm, callback) {
-              const url = `https://pokeapi.co/api/v2/pokemon/${pkm}` 
-              $.get(url, opts, function (data) { 
-                console.log(data.name)
-                if (callback) {
-                  callback()    
-                }
-              })
-            }
+    function obtainPkm(pkm, callback) {
+      const url = `https://pokeapi.co/api/v2/pokemon/${pkm}` 
+      $.get(url, opts, function (data) { 
+        console.log(data.name)
+        if (callback) {
+          callback()    
+        }
+      })
+    }
 
-            //el motivo por el cual no se ejecuta como
-            //obtainPkm(4,obtainPkm(5))
-            //es porque se ejecutaria inmediatamente 5
-            //por ello se usa una funcion anonima
+    //el motivo por el cual no se ejecuta como
+    //obtainPkm(4,obtainPkm(5))
+    //es porque se ejecutaria inmediatamente 5
+    //por ello se usa una funcion anonima
 
-            obtainPkm(4, function() {
-              obtainPkm(5, function() {
-                obtainPkm(6)    
-              })  
-            })
+    obtainPkm(4, function() {
+      obtainPkm(5, function() {
+        obtainPkm(6)    
+      })  
+    })
 
-            //la estructura obtenida es el denominado
-            //callback hell
+    //la estructura obtenida es el denominado
+    //callback hell
 
-            //de haberse usado la funcion sin callback 
-            //hubise sido algo como
-            obtainPkm(4)
-            obtainPkm(5)
-            obtainPkm(6)
-            //pero esto generaba desorden en los resulados (5,6,4...)
+    //de haberse usado la funcion sin callback 
+    //hubise sido algo como
+    obtainPkm(4)
+    obtainPkm(5)
+    obtainPkm(6)
+    //pero esto generaba desorden en los resulados (5,6,4...)
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Promesas</h3>
       <p>Como una solucion a los Callback Hells fue que se realizaron las promesas en JS, asi es como luce el codigo de
         una</p>
       <pre><code>
-            new Promise(function(resolve, reject){
-              ...
-            }).then(valor =>{
-              ...
-            }).catch(err =>{
-              ...
-            })
+    new Promise(function(resolve, reject){
+      ...
+    }).then(valor =>{
+      ...
+    }).catch(err =>{
+      ...
+    })
           </code></pre>
       <p>Entonces usando el ejemplo de arriba reescribimos la funcion adaptandola a una promesa</p>
       <pre><code>
-            const opts = {crossDomain:true}
-            //pasaremos un callback la funcion de obtener pkm
-            function obtainPkm(pkm) {
-              return new Promise((resolve, reject) =>{
-                const url = `https://pokeapi.co/api/v2/pokemon/${pkm}` 
-                $.get(url, opts, function (data) { 
-                  //confirmamos el resolve pasando la data de la consulta
-                  resolve(data)
-                })
-                  //o damos el error con el elemento buscado
-                .fail(() =>{reject(id)})
-              })
-            }
+    const opts = {crossDomain:true}
+    //pasaremos un callback la funcion de obtener pkm
+    function obtainPkm(pkm) {
+      return new Promise((resolve, reject) =>{
+        const url = `https://pokeapi.co/api/v2/pokemon/${pkm}` 
+        $.get(url, opts, function (data) { 
+          //confirmamos el resolve pasando la data de la consulta
+          resolve(data)
+        })
+          //o damos el error con el elemento buscado
+        .fail(() =>{reject(id)})
+      })
+    }
 
-            //y ejecutamos una primera busqueda
-            obtainPkm(1)
-              .then((data)=>console.log(data.name))
-              .catch((err)=>console.log(id))
+    //y ejecutamos una primera busqueda
+    obtainPkm(1)
+      .then((data)=>console.log(data.name))
+      .catch((err)=>console.log(id))
 
-            //ahora para encadenar las promesas solo se regresa la
-            //funcion dentro del then y se agrega un nuevo then
+    //ahora para encadenar las promesas solo se regresa la
+    //funcion dentro del then y se agrega un nuevo then
 
-            obtainPkm(1)
-            .then(data=>{
-              console.log(`pkm 1 ${data.name}`)
-              return obtainPkm(2)
-              })
-            .then(data=>{
-              console.log(`pkm 2 ${data.name}`)
-              return obtainPkm(3)
-              })
-            .then(data=>{
-              console.log(`pkm 3 ${data.name}`)
-              })
-            .catch((err)=>console.log(id))
+    obtainPkm(1)
+    .then(data=>{
+      console.log(`pkm 1 ${data.name}`)
+      return obtainPkm(2)
+      })
+    .then(data=>{
+      console.log(`pkm 2 ${data.name}`)
+      return obtainPkm(3)
+      })
+    .then(data=>{
+      console.log(`pkm 3 ${data.name}`)
+      })
+    .catch((err)=>console.log(id))
           </code></pre>
       <p>una forma aun mas secilla de encadenar las promesas es convertirlas en un array y utilizar un metodo llamado
         <i>All()</i> de las promesas</p>
       <pre><code>
-            //damos los datos que buscaremos
-            var ids = [1,2,3,4,5,6]
-            //mapeamos el array de datos para obtener una promesa 
-            //por cada uno de los datos
-            var promises = ids.map( id => obtainPkm(id))
+    //damos los datos que buscaremos
+    var ids = [1,2,3,4,5,6]
+    //mapeamos el array de datos para obtener una promesa 
+    //por cada uno de los datos
+    var promises = ids.map( id => obtainPkm(id))
 
-            Promise
-              .all(promises)    //y pasamos el array de datos al metodo all
-              .then((pkm) =>{
-                for (i in pkm){
-                  console.log(pkm[i].name)
-                }
-              })
-              .catch(err=>console.log(err))
-
+    Promise
+      .all(promises)    //y pasamos el array de datos al metodo all
+      .then((pkm) =>{
+        for (i in pkm){
+          console.log(pkm[i].name)
+        }
+      })
+      .catch(err=>console.log(err))
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Async Await con Try Catch</h3>
       <p>Basado en el codigo de arriba, una manera de optimizarlo aun mas seria usar async await</p>
       <pre><code>
-            async function obtenerPersonajes() {
-              var ids = [1,2,3,4,5,6]
-              var promises = ids.map( id => obtainPkm(id))  
-              try {
-                var pokemones = await Promise.all(promises)
-                console.log(pokemones)
-              } catch (error) {
-                  console.log(error)
-                }
-            }
-            
-            obtenerPersonajes()
+    async function obtenerPersonajes() {
+      var ids = [1,2,3,4,5,6]
+      var promises = ids.map( id => obtainPkm(id))  
+      try {
+        var pokemones = await Promise.all(promises)
+        console.log(pokemones)
+      } catch (error) {
+          console.log(error)
+        }
+    }
+    
+    obtenerPersonajes()
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Programacion de un juego llamado Simon Dice</h3>
       <p>Para el juego simon dice, usaremos elementos de html para hacer un tablero</p>
       <pre><code>
-            &lt;!-- mensaje de puntuacion -->
-            &lt;div id="message">
-            &lt;/div>
+    &lt;!-- mensaje de puntuacion -->
+    &lt;div id="message">
+    &lt;/div>
 
-            &lt;!-- Tablero del juego -->
+    &lt;!-- Tablero del juego -->
 
-            &lt;div class="gameboard">
-              &lt;div id="celeste" class="color celeste left" data-color="celeste">&lt;/div>
-              &lt;div id="violeta" class="color violeta right" data-color="violeta">&lt;/div>
-              &lt;div id="naranja" class="color naranja left" data-color="naranja">&lt;/div>
-              &lt;div id="verde" class="color verde right" data-color="verde">&lt;/div>
+    &lt;div class="gameboard">
+      &lt;div id="celeste" class="color celeste left" data-color="celeste">&lt;/div>
+      &lt;div id="violeta" class="color violeta right" data-color="violeta">&lt;/div>
+      &lt;div id="naranja" class="color naranja left" data-color="naranja">&lt;/div>
+      &lt;div id="verde" class="color verde right" data-color="verde">&lt;/div>
 
-            &lt;!-- La funcion para iniciar se llamara en el boton -->
+    &lt;!-- La funcion para iniciar se llamara en el boton -->
 
-              &lt;button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!&lt;/button>
-            &lt;/div>
-        
+      &lt;button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!&lt;/button>
+    &lt;/div>
           </code></pre>
+          <a href="game.html">Juega Aqui!</a>
     </div>
-    <div class="">
-      <a href="game.html">Juega Aqui!</a>
-    </div>
-    <div>
+    <div class="encabezado">
       <h3>Recursividad</h3>
       <p>Se habla de recursividad cuando una funcion se llama a si misma</p>
       <pre><code>
-            /* creacion de division
-                13 entre 4
+    /* creacion de division
+        13 entre 4
 
-                13 - 4 = 9  |
-                9  - 4 = 5  |
-                5  - 4 = 1  |
-                1  - 4 =-3  0  --> caso base
-            */
-            function dividir(dividendo, divisor) {
-                //si el caso base se cumple, termina
-                if (dividendo < divisor) {
-                    return 0
-                }else{
-                  //y si no, la funcion se llama a si misma
-                  return 1 + dividir(dividendo-divisor, divisor)
-                }
-            }
+        13 - 4 = 9  |
+        9  - 4 = 5  |
+        5  - 4 = 1  |
+        1  - 4 =-3  0  --> caso base
+    */
+    function dividir(dividendo, divisor) {
+        //si el caso base se cumple, termina
+        if (dividendo < divisor) {
+            return 0
+        }else{
+          //y si no, la funcion se llama a si misma
+          return 1 + dividir(dividendo-divisor, divisor)
+        }
+    }
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Memoizacion, ahorro de computo</h3>
       <p>Almacenamiento de procesos ya realizados en memoria</p>
       <pre><code>
-            /*
-              Factorial,
-              un factorial es un num que se multiplica 
-              por sus "antepasados"
+    /*
+      Factorial,
+      un factorial es un num que se multiplica 
+      por sus "antepasados"
 
-              factorial de 6
+      factorial de 6
 
-              !6 = * 5 * 4 * 3 * 2 * 1 = 720
+      !6 = * 5 * 4 * 3 * 2 * 1 = 720
 
-              !12 = 12 * ... * 5 * 4 * 3 * 2 * 1 = 
+      !12 = 12 * ... * 5 * 4 * 3 * 2 * 1 = 
 
-            */ 
+    */ 
 
-            function factorial(n) {
-              //si no existe
-              //se crea el objeto de guardado
-              if (!this.cache) {
-                this.cache = {}
-              }
+    function factorial(n) {
+      //si no existe
+      //se crea el objeto de guardado
+      if (!this.cache) {
+        this.cache = {}
+      }
 
-              //si existe regresa lo
-              //guardado
-              if (this.cache[n]) {
-                return this.cache[n]
-              }
+      //si existe regresa lo
+      //guardado
+      if (this.cache[n]) {
+        return this.cache[n]
+      }
 
-              if (n===1) {
-                  return 1
-                }
-              this.cache[n] = n * factorial(n - 1)
-              return this.cache[n]
-            }
+      if (n===1) {
+          return 1
+        }
+      this.cache[n] = n * factorial(n - 1)
+      return this.cache[n]
+    }
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Closures</h3>
     </div>
   </section>
-  <section id="sect5">
-    <!-- ReactJS -->
-    <div>
+  <section id="sect5"> <!-- ReactJS -->
+    <div class="encabezado">
       <h3>Requerimentos</h3>
-      <p>Para inicializar un proyecto con React JS se Necesita primeramente instalar, eso se hace mediante el CMD y con
-        el comando <br>
-        <code>npm install -g create-react-app</code>
-      </p>Posterior a la instalacion, se crea la app igual mediante la linea de comandos EN EL DIRECTORIO A USAR
-      <p>
-        <code>create-react-app Nombre Proyecto</code>
-      </p>
-      <small>En caso de errores con el CMD o rendimiento, se cierra el server Node en taskmgr</small>
-    </div>
-    <div>
+      <p>Para inicializar un proyecto con React JS se Necesita primeramente instalar, eso se hace mediante el CMD y ejecutar los siguientes comandos (forma "clasica"), posterior a la instalacion, se crea la app igual mediante la linea de comandos EN EL DIRECTORIO A USAR</p>
+        <pre><code>
+    npm install -g create-react-app
+    
+    create-react-app Nombre Proyecto
 
-      <h3>comandos</h3>
-      <p><code>npm install -g create-react-app</code></p>
-      <p><code>create-react-app Nombre Proyecto</code></p>
-      <p>*entrar al directorio*</p>
-      <p><code>npm (run) start</code></p>
+    *entrar al directorio*
+    npm (run) start
+        </pre></code>
+        <p>Una mejor manera de hacerlo, es mediante <i>npx</i>, a lo cual se recomienda primeramente desinstalar la dependencia global</p>
+        <pre><code>
+    npm uninstall -g create-react-app
+      </pre></code>
+      <p>Para evitar conflictos y luego crearla mediante el siguiente codigo</p>  
+        <pre><code>
+    npx create-react-app
+        </pre></code>
       <p>En caso de ser un proyecto importado se requerirá nuevamente un npm instal (actualizar bibliotecas)</p>
-      <p><small> ya no es recomendable usar npm i -g create-react-app y después correr el comando
-          create-react-app.</small></p>
-      <p><small>La solución a esto es correr: npm uninstall -g create-react-app para desinstalar la dependencia global
-          de create-react-app y así evitar conflictors y luego crear la aplicación con: npx create-react-app</small></p>
+        <small>En caso de errores con el CMD o rendimiento, se cierra el server Node en taskmgr</small>
+  </div>    
+  <div class="encabezado">
+     <h3>React Router</h3> 
       <p>Adicional a CRA, para la navegacion entre pestañas dentro de la SPA requeriremos React Router</p>
       <pre><code>
-          npm i react-router-dom
-          
-          import {BrowserRouter, Route, Switch } from 'react-router-dom'
+    npm i react-router-dom
+    
+    import {BrowserRouter, Route, Switch } from 'react-router-dom'
 
-          function App() {
-            return (
-                &lt;BrowserRouter>
-                    &lt;Navbar />
-                      &lt;Switch>
-                        &lt;Route exact path="/" component={Header} />
-                        &lt;Route exact path="/other" component={OtherHeader} />
-                        &lt;Route component={NotFound}/>  
-                      &lt;/Switch>
-                &lt;/BrowserRouter>
-            );
-          }
-          
-          export default App;
-          
-          </code></pre>
-    </div>
-    <div class="elementos">
-      <h1>Primeramente vimos la explicacion de JSX y el ReactDOM.render</h1>
-    </div>
-    <div>
-      <h1>Renderizado en DOM mediante JavaScript Clasico</h1>
+    function App() {
+      return (
+          &lt;BrowserRouter>
+              &lt;Navbar />
+                &lt;Switch>
+                  &lt;Route exact path="/" component={Header} />
+                  &lt;Route exact path="/other" component={OtherHeader} />
+                  &lt;Route component={NotFound}/>  
+                &lt;/Switch>
+          &lt;/BrowserRouter>
+      );
+    }
+    
+    export default App;
+    </code></pre>
+  </div>
+  <div class="encabezado">
+      <h3>JSX y renderizado en el DOM</h3>
+    <strong>Renderizado en DOM mediante JavaScript Clasico</strong>
       <pre><code>
-            const element = document.createElement('h1')
-            element.innerText = 'Hello platzi Badges';
-            const container = document.getElementById('app')
-            container.appendChild(element)
+    const element = document.createElement('h1')
+    element.innerText = 'Hello platzi Badges';
+    const container = document.getElementById('app')
+    container.appendChild(element)
 
-            //Classic JS
-            </code></pre>
-    </div>
-    <div>
-      <h1>renderizado por medio de React</h1>
+    //Classic JS
+      </code></pre>
+
+    <strong>renderizado por medio de React</strong>
       <pre><code>
-            import React from 'react';             //create element **escencial para JSX 
-            import ReactDOM from 'react-dom';      //append child 
-            
-            const name = "Joe momma"
-            
-            const element = &#60;h5>Hello!, Platzi Badges... from react, i´m {name}&#60;/h5> //**JSX */
-            const container = document.getElementById('app')
-            
-            //ReactDOM.render(que, donde)
-            ReactDOM.render(element, container)
+    import React from 'react';             //create element **escencial para JSX 
+    import ReactDOM from 'react-dom';      //append child 
+    
+    const name = "Joe momma"
+    
+    const element = &#60;h5>Hello!, Platzi Badges... from react, i´m {name}&#60;/h5> //**JSX */
+    const container = document.getElementById('app')
+    
+    //ReactDOM.render(que, donde)
+    ReactDOM.render(element, container)
 
-            //Navbar puede ser un componente, que se transforma a un elemento mediante &lt;Nabbar />
-          </code></pre>
+    //Navbar puede ser un componente, que se transforma a un elemento mediante &lt;Nabbar />
+      </code></pre>
     </div>
-    <div>
-      <h1>Componenetes</h1>
-    </div>
-    <div>
-      <h3>Estados en React</h3>
-      <p>Los estados en React son la manera de almacenar y manejar informacion para un componente, este se puede
-        inicializar de las 2 siguientes maneras</p>
-
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <p><strong>Dentro del constructor</strong></p>
+    <div class="encabezado">
+      <h3>Componentes</h3>
+      <p>Los componentes se escriben por medio de funciones y pueden ser de 2 tipos</p>
+      <strong>StateLess</strong>
         <pre><code>
-                class Component extends React.Component{
-                    constructor(){
-                      super(props)
-                        this.state= {
-                          data: "",
-                          moreData: ""
-                        }
-                    }
+    import React from 'react'
 
-                    render(){
-                      return(
-                        ....
-                      )
-                    }
+    const App = () = {
+      const function = ()=>{
 
-                }
-                </code></pre>
+      }
+
+      return (
+        &lt;h1>Return en stateLess{function()}&lt;/h1>
+      )
+
+    }
+
+    export default App
+      </code></pre>
+        <p><strong>Statefull</strong></p>
+        <pre><code>
+    import React from 'react'
+
+    class App extends React.Component {
+      function = ()=>{
+
+      }
+
+      Render(){
+        return (
+          &lt;h1>Return en stateLess{this.function()}&lt;/h1>
+        )
+      }
+    }
+
+    export default App
+    </code></pre>
+        <p>En componentes class, no se necesitan definir las funciones, es decir, se omite el "const"</p>
+      <p>la diferencia entre caso A: x = () => {} y caso B: x = () => () es el tipo de informacion que regresaran, si
+        la funcion solo retornara html se utiliza el caso B, si la funcion requiere manejo de información (funciones)
+        dentro de si misma, se utiliza el caso A y se agregara un return { return (&lt;h1>textlt;h1>)}</p>
+      <p>Para declarar funciones dentro de componentes funcionales, se debe empezar con <i>const</i> y no se utiliza
+        <i>this</i></p>
+  </div>
+  <div class="encabezado">
+    <h3>Props</h3>
+    <p>Props (properties) son los argunentos que puede recibir un componentes</p>
+    <p>componente</p>
+    <pre><code>
+    render(){
+      return(
+        &lt;h1>{this.props.name}&lt;/h1>
+      )
+    }   
+     </code></pre>
+    <p>Llamado al componente</p>
+    <pre><code>
+    render(){
+    &lt;Componente name={Luis} />             
+    }   
+    </code></pre>
+  </div>
+  <div class="encabezado">
+    <h3>Estados en React</h3>
+      <p>Los estados en React son la manera de almacenar y manejar informacion para un componente, este se puede inicializar de las 2 siguientes maneras</p>
+      <strong>Dentro del constructor</strong>
+      <pre><code>
+    class Component extends React.Component{
+        constructor(){
+          super(props)
+            this.state= {
+              data: "",
+              moreData: ""
+            }
+        }
+
+        render(){
+          return(
+            ....
+          )
+        }
+
+    }
+      </code></pre>
+      <strong>Fuera del constructor</strong>
+      <pre><code>
+  class Component extends React.Component{
+      state= {
+        data: "",
+        moreData: ""
+      }
+
+
+      render(){
+        return(
+          ....
+        )
+      }
+
+  }
+      </code></pre>
+
         <p>Cuando el componente clase es creado, el metodo <i>constructor</i> es el primer metodo llamado asi que es el
           mejor sitio para inicializar todo (state incluido)</p>
         <p>Al hacerlo de esta manera y utilizar <i>this.setState()</i> es como React sabra que algo ha cambiado y
@@ -2113,282 +2158,179 @@ display: block;
         <p>Una nota importante de usar el constructor es que siempre tenemos que llamar <i>super(props)</i> Al escribir
           su propio (constructor), está anulando el comportamiento predeterminado, y a menos que llame (super) por sí
           mismo, podría generar errores si el padre necesitara una inicialización.</p>
-      </div>
-      <div class="col-md-6">
-        <p><strong>Fuera del constructor</strong></p>
-        <pre><code>
-              class Component extends React.Component{
-                  state= {
-                    data: "",
-                    moreData: ""
-                  }
-
-
-                  render(){
-                    return(
-                      ....
-                    )
-                  }
-
-              }
-              </code></pre>
-      </div>
-
     </div>
-    <div>
-      <h3>sintaxis</h3>
-      <p>Los componentes se escriben por medio de funciones y pueden ser de 2 tipos</p>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <p><strong>StateLess</strong></p>
-        <pre><code>
-            import React from 'react'
-
-            const App = () = {
-              const function = ()=>{
-
-              }
-
-              return (
-                &lt;h1>Return en stateLess{function()}&lt;/h1>
-              )
-  
-            }
-
-            export default App
-            </code></pre>
-        <p>la diferencia entre caso A: x = () => {} y caso B: x = () => () es el tipo de informacion que regresaran, si
-          la funcion solo retornara html se utiliza el caso B, si la funcion requiere manejo de información (funciones)
-          dentro de si misma, se utiliza el caso A y se agregara un return { return (&lt;h1>textlt;h1>)}</p>
-        <p>Para declarar funciones dentro de componentes funcionales, se debe empezar con <i>const</i> y no se utiliza
-          <i>this</i></p>
-      </div>
-      <div class="col-md-6">
-        <p><strong>Statefull</strong></p>
-        <pre><code>
-            import React from 'react'
-
-            class App extends React.Component {
-              function = ()=>{
-
-              }
-
-              Render(){
-                return (
-                  &lt;h1>Return en stateLess{this.function()}&lt;/h1>
-                )
-              }
-            }
-
-            export default App
-            </code></pre>
-        <p>En componentes class, no se necesitan definir las funciones, es decir, se omite el "const"</p>
-
-      </div>
-    </div>
-    <div>
-      <h3>Props</h3>
-      <p>Props (properties) son los argunentos que puede recibir un componentes</p>
-      <p>componente</p>
-      <pre><code>
-           render(){
-              return(
-                &lt;h1>{this.props.name}&lt;/h1>
-              )
-           }   
-          </code></pre>
-      <p>Llamado al componente</p>
-      <pre><code>
-           render(){
-            &lt;Componente name={Luis} />             
-           }   
-          </code></pre>
-    </div>
-    <div>
+    <div class="encabezado">
       <h3>Manejo de eventos</h3>
       <p>Cada ves que un &lt;input> recibe contenido, de transfondo en React se esta recibiendo un evento
         <i>onChange</i>, por covencion, el metodo creado de la clase deberia llamarse <i>handleChange</i></p>
       <p>Y a la par, el evento de <i>Click</i> se percibe cada que se activa un &lt;buttton></p>
       <pre><code>
-          Class Component extends React.Component{
-            handleChange = (e) =>{
-              console.log({
-                name: e.target.name,    //regresa el name del input activado
-                value: e.target.value   //regresa el value del input activado
-              })
-            }
-            handleClick = () =>{
-              console.log("click")
-            }
+    Class Component extends React.Component{
+      handleChange = (e) =>{
+        console.log({
+          name: e.target.name,                  //regresa el name del input activado
+          value: e.target.value                 //regresa el value del input activado
+        })
+      }
+      handleClick = () =>{
+        console.log("click")
+      }
 
-            render(){
-              return(
-                &lt;input onChange={this.handleChange} />
-                &lt;button onCick={this.handleClick} />
-              )
-            }
-          }  
+      render(){
+        return(
+          &lt;input onChange={this.handleChange} />
+          &lt;button onCick={this.handleClick} />
+        )
+      }
+    }
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Llamadas a API's y promesas</h3>
-      <p>El llamado de informacion externa en React (llamado a apis) se hace mediante funciones asincronas, estas se
-        hacen el estado <i>ComponentDidMount</i> del ciclo de vida de React y en esto recibira una promesa</p>
+      <p>El llamado de informacion externa en React (llamado a apis) se hace mediante funciones asincronas, estas se hacen el estado <i>ComponentDidMount</i> del ciclo de vida de React y en esto recibira una promesa</p>
       <pre><code>
-            ComponentDidMount(){
-              const respuesta = axios.get('url_to_fetch');
-              console.log('respuesta', respuesta)           //esto regresa Promise {&lt;pending>}
-            }
+    ComponentDidMount(){
+      const respuesta = axios.get('url_to_fetch');
+      console.log('respuesta', respuesta)               //esto regresa Promise {&lt;pending>}
+    }
 
-            async ComponentDidMount(){
-              const respuesta = await axios.get('url_to_fetch');
-              console.log('respuesta', respuesta)           //esto regresa el contenido de la consulta
-            }
+    async ComponentDidMount(){
+      const respuesta = await axios.get('url_to_fetch');
+      console.log('respuesta', respuesta)               //esto regresa el contenido de la consulta
+    }
           </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Manejo de formularios</h3>
-      <div class="row">
-        <div class="col-md-6">
-          <p>en Statefull components, esto se hace mediante un estado (o setState) en el cual, cada cambio en un input
-            llamara a la funcion setState y pasara [name]:value dependendiedo del input que este llamando la funcion</p>
+      <strong>Statefull Components</strong>
+          <p>en Statefull components, esto se hace mediante un estado (o setState) en el cual, cada cambio en un input llamara a la funcion setState y pasara [name]:value dependendiedo del input que este llamando la funcion</p>
           <pre><code>
-            Class Component extends React.Component{
-              //se puede acceder a setState sin 
-              //haber iniciado un estado antes, 
-              //pero no se recomienda 
-              handleChange = (e) =>{
-                setState({            
-                  [e.target.name]: e.target.value 
-                })
-              }
-  
-              render(){
-                return(
-                  &lt;input 
-                  name='nombre'
-                  onChange={this.handleChange} 
-                  />
-                  &lt;input 
-                  name='apellidos'
-                  onChange={this.handleChange} 
-                  />
-                )
-              }
-            }  
-              </code></pre>
-          <p>hasta este punto, sin haber asignado un <i>value</i> a un input, se esta creando de fondo informacion
-            duplicada, es decir hay informacion almacenada en el <i>setState</i> y a la ves &lt;input> esta almacenando
-            un valor en si mismo (no controlado)</p>
-        </div>
-        <div class="col-md-6">
-          <p>En stateLess components se puede hacer de manera similar sin la necesidad de un estado pero por medio de
-            Hooks, aqui el siguiente ejemplo</p>
+    Class Component extends React.Component{
+      //se puede acceder a setState sin 
+      //haber iniciado un estado antes, 
+      //pero no se recomienda 
+      handleChange = (e) =>{
+        setState({            
+          [e.target.name]: e.target.value 
+        })
+      }
+
+      render(){
+        return(
+          &lt;input 
+          name='nombre'
+          onChange={this.handleChange} 
+          />
+          &lt;input 
+          name='apellidos'
+          onChange={this.handleChange} 
+          />
+        )
+      }
+    }  
+      </code></pre>
+       <p>hasta este punto, sin haber asignado un <i>value</i> a un input, se esta creando de fondo informacion duplicada, es decir hay informacion almacenada en el <i>setState</i> y a la ves &lt;input> esta almacenando un valor en si mismo (no controlado)</p>
+       <strong>StateLess Component</strong>
+       <p>En stateLess components se puede hacer de manera similar sin la necesidad de un estado pero por medio de Hooks, aqui el siguiente ejemplo</p>
           <pre><code>
-            const Component = () =>{
-              //si no se inicializa un valor vacio
-              //esto dara error "cannot read property of null"
-              //en ambos tipos de componentes
-              //entiendase form como state
-              const [form, setForm] = React.useState({
-                  pocion:"",
-                  ingrediente1:"",
-                  ingrediente2:"",
-                  ingrediente3:"",
-                  valor:""
-              })
-              
-              const fillform = e =>{
-                  setForm({
-                      ...form,
-                      [e.target.name]: e.target.value
-                  })
-              }
-          
-              return(
-                &lt;input 
-                name="pocion" 
-                value={form.pocion} //soluciona info duplicada
-                onChange={handleChange} 
-                />
-                &lt;input 
-                name='apellidos'
-                onChange={fillform} 
-                />
-              )
-              </code></pre>
-        </div>
-      </div>
+  const Component = () =>{
+    //si no se inicializa un valor vacio
+    //esto dara error "cannot read property of null"
+    //en ambos tipos de componentes
+    //entiendase form como state
+    const [form, setForm] = React.useState({
+        pocion:"",
+        ingrediente1:"",
+        ingrediente2:"",
+        ingrediente3:"",
+        valor:""
+    })
+    
+    const fillform = e =>{
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    return(
+      &lt;input 
+      name="pocion" 
+      value={form.pocion} //soluciona info duplicada
+      onChange={handleChange} 
+      />
+      &lt;input 
+      name='apellidos'
+      onChange={fillform} 
+      />
+    )
+      </code></pre>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Levantamiento de estado</h3>
       <p>para compartir un estado entre 2 o mas componentes, se tiene que hacer un "levantamiento de estado", es decir,
         poner el estado en una loacalizacion que pueda mandarlo como props a los componentes, en el lugar mas cercano a
         todos los componentes que requieran del estado</p>
-      <div>
         <pre><code>
-                          Class ComponentePadre extends React.Component{
-                            //el componente padre contara con el estado
-                            //inicializado como vacio
-                            state = {form:{
-                              nombre:'',            //especificar los campos da solucion al error
-                              apellidos:''          //de cambio de input de no controlado a controlado
-                            } }
+    Class ComponentePadre extends React.Component{
+      //el componente padre contara con el estado
+      //inicializado como vacio
+      state = {form:{
+        nombre:'',            //especificar los campos da solucion al error
+        apellidos:''          //de cambio de input de no controlado a controlado
+      } }
 
-                            //y tendra la funcion que actualizara
-                            //el estado 
-                            handleChange = (e) =>{
-                              this.setState({            
-                              ...this.state.form,         //esto se hace para actualizar la informacion en vez de reescribirla
-                                [e.target.name]: e.target.value 
-                              })
-                            }
-                
-                            render(){
-                              return(
+      //y tendra la funcion que actualizara
+      //el estado 
+      handleChange = (e) =>{
+        this.setState({            
+        ...this.state.form,         //esto se hace para actualizar la informacion en vez de reescribirla
+          [e.target.name]: e.target.value 
+        })
+      }
 
-                                //esta funcion se pasa como prop
-                                //al componente hijo
-                                &lt;ComponenteHijo
-                                  onChange={this.handleChange}
-                                  formValues={this.state.form} //pasas como props el arreglo de valores 
-                                                               //que seran desglosados en el hijo
-                                />
-                              )
-                            }
-                          }  
+      render(){
+        return(
+
+          //esta funcion se pasa como prop
+          //al componente hijo
+          &lt;ComponenteHijo
+            onChange={this.handleChange}
+            formValues={this.state.form} //pasas como props el arreglo de valores 
+                                          //que seran desglosados en el hijo
+          />
+        )
+      }
+    }  
             </code></pre>
-      </div>
-      <div class="col-md-6">
-        <pre><code>
-              Class ComponenteHijo extends React.Component{
-                state = {}
-    
-                return(
-                  &lt;input 
-                  name="nobre" 
-                  value={this.props.formValues.nombre} 
-                  //el hijo recibe la funcion que actualiza
-                  //el estado del padre como props
-                  onChange={this.props.onChange} 
-                  />
-                  &lt;input 
-                  name='apellidos'
-                  vaue={this.props.formValues.apellidos}
-                  onChange={this.props.onChange} 
-                  />
-                )
-                }  
+            <p>En el componente hijo</p>
+            <pre><code>
+    Class ComponenteHijo extends React.Component{
+      state = {}
+
+      return(
+        &lt;input 
+        name="nobre" 
+        value={this.props.formValues.nombre} 
+        //el hijo recibe la funcion que actualiza
+        //el estado del padre como props
+        onChange={this.props.onChange} 
+        />
+        &lt;input 
+        name='apellidos'
+        vaue={this.props.formValues.apellidos}
+        onChange={this.props.onChange} 
+        />
+      )
+      }  
             </code></pre>
-      </div>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>React.Fragment</h3>
       <p>React fragment es un componente utilittario para regresar mas de un componente sin la necesidad de
         encapsularlos en divs</p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Ciclo de vida</h3>
       <p>Los componentes en React cuentan con ciclos de vida</p>
       <p>La parte de <strong>Montaje</strong> es el momento donde se inserta el codigo del componente en el DOM y en
@@ -2408,189 +2350,188 @@ display: block;
 
       </ul>
     </div>
-    <div>
+    <div class="encabezado">
       <h1>React Hooks - Filtro de busqueda</h1>
       <h3>1.- Los hooks de react solo funcionan sobre compnentes funcionales</h3>
       <pre><code>
-            function Componente (props){
-                return (
-                    &lt;div&gt;&lt;h3&gt;Header&lt;/h3&gt;&lt;/div&gt;                
-                      )
-            }
-            export default Component
-          </code></pre>
-      <h3>2.- busqueda</h3>
+    function Componente (props){
+        return (
+            &lt;div&gt;&lt;h3&gt;Header&lt;/h3&gt;&lt;/div&gt;                
+              )
+    }
+
+    export default Component
+      </code></pre>
+      <strong>2.- busqueda</strong>
       <p>Para esto, el &lt;input&gt; requerira 2 propiedades, <i>value</i> y <i>onChange</i></p>
       <p><small>*hasta aqui, nos regresara el valor del input letra por letra v,a,l,u,e</small></p>
       <pre><code>
-            function Componente (props){
-                return (
-                    &lt;div&gt;
-                    &lt;laber&gt;Nombre&lt;/label&gt;
-                    &lt;input
-                    value=""
-                    onChange={(e)=>{console.log(e.target.value)}}
-                    /&gt;
-                    &lt;/div&gt;
-                  )
-            }
-            export default Component
-          </code></pre>
-
-      <h3>3.- pimer hook</h3>
+    function Componente (props){
+        return (
+            &lt;div&gt;
+            &lt;laber&gt;Nombre&lt;/label&gt;
+            &lt;input
+            value=""
+            onChange={(e)=>{console.log(e.target.value)}}
+            /&gt;
+            &lt;/div&gt;
+          )
+    }
+    export default Component
+    </code></pre>
+      <strong>3.- pimer hook</strong>
       <p>usaremos un hook para tomar y leer el valor del input</p>
       <pre><code>
-          function Componente (props){
-            //uso de primer hook
-            const [value, setValue] = React.useState('')
-            return (
-              &lt;div&gt;
-              &lt;laber&gt;Nombre&lt;/label&gt;
-              &lt;input
-              value={value}
-              onChange={(e)=>{setValue(e.target.value)}}
-              /&gt;
-              &lt;/div&gt;
-              )
-            }
-            export default Component
-          </code></pre>
-      <h3>4.- pasar al filtro</h3>
+    function Componente (props){
+      //uso de primer hook
+      const [value, setValue] = React.useState('')
+      return (
+        &lt;div&gt;
+        &lt;laber&gt;Nombre&lt;/label&gt;
+        &lt;input
+        value={value}
+        onChange={(e)=>{setValue(e.target.value)}}
+        /&gt;
+        &lt;/div&gt;
+        )
+    }
+    
+    export default Component
+      </code></pre>
+      <strong>4.- pasar al filtro</strong>
       <p>Usaremos el value como condicion en el filtro para obtener un nuevo .map() con los elementos del <i>value</i>
       </p>
       <pre><code>
-            function Componente (props){
-              //uso de primer hook
-              const [value, setValue] = React.useState('')
+    function Componente (props){
+      //uso de primer hook
+      const [value, setValue] = React.useState('')
 
-             <i>//respuesta va a ser igual a un filtro, que de parametro tendra una funcion
-             //que regresara los elementos que contentan el value
-             //los `` son para pasar entre varias posibilidades, toLowerCase para mejor busqueda</i>
-             const respuestaFiltrada = elemmento.filter( elem =>{
-                return `${elem.elem1}${elem.elem2}`.toLowerCase.inlcudes(value.toLowerCase())
-             })
+      <i>//respuesta va a ser igual a un filtro, que de parametro tendra una funcion
+      //que regresara los elementos que contentan el value
+      //los `` son para pasar entre varias posibilidades, toLowerCase para mejor busqueda</i>
+      const respuestaFiltrada = elemmento.filter( elem =>{
+        return `${elem.elem1}${elem.elem2}`.toLowerCase.inlcudes(value.toLowerCase())
+      })
 
-              return (
-                &lt;div&gt;
-                  &lt;div&gt;
-                    &lt;laber&gt;Nombre&lt;/label&gt;
-                    &lt;input
-                    value={value}
-                    onChange={(e)=>{setValue(e.target.value)}}
-                    /&gt;
-                  &lt;/div&gt;
-                  
-                  <i>//y esta respuesta filtrada sera la que sera mapeada</i>
-                  &lt;div&gt;
-                    {respuestaFiltrada.map((ingrediente)=>(
-                      &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
-                      ))}
-                  &lt;/div&gt;
+      return (
+        &lt;div&gt;
+          &lt;div&gt;
+            &lt;laber&gt;Nombre&lt;/label&gt;
+            &lt;input
+            value={value}
+            onChange={(e)=>{setValue(e.target.value)}}
+            /&gt;
+          &lt;/div&gt;
+          
+          <i>//y esta respuesta filtrada sera la que sera mapeada</i>
+          &lt;div&gt;
+            {respuestaFiltrada.map((ingrediente)=>(
+              &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
+              ))}
+          &lt;/div&gt;
 
-                &lt;/div&gt;
-                )
-              }
-              export default Component
-            </code></pre>
+        &lt;/div&gt;
+        )
+      }
+      export default Component
+    </code></pre>
       <p>Hasta aqui, es una busqueda utilitaria, pero costosa en procesamiento, en caso de que la lista aumente,
         implicara un costo de procesamient aun mayor, esto se soluciona, u optmiza median el uso de React.useMemo()</p>
-      <h2>Mismo estado en useMemo</h2>
+      <strong>Mismo estado en useMemo</h2>
       <p>React.useMemo() recibe 3 parametros</p>
       <p><i>React.useMemo( (()=>{}), [lista, valor] )</i></p>
       <p>(elementoMemorizado), [lista, valor], si la lista o el valor cambia, se recalcula el elementoMemorizado</p>
 
       <pre><code>
-              function Componente (props){
-                //uso de primer hook
-                const [value, setValue] = React.useState('') //hook para sacar el valor a buscar
+    function Componente (props){
+      //uso de primer hook
+      const [value, setValue] = React.useState('') //hook para sacar el valor a buscar
 
-                const [listaFiltrada, setListaFiltrada] = React.useState(lista)  //<i>se sacar el valor de use memo por medio de hooks</i>
+      const [listaFiltrada, setListaFiltrada] = React.useState(lista)  //<i>se sacar el valor de use memo por medio de hooks</i>
 
-                React.useMemo(()=>{
-                  const resultado = elemento.filter(elem=>{
-                    return `${elem.cont1}`.toLowerCase().includes(value.toLowerCase())
-                  })
+      React.useMemo(()=>{
+        const resultado = elemento.filter(elem=>{
+          return `${elem.cont1}`.toLowerCase().includes(value.toLowerCase())
+        })
 
-                  setListaFiltrada(resultado)                                   //<i>aqui se saca el valor mandandolor por hook</i>
+        setListaFiltrada(resultado)                                   //<i>aqui se saca el valor mandandolor por hook</i>
 
-                }, [lista, value])
-                  
-                return (
-                  &lt;div&gt;
-                    &lt;div&gt;
-                      &lt;laber&gt;Nombre&lt;/label&gt;
-                      &lt;input
-                      value={value}
-                      onChange={(e)=>{setValue(e.target.value)}}
-                      /&gt;
-                    &lt;/div&gt;
-                    
-                    <i>//y esta respuesta filtrada sera la que sera mapeada</i>
-                    &lt;div&gt;
-                      {listaFiltrada.map((ingrediente)=>(
-                        &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
-                        ))}
-                    &lt;/div&gt;
-  
-                  &lt;/div&gt;
-                  )
-                }
-                export default Component
+      }, [lista, value])
+        
+      return (
+        &lt;div&gt;
+          &lt;div&gt;
+            &lt;laber&gt;Nombre&lt;/label&gt;
+            &lt;input
+            value={value}
+            onChange={(e)=>{setValue(e.target.value)}}
+            /&gt;
+          &lt;/div&gt;
+          
+          <i>//y esta respuesta filtrada sera la que sera mapeada</i>
+          &lt;div&gt;
+            {listaFiltrada.map((ingrediente)=>(
+              &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
+              ))}
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+        )
+      }
+      export default Component
               </code></pre>
-
-      <h2>Sacar todo nuevamente a otro custom Hook</h2>
+      <strong>Sacar todo nuevamente a otro custom Hook</strong>
       <p>empaquetar todo el trabajo hecho a un nuevo hook</p>
+    <pre><code>
+    //se saca la funcion del componente y se crea la funcion que recibira una lista
+    function useBusqueda(lista){
 
-      <pre><code>
-                //se saca la funcion del componente y se crea la funcion que recibira una lista
-                function useBusqueda(lista){
+      const [value, setValue] = React.useState('') //hook para sacar el valor a buscar
+      const [listaFiltrada, setListaFiltrada] = React.useState(lista) 
 
-                  const [value, setValue] = React.useState('') //hook para sacar el valor a buscar
-                  const [listaFiltrada, setListaFiltrada] = React.useState(lista) 
-  
-                  React.useMemo(()=>{
-                    const resultado = elemento.filter(elem=>{
-                      return `${elem.cont1}`.toLowerCase().includes(value.toLowerCase())
-                    })
-  
-                    setListaFiltrada(resultado)                                   
-  
-                  }, [lista, value])
+      React.useMemo(()=>{
+        const resultado = elemento.filter(elem=>{
+          return `${elem.cont1}`.toLowerCase().includes(value.toLowerCase())
+        })
 
-                  //se retorna el como setear el valor, y la lista filtrada
-                  return [value, setValue, listaFiltrada]
-                }
+        setListaFiltrada(resultado)                                   
+
+      }, [lista, value])
+
+      //se retorna el como setear el valor, y la lista filtrada
+      return [value, setValue, listaFiltrada]
+    }
 
 
-                function Componente (props){
-                  //y se usa como funcion dentro del componente, pasandole como parametro la lista
-                  const {value, setValue, listaFiltrada} = useBusqueda(lista)
-                    
-                  return (
-                    &lt;div&gt;
-                      &lt;div&gt;
-                        &lt;laber&gt;Nombre&lt;/label&gt;
-                        &lt;input
-                        value={value}
-                        onChange={(e)=>{setValue(e.target.value)}}
-                        /&gt;
-                      &lt;/div&gt;
-                      
-                      <i>//y esta respuesta filtrada sera la que sera mapeada</i>
-                      &lt;div&gt;
-                        {listaFiltrada.map((ingrediente)=>(
-                          &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
-                          ))}
-                      &lt;/div&gt;
-    
-                    &lt;/div&gt;
-                    )
-                  }
-                  export default Component
-                </code></pre>
+    function Componente (props){
+      //y se usa como funcion dentro del componente, pasandole como parametro la lista
+      const {value, setValue, listaFiltrada} = useBusqueda(lista)
+        
+      return (
+        &lt;div&gt;
+          &lt;div&gt;
+            &lt;laber&gt;Nombre&lt;/label&gt;
+            &lt;input
+            value={value}
+            onChange={(e)=>{setValue(e.target.value)}}
+            /&gt;
+          &lt;/div&gt;
+          
+          <i>//y esta respuesta filtrada sera la que sera mapeada</i>
+          &lt;div&gt;
+            {listaFiltrada.map((ingrediente)=>(
+              &lt;p&gt;Valor: {ingrediente.valor}&lt;/p&gt;
+              ))}
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+        )
+      }
+      export default Component
+      </code></pre>
     </div>
-    <div>
-      <h2>Extras</h2>
+    <div class="encabezado">
+      <h3>Extras</h3>
       <p><strong>Problemas con protocolos HTTPS</strong></p>
       <p>En package.json</p>
       <p>"set HTTPS=true&&react-scripts start"</p>
@@ -2602,8 +2543,7 @@ display: block;
       </p>
     </div>
   </section>
-  <section id="sect6">
-    <!-- Redux -->
+  <section id="sect6"> <!-- Redux -->
     <div class='row'>
       <div class="col-md-12">
         <h1>Redux</h1>
@@ -2836,8 +2776,7 @@ display: block;
         cual podremos evitar escribir mal un mismo string en 2 sitios</p>
     </div>
   </section>
-  <section id="sect10">
-    <!-- Trading -->
+  <section id="sect10"> <!-- Trading -->
     <div class="row">
       <div class="col-md-6">
         <h3>Breve historia de inversion y mercado</h3>
@@ -2870,8 +2809,7 @@ display: block;
       </div>
     </div>
   </section>
-  <section id="sect11">
-    <!-- NodeJS -->
+  <section id="sect11"> <!-- NodeJS -->
     <div class="row">
       <div class="col-md-6">
         <h3>comandos y estructura package json</h3>
@@ -2902,8 +2840,7 @@ display: block;
       </div>
     </div>
   </section>
-  <section id="sect13">
-    <!-- IRC Server -->
+  <section id="sect13"> <!-- IRC Server -->
     <h1>IRC Server</h1>
     <div class="row">
       <div class="col-md-12">
@@ -3128,8 +3065,7 @@ display: block;
       </div>
     </div>
   </section>
-  <section id="sect14">
-    <!-- English Course -->
+  <section id="sect14"> <!-- English Course -->
     <div class="row">
       <div class="col-md-12">
         <h3>Glosario basico </h3>
@@ -3318,40 +3254,36 @@ display: block;
       </div>
     </div>
   </section>
-  <section id="sect15">
-    <!-- Xammp Stack -->
-    <div>
-      <h3>Xammp Stack</h3>
-    </div>
-    <div>
-      <h3>configurar PhpMyAdmin</h3>
+  <section id="sect15"> <!-- Xammp Stack -->
+    <div class="encabezado">
+      <h3>PhpMyAdmin</h3>
       <p>Para configurar PMA para inicio mediante login y seleccion de servidores</p>
-      <p><strong>Inicio mediante login</strong></p>
+      <strong>Inicio mediante login</strong>
       <p>en el archivo de configuracion <i>xampp\phpMyAdmin\config.inc.php</i></p>
       <pre><code>
-            //configuracion predeterminada
-            $cfg['Servers'][$i]['auth_type'] = 'config';
+    //configuracion predeterminada
+    $cfg['Servers'][$i]['auth_type'] = 'config';
 
-            //por login
-            $cfg['Servers'][$i]['auth_type'] = 'cookie';
-          </code></pre>
-      <p><strong>Selector de servidores</strong></p>
+    //por login
+    $cfg['Servers'][$i]['auth_type'] = 'cookie';
+      </code></pre>
+      <strong>Selector de servidores</strong>
       <p>en el mismo archivo de configuracion, agregar estas lineas con su correspondiente configuracion antes de
         terminar el contenido del archivo <i>/* End of servers configuration */</i></p>
       <pre><code>
-            /* adding custom conections */
+    /* adding custom conections */
 
-            $i++;
-            $cfg['Servers'][$i]['host']          = 'noop';
-            $cfg['Servers'][$i]['port']          = 'noop';
-            $cfg['Servers'][$i]['socket']        = '';
-            $cfg['Servers'][$i]['connect_type']  = 'tcp';
-            $cfg['Servers'][$i]['extension']     = 'mysql';
-            $cfg['Servers'][$i]['compress']      = FALSE;
-            $cfg['Servers'][$i]['auth_type']     = 'config';
-            $cfg['Servers'][$i]['user']          = 'username';
-            $cfg['Servers'][$i]['password']      = 'password';
-          </code></pre>
+    $i++;
+    $cfg['Servers'][$i]['host']          = 'noop';
+    $cfg['Servers'][$i]['port']          = 'noop';
+    $cfg['Servers'][$i]['socket']        = '';
+    $cfg['Servers'][$i]['connect_type']  = 'tcp';
+    $cfg['Servers'][$i]['extension']     = 'mysql';
+    $cfg['Servers'][$i]['compress']      = FALSE;
+    $cfg['Servers'][$i]['auth_type']     = 'config';
+    $cfg['Servers'][$i]['user']          = 'username';
+    $cfg['Servers'][$i]['password']      = 'password';
+      </code></pre>
     </div>
   </section>
 </body>
