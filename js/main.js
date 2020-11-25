@@ -1,15 +1,31 @@
 $(document).ready(function(){
+  // $(".hamburguer").on('click', function(){
+  //   $(this).toggleClass('open') 
+  //   $(this).next().toggleClass('visible') 
+  // })
+  
   $("section").hide();
+  
+  
+  
   $("h4").click(function(){
     var ref = $(this).attr("href")
     var color = $(ref).css( "background-color" );
-    $("h4").css( "background-color", "#ffffff" );
+    $("h4").css( "background-color", "#333333" );
     $(this).css( "background-color", color );
     $("section").hide();
     $(ref).show();
   });
+  $("#sect1").click();
 });
-//*codigo de clase*//
+// *codigo de clase*//
+
+// JQ replace
+// document.addEventListener("DOMContentLoaded", function(){
+//   var section = document.querySelector("section")
+//   section.style.display = "none"; 
+
+// })
 
 /*
   Factorial,
@@ -44,3 +60,22 @@ function factorial(n) {
   return this.cache[n]
 }
 
+//*Service worker
+if('serviceWorker' in navigator){
+	navigator.serviceWorker.register('sw.js')
+							.then(res => console.log('serviceWorker cargado correctamente', res))
+							.then(function(reg){
+								console.log("Se logro");
+							})
+							.catch(err => console.log('No se ha podido regsitrar el serviceWorker', err));
+
+}else{
+	console.log('No tienes acceso a los serviceWorker en tu navegador');
+}
+
+
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', function() {
+//     navigator.serviceWorker.register('sw.js?'+Math.random()+'')
+//   });
+// }

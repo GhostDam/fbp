@@ -1,18 +1,20 @@
-html {                                  /*Este Snippet "Corrige" un buen uso del paddin sin afectar el width */
+/*Este Snippet "Corrige" un buen uso del paddin sin afectar el width */
+*, *:before, *:after {
   box-sizing: border-box;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
 body{
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
-
 header{
   text-align: center;
 }
-
+@media(max-width: 720px){
+  header{
+    display: none;
+  }
+}
 section{
   padding: 20px;
   max-width: 80%;
@@ -20,53 +22,136 @@ section{
   display: flex;
   flex-wrap: wrap;
 }
-@media(max-width:600px){
+@media(max-width: 720px){
   section{
     max-width: 100%;
     padding: 5px;
     margin: 0 5px 5px 5px;
   }
-  nav{
-    max-width: 100%!important;
-    padding: 0 5px 0 5px;
-    margin: 0 5px 0 5px!important;
-  }
+}
+.encabezado{
+  margin-bottom: 50px;
+  width: 100%;
+}
+.encabezado > h3{
+  text-align: center;
+}
+.encabezado h3::after{
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: 3px;
+  background-color: rgba(5, 92, 126, 0.582);
+}
+/* Menu de navegacion */
+.navegacion{
+  width: 100%;
+}
+.nav-fix{
+  height: 30px;
+  display: none;
 }
 h4 {
   padding: 20px;
   margin: 0!important;
+  color: whitesmoke;
   cursor: pointer;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;  
 }
-nav{
+.hamburguer{
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-shadow:1px 1px 1px 1px green inset;
+}
+.line{
+  width: 30px;
+  height: 3px;
+  margin: 5px;
+  background: #333333;
+  transition: .3s;
+  border-radius: 5px;
+}
+.hamburguer:hover .line:nth-of-type(1){
+  transform: rotate(45deg) translate(0, 10px);
+}
+.hamburguer:hover .line:nth-of-type(2){
+  opacity: 0;
+}
+.hamburguer:hover .line:nth-of-type(3){
+  transform: rotate(-45deg) translate(0, -10px);
+}
+.lista_cursos{
   margin: 0 auto;
   max-width: 80%;
-  display: flex!important;
+  display: flex;
   overflow: auto;
   justify-content: space-between;
+  background-color: #333333;
 }
+
+@media(max-width: 720px){
+  h4{
+    padding: 5px;
+    float: left;
+    clear: both;
+  }
+  .navegacion{
+    background-color: teal;
+    height: 30px;
+    position: fixed;
+    z-index: 2;
+  }
+  .nav-fix{
+    display: block;
+  }
+  .navegacion .hamburguer{
+    display: block;
+  }
+  .navegacion .lista_cursos{
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 30px;
+    left: -100vw;
+    transition: .3s;
+  }
+  /* .navegacion .lista_cursos.visible{
+    left: 0;
+  } */
+  .hamburguer:hover + .lista_cursos{
+    left: 0;
+  }
+}
+/* Menu de navegacion */
+
+
 /*barra general*/
-nav::-webkit-scrollbar{
+.lista_cursos::-webkit-scrollbar{
   height: 5px;
 }
 /*fondo de barra*/
-nav::-webkit-scrollbar-track{
+.lista_cursos::-webkit-scrollbar-track{
   background: rgba(0, 0, 0, .1);
 }
 /*posicion en la barra*/
-nav::-webkit-scrollbar-thumb{
+.lista_cursos::-webkit-scrollbar-thumb{
   background: rgba(0, 0, 0, .5);
   border-radius: 10px;
 }
 /*hover posicion de barra*/
-nav::-webkit-scrollbar-thumb:hover{
+.lista_cursos::-webkit-scrollbar-thumb:hover{
   background: steelblue;
 }
 
 pre {
   background: #333333;
-  color: #ffffff!important;
+  color: #ffffff;
   tab-size: 2;
 }
 
@@ -135,9 +220,75 @@ pre {
 }
 /* TOGGLER EXAMPLE */
 
+/* RESPONSIVE NAV EXAMPLE */
+.pseudo_page{
+  background-color: whitesmoke;
+  height: 40vh;
+}
+.res_nav{
+  position: relative;
+  width: 100%;
+}
+.res_hamburguesa{
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+.res_linea{
+  width: 30px;
+  height: 3px;
+  margin: 5px;
+  background: #333333;
+  transition: .3s;
+  border-radius: 5px;
+}
+.res_hamburguesa:hover .res_linea:nth-of-type(1){
+  transform: rotate(45deg) translate(0, 10px);
+}
+.res_hamburguesa:hover .res_linea:nth-of-type(2){
+  opacity: 0;
+}
+.res_hamburguesa:hover .res_linea:nth-of-type(3){
+  transform: rotate(-45deg) translate(0, -10px);
+}
+.res_menu{
+  display: flex;
+  max-width: 100%;
+  background-color: black;
+}
+.res_menu_item{
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+@media(max-width: 620px){
+  .res_nav .res_hamburguesa{
+    display: block;
+  }
+  .res_menu{
+    display: block;
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    top: 30px;
+    left: -102vw;
+    transition: .3s;
+  }
+  .res_hamburguesa:hover + .res_menu{
+    left: 0;
+  }
+
+}
+
 /* BOX-MODEL EXAMPLE */
 #box-model{
   padding: 1px;                      /* padding "simbolico" para evitar el colapsado de margen vertical */
+  width: 100%;
   height: 300px;
   background-color: whitesmoke;
 }
@@ -193,37 +344,46 @@ pre {
 #sect15{
   background-color: #fb7a24;
 }
-
-iframe{
-  width: 100%;
-}
-
 /* Notas de Cornell */
 .cornell{
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 80vh;
   border: crimson 1px dotted;
   background-color: honeydew;
+  margin-bottom: 10px;
+}
+.cornell div{
+  padding: 10px;
 }
 .tema{
   width: 100%;
-  height: 3rem;
+  min-height: 3rem;
   border: cyan 1px dotted;
 }
 .contenido{
+  padding: 0!important;
   display: flex;
   border: darkviolet 1px dotted;
 }
-.notas{
-  flex: 1;
-  border: green 1px dotted;
+.contenido ul{
+  list-style: none;
+  padding-left: 0;
 }
 .glosario{
   flex-basis: 20%;
   border: red 1px dotted;
 }
+.notas{
+  flex: 1;
+  border: green 1px dotted;
+}
 .resumen{
-  height: 20vh;
+  min-height: 20vh;
   border: blueviolet 1px dotted;
 }
+
+/* pre, code{
+  width: 60%;
+  overflow-x: scroll;
+} */
