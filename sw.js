@@ -1,4 +1,4 @@
-const CACHE_NAME = "Memorial V2";         //nombre de cache
+const CACHE_NAME = "Memorial V3";         //nombre de cache
 const DataToCache = [                     //datos a guardar
   './',
   'index.html',

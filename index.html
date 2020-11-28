@@ -41,7 +41,7 @@
     <p><strong>Todos los grandes desarrolladores llegaron ahi resolviendo problemas que no estaban calificados para
         resolver, hasta que en realidad lo hicieron</strong></p>
   </header>
-  <nav class="navegacion sticky-top">
+  <nav class="navegacion">
     <div class="hamburguer">
       <div class="line"></div>
       <div class="line"></div>
@@ -59,12 +59,13 @@
       <h4 class="temas" href="#sect13">IRC server</h4>
       <h4 class="temas" href="#sect14">Eng Course</h4>
       <h4 class="temas" href="#sect15">XAMPP stack</h4>
+      <h4 class="temas" href="#sect16">Fitness</h4>
+      <h4 class="temas" href="#sect17">ToDo list</h4>
     </div>
   </nav>
   <div class="nav-fix"></div>
-  <section id="sect1">
-    <!-- Aprendizaje -->
-    <div>
+  <section id="sect1"> <!-- Aprendizaje -->
+    <div class="encabezado">
       <h3>¿Qué es el aprendizaje?</h3>
       <p>Aprender es la capacidad de adquirir conocimiento.</p>
       <p>Si quisiéramos abstraer la palabra aprender necesitamos definir tres palabras: Perseguir, Atrapar o Prender.
@@ -92,7 +93,7 @@
       <p>En el tipo de pensamiento difuso, la técnica pomodoro nos puede ayudarnos mucho, ya que debemos concentrarnos
         por lapsos de tiempo mucho más cortos y, además, nos ayuda a evitar la procrastinación</p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Etapas del Aprendizaje</h3>
       <p>En la entrada de información tenemos dos tipos de experiencia:</p>
       <p><strong>Experiencia concreta (EC):</strong> Es un perfil que le gusta involucrarse y de tener la experiencia.
@@ -105,7 +106,7 @@
       <p><strong>Experimentación activa (EA):</strong> Son ese tipo de alumnos pragmáticos donde comienzan a través de
         la experiencia y a partir de ahí pueden generar nuevas experiencias para aplicarlo a nuevas.</p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Tipos de Alumnos</h3>
       <strong>Alumnos Activos</strong>
       <p>Estos alumnos prefieren iniciar su conocimiento con algo práctico, aunque sea pequeño o básico. Los tipos de
@@ -121,7 +122,7 @@
       <p>Normalmente los cursos que verás aquí son cursos que desarrollan proyectos avanzados pues se asume que ya se
         aprendió la teoría necesaria y es hora de experimentar.</p>
     </div>
-    <div>
+    <div class="encabezado">
       <h3>Reglas del aprendizaje</h3>
       <strong>Aprender individualmente:</strong>
       <ul>
@@ -140,11 +141,10 @@
       <p>Crea una opinión fuerte de lo que aprendiste <br>
         Ten la oportunidad de que alguien cuestione el conocimiento que adquiriste</p>
     </div>
-    <div>
-      <div>
+    <div class="encabezado">
         <div class="cornell">
           <div class="tema">
-            <h3>Elementos del aprendizaje</h3>
+            <h5>Elementos del aprendizaje</h5>
           </div>
           <div class="contenido">
             <div class="glosario">
@@ -187,9 +187,7 @@
           </div>
         </div>
       </div>
-
-    </div>
-    <div>
+    <div class="encabezado">
       <h3>Notas de Cornell(v14)</h3>
       <p>Las Notas de Cornell son uno de los métodos más efectivos (y desconocidos) para guardar nuestros apuntes
         efectivamente, debemos seguir los siguientes lineamientos:</p>
@@ -222,7 +220,7 @@
     <div>
       <div class="cornell">
         <div class="tema">
-          <h3>Como aprender cualquier cosa</h3>
+          <h5>Como aprender cualquier cosa</h5>
         </div>
         <div class="contenido">
           <div class="glosario">
@@ -324,12 +322,6 @@
           </ul>
         </div>
       </div>
-
-
-
-
-
-
       <div class="encabezado">
         <h3>CSS</h3>
           <p>CSS 1 se consolido en el 96</p>
@@ -350,8 +342,6 @@ h1{
 }
             </code></pre>      
       </div>
-
-
     <div class="encabezado">
         <h3>Selectores CSS</h3>
           <pre><code>
@@ -395,13 +385,6 @@ h1{
         </li>
       </ul>
     </div>
-
-
-
-
-
-
-
       <div class="encabezado">
         <h3>Especificidad, herencia y cascada</h3>
           <p>En caso de usar Frameworks, NO ES RECOMENDABLE agregar mas css para problemas con CSS</p>
@@ -430,12 +413,6 @@ h1{
             initial  resetea los valores por defecto del elemento
           </code></pre>
     </div>
-
-
-
-
-
-
     <div class="encabezado">
       <h3>Inline y Bloque</h3>
     <ul>
@@ -450,11 +427,7 @@ h1{
       <li>Ocupa todo el espacio horizontal</li>
       <li>Tiene ancho y alto</li>
     </ul>
-    </div>
-  
-  
-  
-  
+    </div>  
     <div class="encabezado">
       <h3>Modelo de caja</h3>
     <p><strong>Box-model: </strong>Modelo de caja</p>
@@ -509,11 +482,6 @@ h1{
     <p>Las alturas, solo dependen del papá con tamaño definido, no para automatico (min-height aunque parece definido es
       automatico)</p>
     </div>
-
-
-
-
-
     <div class="encabezado">
       <h3>Bordes</h3>
     <p>El borde se dibuja por dentro de la caja</p>
@@ -535,7 +503,6 @@ h1{
             box-shadow: 0 0 0 10px green inset: /* interno */ 
           </code></pre>
     </div>
-
       <div class="encabezado">
         <h3>Background</h3>
       <ul>
@@ -561,7 +528,6 @@ h1{
         1px, 2xp, 3xp
       <p>
     </div>
-
     <div class="encabezado">
         <h3>Textos</h3>
       <p>El tamaño base del body es de 16 px</p>
@@ -598,21 +564,63 @@ h1{
         <li><strong>text-orientation: </strong>upright</li>
       </ul>
     </div>
-
-
-
-
     <div class="encabezado">
         <h3>Postition</h3>
+        <strong>Static</strong>
+        <pre><code>
+    .static {
+      position: static;
+    }
+        </code></pre>
+        <p>Static es el valor por defecto de cada elemento posicionado en el DOM, se interpreta como <i>No posicionado</i> a menos que tenga algun otro valor en position</p>
+
+        <strong>relative</strong>
+        <pre><code>
+    //sin propiedades extra, se comporta como static
+    .relative1 {
+      position: relative;
+    }
+
+    //a menos que se especifiquen valores
+    .relative2 {
+      position: relative;
+      top: -20px;
+      left: 20px;
+      background-color: white;
+      width: 500px;
+    }
+        </code></pre>
+        <p>Relative se comporta igual manera que static a menos que se agreguen valores como <i>top, right, bottom, left</i>, otro contenido no se puede ajustar para adaptarse a cualquier hueco dejado</p>
+
+        <strong>fixed</strong>
+        <pre><code>
+    .fixed {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 200px;
+    }
+        </code></pre>
+        <p>fixed se posicionara relativo a la ventana del navegador, osea que se mantendra en el mismo lugar en la pantalla a pesar de hacer scroll, un elemento con valor <i>fixed</i> no dejara espacio en el DOM en donde estaba ubicado en el codigo</p>
+
+        <strong>absolute</strong>
+        <pre><code>
+    .relative {
+      position: relative;
+      width: 600px;
+      height: 400px;
+    }
+    .absolute {
+      position: absolute;
+      top: 120px;
+      right: 0;
+      width: 300px;
+      height: 200px;
+    }
+      </code></pre>
+        <p>absolute se comportara como fixed, pero sera relativo a su ancestro <i>posicionado</i> mas cercano, si un elemento absolute no tiene ancestros, usara el elemento body y se seguira moviendo con el scroll</p>
         <p>Un Ejemplo mas detallado <a target="_blank" href="https://es.learnlayout.com/position.html">Aqui</a></p>
     </div>
-
-
-
-
-
-
-
     <div class="encabezado">
         <h3>Responsive design</h3>
       <p>Para el responsive design es imprescindible contar con la siguiente etiqueta</p>
@@ -972,7 +980,7 @@ display: block;
 
         <li><strong>git commit --amend</strong> Realiza correcciones al ultimo commit realizado</li>
 
-        <li><strong>Nuevo repo</strong></li>
+        <p><strong>Nuevo repositorio desde GitHUB</strong></p>
 
         <li><strong>git remote add origin https://github.com/GhostDam/Ghost.git</strong> agrega el servidor remoto al
           cual se "pusheara" el repositorio local</li>
@@ -3234,6 +3242,58 @@ display: block;
     $cfg['Servers'][$i]['password']      = 'password';
       </code></pre>
     </div>
+  </section>
+  <section id="sect16"> <!-- Nutricion & Ejercicios-->
+    <div class="encabezado">
+      <h3>Rutinas basicas</h3>
+      <strong>Calentamiento</strong>
+      <ul class="warmup">
+        <li>Ceilling Reach: Ful body</li>
+        <li>Arms Circles: Shoulder mobility</li>
+        <li>Arms Circles oposites</li>
+        <li>Finger Stretch Up & Down to wrist inn each arm</li>
+        <li>Hands rolls</li>
+        <li>Neck stretch Up & Down, L&R to side pulls U&D, circles</li>
+        <li>Shoulder stretch to shoulder archs</li>
+        <li>Elbow circles</li>
+        <li>Side to side twists: Back, Rear delts & Core</li>
+        <li>Hips back: Core & Hip flexors</li>
+        <li>Hips front: Hamstrings, Calves, Lower Back</li>
+        <li>Side Archs: Inner Thigh & Obliques</li>
+        <li>Hip Circles: Hip Flexors</li>
+        <li>Ground Touches to Calves touch: Lower Back & Hamstrings</li>
+        <li>Side pseudo squats (feet up)</li>
+        <li>Side squat: Outer quads & Hamstrings</li>
+        <li>Lunges: Hip Flexor stretch</li>
+        <li>Leg ups: Hip Flexors, Glutes, Hamstrings</li>
+        <li>Back feet ups: Quad stretch</li>
+        <li>Knee circles</li>
+        <li>Ankles circles</li>
+        <li>Calve stretch to wall</li>
+        <li>Floor Butterflies</li>
+      </ul>
+    </div>
+  </section>
+  <section id="sect17"> <!-- ToDo List-->
+    <div class="encabezado">
+      <h3>ToDo list</h3>
+        <div class="todo-class">
+          <form>
+            <input type="text" class="todo-input">
+            <button class="todo-button" type="submit">+</button>
+            <div class="select">
+              <select name="todos" class="filter-todo">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="uncompleted">Uncompleted</option>
+              </select>
+            </div>
+          </form>
+          <div class="todo-container">
+            <ul class="todo-list"></ul>
+          </div>
+        </div>
+      </div> <!--encabe-->
   </section>
 </body>
 
