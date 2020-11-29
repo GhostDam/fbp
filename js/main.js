@@ -1,80 +1,3 @@
-$(document).ready(function(){
-  // $(".hamburguer").on('click', function(){
-  //   $(this).toggleClass('open') 
-  //   $(this).next().toggleClass('visible') 
-  // })
-  $("section").hide();  
-  $("h4").click(function(){
-    var ref = $(this).attr("href")
-    var color = $(ref).css( "background-color" );
-    $("h4").css( "background-color", "#333333" );
-    $(this).css( "background-color", color );
-    $("section").hide();
-    $(ref).show();
-  });
-  $("#sect17").show();  
-
-});
-// *codigo de clase*//
-
-// JQ replace
-// document.addEventListener("DOMContentLoaded", function(){
-//   var section = document.querySelectorAll("section")
-//   var h4 = document.querySelectorAll("h4")
-
-//   for (let i = 0; i < h4.length; i++) {
-//     h4[i].addEventListener('click', function(){
-//         var anchor = this.getAttribute("href")
-
-//         document.querySelector("section").style.display = "none";
-//         document.querySelector(anchor).style.display = "block";
-//         console.log(anchor)
-//       }) 
-//  }
-
-//   for (let i = 0; i < section.length; i++) {
-//     section[i].style.display = "none"; 
-//   }
-//   // var warmup = document.querySelector('.warmup').children
-//   // for (let i = 0; i < warmup.length; i++) {
-//   //   console.log(warmup[i].innerHTML)    
-//   // }
-// })
-
-/*
-  Factorial,
-  un factorial es un num que se multiplica 
-  por sus "antepasados"
-
-  factorial de 6
-
-   !6 = * 5 * 4 * 3 * 2 * 1 = 720
-
-   !12 = 12 * ... * 5 * 4 * 3 * 2 * 1 = 
-
-*/ 
-
-function factorial(n) {
-  //si no existe
-  //se crea el objeto de guardado
-  if (!this.cache) {
-    this.cache = {}
-  }
-
-  //si existe regresa lo
-  //guardado
-  if (this.cache[n]) {
-    return this.cache[n]
-  }
-
-  if (n===1) {
-      return 1
-    }
-  this.cache[n] = n * factorial(n - 1)
-  return this.cache[n]
-}
-
-
 //*Service worker
 if('serviceWorker' in navigator){
 	navigator.serviceWorker.register('sw.js')
@@ -85,7 +8,59 @@ if('serviceWorker' in navigator){
 	console.log('No tienes acceso a los serviceWorker en tu navegador');
 }
 
-// // Microservices test
+//* Navegacion de pestañas
+document.addEventListener("DOMContentLoaded", function(){
+  var section = document.querySelectorAll("section")
+  var link = document.querySelectorAll(".temas")
+  var home = document.querySelector(".welcome")
+  var goHome = document.querySelector(".icon-home")
+  var mensaje = document.querySelector("#mensaje")
+
+  section.forEach(function (sect) {
+    sect.style.display = "none";
+  })
+
+  link.forEach(function (e) {
+    e.addEventListener('click', ()=>{
+      var anchor = e.getAttribute("href")
+      var sect = document.querySelector(anchor)
+      var style = window.getComputedStyle(sect);
+      var color = style.backgroundColor
+
+      section.forEach(function (sect) {
+              sect.style.display = "none";
+            })
+      link.forEach(function (h) {
+        h.style.backgroundColor = "#333333"
+      })
+      document.querySelector(anchor).style.display = "block";
+      e.style.backgroundColor = color
+      home.style.display = "none";
+    })
+  })
+
+  //frases
+  const motivaciones = [
+    "Todos los grandes desarrolladores llegaron ahi resolviendo problemas que no estaban calificados para resolver, hasta que en realidad lo hicieron",
+    "No hables mal de ti mismo, porque el guerrero que esta dentro de ti escuchará tus palabras y se debilitara por ellas",
+    "Jiujitsu: The gentle art of folding clothes while people are still in them, Involuntary yoga",
+    "No man has te right to be an amateur in the matter of physical training. It is a shame for man to grow old without seeing the beauty and strength of which his body is capable.... -Socrates",
+    "Taijutsu: The art of gracefully letting your oponent to hurt himself.",
+    "Hay personas que creen que por su bien escogen la cuarta via, ser bueno, hacerse bueno, darse por vencido, y la ultima, si no lo intentan, no pueden fallar"
+  ]
+  
+  goHome.addEventListener('click', function() {
+      section.forEach(function (sect) {
+        sect.style.display = "none";
+      })
+      home.style.display = "block"
+  })
+
+  var frase = motivaciones[Math.floor(Math.random() * motivaciones.length)]
+  mensaje.innerText = `"${frase}"`
+})
+
+// Microservices test
 // const URL = "https://sidof.segob.gob.mx/historicoIndicadores/indicadoresHoy/";
 // const HEADERS = {
 //                   method: 'GET',
@@ -93,7 +68,8 @@ if('serviceWorker' in navigator){
 //                   headers: {
 //                     "Content-Type": "application/json",
 //                     "X-Content-Type-Options": "nosniff"
-//                     }                  
+//                     },
+//                     crossDomain:true
 //                 } 
 
 // fetch(URL, HEADERS)
@@ -132,12 +108,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //check mark button
     const completedButton = document.createElement('button')
-    completedButton.innerText = "/"
+    completedButton.innerHTML = "<div class='icon-check'></div>"
     completedButton.classList.add('complete-btn')
     todoDiv.appendChild(completedButton)
     //trash button
     const trashButton = document.createElement('button')
-    trashButton.innerText = "x"
+    trashButton.innerHTML = "<div class='icon-trash'></div>"
     trashButton.classList.add('trash-btn')
     todoDiv.appendChild(trashButton)
     //apend to list
@@ -232,12 +208,12 @@ document.addEventListener("DOMContentLoaded", function () {
         todoDiv.appendChild(newTodo)
         //check mark button
         const completedButton = document.createElement('button')
-        completedButton.innerText = "/"
+        completedButton.innerHTML = "<div class='icon-check'></div>"
         completedButton.classList.add('complete-btn')
         todoDiv.appendChild(completedButton)
         //trash button
         const trashButton = document.createElement('button')
-        trashButton.innerText = "x"
+        trashButton.innerHTML = "<div class='icon-trash'></div>"
         trashButton.classList.add('trash-btn')
         todoDiv.appendChild(trashButton)
         //apend to list

@@ -1,4 +1,4 @@
-const CACHE_NAME = "Memorial V3";         //nombre de cache
+const CACHE_NAME = "Memorial V5";         //nombre de cache
 const DataToCache = [                     //datos a guardar
   './',
   'index.html',
@@ -8,7 +8,11 @@ const DataToCache = [                     //datos a guardar
   'css/master.css',
   'css/game.css',
   'librerias/bootstrap.css',
-  'librerias/jquery.js'
+  'librerias/fonts/untitled-font-1.eot',
+  'librerias/fonts/untitled-font-1.svg',
+  'librerias/fonts/untitled-font-1.ttf',
+  'librerias/fonts/untitled-font-1.woff',
+  'librerias/styles.css'
 ];
 
 self.addEventListener('install', function(event) {

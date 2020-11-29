@@ -26,9 +26,9 @@
   <!-- icons -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-  <script src="librerias/jquery.js"></script>
+  <!-- libs -->
   <link rel="stylesheet" href="librerias/bootstrap.css">
+  <link rel="stylesheet" href="librerias/styles.css">
 
   <link rel="stylesheet" href="css/master.css">
   <script src="js/main.js" charset="utf-8"></script>
@@ -37,32 +37,35 @@
 
 <body>
   <header>
-    <h1>Sistemas de Aprendizaje - Becas FB Dev</h1>
-    <p><strong>Todos los grandes desarrolladores llegaron ahi resolviendo problemas que no estaban calificados para
-        resolver, hasta que en realidad lo hicieron</strong></p>
+    <nav class="navegacion">
+      <div class="icon-home"></div>
+      <div class="hamburguer">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <ul class="lista_cursos">
+        <li class="temas" href="#sect1">Procesos de aprendizaje</li>
+        <li class="temas" href="#sect2">Desarrollo web</li>
+        <li class="temas" href="#sect3">Git y GitHub</li>
+        <li class="temas" href="#sect4">Fundamentos de JavaScript</li>
+        <li class="temas" href="#sect5">React Js</li>
+        <li class="temas" href="#sect6">Redux</li>
+        <li class="temas" href="#sect10">Trading</li>
+        <li class="temas" href="#sect11">Node Js</li>
+        <li class="temas" href="#sect13">IRC server</li>
+        <li class="temas" href="#sect14">Eng Course</li>
+        <li class="temas" href="#sect15">XAMPP stack</li>
+        <li class="temas" href="#sect16">Fitness</li>
+      </ul>
+      <div class="buscador">
+        <div class="search-form">
+          <span id="searcher" contenteditable="true"></span>
+          <div class="icon-search"></div>
+        </div>
+      </div>
+    </nav>
   </header>
-  <nav class="navegacion">
-    <div class="hamburguer">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-    <div class="lista_cursos">
-      <h4 class="temas" href="#sect1">Procesos de aprendizaje</h4>
-      <h4 class="temas" href="#sect2">Desarrollo web</h4>
-      <h4 class="temas" href="#sect3">Git y GitHub</h4>
-      <h4 class="temas" href="#sect4">Fundamentos de JavaScript</h4>
-      <h4 class="temas" href="#sect5">React Js</h4>
-      <h4 class="temas" href="#sect6">Redux</h4>
-      <h4 class="temas" href="#sect10">Trading</h4>
-      <h4 class="temas" href="#sect11">Node Js</h4>
-      <h4 class="temas" href="#sect13">IRC server</h4>
-      <h4 class="temas" href="#sect14">Eng Course</h4>
-      <h4 class="temas" href="#sect15">XAMPP stack</h4>
-      <h4 class="temas" href="#sect16">Fitness</h4>
-      <h4 class="temas" href="#sect17">ToDo list</h4>
-    </div>
-  </nav>
   <div class="nav-fix"></div>
   <section id="sect1"> <!-- Aprendizaje -->
     <div class="encabezado">
@@ -283,19 +286,20 @@
           <p>Las etiquetas son la representación básica de la información en un documento html. Sirven para crear y
             organizar el contenido.<br>
             La sintaxis general de una etiqueta es:</p>
-              <pre><code>
-              &lt;nombre&gt;contenido&lt;/nombre&gt;
-              </code></pre>
+          <pre><code>
+    &lt;nombre&gt;contenido&lt;/nombre&gt;
+          </code></pre>
           <p>Hay ciertas etiquetas que tienen una sintaxis diferente, ya que se cierran en sí mismas; es decir, no tienen
             etiqueta de cierre:</p>
             <pre><code >
-            &lt;nombre /&gt;
+    &lt;nombre /&gt;
             </code></pre>
           <p>Las etiquetas meta son las que otorgan informacion al navegador y al motor de busqueda, 3 ejemplos de estas
             son</p>
-          <pre><code >&lt;meta name="description" content="descripcion de la pagina"/&gt;
-          &lt;meta name="author" content="autor de la pag"/&gt;
-          &lt;meta name="keywords" content="palabras, clave, de la , pagina"/&gt;
+          <pre><code >
+    &lt;meta name="description" content="descripcion de la pagina"/&gt;
+    &lt;meta name="author" content="autor de la pag"/&gt;
+    &lt;meta name="keywords" content="palabras, clave, de la , pagina"/&gt;
           </code></pre>
         </div>
         <div>
@@ -384,6 +388,25 @@ h1{
         <li><strong>de atributos contiene [class*="button"] </strong>Selecciona los elementos cuyo atributo contenga...
         </li>
       </ul>
+    </div>
+    <div class="encabezado">
+      <h3>snippets</h3>
+      <pre><code>
+    html{
+       font-size: 62.5%; /* reset para rems (unidad de medida para mejorar calidad visual en pantallas) = 10px de 16 px */
+    }
+
+    *, *:before, *:after{ /**esto hace que agregar un padding no cambien el ancho **/
+      box-sizing: inherit;
+      margin: 0;
+      border: 0;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    
+      </code></pre>
     </div>
       <div class="encabezado">
         <h3>Especificidad, herencia y cascada</h3>
@@ -3274,13 +3297,14 @@ display: block;
       </ul>
     </div>
   </section>
-  <section id="sect17"> <!-- ToDo List-->
+  <div class="welcome">
+    <p id="mensaje"></p>
     <div class="encabezado">
-      <h3>ToDo list</h3>
+      <h3>Lista de tareas</h3>
         <div class="todo-class">
-          <form>
+          <form class="todo-form">
             <input type="text" class="todo-input">
-            <button class="todo-button" type="submit">+</button>
+            <button class="todo-button" type="submit"><div class="icon-plus"></div></button>
             <div class="select">
               <select name="todos" class="filter-todo">
                 <option value="all">All</option>
@@ -3293,8 +3317,8 @@ display: block;
             <ul class="todo-list"></ul>
           </div>
         </div>
-      </div> <!--encabe-->
-  </section>
+      </div> 
+  </div>
 </body>
 
 </html>

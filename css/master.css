@@ -2,26 +2,203 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-body{
+/* html{
+  font-size: 62.5%;
+} */
+ body{
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, gray, black);
+}
+/*
+p{
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+pre, code{
+  overflow: auto;
+} */
+/* Menu de navegacion */
+.navegacion{
+  position: fixed;
+  display: flex;
+  height: 3rem;
+  background-color: #333333;
+  width: 100%;
+}
+.nav-fix{
+  height: 3rem;
+}
+.icon-home{
+  color: whitesmoke;
+  line-height: 3rem;
+  font-size: 1.5rem; 
+  margin-left: .5rem;
+  transition: all .3s ease;
+}
+.icon-home:hover{
+  cursor: pointer;
+  color: #fb7a24;
+}
+.hamburguer{
+  display: none;
+  cursor: pointer;
+  position: absolute;
+}
+.line{
+  width: 30px;
+  height: 3px;
+  margin: 5px;
+  background: white;
+  transition: .3s;
+  border-radius: 5px;
+}
+.hamburguer:hover .line:nth-of-type(1){
+  transform: rotate(45deg) translate(0, 10px);
+}
+.hamburguer:hover .line:nth-of-type(2){
+  opacity: 0;
+}
+.hamburguer:hover .line:nth-of-type(3){
+  transform: rotate(-45deg) translate(0, -10px);
+}
+.lista_cursos{
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left:auto;
+  margin-bottom: 0;
+  padding: 0;
+  max-width: 50%;
+  overflow: auto;
+  list-style: none;
+  background-color: #333333;
+}
+.lista_cursos li{
+  display: block;
+  white-space: nowrap;
+  padding: .5rem;
+  color: whitesmoke;
+  cursor: pointer;
+}
+.buscador{
+  position: relative;
+  width: 10vw;
+}
+.search-form{
+  display: flex;
+  position: relative;
   height: 100%;
 }
-header{
-  text-align: center;
+.search-form .icon-search{
+  position: absolute;
+  right: 0;
+  color: whitesmoke;
+  line-height: 3rem;
+  font-size: 1rem;
+  padding-right: .5rem;
 }
+.icon-search{
+  pointer-events: none;
+}
+.search-form span{
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  line-height: inherit;
+  color: whitesmoke;
+}
+.search-form span:hover{
+  background-color: #333333;
+  color: whitesmoke;
+}
+
+/* .search-form input, .search-form button{
+  padding: 0.5rem;
+  border: none;
+  background: none;
+} */
+/* .search-form input{
+  max-width: 100%;
+  color: wheat;
+}
+.search-form input:hover{
+  border-bottom: oldlace 1px solid;
+}
+.search-form:hover input{
+  max-width: 150%;
+} */
+
 @media(max-width: 720px){
-  header{
+  .nav-fix{
     display: none;
   }
+  .buscador{
+    margin-left: auto;
+  }
+  /* .navegacion{
+
+  } */
+  .navegacion{
+    bottom: 0;
+  }
+  .navegacion .hamburguer{
+    display: block;
+  }
+  /* .navegacion .lista_cursos{
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 3rem;
+    left: -100vw;
+    transition: .3s;
+  } */
+  .navegacion .lista_cursos{
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: -100vw;
+    z-index: 999;
+    transition: .3s;
+  }
+  .buscador{
+    width: 30%;
+    right: 0;
+    bottom: 3rem;
+  }
+  .hamburguer{
+    top: 25%;
+    right: 0;  
+  }
+  .hamburguer:hover + .lista_cursos{
+    right: 0;
+  }
 }
+/* Menu de navegacion */
 section{
   padding: 20px;
+  min-height: 100vh;
   max-width: 80%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
 }
+.welcome{
+  max-width: 80%;
+  padding: 20px;
+  margin: 0 auto;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#mensaje{
+  color: burlywood;
+  font-size: 1rem;
+  text-align: center;
+}
+
 @media(max-width: 720px){
   section{
     max-width: 100%;
@@ -42,96 +219,13 @@ section{
   margin: 0 auto;
   width: 50%;
   height: 3px;
-  background-color: rgba(5, 92, 126, 0.582);
+  background-color: rgba(0, 0, 0, 0.3);
 }
-/* Menu de navegacion */
-.navegacion{
-  width: 100%;
-}
-.nav-fix{
-  height: 30px;
-  display: none;
-}
-h4 {
-  padding: 20px;
-  margin: 0!important;
-  color: whitesmoke;
-  cursor: pointer;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;  
-}
-.hamburguer{
-  display: none;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-shadow:1px 1px 1px 1px green inset;
-}
-.line{
-  width: 30px;
-  height: 3px;
-  margin: 5px;
-  background: #333333;
-  transition: .3s;
-  border-radius: 5px;
-}
-.hamburguer:hover .line:nth-of-type(1){
-  transform: rotate(45deg) translate(0, 10px);
-}
-.hamburguer:hover .line:nth-of-type(2){
-  opacity: 0;
-}
-.hamburguer:hover .line:nth-of-type(3){
-  transform: rotate(-45deg) translate(0, -10px);
-}
-.lista_cursos{
-  margin: 0 auto;
-  max-width: 80%;
-  display: flex;
-  overflow: auto;
-  justify-content: space-between;
-  background-color: #333333;
-}
-
-@media(max-width: 720px){
-  h4{
-    padding: 5px;
-    float: left;
-    clear: both;
-  }
-  .navegacion{
-    background-color: teal;
-    height: 30px;
-    position: fixed;
-    z-index: 2;
-  }
-  .nav-fix{
-    display: block;
-  }
-  .navegacion .hamburguer{
-    display: block;
-  }
-  .navegacion .lista_cursos{
-    display: block;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 30px;
-    left: -100vw;
-    transition: .3s;
-  }
-  .hamburguer:hover + .lista_cursos{
-    left: 0;
-  }
-}
-/* Menu de navegacion */
-
-
 /*barra general*/
 .lista_cursos::-webkit-scrollbar{
   height: 5px;
 }
+
 /*fondo de barra*/
 .lista_cursos::-webkit-scrollbar-track{
   background: rgba(0, 0, 0, .1);
@@ -388,27 +482,30 @@ pre {
 }
 
 /* ToDo class */
-.todo-class{
+/* .todo-class{
   background-image: linear-gradient(120deg, #e2c35d, #d88771);
-}
-form{
+} */
+.todo-form{
   display: flex;
   min-height: 20vh;
   justify-content: center;
   align-items: center;
 }
-form input, form button{
+.todo-form input, .todo-form button{
   padding: 0.5rem;
   border: none;
   background: white;
 }
-form button{
+.icon-plus{
+  vertical-align: baseline;
+}
+.todo-form button{
   color: #d88771;
   background: white;
   cursor: pointer;
   transition: all  0.3s ease;
 }
-form button:hover{
+.todo-form button:hover{
   background: #d88771;
   color: white;
 }
@@ -418,11 +515,19 @@ form button:hover{
   align-items: center;
 }
 .todo-list{
-  min-width: 30%;
+  width: 50%;
   list-style: none;
+  padding-left: 0;
 }
+@media(max-width: 720px){
+  .todo-list{
+    width: 100%;
+  }
+}
+
 .todo{
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   margin: 0.5rem;
@@ -485,6 +590,6 @@ select{
   background: #ffffff;
   color: #ff6f47;
 }
-.fa-trahs, .fa-check{
+.icon-trash, .icon-check{
   pointer-events: none; /* Esto es para evitar el error de dar click en el icono */
 }                        /* y que el evento "traspase" al boton */
