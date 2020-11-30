@@ -82,26 +82,66 @@ pre, code{
   color: whitesmoke;
   cursor: pointer;
 }
+
 .buscador{
   position: relative;
+  border-bottom: #d9d9d9 1px solid;
   width: 10vw;
 }
 .search-form{
-  display: flex;
   position: relative;
+  display: grid;
+  grid-template-columns: 93% 7%;
   height: 100%;
 }
-.search-form .icon-search{
+.search-form::after, .search-form::before{
+  content: '';
   position: absolute;
-  right: 0;
-  color: whitesmoke;
-  line-height: 3rem;
-  font-size: 1rem;
-  padding-right: .5rem;
+  bottom: -2px;
+  width: 0;                        /*este efecto se aregara con js*/
+  height: 2px;
+  background-color: #32d39f;   /*cubre el fondo gris del bottom del div */
+  transition: .3s;
 }
-.icon-search{
+.search-form::after{
+  right: 50%;
+}
+.search-form::before{
+  left: 50%;
+}
+.search-form.focus .icon-search{
+  color: #38d39f;
+}
+.search-form.focus::after, .search-form.focus::before{
+  width: 50%;
+}
+
+.search-form .icon-search{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #d9d9d9;
+  transition: .3s;
+}
+.search-form input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: none;        /* con estos 3 teoricamente desaparece el inpur */
+    outline: none;         
+    background: none;   
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    padding: .5rem .7rem;
+    font-size: 1.2rem;
+    color: #d9d9d9; 
+}
+
+
+/* .icon-search{
   pointer-events: none;
-}
+} */
 .search-form span{
   display: inline-flex;
   align-items: center;
@@ -439,7 +479,7 @@ pre {
   background-color: #376f9c;
 }
 #sect17{
-  background-color: #ff6f47;
+  background-color: #d88771;
 }
 
 /* Notas de Cornell */

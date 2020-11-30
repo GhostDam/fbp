@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="librerias/styles.css">
 
   <link rel="stylesheet" href="css/master.css">
-  <script src="js/main.js" charset="utf-8"></script>
+  <script src="js/main.js?ver=101" charset="utf-8"></script>
   <title>FB Beca Developer Circles</title>
 </head>
 
@@ -57,10 +57,11 @@
         <li class="temas" href="#sect14">Eng Course</li>
         <li class="temas" href="#sect15">XAMPP stack</li>
         <li class="temas" href="#sect16">Fitness</li>
+        <li class="temas" href="#sect17">Recetas</li>
       </ul>
       <div class="buscador">
         <div class="search-form">
-          <span id="searcher" contenteditable="true"></span>
+          <input id="searcher"></input>
           <div class="icon-search"></div>
         </div>
       </div>
@@ -313,16 +314,16 @@
           </ul>
           <p><strong>Etiquetas del cuerpo del documento (body):</strong></p>
           <ul>
-            <li>article: diferencia partes del contenido que pueden vivir por sí mismas.</li>
-            <li>nav: para hacer menús de navegación.</li>
-            <li>aside: contenido menos relevante, como publicidad, etc.</li>
-            <li>section: sirve para diferenciar las secciones principales del contenido.</li>
             <li>header: cabecera del documento.</li>
-            <li>footer: pie de página del documento.</li>
-            <li>h1 - h6: títulos de nuestro sitio web.</li>
-            <li>table: tablas de contenidos, similar a la estructura de las hojas de calculo.</li>
+            <li>nav: para hacer menús de navegación.</li>
             <li>ul y ol: listas de items.</li>
+            <li>h1 - h6: títulos de nuestro sitio web.</li>
+            <li>section: sirve para diferenciar las secciones principales del contenido.</li>
             <li>div: cualquier división para organizar el contenido.</li>
+            <li>article: diferencia partes del contenido que pueden vivir por sí mismas.</li>
+            <li>aside: contenido menos relevante, como publicidad, etc.</li>
+            <li>table: tablas de contenidos, similar a la estructura de las hojas de calculo.</li>
+            <li>footer: pie de página del documento.</li>
           </ul>
         </div>
       </div>
@@ -332,41 +333,41 @@
           <p>Una pequeña guia <a target="_blank" href="http://apps.workflower.fi/vocabs/css/es#comment">Aqui</a></p>
           <p>Para declarar variables en CSS se declaran de la siguiente manera</p>
       <pre><code>
-/* las variables se declaran en root*/
-:root{
-  --color: red
-}
+    /* las variables se declaran en root*/
+    :root{
+      --color: red
+    }
 
-/* y su uso seria */
-body{
-  background: var(--color)
-}
-h1{
-  color: var(--color)
-}
+    /* y su uso seria */
+    body{
+      background: var(--color)
+    }
+    h1{
+      color: var(--color)
+    }
             </code></pre>      
       </div>
     <div class="encabezado">
         <h3>Selectores CSS</h3>
           <pre><code>
-              /* por tag */
-              h1 { 
-                color: blue;
-              }
+    /* por tag */
+    h1 { 
+      color: blue;
+    }
 
-              /* por clase */
-              .clase {
-                color: blue;
-              }
+    /* por clase */
+    .clase {
+      color: blue;
+    }
 
-              /* universal */
-              * {
-                color: blue;
-              }
+    /* universal */
+    * {
+      color: blue;
+    }
 
-              div * {  
-                color: blue;
-              }
+    div * {  
+      color: blue;
+    }
           </code></pre>
       <p>Los selectores de tag son case insensitive, los selectores de clase (atributo) son case sensitive</p>
       <p><strong>Compuestos</strong></p>
@@ -415,14 +416,14 @@ h1{
           <p>La especificidad es la "fuerza" que tiene un bloque CSS al ser declarado, un ejemplo de la calculadora 
           <a target="_blank" href="https://specificity.keegan.st/">aqui</a> y una manera grafica es mas o menos esta</p>
             <pre><code>
-              #main .post p{
-                color: red
-              }
-              /* a pesar de la cascada, la declaracion anterior
-                  tiene mas peso debido a especificidad */
-              p{
-                color: green
-              }
+    #main .post p{
+      color: red
+    }
+    /* a pesar de la cascada, la declaracion anterior
+        tiene mas peso debido a especificidad */
+    p{
+      color: green
+    }
             </code></pre>
           <p><strong>especificidad > cascada</strong></p>
           <p>Tambien hay generadores graficos de especificiad, en los cuales los picos regrepresentan algo "negativo" y esta
@@ -431,9 +432,9 @@ h1{
             tiene algun conflicto de especificidad </p>
           <p><strong>Herencia</strong></p>
           <pre><code>
-            inherit  obliga a heredar propiedades de los padres
+    inherit  obliga a heredar propiedades de los padres
 
-            initial  resetea los valores por defecto del elemento
+    initial  resetea los valores por defecto del elemento
           </code></pre>
     </div>
     <div class="encabezado">
@@ -461,35 +462,35 @@ h1{
       <li><strong>Margen: </strong>Separacion con otras cajaass</li>
       <li><strong>outline: </strong>No forma parte del modelo de caja, se dibuja siempre fuera de este</li>
     </ul>
-    <pre><code>
-  *, *::before, *::after{             /* este snippet hace el uso de padding y border
-    box-sizing: border-box;            * no aumente el tamaño de caja como lo haria
-  }                                   /* por defecto 
+      <pre><code>
+    *, *::before, *::after{             /* este snippet hace el uso de padding y border
+      box-sizing: border-box;            * no aumente el tamaño de caja como lo haria
+    }                                   /* por defecto 
 
-  #box-model{
-    padding: 1px;                      /* padding "simbolico" para evitar el colapsado de margen vertical */
-    height: 300px;
-    background-color: whitesmoke;
-  }
-  .box{
-    margin-top: 50px;                  /* si el padre no tiene un padding, este margen se encima verticalmente */
-    width: 150px;                      /* ancho fijo */
-    height: 150px;                     /* altura fija */
-    background-color: red;             /* color de fondo */
-    border: 10px dotted black;         /* el borde se crea dentro del modelo de caja (box-sizing: border-box;) */
-    padding: 10px;                     /* el padding es espaciado entre contenido y borde */ 
-    margin-left: auto;                 /* teoricamente, es la manera correcta de centrar un elemento */
-    margin-right: auto;
-  }
-  .box-2{                              /* triangulo */
-    background-color: transparent;     /* reseteo el color de fondo */
-    padding: 0;                        /* elimino padding */
-    border: 75px solid;                /* doy color al borde */
-    border-color: teal transparent transparent;  /* solo dejo el triangulo */
-  }
-  
-  El tamaño declarado por width y height sera el border box, es decir la caja externa 
-</code></pre>
+    #box-model{
+      padding: 1px;                      /* padding "simbolico" para evitar el colapsado de margen vertical */
+      height: 300px;
+      background-color: whitesmoke;
+    }
+    .box{
+      margin-top: 50px;                  /* si el padre no tiene un padding, este margen se encima verticalmente */
+      width: 150px;                      /* ancho fijo */
+      height: 150px;                     /* altura fija */
+      background-color: red;             /* color de fondo */
+      border: 10px dotted black;         /* el borde se crea dentro del modelo de caja (box-sizing: border-box;) */
+      padding: 10px;                     /* el padding es espaciado entre contenido y borde */ 
+      margin-left: auto;                 /* teoricamente, es la manera correcta de centrar un elemento */
+      margin-right: auto;
+    }
+    .box-2{                              /* triangulo */
+      background-color: transparent;     /* reseteo el color de fondo */
+      padding: 0;                        /* elimino padding */
+      border: 75px solid;                /* doy color al borde */
+      border-color: teal transparent transparent;  /* solo dejo el triangulo */
+    }
+
+    El tamaño declarado por width y height sera el border box, es decir la caja externa 
+      </code></pre>
     <div id="box-model">
       <div class="box">
         contenido
@@ -509,22 +510,21 @@ h1{
       <h3>Bordes</h3>
     <p>El borde se dibuja por dentro de la caja</p>
     <pre><code>
-                    /* grosor, estilos, color */
-            border: 10px solid black
+            /* grosor, estilos, color */
+    border: 10px solid black
 
-            border-width:
-            border-style: solid dotted dashed double
-            border-color: /* tiene por defecto la propiedad de la caja color: --; */
-
+    border-width:
+    border-style: solid dotted dashed double
+    border-color: /* tiene por defecto la propiedad de la caja color: --; */
           </code></pre>
     <p>Box-shadow</p>
     <pre><code>
-            /* desplazamiento horizontal, vertical, difuminado, expansion, color*/
-            box-shadow: 0 0 0 10px green,
-                        0 0 0 20px red,  /* acepta multiples sobras */
+    /* desplazamiento horizontal, vertical, difuminado, expansion, color*/
+    box-shadow: 0 0 0 10px green,
+                0 0 0 20px red,  /* acepta multiples sobras */
 
-            box-shadow: 0 0 0 10px green inset: /* interno */ 
-          </code></pre>
+    box-shadow: 0 0 0 10px green inset: /* interno */ 
+    </code></pre>
     </div>
       <div class="encabezado">
         <h3>Background</h3>
@@ -660,22 +660,13 @@ h1{
         <li><i>vw, vh</i> unidad relativa al tamaño del viewport</li>
       </ul>
     </div>
-
-
-
-
-
-
-
-
-
     <div class="encabezado">
         <h3>Media Queries</h3>
           <pre><code>
-                @media media type and (condition){
-                  
-                }
-              </code></pre>
+    @media media type and (condition){
+      
+    }
+          </code></pre>
       <p>conceptos</p>
       <ul>
         <li><i>media type</i> screen (pantalla) print (crtl-p, impresion)</li>
@@ -700,18 +691,18 @@ h1{
         <span class="disabled">false</span>
       </div>
       <pre><code>
-  .enabled{          /* true oculto por defecto */
-    display: none;
-  }
-  
-  .toggler:checked ~ .enabled{ /* en checked true se muestra*/
-display: block;
-}
+    .enabled{          /* true oculto por defecto */
+      display: none;
+    }
+    
+    .toggler:checked ~ .enabled{ /* en checked true se muestra*/
+      display: block;
+    }
 
-.toggler:checked ~ .disabled{ /* en checked false se oculta */
-  display: none;
-}                
-</code></pre>
+    .toggler:checked ~ .disabled{ /* en checked false se oculta */
+        display: none;
+    }
+      </code></pre>
     </div>
       <!-- Flex Layout -->
       <strong>Layout basico con Flex-Box</strong>
@@ -733,61 +724,62 @@ display: block;
       </div>
 
       <pre><code>
-&lt;div class='layout'>
-    &lt;section class='container'>&lt;/section>
-    &lt;footer class='footer'>&lt;/footer>
-    &lt;header class='header'>&lt;/header>
-&lt;/div>
+    &lt;div class='layout'>
+        &lt;section class='container'>&lt;/section>
+        &lt;footer class='footer'>&lt;/footer>
+        &lt;header class='header'>&lt;/header>
+    &lt;/div>
 
-.layout{
-  display: flex
-  height: 40vh;
-  flex-direction: column;           /*posiciona elementos uno sobre otro*/
-  background-color: white;
-}
-.header{
-  outline: 1px dashed lime;
-  height: 4rem;
-}
-.contenedor{
-  outline: 1px dashed rebeccapurple;
-  display: flex;                    /*un flex-item puede ser tambien un flex container*/
-  height: 100%;
-}
-.contenido{
-  outline: 1px dashed red;
-  flex: 1;
-}
+    .layout{
+      display: flex
+      height: 40vh;
+      flex-direction: column;           /*posiciona elementos uno sobre otro*/
+      background-color: white;
+    }
+    .header{
+      outline: 1px dashed lime;
+      height: 4rem;
+    }
+    .contenedor{
+      outline: 1px dashed rebeccapurple;
+      display: flex;                    /*un flex-item puede ser tambien un flex container*/
+      height: 100%;
+    }
+    .contenido{
+      outline: 1px dashed red;
+      flex: 1;
+    }
 
-.aside{
-  outline: 1px dashed blue;
-  flex-basis: 30%;
-  /* flex: flex-grow, flex-shrink, flex-basis; */
-  /*puede crecer, puede reducirse, ancho fijo inicial*/  
-}
+    .aside{
+      outline: 1px dashed blue;
+      flex-basis: 30%;
+      /* flex: flex-grow, flex-shrink, flex-basis; */
+      /*puede crecer, puede reducirse, ancho fijo inicial*/  
+    }
 
-.footer{
-  outline: 1px dashed royalblue;
-  margin-top: auto;                 /*un margin-top: auto; dentro de un hijo flex,  
-}                                   //posicionara el elemento hasta el final */
+    .footer{
+      outline: 1px dashed royalblue;
+      margin-top: auto;                 /*un margin-top: auto; dentro de un hijo flex,  
+    }                                   //posicionara el elemento hasta el final */
 
-.menu{                              //dentro del header
-  display: flex;
-  height: inherit;                  /*hereda la altura del header*/
-  padding-left: 0;
-}
+    .menu{                              //dentro del header
+      display: flex;
+      height: inherit;                  /*hereda la altura del header*/
+      padding-left: 0;
+    }
 
-.menu-item{
-  list-style: none;
-  outline: 1px dashed magenta;
-  line-height: 4rem;                /*tener el line-height: altura-del-padre; 
-  flex: 1;                          //alinea automaticamente el texto al centro*/
-  text-align: center;
-  transition: flex  0.5s ease-in-out; /*elemento animado, duracion, efecto*/
-}
-.menu-item:hover{
-  flex: 8;
-}          </code></pre>
+    .menu-item{
+      list-style: none;
+      outline: 1px dashed magenta;
+      line-height: 4rem;                /*tener el line-height: altura-del-padre; 
+      flex: 1;                          //alinea automaticamente el texto al centro*/
+      text-align: center;
+      transition: flex  0.5s ease-in-out; /*elemento animado, duracion, efecto*/
+    }
+    .menu-item:hover{
+      flex: 8;
+    }         
+   </code></pre>
       <!-- Responsive NavBar -->
       <strong>Ejemplo basico de Navbar resposiva</strong>
       <p>Para el Navbar basico responsivo necesitamos 3 elementos o mas, el <i>Navbar</i> que sera el padre, el
@@ -807,87 +799,86 @@ display: block;
         </nav>
       </div>
       <pre><code>
-&lt;nav class='res_nav'>                    //barra de navegacion
-  &lt;div class='res_hamburguesa'>            //hamburguesa escondida por defecto
-      &lt;div class='res_linea'>&lt;/div>       //linea de hamburguesa
-      &lt;div class='res_linea'>&lt;/div>
-      &lt;div class='res_linea'>&lt;/div>
-  &lt;/div>
-  &lt;ul class='res_menu'>                 //menu visible por defecto
-    &lt;li class='res_menu_item'>&lt;/li>     //enlace en el menu
-    &lt;li class='res_menu_item'>&lt;/li>
-    &lt;li class='res_menu_item'>&lt;/li>
-  &lt;/ul>
-&lt;/nav>
+    &lt;nav class='res_nav'>                    //barra de navegacion
+      &lt;div class='res_hamburguesa'>            //hamburguesa escondida por defecto
+          &lt;div class='res_linea'>&lt;/div>       //linea de hamburguesa
+          &lt;div class='res_linea'>&lt;/div>
+          &lt;div class='res_linea'>&lt;/div>
+      &lt;/div>
+      &lt;ul class='res_menu'>                 //menu visible por defecto
+        &lt;li class='res_menu_item'>&lt;/li>     //enlace en el menu
+        &lt;li class='res_menu_item'>&lt;/li>
+        &lt;li class='res_menu_item'>&lt;/li>
+      &lt;/ul>
+    &lt;/nav>
 
 
-.pseudo_page{
-  background-color: whitesmoke;
-  height: 40vh;
-}
+    .pseudo_page{
+      background-color: whitesmoke;
+      height: 40vh;
+    }
 
-.res_nav{               //nav padre
-  position: relative;   //para fijar dentro la hamburguesa
-  width: 100%;
-}
-.res_hamburguesa{
-  display: none;
-  cursor: pointer;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 3;
-}
-.res_linea{             //la hamburguesa tendra 3 lineas
-  width: 30px;
-  height: 3px;
-  margin: 5px;
-  background: #333333;
-  transition: .3s;      //para la animacion
-  border-radius: 5px;
-}
-                        //esto animara las lineas al activar
-                        //la hamburguesa
-.res_hamburguesa:hover .res_linea:nth-of-type(1){
-  transform: rotate(45deg) translate(0, 10px);
-}
-.res_hamburguesa:hover .res_linea:nth-of-type(2){
-  opacity: 0;
-}
-.res_hamburguesa:hover .res_linea:nth-of-type(3){
-  transform: rotate(-45deg) translate(0, -10px);
-}
+    .res_nav{               //nav padre
+      position: relative;   //para fijar dentro la hamburguesa
+      width: 100%;
+    }
+    .res_hamburguesa{
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 3;
+    }
+    .res_linea{             //la hamburguesa tendra 3 lineas
+      width: 30px;
+      height: 3px;
+      margin: 5px;
+      background: #333333;
+      transition: .3s;      //para la animacion
+      border-radius: 5px;
+    }
+                            //esto animara las lineas al activar
+                            //la hamburguesa
+    .res_hamburguesa:hover .res_linea:nth-of-type(1){
+      transform: rotate(45deg) translate(0, 10px);
+    }
+    .res_hamburguesa:hover .res_linea:nth-of-type(2){
+      opacity: 0;
+    }
+    .res_hamburguesa:hover .res_linea:nth-of-type(3){
+      transform: rotate(-45deg) translate(0, -10px);
+    }
 
-.res_menu{                    //menu visible normal
-  display: flex;
-  max-width: 100%;
-  background-color: black;
-}
-.res_menu_item{             //cada elemento dentro del menu
-  display: block;
-  color: white;
-  text-decoration: none;
-  margin-left: 5px;
-}
+    .res_menu{                    //menu visible normal
+      display: flex;
+      max-width: 100%;
+      background-color: black;
+    }
+    .res_menu_item{             //cada elemento dentro del menu
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-left: 5px;
+    }
 
-@media(max-width: 620px){
-  .res_nav .res_hamburguesa{  //hacemos visible la hamburguesa
-    display: block;
-  }
-  .res_menu{                  //cambiamos la organizacion del menu
-    display: block;
-    position: relative;
-    width: 100vw;
-    height: 100%;
-    top: 30px;
-    left: -102vw;             //y la ocultamos
-    transition: .3s;
-  }
-  .res_hamburguesa:hover + .res_menu{
-    left: 0;                  //al activar la hamburguesa
-  }                           //traemos el hermano (+) a la vista
-}
-
+    @media(max-width: 620px){
+      .res_nav .res_hamburguesa{  //hacemos visible la hamburguesa
+        display: block;
+      }
+      .res_menu{                  //cambiamos la organizacion del menu
+        display: block;
+        position: relative;
+        width: 100vw;
+        height: 100%;
+        top: 30px;
+        left: -102vw;             //y la ocultamos
+        transition: .3s;
+      }
+      .res_hamburguesa:hover + .res_menu{
+        left: 0;                  //al activar la hamburguesa
+      }                           //traemos el hermano (+) a la vista
+    }
 </code></pre>
 </div>
   </section>
@@ -3297,6 +3288,31 @@ display: block;
       </ul>
     </div>
   </section>
+  <section id="sect17"> <!-- Recetas -->
+    <div class="encabezado"> 
+      <h3>Kahlua</h3>
+        <p>50% Leche, 25% Carnation, 25% Lechera</p>
+        <p>1 tapa de vainilla, 1 cucharada de cafe, y un chorro de licor (Whiskey o Ron)</p>
+      <h3>Pastes</h3>
+      <strong>ingredientes para aprox 40 pastes</strong>
+      <ul>
+        <li>Un kilo de harina</li>
+        <li>10 gramos de sal</li>
+        <li>10 gramos de Royale</li>
+        <li>50 gramos manteca vegetal</li>
+        <li>800 gramos de mantequilla</li>
+        <li>250 ml agua</li>
+      </ul>
+      <strong>Procedimiento</strong>
+      <p>Comenzar a amasar, cuando se forme la pasta, remojar las manos con poco aceite y desplazar 5 veces (vid) y dejar reposar 10 minutos tapada con una bolsa de plastico.</p>
+      <p>Para preparar las charolas, unicamente se aceitan con un trapo humedo, una vez que la masa haya levantado, se esparse harina y se extiende la masa con un rodillo en rectangulo</p>
+      <p>Se extiende la mantaquilla de tal manera que quede un cuadro que se pueda envolver con la masa rectangular y se extiene lo mas que se pueda de manera rectangular para realizar un cuadrado, esto se repetira 6 veces siempre con un dobles "especifico" (vid)</p>
+      <p>Si la masa se siente pegada o dificil de extender se esparce más harina, la 6 extendida debe quedar bien bien estirada ya que si la masa no esta bien amasada el paste quedara mas duro, con consistencia de pan</p>
+      <p>la masa se extendera en proporcion 8x5 y las porciones por parte seran como referencia una tapa de mayonesa, se extiende la masa y se aplica carnation en el contorno, se aplica el relleno y se hacen los "moños" para cerrar (uso del carnation)</p>
+      <p>cuando el horno este caliente, el tiempo de coccion sera aproximadamente de 1 hora a fuego lento (180°) opcionalmente a los 20 minutos se pueden voltear</p>
+    </div>
+  </section>
+
   <div class="welcome">
     <p id="mensaje"></p>
     <div class="encabezado">

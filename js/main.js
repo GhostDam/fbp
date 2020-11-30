@@ -39,6 +39,22 @@ document.addEventListener("DOMContentLoaded", function(){
     })
   })
 
+  //animacion buscador
+  const input = document.querySelector('#searcher')
+  function focusFunc() {
+    let parent = this.parentNode;
+    parent.classList.add('focus')
+  }
+
+  function blurFunc() {
+    let parent = this.parentNode;
+      parent.classList.remove('focus')
+      this.value = "";
+    }
+  input.addEventListener('focus', focusFunc)
+  input.addEventListener('blur', blurFunc)
+
+
   //frases
   const motivaciones = [
     "Todos los grandes desarrolladores llegaron ahi resolviendo problemas que no estaban calificados para resolver, hasta que en realidad lo hicieron",
