@@ -2,9 +2,10 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-/* html{
-  font-size: 62.5%;
-} */
+html, body, section{
+  /* font-size: 62.5%; */
+  scroll-behavior: smooth;
+}
  body{
   margin: 0;
   padding: 0;
@@ -27,10 +28,11 @@ pre, code{
   height: 3rem;
   background-color: #333333;
   width: 100%;
+  z-index: 3;
 }
-.nav-fix{
+/* .nav-fix{
   height: 3rem;
-}
+} */
 .icon-home{
   color: whitesmoke;
   line-height: 3rem;
@@ -66,7 +68,6 @@ pre, code{
 }
 .lista_cursos{
   display: flex;
-  flex-wrap: nowrap;
   margin-left:auto;
   margin-bottom: 0;
   padding: 0;
@@ -175,6 +176,7 @@ pre, code{
     display: none;
   }
   .buscador{
+    display: none;
     margin-left: auto;
   }
   /* .navegacion{
@@ -220,16 +222,18 @@ pre, code{
 }
 /* Menu de navegacion */
 section{
-  padding: 20px;
-  min-height: 100vh;
+  display: flex;
+  position: relative;
   max-width: 80%;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
+  z-index: 1;
+  /*  */
+  flex-flow: row;
+  overflow: hidden;
 }
 .welcome{
   max-width: 80%;
-  padding: 20px;
+  padding-top: 6rem;
   margin: 0 auto;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -243,13 +247,22 @@ section{
   section{
     max-width: 100%;
     padding: 5px;
-    margin: 0 5px 5px 5px;
+    margin: 5px;
   }
 }
 .encabezado{
-  margin-bottom: 50px;
-  width: 100%;
+  padding: 6rem 20px;
+  margin-right: 20px;
+  min-width: 100%;
+  font-family: serif;
 }
+@media(max-width: 720px){
+  .encabezado{
+    margin-top: 5px;
+    padding: 0 0 6rem;    
+  }
+}
+
 .encabezado > h3{
   text-align: center;
 }
@@ -461,11 +474,9 @@ pre {
 #sect10{
   background-color: #d7972c;
 }
-
 #sect11{
   background-color: #026e00;
 }
-
 #sect13{
   background-color: #4B86EE;
 }
@@ -480,6 +491,49 @@ pre {
 }
 #sect17{
   background-color: #d88771;
+}
+.listado_temas{
+  position: fixed;
+  display: flex;
+  overflow: auto;
+  height: 3rem;
+  left: 10vw;
+  top: 3rem;
+  width: 80%;
+  background-color: lightslategrey;
+}
+.listado_temas a{
+  display: block;
+  border-radius: 25%;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #333333;
+  padding: 10px;
+}
+@media (max-width: 720px){
+  .listado_temas{
+    width: 100%;
+    top: initial;
+    left: 0;
+    bottom: 3rem;
+  }
+}
+/*barra general*/
+.listado_temas::-webkit-scrollbar{
+  height: 5px;
+}
+/*fondo de barra*/
+.listado_temas::-webkit-scrollbar-track{
+  background: rgba(0, 0, 0, .1);
+}
+/*posicion en la barra*/
+.listado_temas::-webkit-scrollbar-thumb{
+  background: rgba(0, 0, 0, .5);
+  border-radius: 10px;
+}
+/*hover posicion de barra*/
+.listado_temas::-webkit-scrollbar-thumb:hover{
+  background: steelblue;
 }
 
 /* Notas de Cornell */

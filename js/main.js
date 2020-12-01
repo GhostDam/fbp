@@ -10,32 +10,75 @@ if('serviceWorker' in navigator){
 
 //* Navegacion de pestañas
 document.addEventListener("DOMContentLoaded", function(){
+  //selectores
   var section = document.querySelectorAll("section")
   var link = document.querySelectorAll(".temas")
   var home = document.querySelector(".welcome")
   var goHome = document.querySelector(".icon-home")
   var mensaje = document.querySelector("#mensaje")
 
-  section.forEach(function (sect) {
-    sect.style.display = "none";
-  })
+
+  //funciones
+  function hideAll() {
+    section.forEach(function (sect) {
+      sect.style.display = "none";
+    })    
+  }
+
+  function listarTemas(div) {
+    //var seccion =  div
+    var temas =  div.querySelectorAll('h3')
+    //crear Div con clase
+    const lista_temas = document.createElement('div')
+    lista_temas.classList.add('listado_temas')
+
+    if (!div.querySelector('.listado_temas')) {
+      div.appendChild(lista_temas)
+    }
+     temas.forEach(function name(tema) {
+      var id = tema.parentElement.getAttribute('id')
+      var enlace = document.createElement('a')
+
+      enlace.innerText = tema.innerText;
+      enlace.setAttribute("href", `#${id}`)
+      lista_temas.appendChild(enlace)
+    })
+
+    var enlace = div.querySelectorAll('a')
+
+    enlace.forEach(function (e) {
+      e.addEventListener('click', ()=>{
+        var style = window.getComputedStyle(div);
+        var color = style.backgroundColor
+          
+        enlace.forEach(function (h) {
+          h.style.backgroundColor = "lightslategrey"
+        })
+          e.style.backgroundColor = color
+      })
+    })
+  
+  }
+
 
   link.forEach(function (e) {
     e.addEventListener('click', ()=>{
+      hideAll()
+
       var anchor = e.getAttribute("href")
       var sect = document.querySelector(anchor)
       var style = window.getComputedStyle(sect);
       var color = style.backgroundColor
 
-      section.forEach(function (sect) {
-              sect.style.display = "none";
-            })
       link.forEach(function (h) {
         h.style.backgroundColor = "#333333"
       })
-      document.querySelector(anchor).style.display = "block";
+
+      sect.style.display = "flex";
       e.style.backgroundColor = color
       home.style.display = "none";
+
+      listarTemas(sect)
     })
   })
 
@@ -62,7 +105,8 @@ document.addEventListener("DOMContentLoaded", function(){
     "Jiujitsu: The gentle art of folding clothes while people are still in them, Involuntary yoga",
     "No man has te right to be an amateur in the matter of physical training. It is a shame for man to grow old without seeing the beauty and strength of which his body is capable.... -Socrates",
     "Taijutsu: The art of gracefully letting your oponent to hurt himself.",
-    "Hay personas que creen que por su bien escogen la cuarta via, ser bueno, hacerse bueno, darse por vencido, y la ultima, si no lo intentan, no pueden fallar"
+    "Hay personas que creen que por su bien escogen la cuarta via, ser bueno, hacerse bueno, darse por vencido, y la ultima, si no lo intentan, no pueden fallar",
+    "Carl Friedrich Gauss estaba en la primaria cuando se le asigno un problema a su clase, sumar los numeros del 1 al 100 (1+2+3...) el solo sumo 100 + 1 = 101, 99 + 2 = 101, 3 + 98 = 101... asi que 50 x 101 = 5050"
   ]
   
   goHome.addEventListener('click', function() {
@@ -74,6 +118,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
   var frase = motivaciones[Math.floor(Math.random() * motivaciones.length)]
   mensaje.innerText = `"${frase}"`
+
+
+  hideAll()
 })
 
 // Microservices test
@@ -119,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
     newTodo.innerText = todoInput.value;
     newTodo.classList.add('todo-item')
     todoDiv.appendChild(newTodo)
+
     //Add TODO to local storage
     saveLocalTodos(todoInput.value)
 
