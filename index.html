@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="librerias/styles.css">
 
   <link rel="stylesheet" href="css/master.css">
-  <script src="js/main.js?ver=101" charset="utf-8"></script>
+  <script src="js/main.js?ver=102" charset="utf-8"></script>
   <title>FB Beca Developer Circles</title>
 </head>
 
@@ -683,8 +683,19 @@
 
     <div class="encabezado" id="premades">
       <h3>Premades</h3>
-    <!-- CSS toggler -->
-      <div>
+      <!-- Basic input -->
+      <strong>Input de 3 elementos</strong>
+      <div class="input-div">
+        <div class="i">
+            <i class="icon-search"></i>
+        </div>
+        <div>
+            <label>placeholder</label>
+            <input type="text"class="input" id="usuario" name="usuario" required>          
+        </div>
+      </div>
+
+      <!-- CSS toggler -->
       <strong>Ejemplo de input checked toggle con CSS sin JS</strong>
       <div class="css-toggler">
         <input type="checkbox" class="toggler">
@@ -704,7 +715,6 @@
         display: none;
     }
       </code></pre>
-    </div>
       <!-- Flex Layout -->
       <strong>Layout basico con Flex-Box</strong>
       <p>Para el Layout basico usaremos 4 elementos, en el cual padre <i>layout</i> contara con <i>display:flex</i></p>
@@ -1316,12 +1326,12 @@
     </div>
   </section>
   <section id="sect4"> <!-- JavaScript -->
-    <div class="encabezado">
-        <h3>Definicion de variables</h3>
+    <div class="encabezado" id="bases">
+        <h3>Bases</h3>
+        <strong>Variables</strong>
         <p>Una variable es un espacio en memoria que te permite almacenar información, y esta puede ser de varios tipos
           y contener tipos distintos de información</p>
         <p>los tipos pudeden ser <i>var, const y let</i></p>
-
         <pre><code>
     var string = "texto plano"
     var number = 22
@@ -1329,8 +1339,7 @@
     var object = {key: "valor"}
     var array = [1, 2 ,3 ]
         </code></pre>
-
-        <strong>definición de funciones</strong>
+        <strong>Funciones</strong>
         <p>Una funcion es un conjunto de "instrucciones" escritas, que se llamaran al momento de ejecutar la funcion</p>
         <p>se crea una funcion que recibira un parametro, y el que se hara con ese parametro</p>
         <pre><code>
@@ -1341,36 +1350,156 @@
         <strong>Ejecucion de funciones</strong>
         <p>se llama la funcion con una actividad establecida, y le aplica el parametro</p>
         <pre><code>
-    nombreFuncion(otronombre)
+    nombreFuncion(parametro)
         </code></pre>
         <p>JavaScript es un lenguaje debilmente tipado, es decir que no espera que todo este definido, podemos no pasar
           parametros e igual intentara ejecutarse, es un lenguaje interpretado, tratara de leer y ejecutar el programa a
           medida que se lo vamos indicando</p>
-    </div>
-    <div class="encabezado">
-      <h3>Alcance de funciones</h3>
+      <strong>Alcance de funciones</strong>
       <pre><code>
-    var nombre = 'nombre'
+    var nombre = 'luis'
 
     funcion setMayus(){
       nombre = nombre.toUppercase()
-      console.log(nombre)
+      console.log(nombre)           //LUIS
     }
 
     setMayus()
-
       </code></pre>
       <p>En la funcion de arriba, la funcion puede acceder a <i>nombre</i> sin haberla pasado por parametros, porque la
         variable esta escrita fuera del cuerpo de una funcion, lo que se traduce a que es una variable global, lo que
         tambien significa que esta asignada al objeto global, es decir el entorno en el que se esta ejecutando JS
         (Window en browser, server en Node)</p>
-      <p>al ejecutar la funcion, lo que tambien hizo (side effect) fue modificar la variable</p>
+      <p>al ejecutar la funcion, lo que tambien hizo (side effect) fue modificar la variable, asi que cuando la volvamos a utilizar, esta estara en mayusculas</p>
       <p>JavaScript debilmente tipado que espera que las cosas no siempre esten definidas y a pesar de ello js intentara
         ejecutarlo igua, ya que es un lenguaje interpretado, es decir que ira leyendo ejecuntando a medidad que le vamos
         diciendo que ejeutar, sin fijarse obligacion o tipo de variables</p>
     </div>
-    <div class="encabezado">
-      <h3>objetos</h3>
+    <div class="encabezado" id="DOM">
+      <h3>DOM</h3>
+      <strong>Jerarquia</strong>
+      <p>EL Document Object Model es un API para HTML y XML, para que JS pueda modificar los elementos de un HTML, estos se encuentran organizados en una jerarquia html -> head -> header-> body...</p>
+      <p>El arbol de nodos se podria dividir en 3 elementos, Root node (document), Element Node (tags) y Text Node (texto) y estos son accesibles para JS mediante la comprension sus padres (parents), hermanos (siblings) e hijos(descendants) y podremos obtener sus valores, atributos y propiedades de cada nodo, para esto dependera del identificador de cada nodo y usaremos los:</p>
+      <strong>Selectores especifico</strong>
+      <pre><code>
+    //seleccion por id - obtiene un elemento unico
+    let idNode = document.getElementById('id');  
+
+    //seleccion por tags - obtiene un arreglo de tags
+    let tagNodes = document.getElementsByTagName('li');
+
+    //seleccion por clase - obtiene un arreglo de con la clase
+    let classNodes = document.getElementsByClassName('col');
+
+    //seleccion por nombre - obtiene un arreglo de elementos con el nombre 
+    let nameNodes = document.getElementsByName('nombre');
+      </code></pre>
+      <p>Hasta ahora, las funciones vistas solo hacen foco en un tipo de nodo que se busca en todo el documento, y así también solo se pueden seleccionar TODOS o UNO de los elementos que estén en todo el documento, y no sólo ciertos elementos que estén contenidos en otro de nuestro interés.</p>
+      <strong>Selector compuesto</strong>
+      <pre><code>
+    //a pesar de ser mas especifico, solo regresa el primer resultado 
+    let firstNode = document.querySelector('.col [name="list"] li');
+
+    //este por lo contrario retornara un array de elementos encontrados
+    let allNodes = document.querySelectorAll('#menu nav[class="temas"] a');
+      </code></pre>
+      <p>Una vez que hayamos seleccionado los elemetos de nuestro interes, tal vez requeramos tambien encontrar sus:</p>
+      <strong>Nodos Padres</strong>
+      <pre><code>
+    //nodo padre
+    div.parentNode.parentNode         //se puede subir tanto como querramos    
+      </code></pre>
+    <p>Qué pasaría si nos pasamos de parentNode, simplemente nos retorna null y después un error Cannot read property ‘parentNode’ of null ya que null no tiene propiedades</p>
+    <strong>Nodos Hijos</strong>
+      <p>Ver todo los nodos: Los que incluyen una lista de nodos hijos y nodos no elementos (tipo textos y comentarios) — childNodes, firstChild, lastChild</p>
+      <p>Nodos de elementos: Son los que incluyen solamente la colección de nodos de elementos (no toma en cuenta a los nodos no elementos) — children, firstElementChild, lastElementChild</p>
+    <pre><code>
+    let body = document.querySelector('body');
+
+    console.log(body.children);
+    //output HTMLCollection(4) [h1, p, h2, ul]
+    
+    console.log(body.childNodes);
+    //output odeList(11) [text, h1, text, p, text, h2, text, ul, text, text, text]
+    </code></pre>
+    <strong>nodos hermanos</strong>
+      <p>Los nodos hermanos, son aquellos que se encuentran en el mismo nivel del árbol jerárquico en el DOM, pueden ser o no del mismo tipo div,span,etc, al igual que los nodos hijos, este tiene dos tipos de búsqueda</p>
+      <p>Ven todo los nodos: Los que incluyen una lista de nodos hijos y nodos no elementos (tipo textos y comentarios) — previousSibling,nextSibling</p>
+      <p>Nodos de elementos: Son los que incluyen solamente la colección de nodos de elementos (no toma en cuenta a los nodos no elementos) — previousElementSibling,nextElementSibling</p>
+      <pre><code>
+    console.log(div); 
+    //un div "enmedio"
+    
+    console.log(div.nextElementSibling); 
+    //siguiente (tercer) hermano
+    
+    console.log(div.previousElementSibling); 
+    //previo (primer) hermano
+      </code></pre>
+      <strong>Eventos (handlers and listener)</strong>
+      <p>Para activar la interaccion con la pagina, se necesita de disparadores, y estos pueden ser de 2 tipos</p>
+      <ul>
+        <li>Controladores de eventos: Event handlers, se dispara cuando se realiza una accion</li>
+        <li>Oyente de eventos: Event Listeners, espera o escucha a que se realice una accion</li>
+      </ul>
+       <pre><code>
+    //Event handler
+    function saludar(){
+      alert('hi!')
+    }
+
+    //en el html se llama a la funcion - se llama inline event handler, no recomendado
+    &lt;button onclick="saludar()">btn&lt;/button>
+
+    //en el JS
+    btn.onClick = saludar
+       </code></pre> 
+       <p>para este tipo de disparador se referencia al evento como "onClick" yLa desventaja de los handlers, es que os eventos se almacenan como propiedad dentro del elemento DOM y solo podemos tener un evento por accion (se sobreescriben), ademas de no poder removerse</p>
+      <pre><code>
+    //event Listeners
+    function saludar(){
+      alert('hi!')
+    }
+
+    //agregar
+    target.addEventListener('click', saludar)
+    remover
+    target.removeEventListener('click', saludar)
+        </code></pre>
+        <p>La ventaja de los listeners es que se pueden agregar varios disparadores a un elemento, y tambien se pueden remover los disparadores</p>
+      <p>Algunos de los tipos de eventos mas comunes son <i>De mouse, de teclado y eventos varios</i></p>
+        <ul>
+          <li>click: Acción que se ejecuta cuando damos click con el mouse a un elemento DOM (botón, link, etc), y es una combinación de mousedown y mouseup</li>
+          <li>dblclick: Acción que se ejecuta cuando se le da click dos veces con el mouse a un elemento DOM (botón, div, imagen, etc)</li>
+          <li>mouseenter: Acción que se ejecuta cuando el puntero del mouse esta encima un elemento DOM.</li>
+          <li>mouseleave: Acción que se ejecuta cuando el puntero del mouse deja un elemento DOM.</li>
+          <li>mousemove: Acción que se ejecuta cuando se mueve el puntero dentro de un elemento DOM.</li>
+          <li>mousedown: Acción que se ejecuta cuando damos click con el mouse sobre un elemento DOM (este se produce en el momento de dejar pulsado el botón de click, se suelte o no)</li>
+          <li>mouseup: Acción que se ejecuta cuando soltamos el botón del mouse que previamente se había pulsado dentro de un elemento DOM.</li>
+        </ul>
+        <p>teclado</p>
+        <ul>
+          <li>keydown: Acción que se ejecuta se presiona una tecla, sin importar si la ha soltado o no, se conoce cada tecla que se presiona.</li>
+          <li>keyup: Acción que se ejecuta cuando se suelta la tecla.</li>
+          <li>keypress: Acción que se ejecuta continuamente mientras se presiona la tecla, antes de este evento se ejecuta keydown, evita teclas como SHIFT, ALT.</li>
+        </ul>
+        <p>otros</p>
+        <ul>
+          <li>event: Con el argumento de la función event, podemos saber que tecla se está presionando, existen propiedades de teclado que son</li>
+          <li>key: Nombre del carácter (ej. M)</li>
+          <li>code: Tecla física que se está presionando (ej. KeyM)</li>
+          <li>charCode: Devuelve el valor unicode de una tecla de caracteres de la tecla presionada (ej. 77)</li>
+          <li>focus (Formulario): Cuando un elemento tiene el foco, que es donde está situado el cursor (campo de texto, botón, etc).</li>
+          <li>blur(Formulario): Cuando un elemento pierde el foco.</li>
+          <li>change(Formulario): Cuando se confirma un cambio en el valor del elemento (campo de texto, combo ó selector, área de texto).</li>
+          <li>drag(Arrastrar y soltar): Se arrastra un elemento o selección de texto (se dispara continuamente cada 350 ms).</li>
+          <li>drop(Arrastrar y soltar): Un elemento se deja caer o se suelta en un objetivo de caída válido.</li>
+        </ul>
+      </div>
+      <strong>event.preventDefaul()</strong>
+      <p>Esta propiedad detiene al evento sin detener el resto de su funcionamiento, esto quiere decir que podemos volver a ejecutar la acción sin problema. Es usado cuando no queremos que un elemento DOM se comporte de la manera en que se debe comportar, como por ejemplo cuando se usa la etiqueta &lt;a>, la mayoría de los casos es para redirigirlo a otra página, con event.preventDefault podemos evitar que se vaya a otra página y mejor haga otra cosa</p>
+    <div class="encabezado" id="objetos">
+      <h3>Objetos y arreglos</h3>
       <p>un objeto es una relacion clave - valor</p>
       <pre><code>
     var objeto = {
@@ -1378,6 +1507,11 @@
           llave2: "valor2"
           }
 
+    var objeto2 = {
+      "llave" : "valor",
+      "llave2": "valor2"
+      }
+  
     console.log(objeto.llave)  //"valor" 
     console.log({llave})       //"valor" 
 
@@ -1386,112 +1520,109 @@
     }
       </code></pre>
       <p>y se puede acceder a ellos mediante un punto, objeto.llave = "valor", o bien mediante desestructuracion </p>
-
       <pre><code>
     var persona = {
       nombre: "luis",
       edad: 25
     }          
 
-    function setAge( persona ){
+    function verEdad( persona ){
       var {nombre, edad} = persona
       console.log(`me llamo ${nombre} y tengo ${edad}`)
     }
 
-    setAge(persona)
+    verEdad(persona)
         </code></pre>
-    </div>
-    <div class="encabezado">
-      <h3>Objetos como parametros y retornar nuevo objeto</h3>
-      <p>cuando se pasa un objeto como parametro, este se modificara fuera de la funcion, para evitar este
-        comportamiento se puede regresar un objeto nuevo en vez de afectar al ya establecido</p>
-      <pre><code>
-    var luis = {nombre : "luis", edad: 24}
-
-    function aumentarEdad(persona){
-        persona.edad += 1
-    } 
-    //esto afecta al objeto global, volviendo a la persona un año mas grande
-    //pero sin regresar nada como tal
-
-    function aumentarEdad(persona){
-      return {
-        ...persona             //... implica que recibira todo lo que contenia persona
-        edad: persona.edad +1
-      }
-    } 
-    //esto regresara una nueva persona de un año mayor, 
-    //diferente a la persona del primer caso
-    //y esto se puede guardar en una nueva variable
-
-    var personaMayor = aumentarEdad(persona)
+        <strong>Arrays</strong>
+        <pre><code>
+      var bryan = {
+        nombre: "bryan",
+        apellido: "reyes",
+        edad: 23,
+        peso: 70
+      };
+      var angus = {
+        nombre: "angus",
+        apellido: "Valen",
+        edad: 20,
+        peso: 60
+      };
+  
+      var people = [bryan, angus]
+  
+      console.log(people[0]) // {...}
+      console.log(people[0].nombre) // "bryan"
+  
+      people[0].nombre === people[0]['nombre']          
       </code></pre>
-    </div>
-    <div class="encabezado">
-      <h3>comparacion y asignacion de valores de variables</h3>
+        <p>para declarar un array se utilizan corchetes <i>[]</i> y es una coleccion de objetos, y se recorre en los
+          arrays por medio de la estructura <i>for</i></p>
+        <p>array.lenght indica el conteo de elementos en el array</p>
+        <p>Tambien para filtrar elementos en un array se utiliza la palabra <i>filter</i></p>
+        <pre><code>
+      //var estanGordos = people.filter(condicion)
+  
+      const condicion = (people) => people.peso > 60
+      var estanGordos = people.filter(condicion)
+        </code></pre>
+      </div>
+          <div class="encabezado" id="loops">
+      <h3>Loops</h3>
+      <strong>For</strong>
+      <p>mientras que <i>i</i> empezada en 0, sea menor que <i>array.length</i> aumentas <i>i</i></p>
       <pre><code>
-    var x = 4
-    var y = "4"
-    x == y = true
-      </code></pre>
-    <p>esto sucede porque estamos usando un "==" para la comparacion, es decir estamos comparando su valor, 
-    mas no el tipo de valor que estan guardando, pero si se hiciese x === y daria false porque uno es string y el otro es un numero.</p>
-
-    <pre><code>
-    var persona = {nombre: "luis", edad: 24}
-    var Otrapersona = {nombre: "luis", edad: 24}
-
-    //cuando se hace una comparacion "persona==Otrapersona" en objetos, resulta falso, porque pregunta por la referencia 
-    //(espacio en memoria ram)
-    //si queremos que esto como tal sea true, la asignacion deberia de ser
-
-    var persona = {nombre: "luis", edad: 24}
-    var Otrapersona = persona
-
-    //esto porque ambas variables apuntan al mismo espacio en memoria ram (misma referencia
-      </code></pre>
-    </div>
-    <div class="encabezado">
-      <h3>Funciones que retornan valores</h3>
-      <pre><code>
-    function cumpleMayoria(persona){
-      return persona.edad>18 //regresara true o false para usarse
-    }                        //en otra funcion
-
-    functon esMayorDeEdad(persona){
-      if(cumpleMayoria(persona)){ //hace la pregunta a otra funcion
-        console.log("es mayor de edad")
-      }else{
-        console.log("es menor de edad")
-      }
+    for (let i = 0; i &lt; array.length; i++) {
+      const element = array[i];
+      console.log(array[i])
     }
       </code></pre>
-      <p>la palabra <i>return</i> implica que regresara un valor disponnible para otras funciones</p>
-    </div>
-    <div class="encabezado">
-        <h3>Arrow Functions</h3>
-        <p>Una arrow function permite asignar una funcion a una variable, pasa a ser una funcion anonima, pero vinculada
-          a una variable que sí posee un nombre</p>
-        <strong>Estructura usual</strong>
-        <pre><code>
-    var funcion = function nombreFuncion(parametro){
-        return persona.edad > 22
-        }
-        </code></pre>
-        <strong>Arrow</strong>
-        <pre><code>
-    const funcion = (persona) => {
-            return persona.edad > 22
-        }
-        </code></pre>
-      <strong>Arrow simplificada</strong>
-        <p>Si es solo un parametro, se omiten los () y si es return, se omite return y {}</p>
-        <pre><code>
-    const funcion = persona => persona.edad > 22
-        </code></pre>
-    </div>
-    <div class="encabezado">
-      <h3>Estructura For</h3>
+      <strong>ForEach</strong>
+      <p>Por cada elemento en el array</p>
+      <pre><code>
+    array.forEach(element => {
+        console.log(element)
+    });
+      </code></pre>
+      <strong>While</strong>
+      <p>El codigo se ejecutara y dira cuanto tiempo paso hasta que la persona llego a su meta</p>
+      <pre><code>
+    const incremento = 5000
+    const ahorra = persona =>   persona.dinero += incremento
+    const gasta = persona =>   persona.dinero -= incremento
+    const paga = () => Math.random() &lt; .25
+    const cobra = () => Math.random() &lt; .50
+    const meta = 400000
+    var dias = 0
+
+    while (persona.dinero &lt; meta) {
+      //debugger ejemplo del debugger
+      if (cobra()) {
+        ahorra(persona)
+      }
+      if (paga()) {
+        gasta(persona)
+      }
+      dias += 1
+    }
+    console.log(`pasaron ${dias} quincenas hasta que ${persona.nombre} compro el terreno`)
+      </code></pre>
+      <strong>Do While</strong>
+      <pre><code>
+    var contador = 0
+    const lluvia = () => Math.Random() > 25
+
+    do{
+      contador++
+    }while(!lluvia)
+
+    //la logica de esto es
+    //do{
+    //  incrementa el contador
+    //}mientras(no llueva)
+    console.log(`se checo ${contador} veces si llovia`)
+      </code></pre>
+
+      <strong>ejemplos</strong>
       <pre><code>
     var yo = {
       nombre: "luis",
@@ -1523,49 +1654,97 @@
   }
           </code></pre>
     </div>
-    <div class="encabezado">
-      <h3>While</h3>
-      <p>El codigo se ejecutara y dira cuanto tiempo paso hasta que la persona llego a su meta</p>
-      <pre><code>
-    const incremento = 5000
-    const ahorra = persona =>   persona.dinero += incremento
-    const gasta = persona =>   persona.dinero -= incremento
-    const paga = () => Math.random() &lt; .25
-    const cobra = () => Math.random() &lt; .50
-    const meta = 400000
-    var dias = 0
 
-    while (persona.dinero &lt; meta) {
-      //debugger ejemplo del debugger
-      if (cobra()) {
-        ahorra(persona)
+    <div class="encabezado" id="parametros">
+      <h3>Objetos como parametros y retornar nuevo objeto</h3>
+      <p>cuando se pasa un objeto como parametro, este se modificara fuera de la funcion (side effect), para evitar este
+        comportamiento se puede regresar un objeto nuevo en vez de afectar al ya establecido</p>
+      <pre><code>
+    var luis = {nombre : "luis", edad: 24}
+
+    function aumentarEdad(persona){
+        persona.edad += 1
+    } 
+    //esto afecta al objeto global, volviendo a la persona un año mas grande
+    //pero sin regresar nada como tal
+
+    function aumentarEdad(persona){
+      return {
+        ...persona             //... implica que recibira todo lo que contenia persona
+        edad: persona.edad +1
       }
-      if (paga()) {
-        gasta(persona)
+    } 
+    //esto regresara una nueva persona de un año mayor, 
+    //diferente a la persona del primer caso
+    //y esto se puede guardar en una nueva variable
+
+    var personaMayor = aumentarEdad(persona)
+      </code></pre>
+    </div>
+    <div class="encabezado" id="comparaciones">
+      <h3>comparacion y asignacion de valores de variables</h3>
+      <pre><code>
+    var x = 4
+    var y = "4"
+    x == y = true
+      </code></pre>
+    <p>esto sucede porque estamos usando un "==" para la comparacion, es decir estamos comparando su valor, 
+    mas no el tipo de valor que estan guardando, pero si se hiciese x === y daria false porque uno es string y el otro es un numero.</p>
+    <pre><code>
+    var persona = {nombre: "luis", edad: 24}
+    var Otrapersona = {nombre: "luis", edad: 24}
+
+    //cuando se hace una comparacion "persona==Otrapersona" en objetos, resulta falso, porque pregunta por la referencia 
+    //(espacio en memoria ram)
+    //si queremos que esto como tal sea true, la asignacion deberia de ser
+
+    var persona = {nombre: "luis", edad: 24}
+    var Otrapersona = persona
+
+    //esto porque ambas variables apuntan al mismo espacio en memoria ram (misma referencia
+      </code></pre>
+    </div>
+    <div class="encabezado" id="return">
+      <h3>Return</h3>
+      <p>La palabra reservada <i>return</i> hace referencia a regresar un dato para usarse en otra funcion</p>
+      <pre><code>
+    function cumpleMayoria(persona){
+      return persona.edad>18              //regresara true o false para usarse
+    }                                     //en otra funcion
+
+    functon esMayorDeEdad(persona){
+      if(cumpleMayoria(persona)){         //hace la pregunta a otra funcion
+        console.log("es mayor de edad")
+      }else{
+        console.log("es menor de edad")
       }
-      dias += 1
     }
-    console.log(`pasaron ${dias} quincenas hasta que ${persona.nombre} compro el terreno`)
       </code></pre>
+      <p>la palabra <i>return</i> implica que regresara un valor disponnible para otras funciones</p>
     </div>
-    <div class="encabezado">
-      <h3>Do While</h3>
-      <pre><code>
-    var contador = 0
-    const lluvia = () => Math.Random() > 25
-
-    do{
-      contador++
-    }while(!lluvia)
-
-    //la logica de esto es
-    //do{
-    //  incrementa el contador
-    //}mientras(no llueva)
-    console.log(`se checo ${contador} veces si llovia`)
-      </code></pre>
+    <div class="encabezado" id="arrow">
+        <h3>Arrow Functions</h3>
+        <p>Una arrow function permite asignar una funcion a una variable, pasa a ser una funcion anonima, pero vinculada
+          a una variable que sí posee un nombre</p>
+        <strong>Estructura usual</strong>
+        <pre><code>
+    var funcion = function nombreFuncion(parametro){
+        return persona.edad > 22
+        }
+        </code></pre>
+        <strong>Arrow</strong>
+        <pre><code>
+    const funcion = (persona) => {
+            return persona.edad > 22
+        }
+        </code></pre>
+      <strong>Arrow simplificada</strong>
+        <p>Si es solo un parametro, se omiten los () y si es return, se omite return y {}</p>
+        <pre><code>
+    const funcion = persona => persona.edad > 22
+        </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="debbuger">
       <h3>Debugger</h3>
       <p>El debugger es una palabra reservada que pausara la ejecucion del codigo cada vez que esta palabra sea
         encontrada en el mismo</p>
@@ -1581,7 +1760,7 @@
       <p>Dar clicks en los numeros de linea de codigo funcionara como breackpoints o debuggers</p>
       <p>hacer <i>hover</i> sobre las variables (ejemplo con this.var) apuntara a su valor o contexto</p>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="switch">
       <h3>switch</h3>
       <pre><code>
     var signoZodiacal = prompt("cual es tu signo")
@@ -1599,42 +1778,9 @@
     }
       </code></pre>
     </div>
-    <div class="encabezado">
-      <h3>Arrays</h3>
-      <pre><code>
-    var bryan = {
-      nombre: "bryan",
-      apellido: "reyes",
-      edad: 23,
-      peso: 70
-    };
-    var angus = {
-      nombre: "angus",
-      apellido: "Valen",
-      edad: 20,
-      peso: 60
-    };
-
-    var people = [bryan, angus]
-
-    console.log(people[0]) // {...}
-    console.log(people[0].nombre) // "bryan"
-
-    people[0].nombre === people[0]['nombre']          
-    </code></pre>
-      <p>para declarar un array se utilizan corchetes <i>[]</i> y es una coleccion de objetos, y se recorre en los
-        arrays por medio de la estructura <i>for</i></p>
-      <p>array.lenght indica el conteo de elementos en el array</p>
-      <p>Tambien para filtrar elementos en un array se utiliza la palabra <i>filter</i></p>
-      <pre><code>
-    //var estanGordos = people.filter(condicion)
-
-    const condicion = (people) => people.peso > 60
-    var estanGordos = people.filter(condicion)
-      </code></pre>
-    </div>
-    <div class="encabezado">
-      <h3>Array Map</h3>
+    <div class="encabezado" id="arrMethods">
+      <h3>Metodos en Arrays</h3>
+      <strong>Array Map</strong>
       <p>array.map() devuelve un nuevo array con elementos modificados del array original</p>
       <pre><code>            
     //nuevo array de = people.map(condicion)
@@ -1662,9 +1808,7 @@
     }
     var peopleMys = people.map(setMayus)
           </code></pre>
-    </div>
-    <div class="encabezado">
-      <h3>Array Reduce</h3>
+      <strong>Array Reduce</strong>
       <p>reduce los elementos de un array a un solo objeto</p>
       <pre><code> 
             //acumulador, cada una de las personas
@@ -1676,10 +1820,9 @@
     //                             reducer, valor inicial acumulador 
     var totalKilos = people.reduce(reducer, 0)
         </code></pre>
-
-    </div>
-    <div class="encabezado">
-      <h3>Clases en JS</h3>
+      </div>
+    <div class="encabezado" id="jsprototype">
+      <h3>Prototype en JS</h3>
       <p>Las clases como tal no existen en JS, si no que se utiliza algo llamado prototipos</p>
       <pre><code>
     //una funcion normal "creara" la clase
@@ -1711,12 +1854,10 @@
     const luis = new Persona("luis", "Ramirez")
     luis.saludar()
           </code></pre>
-    </div>
-    <div class="encabezado">
-      <h3>Prototipos como herencia</h3>
+      <strong>Prototipos como herencia</strong>
       <p>La herencia de clases como tal no existe en JavaScript, esto es algo que se logra mdediante la herencia
-        prototipal</p>
-      <pre><code>
+            prototipal</p>
+          <pre><code>
     //se hace la funcion de "herencia"
     function heredaDe(prototipoHijo, prototipoPadre) {
       var fn = function () {}
@@ -1757,9 +1898,9 @@
 
     //y aqui desarrollador ya tiene acceso a los metodos de persona, pisando
     //el metodo de saludar por uno propio
-          </code></pre>
-    </div>
-    <div class="encabezado">
+        </code></pre>    
+      </div>
+    <div class="encabezado" id="jsClass">
       <h3>Usando prototipos con la palabra <i>Class</i></h3>
       <p>Para evitar todo lo confuso que puede ser crear clases mediante prototypes E15 introduce el uso de la palabra
         <i>class</i></p>
@@ -1799,7 +1940,7 @@
     }
           </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="funcAspar">
       <h3>Funciones como paramettros</h3>
       <p>los metodos en una clase pueden recibir funciones como parametros y ser respondidas internamente</p>
       <pre><code>
@@ -1813,9 +1954,7 @@
       //y de recibirse, se "responde"
           fn(this.nombre, this.apellido, true)
         }
-    
     }
-
 
     //funcion a enviar como parametro
     function response(nombre, apelldo, dev) {
@@ -1836,7 +1975,7 @@
     Luis.saludar(response)
           </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="tiempojs">
       <h3>Tiempo (Asincronia) en JS</h3>
       <p>En JS todas las ejecuciones son en un solo hilo llamado eventLoop,</p>
       <pre><code>
@@ -1858,10 +1997,10 @@
     //d
           </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="callback">
       <h3>callbacks</h3>
       <p>un Callback es una funcion pasada como parametro posterior a la ejecucion de una funcion, en el caso siguiente
-        lo que se hizo fue, una funcion de busque de Pkm, (<i>obtainPkm()</i>)una vez obtenido un resultado, se uso un
+        lo que se hizo fue, una funcion de busqueda de Pkm, (<i>obtainPkm()</i>)una vez obtenido un resultado, se uso un
         callback para una segunda funcion, ya que el callback era la unica manera de comprobar que los pkm se obtubieran
         de manera correcta</p>
       <pre><code>
@@ -1901,7 +2040,7 @@
     //pero esto generaba desorden en los resulados (5,6,4...)
           </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="promises">
       <h3>Promesas</h3>
       <p>Como una solucion a los Callback Hells fue que se realizaron las promesas en JS, asi es como luce el codigo de
         una</p>
@@ -1914,7 +2053,7 @@
       ...
     })
           </code></pre>
-      <p>Entonces usando el ejemplo de arriba reescribimos la funcion adaptandola a una promesa</p>
+      <p>Entonces usando el ejemplo de callbacks reescribimos la funcion adaptandola a una promesa</p>
       <pre><code>
     const opts = {crossDomain:true}
     //pasaremos un callback la funcion de obtener pkm
@@ -1971,9 +2110,9 @@
       .catch(err=>console.log(err))
           </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="async">
       <h3>Async Await con Try Catch</h3>
-      <p>Basado en el codigo de arriba, una manera de optimizarlo aun mas seria usar async await</p>
+      <p>Basado en el codigo anterior, una manera de optimizarlo aun mas seria usar async await</p>
       <pre><code>
     async function obtenerPersonajes() {
       var ids = [1,2,3,4,5,6]
@@ -1989,8 +2128,8 @@
     obtenerPersonajes()
           </code></pre>
     </div>
-    <div class="encabezado">
-      <h3>Programacion de un juego llamado Simon Dice</h3>
+    <div class="encabezado" id="juego">
+      <h3>Juego</h3>
       <p>Para el juego simon dice, usaremos elementos de html para hacer un tablero</p>
       <pre><code>
     &lt;!-- mensaje de puntuacion -->
@@ -2012,7 +2151,7 @@
           </code></pre>
           <a href="game.html">Juega Aqui!</a>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="recursividad">
       <h3>Recursividad</h3>
       <p>Se habla de recursividad cuando una funcion se llama a si misma</p>
       <pre><code>
@@ -2035,7 +2174,7 @@
     }
           </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="memoizacion">
       <h3>Memoizacion, ahorro de computo</h3>
       <p>Almacenamiento de procesos ya realizados en memoria</p>
       <pre><code>

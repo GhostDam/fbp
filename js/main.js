@@ -10,9 +10,13 @@ if('serviceWorker' in navigator){
 
 //* Navegacion de pestañas
 document.addEventListener("DOMContentLoaded", function(){
+  var reload = document.querySelector(".icon-home")
+  reload.addEventListener('click', function(){
+    window.location.reload(true)
+  })  
   //selectores
-  var section = document.querySelectorAll("section")
   var link = document.querySelectorAll(".temas")
+  var secciones = document.querySelectorAll("section")
   var home = document.querySelector(".welcome")
   var goHome = document.querySelector(".icon-home")
   var mensaje = document.querySelector("#mensaje")
@@ -20,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   //funciones
   function hideAll() {
-    section.forEach(function (sect) {
+    secciones.forEach(function (sect) {
       sect.style.display = "none";
     })    
   }
@@ -35,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
     if (!div.querySelector('.listado_temas')) {
       div.appendChild(lista_temas)
     }
-     temas.forEach(function name(tema) {
+     temas.forEach(function (tema) {
       var id = tema.parentElement.getAttribute('id')
       var enlace = document.createElement('a')
 
@@ -110,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function(){
   ]
   
   goHome.addEventListener('click', function() {
-      section.forEach(function (sect) {
+    secciones.forEach(function (sect) {
         sect.style.display = "none";
       })
       home.style.display = "block"
@@ -124,27 +128,46 @@ document.addEventListener("DOMContentLoaded", function(){
 })
 
 // Microservices test
-// const URL = "https://sidof.segob.gob.mx/historicoIndicadores/indicadoresHoy/";
-// const HEADERS = {
-//                   method: 'GET',
-//                   mode :"no-cors",
-//                   headers: {
-//                     "Content-Type": "application/json",
-//                     "X-Content-Type-Options": "nosniff"
-//                     },
-//                     crossDomain:true
-//                 } 
+// var DATA = {"maxResult":"1000","nombre":"Jose","paterno":"Perez","materno":"Leon","idCedula":""}
+// var URL = "https://www.cedulaprofesional.sep.gob.mx/cedula/buscaCedulaJson.action";
+// var HEADERS = {
+//                     'Accept' :"*/*",
+//                     'Accept-Econding' :"gzip, deflate, br",
+//                     'Accept-Languaje' :"es-ES,es;q=0.9,en;q=0.8",
+//                     'Connection': 'keep-alive',
+//                     'Content-Length': '152',
+//                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+//                     'Cookie': 'JSESSIONID=1a0170c4d35bdcbd8dc4ebb65ea4; _ga=GA1.3.1238574209.1606875548; _gid=GA1.3.531036298.1606875793; __utma=71038082.1238574209.1606875548.1606875548.1606880388.2; __utmz=71038082.1606880388.2.2.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmc=71038082; __utmt=1; __utmb=71038082.7.10.1606880388',
+//                     'Host': 'www.cedulaprofesional.sep.gob.mx',
+//                     'Origin': 'https://www.cedulaprofesional.sep.gob.mx',
+//                     'Referer': 'https://www.cedulaprofesional.sep.gob.mx/cedula/presidencia/indexAvanzada.action',
+//                     'Sec-Fetch-Site': 'same-origin',
+//                     'Sec-Fetch-Mode': 'cors',
+//                     'Sec-Fetch-Dest': 'empty',
+//                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
+//                     'X-Requested-With': 'XMLHttpRequest'
+//                   }
+/////
 
-// fetch(URL, HEADERS)
-//     .then(function (data) {
-//       console.log('Request succeeded with JSON response', data);
-//     })
-//     .catch(function (error) {
-//       console.log('Request failed', error);
-//     });
+
+////
+  // $.ajax({
+  //   url: '/cedula/buscaCedulaJson.action', 
+  //   type: 'post', 
+  //   dataType: 'json', 
+  //   data: {
+  //     json: '{"maxResult":"1000","nombre":"jose","paterno":"perez","materno":"leon","idCedula":""}'}, 
+  //     headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
+  //     success: function(response){
+  //       console.table(response.items, ["nombre","paterno","materno","idCedula", "titulo"]);
+  //     },
+  //     error: function(e){
+  //       console.error(e);
+  //     }});
 
 
-// // ToDo Class
+
+      // // ToDo Class
 document.addEventListener("DOMContentLoaded", function () {
   //Selectors
   const todoInput = document.querySelector('.todo-input')
@@ -307,4 +330,27 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem('todos', JSON.stringify(todos))
   }
   getTodos()
+
+  //estilizar input
+  const inputs = document.querySelectorAll('.input')
+
+  function focusFunc() {
+    let parent = this.parentNode.parentNode;
+    parent.classList.add('focus')
+  }
+
+  function blurFunc(params) {
+    let parent = this.parentNode.parentNode;
+    if (this.value=="") {
+      parent.classList.remove('focus')
+    }
+  }
+
+  inputs.forEach(input => {
+    input.addEventListener('focus', focusFunc)
+    input.addEventListener('blur', blurFunc)
+  });
+
+
+
 })
