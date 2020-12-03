@@ -582,28 +582,41 @@ pre {
 } */
 .todo-form{
   display: flex;
-  min-height: 20vh;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .todo-form input, .todo-form button{
   padding: 0.5rem;
   border: none;
-  background: white;
+  background: none;
+  outline: none;
 }
+.todo-form input{
+  color: powderblue;
+}
+.todo-form::before{
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  width: 100%;                        /*este efecto se aregara con js*/
+  height: 2px;
+  background-color: #ff6f47;   /*cubre el fondo gris del bottom del div */
+  transition: .3s;
+}
+
 .icon-plus{
   vertical-align: baseline;
 }
 .todo-form button{
   color: #d88771;
-  background: white;
   cursor: pointer;
   transition: all  0.3s ease;
 }
-.todo-form button:hover{
+/* .todo-form button:hover{
   background: #d88771;
   color: white;
-}
+} */
 .todo-container{
   display: flex;
   justify-content: center;
@@ -626,8 +639,7 @@ pre {
   justify-content: space-between;
   align-items: center;
   margin: 0.5rem;
-  background-color: #ffffff;
-  color: black;
+  color: cadetblue;
   transition: all .5s ease;
 }
 .todo li{
@@ -635,12 +647,16 @@ pre {
 }
 .trash-btn, .complete-btn{
   cursor: pointer;
-  background: #ff6f47;
-  color: white;
+  color: #32d39f;
+  background: none;
   border: none;
+  outline: none;
+}
+.trash-btn{
+  color: crimson;
 }
 .complete-btn{
-  background: rgb(73, 204, 73);
+  background: none;
 }
 .todo-item{
   padding: 0rem 0.5rem ;
