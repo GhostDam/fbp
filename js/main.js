@@ -61,10 +61,23 @@ document.addEventListener("DOMContentLoaded", function(){
           e.style.backgroundColor = color
       })
     })
-  
+
+
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.querySelector('.listado_temas').style.bottom = "3rem";
+      } else {
+        document.querySelector('.listado_temas').style.bottom = "0";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+
+
   }
 
-
+  
   link.forEach(function (e) {
     e.addEventListener('click', ()=>{
       hideAll()
@@ -127,47 +140,8 @@ document.addEventListener("DOMContentLoaded", function(){
   hideAll()
 })
 
-// Microservices test
-// var DATA = {"maxResult":"1000","nombre":"Jose","paterno":"Perez","materno":"Leon","idCedula":""}
-// var URL = "https://www.cedulaprofesional.sep.gob.mx/cedula/buscaCedulaJson.action";
-// var HEADERS = {
-//                     'Accept' :"*/*",
-//                     'Accept-Econding' :"gzip, deflate, br",
-//                     'Accept-Languaje' :"es-ES,es;q=0.9,en;q=0.8",
-//                     'Connection': 'keep-alive',
-//                     'Content-Length': '152',
-//                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-//                     'Cookie': 'JSESSIONID=1a0170c4d35bdcbd8dc4ebb65ea4; _ga=GA1.3.1238574209.1606875548; _gid=GA1.3.531036298.1606875793; __utma=71038082.1238574209.1606875548.1606875548.1606880388.2; __utmz=71038082.1606880388.2.2.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmc=71038082; __utmt=1; __utmb=71038082.7.10.1606880388',
-//                     'Host': 'www.cedulaprofesional.sep.gob.mx',
-//                     'Origin': 'https://www.cedulaprofesional.sep.gob.mx',
-//                     'Referer': 'https://www.cedulaprofesional.sep.gob.mx/cedula/presidencia/indexAvanzada.action',
-//                     'Sec-Fetch-Site': 'same-origin',
-//                     'Sec-Fetch-Mode': 'cors',
-//                     'Sec-Fetch-Dest': 'empty',
-//                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
-//                     'X-Requested-With': 'XMLHttpRequest'
-//                   }
-/////
 
-
-////
-  // $.ajax({
-  //   url: '/cedula/buscaCedulaJson.action', 
-  //   type: 'post', 
-  //   dataType: 'json', 
-  //   data: {
-  //     json: '{"maxResult":"1000","nombre":"jose","paterno":"perez","materno":"leon","idCedula":""}'}, 
-  //     headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
-  //     success: function(response){
-  //       console.table(response.items, ["nombre","paterno","materno","idCedula", "titulo"]);
-  //     },
-  //     error: function(e){
-  //       console.error(e);
-  //     }});
-
-
-
-      // // ToDo Class
+// // ToDo Class
 document.addEventListener("DOMContentLoaded", function () {
   //Selectors
   const todoInput = document.querySelector('.todo-input')

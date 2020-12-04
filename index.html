@@ -47,8 +47,8 @@
       <ul class="lista_cursos">
         <li class="temas" href="#sect1">Procesos de aprendizaje</li>
         <li class="temas" href="#sect2">Desarrollo web</li>
+        <li class="temas" href="#sect4">JavaScript</li>
         <li class="temas" href="#sect3">Git y GitHub</li>
-        <li class="temas" href="#sect4">Fundamentos de JavaScript</li>
         <li class="temas" href="#sect5">React Js</li>
         <li class="temas" href="#sect6">Redux</li>
         <li class="temas" href="#sect10">Trading</li>
@@ -281,11 +281,9 @@
 
   </section>
   <section id="sect2">    <!-- HTML & CSS -->
-    <!-- https://www.w3schools.com/howto/howto_js_scrolldrawing.asp -->
     <div class="encabezado" id="html">
         <h3>HTML</h3>
-        <div>
-          <div><strong>Etiquetas</strong></div>
+          <strong>Etiquetas</strong>
           <p>Las etiquetas son la representación básica de la información en un documento html. Sirven para crear y
             organizar el contenido.<br>
             La sintaxis general de una etiqueta es:</p>
@@ -304,8 +302,6 @@
     &lt;meta name="author" content="autor de la pag"/&gt;
     &lt;meta name="keywords" content="palabras, clave, de la , pagina"/&gt;
           </code></pre>
-        </div>
-        <div>
           <p>Algunas de las etiquetas más conocidas y usadas son:</p>
           <p><strong>Etiquetas de cabecera (head):</strong></p>
           <ul>
@@ -327,14 +323,29 @@
             <li>table: tablas de contenidos, similar a la estructura de las hojas de calculo.</li>
             <li>footer: pie de página del documento.</li>
           </ul>
+          <strong>Inline y Bloque</strong>
+          <p>Las propiedades de bloque y de linea son propiedades que dependeran por defecto de la etiqueta que se use aunque se pueden modificar por medio de CSS, las descripciones son las siguientes</p>
+          <ul>
+            <li><strong>Elemento Inline</strong></li>
+            <li>No crea nuevas lineas para cada elemento</li>
+            <li>Tiene ancho pero no alto (tamaño depende del contenido</li>
+            <li>Se ajustan al contenido</li>
+          </ul>
+          <ul>
+            <li><strong>Elemento Bloque</strong></li>
+            <li>Crea nuevas lineas para cada elemento</li>
+            <li>Ocupa todo el espacio horizontal</li>
+            <li>Tiene ancho y alto</li>
+          </ul>
+      
         </div>
-      </div>
       <div class="encabezado" id="css">
         <h3>CSS</h3>
           <p>CSS 1 se consolido en el 96</p>
           <p>Una pequeña guia <a target="_blank" href="http://apps.workflower.fi/vocabs/css/es#comment">Aqui</a></p>
           <p>Para declarar variables en CSS se declaran de la siguiente manera</p>
-      <pre><code>
+        <strong>variables</strong>
+          <pre><code>
     /* las variables se declaran en root*/
     :root{
       --color: red
@@ -348,9 +359,7 @@
       color: var(--color)
     }
             </code></pre>      
-      </div>
-    <div class="encabezado" id="selector_css">
-        <h3>Selectores CSS</h3>
+      <p><strong>Selectores CSS</strong></p>
           <pre><code>
     /* por tag */
     h1 { 
@@ -391,6 +400,16 @@
         <li><strong>de atributos contiene [class*="button"] </strong>Selecciona los elementos cuyo atributo contenga...
         </li>
       </ul>
+      <p><strong>Pseudo-elementos</strong></p>
+      <p>La sintaxis es ::pseudo-elemento{ estilos } <i>:: es para diferenciarlos de las pseudo-clases</i></p>
+      <ul>
+        <li><strong>::first-line {css} </strong> solo elementos de bloque, afectara solo a la primera letra</li>
+        <li><strong>::first-letter {css} </strong> solo elementos de bloque, afectara la primera linea de un texto</li>
+        <li><strong>::before</strong> Junto con ::after son elementos inline (sin dimension) cuya propiedad <i>content: '';</i> Es obligatoria</li>
+        <li><strong>::after</strong> Estos se pueden utilizar como metodos para "dibujar" contenido antes y despues del elemento seleccionado, pero seran reconocidos como "hijos" por parte del DOM</li>
+        <li><strong>::selection</strong> Afectara a elementos seleccionados por el usuario</li>
+      </ul>
+
     </div>
     <div class="encabezado" id="snippets">
       <h3>snippets</h3>
@@ -438,21 +457,6 @@
     initial  resetea los valores por defecto del elemento
           </code></pre>
     </div>
-    <div class="encabezado" id="inline">
-      <h3>Inline y Bloque</h3>
-    <ul>
-      <li><strong>Elemento Inline</strong></li>
-      <li>No crea nuevas lineas para cada elemento</li>
-      <li>Tiene ancho pero no alto (tamaño depende del contenido</li>
-      <li>Se ajustan al contenido</li>
-    </ul>
-    <ul>
-      <li><strong>Elemento Bloque</strong></li>
-      <li>Crea nuevas lineas para cada elemento</li>
-      <li>Ocupa todo el espacio horizontal</li>
-      <li>Tiene ancho y alto</li>
-    </ul>
-    </div>  
     <div class="encabezado" id="modelo_caja">
       <h3>Modelo de caja</h3>
     <p><strong>Box-model: </strong>Modelo de caja</p>
@@ -642,7 +646,15 @@
       height: 200px;
     }
       </code></pre>
-        <p>absolute se comportara como fixed, pero sera relativo a su ancestro <i>posicionado</i> mas cercano, si un elemento absolute no tiene ancestros, usara el elemento body y se seguira moviendo con el scroll</p>
+      <strong>sticky</strong>
+      <pre><code>
+  .sticky {
+    position: sticky;
+    width: 600px;
+    height: 400px;
+  }
+    </code></pre>
+      <p>sticky se comportara como relative, hasta que llegue a una coordenada especifica (top, right, left, bottom) en la cual comenzara a comportarse como fixed</p>
         <p>Un Ejemplo mas detallado <a target="_blank" href="https://es.learnlayout.com/position.html">Aqui</a></p>
     </div>
     <div class="encabezado" id="responsive">
@@ -660,27 +672,28 @@
       <ul>
         <li><i>vw, vh</i> unidad relativa al tamaño del viewport</li>
       </ul>
+      <strong>Media Queries</strong>
+      <pre><code>
+        @media media type and (condition){
+          
+        }
+              </code></pre>
+          <p>conceptos</p>
+          <ul>
+            <li><i>media type</i> screen (pantalla) print (crtl-p, impresion)</li>
+            <li><i>max-width</i> todas las pantallas con ancho inferior o igual a (hasta)</li>
+            <li><i>min-width</i> todas las pantallas con ancho mayor o igual a (desde)</li>
+            <li><i>(max-width) and (min-width)</i> ancho desde, hasta</li>
+          </ul>
+          <p><strong>implementar queries en hojas de estilos</strong></p>
+          <p>Para llamar una hoja de estilos de manera condicional, se debe agrear el atributo <i>media</i> a la etiqueta link
+          </p>
+          <pre><code>&lt;link rel="stylesheet" href="css/main.css" media="screen and (max-width: 720px)"</code></pre>
+        </div>
+    <div class="encabezado" id="devtools">
+      <h3>Remote debbug</h3>
+      <p>Para hacer un debbug remoto con Chrome dev tools, necesitamos conectar nuestro dispositivo android por medio de usb a nuestro equipo, y en chrome abrir <a href="chrome://inspect">chrome://inspect</a> ademas de activar el modo desarrollador en el dispositivo android </p>
     </div>
-    <div class="encabezado" id="media_queries">
-        <h3>Media Queries</h3>
-          <pre><code>
-    @media media type and (condition){
-      
-    }
-          </code></pre>
-      <p>conceptos</p>
-      <ul>
-        <li><i>media type</i> screen (pantalla) print (crtl-p, impresion)</li>
-        <li><i>max-width</i> todas las pantallas con ancho inferior o igual a (hasta)</li>
-        <li><i>min-width</i> todas las pantallas con ancho mayor o igual a (desde)</li>
-        <li><i>(max-width) and (min-width)</i> ancho desde, hasta</li>
-      </ul>
-      <p><strong>implementar queries en hojas de estilos</strong></p>
-      <p>Para llamar una hoja de estilos de manera condicional, se debe agrear el atributo <i>media</i> a la etiqueta link
-      </p>
-      <pre><code>&lt;link rel="stylesheet" href="css/main.css" media="screen and (max-width: 720px)"</code></pre>
-    </div>
-
     <div class="encabezado" id="premades">
       <h3>Premades</h3>
       <!-- Basic input -->
@@ -975,7 +988,7 @@
   </div>
   </section>
   <section id='sect3'>    <!-- Git & GitHub -->
-    <div class='encabezado'>
+    <div class='encabezado' id="git">
       <h3>¿Que es Git?</h3>
         <p>Git es un sistema de control de versiones que nos permite llevar un control de cambios y desarrollo de
           nuestros proyecto,
@@ -995,8 +1008,8 @@
           tanto, la ruta del usuario con el que estás trabajando es /c/Users/Nombre de tu usuario</p>
         <p>al dar commit sin -m (texto azul) el texto (amarillo) sobre # es el msn (vim)</p>
     </div>
-    <div class="encabezado">
-        <h3>Comandos básicos en la terminal:</h3>
+    <div class="encabezado" id="terminal">
+        <h3>Comandos basicos de terminal:</h3>
         <ul>
           <li><strong>Windows</strong></li>
           <li>dir: Muetra el listado de archivos de la carpeta</li>
@@ -1031,7 +1044,7 @@
         <p>*<small>Recuerda que podemos descubrir todos los argumentos de un comando con el argumento --help (por
             ejemplo, cat --help).</small></p>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="gitconf">
       <h3>Configuraciones de Git</h3>
       <ul>
         <li><strong>git //command// --help</strong> manual para comando ingresado</li>
@@ -1043,8 +1056,8 @@
           que se entrara como <strong>git stats</strong></li>
       </ul>
     </div>
-    <div class="encabezado">
-      <h3>¿Qué es staging, repositorios y cuál es el ciclo básico de trabajo en GitHub?</h3>
+    <div class="encabezado" id="ciclo">
+      <h3>Ciclo de trabajo en Git</h3>
       <p>Este comando se encargará de dos cosas: primero, crear una carpeta .git donde se guardará toda la base de datos
         con cambios atómicos de nuestro proyecto; y segundo, crear un área en la memoria RAM, que conocemos como
         Staging, que guardará temporalmente nuestros archivos (cuando ejecutemos un comando especial para eso) y nos
@@ -1070,8 +1083,8 @@
           guardados en el área de Staging (en realidad, todo sigue funcionando igual pero es un poco divertido).</li>
       </ul>
     </div>
-    <div class="encabezado">
-      <h3>Comandos para mover archivos entre los estados de Git:</h3>
+    <div class="encabezado" id="estadosgit">
+      <h3>Comandos base Git:</h3>
       <ul>
         <li><strong>gitk</strong> Inicia la interfaz visual</li>
         <li><strong>git init</strong> Inicia el repositorio (Lo crea)</li>
@@ -1100,7 +1113,9 @@
         <p><small>*despues de esto se pedira un commit de confirmacion y despues....</small></p>
         <li><strong>git push origin master</strong> Envio de los archivos</li>
       </ul>
-      <h3>Helpers</h3>
+    </div>
+      <div class="encabezado" id="helpers">
+        <h3>Helpers</h3>
       <ul>
         <li><strong>git grep "palabra a buscar"</strong> Busca una palabra entre los archivos de la rama actual</li>
         <li><strong>git grep -n "palabra a buscar"</strong> Te entrega la palabra y linea en que aparece</li>
@@ -1142,6 +1157,8 @@
           anterior. Si los archivos venían de Unstaged, vuelven allí. Y lo mismo se venían de Untracked.</li>
         <li><strong>git reset reflog</strong> checa ABSOLUTAMENTE TODA la historia de git</li>
       </ul>
+    </div>
+      <div class="encabezado" id="stash">  
       <h3>Helpers STASH</h3>
       <ul>
         <li><strong>git stash</strong>guarda los cambios sin commit en memoria para poder moverse entre ramas</li>
@@ -1167,6 +1184,8 @@
         <li><strong>git cherry-pick C0m11t</strong>trae y pega en automatico el commit de otra rama</li>
 
       </ul>
+    </div>
+      <div class="encabezado" id="gittags">  
       <h3>Git tags (versiones)</h3>
       <p><small>"doskey ramas=git log --all --graph --decorate --oneline", crea un "alias" o un shortcut para un comando
           largo resumido en una sola palabra</small></p>
@@ -1187,8 +1206,7 @@
 
       </ul>
     </div>
-
-    <div class="encabezado">
+    <div class="encabezado" id="retornos">
       <h3>Cambios y Retornos(12)</h3>
       <p>El comando git checkout + ID del commit nos permite viajar en el tiempo. Podemos volver a cualquier versión
         anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y
@@ -1207,7 +1225,7 @@
           en el reset "git reset -commit(hjka4371h)-"</li>
       </ul>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="importaciones">
       <h3>Importacion de repositorios de un servidor remoto</h3>
       <p>Estos servidores remotos pueden estar alojados en GitHub, GitLab, BitBucket, entre otros. Lo que van a hacer es
         guardar el mismo repositorio que tienes en tu computadora y darnos una URL con la que todos podremos acceder a
@@ -1224,7 +1242,7 @@
         <li><strong>git pull</strong> Básicamente, git fetch y git merge al mismo tiempo.</li>
       </ul>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="ramas">
       <h3>Creacion de Ramas</h3>
       <ul>
         <li><strong>git branch css</strong> Creacion de la rama con nombre css (se crea mas no se mueve a)</li>
@@ -1244,6 +1262,8 @@
         <li><strong>git merge branchname</strong> Merge se encargara de fusionar las ramas, tomando como linea principal
           la rama donde se encuentre actualmente</li>
       </ul>
+    </div>
+      <div class="encabezado" id="parcheo">  
       <h3>Parcheo de ramas</h3>
       <ul>
         <li><strong>git rebase</strong> agrega en el sentido estricto de la palabra, una rama frente a otra, es decir
@@ -1263,15 +1283,13 @@
 
 
       </p>
-    </div>
-    <div class="encabezado">
-      <h3>Visualizar</h3>
+      <strong>Visualizar</strong>
       <p>Master-----C1(index sin css)-----------C2(h3, ft, small)----------------CS(Merge)</p>
-
+  
       <p>Branch-----S1(primer css en css)-----------S2(add P)--(al dar merge se "finaliza" esta rama y se une al Master)
       </p>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="giteys">
       <h3>La creacion de llaves</h3>
       <p>La creacion de llaves ssh parece ser ajena al entorno de Git, pero fines relacionados con, el comando para
         hacer creacion de esta es, estando en el home <strong>ssh-keygen -t rsa -b 4096 -C "micorreo"</strong>, pedira
@@ -1279,7 +1297,7 @@
       <p>para evaluar que el servicio de llaves esta corriendo se ejecuta <strong>eval $(ss-agent -s)</strong> y para
         agregar la ruta al sistema es <strong>ssh-add "ruta/.ssh/id_rsa</strong>, no la que termine en .pub</p>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="colaboradores">
       <h3>Adicion de colaboradores</h3>
       <p>para agrgar colaboradores, se dirijie a settings, collaborator, y agrega (por correo o username, para el
         correo, este debe ser publico)</p>
@@ -1308,7 +1326,7 @@
         <li><strong>git pull upstream master</strong> pull del upstream a nuestra rama master</li>
       </ul>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="ignore">
       <h3>git ignore</h3>
       <p>Para ignorar arhivos, debe existir un archivo en la raiz del proyecto llamado .gitignore y esto funcionara asi
       </p>
@@ -1318,7 +1336,7 @@
         <li><strong>*.jpg</strong>ignorará todos los archivos jpg</li>
       </ul>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="gitpages">
       <h3>github pages</h3>
       <p>sencillamente ingresar a usuario.github.io/repositorio, y en el repositorio enmarcar la rama a mostrar</p>
       <p>para que cargue en la raiz usuario.github.io, el repositorio tiene que tener el mismo nombre usuario.github.io
@@ -2217,7 +2235,7 @@
     </div>
   </section>
   <section id="sect5"> <!-- ReactJS -->
-    <div class="encabezado">
+    <div class="encabezado" id="requerimentos">
       <h3>Requerimentos</h3>
       <p>Para inicializar un proyecto con React JS se Necesita primeramente instalar, eso se hace mediante el CMD y ejecutar los siguientes comandos (forma "clasica"), posterior a la instalacion, se crea la app igual mediante la linea de comandos EN EL DIRECTORIO A USAR</p>
         <pre><code>
@@ -2239,7 +2257,7 @@
       <p>En caso de ser un proyecto importado se requerirá nuevamente un npm instal (actualizar bibliotecas)</p>
         <small>En caso de errores con el CMD o rendimiento, se cierra el server Node en taskmgr</small>
   </div>    
-  <div class="encabezado">
+  <div class="encabezado" id="router">
      <h3>React Router</h3> 
       <p>Adicional a CRA, para la navegacion entre pestañas dentro de la SPA requeriremos React Router</p>
       <pre><code>
@@ -2263,7 +2281,7 @@
     export default App;
     </code></pre>
   </div>
-  <div class="encabezado">
+  <div class="encabezado" id="jsx">
       <h3>JSX y renderizado en el DOM</h3>
     <strong>Renderizado en DOM mediante JavaScript Clasico</strong>
       <pre><code>
@@ -2291,7 +2309,7 @@
     //Navbar puede ser un componente, que se transforma a un elemento mediante &lt;Nabbar />
       </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="componentes">
       <h3>Componentes</h3>
       <p>Los componentes se escriben por medio de funciones y pueden ser de 2 tipos</p>
       <strong>StateLess</strong>
@@ -2336,7 +2354,7 @@
       <p>Para declarar funciones dentro de componentes funcionales, se debe empezar con <i>const</i> y no se utiliza
         <i>this</i></p>
   </div>
-  <div class="encabezado">
+  <div class="encabezado" id="props">
     <h3>Props</h3>
     <p>Props (properties) son los argunentos que puede recibir un componentes</p>
     <p>componente</p>
@@ -2354,7 +2372,7 @@
     }   
     </code></pre>
   </div>
-  <div class="encabezado">
+  <div class="encabezado" id="states">
     <h3>Estados en React</h3>
       <p>Los estados en React son la manera de almacenar y manejar informacion para un componente, este se puede inicializar de las 2 siguientes maneras</p>
       <strong>Dentro del constructor</strong>
@@ -2402,7 +2420,7 @@
           su propio (constructor), está anulando el comportamiento predeterminado, y a menos que llame (super) por sí
           mismo, podría generar errores si el padre necesitara una inicialización.</p>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="events">
       <h3>Manejo de eventos</h3>
       <p>Cada ves que un &lt;input> recibe contenido, de transfondo en React se esta recibiendo un evento
         <i>onChange</i>, por covencion, el metodo creado de la clase deberia llamarse <i>handleChange</i></p>
@@ -2428,7 +2446,7 @@
     }
           </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="apis">
       <h3>Llamadas a API's y promesas</h3>
       <p>El llamado de informacion externa en React (llamado a apis) se hace mediante funciones asincronas, estas se hacen el estado <i>ComponentDidMount</i> del ciclo de vida de React y en esto recibira una promesa</p>
       <pre><code>
@@ -2443,7 +2461,7 @@
     }
           </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="reactforms">
       <h3>Manejo de formularios</h3>
       <strong>Statefull Components</strong>
           <p>en Statefull components, esto se hace mediante un estado (o setState) en el cual, cada cambio en un input llamara a la funcion setState y pasara [name]:value dependendiedo del input que este llamando la funcion</p>
@@ -2509,7 +2527,7 @@
     )
       </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="upperstates">
       <h3>Levantamiento de estado</h3>
       <p>para compartir un estado entre 2 o mas componentes, se tiene que hacer un "levantamiento de estado", es decir,
         poner el estado en una loacalizacion que pueda mandarlo como props a los componentes, en el lugar mas cercano a
@@ -2568,12 +2586,12 @@
       }  
             </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="fragments">
       <h3>React.Fragment</h3>
       <p>React fragment es un componente utilittario para regresar mas de un componente sin la necesidad de
         encapsularlos en divs</p>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="lifecicle">
       <h3>Ciclo de vida</h3>
       <p>Los componentes en React cuentan con ciclos de vida</p>
       <p>La parte de <strong>Montaje</strong> es el momento donde se inserta el codigo del componente en el DOM y en
@@ -2593,9 +2611,9 @@
 
       </ul>
     </div>
-    <div class="encabezado">
-      <h1>React Hooks - Filtro de busqueda</h1>
-      <h3>1.- Los hooks de react solo funcionan sobre compnentes funcionales</h3>
+    <div class="encabezado" id="hooks">
+      <h3>React Hooks - Filtro de busqueda</h3>
+      <strong>Los hooks de react solo funcionan sobre compnentes funcionales</strong>
       <pre><code>
     function Componente (props){
         return (
@@ -2773,7 +2791,7 @@
       export default Component
       </code></pre>
     </div>
-    <div class="encabezado">
+    <div class="encabezado" id="xtras">
       <h3>Extras</h3>
       <p><strong>Problemas con protocolos HTTPS</strong></p>
       <p>En package.json</p>
@@ -3714,5 +3732,4 @@
       </div> 
   </div>
 </body>
-
 </html>

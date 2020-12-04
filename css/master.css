@@ -179,24 +179,12 @@ pre, code{
     display: none;
     margin-left: auto;
   }
-  /* .navegacion{
-
-  } */
   .navegacion{
     bottom: 0;
   }
   .navegacion .hamburguer{
     display: block;
   }
-  /* .navegacion .lista_cursos{
-    display: block;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 3rem;
-    left: -100vw;
-    transition: .3s;
-  } */
   .navegacion .lista_cursos{
     display: block;
     position: fixed;
@@ -496,12 +484,12 @@ pre {
   position: fixed;
   display: flex;
   overflow: auto;
-  /* border-radius: 25px; */
   height: 3rem;
   left: 10vw;
   top: 3rem;
   width: 80%;
   background-color: lightslategrey;
+  transition: bottom .3s;
 }
 .listado_temas a{
   display: block;
@@ -542,40 +530,62 @@ pre {
   display: flex;
   flex-direction: column;
   min-height: 80vh;
-  border: crimson 1px dotted;
   background-color: honeydew;
   margin-bottom: 10px;
+  box-shadow: 0 0 2px 2px gray;
 }
 .cornell div{
   padding: 10px;
 }
-.tema{
+.cornell .tema{
   width: 100%;
   min-height: 3rem;
-  border: cyan 1px dotted;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
 }
-.contenido{
+.cornell .contenido{
   padding: 0!important;
   display: flex;
-  border: darkviolet 1px dotted;
+  position: relative;
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
 }
-.contenido ul{
+.cornell .contenido ul{
   list-style: none;
-  padding-left: 0;
 }
-.glosario{
+.cornell .glosario{
   flex-basis: 20%;
-  border: red 1px dotted;
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
+  transition: .3s;
 }
-.notas{
+.cornell .notas{
   flex: 1;
-  border: green 1px dotted;
 }
-.resumen{
+.cornell .resumen{
   min-height: 20vh;
-  border: blueviolet 1px dotted;
 }
-
+@media (max-width: 720px){
+  .cornell .notas{
+    padding-top:2rem ;
+  }
+  .glosario{
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: honeydew;
+    height: 2rem;  
+  }
+  .glosario::before{
+    content: 'glosario';
+    display: block;
+    line-height: 1rem;
+    text-align: center;
+  }
+  .glosario:hover{
+    height: 100%;
+  }
+}
 /* ToDo class */
 /* .todo-class{
   background-image: linear-gradient(120deg, #e2c35d, #d88771);
@@ -594,6 +604,7 @@ pre {
 }
 .todo-form input{
   color: powderblue;
+  width: 100%;
 }
 .todo-form::before{
   content: '';
