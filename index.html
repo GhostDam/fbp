@@ -48,10 +48,11 @@
         <li class="temas" href="#sect1">Procesos de aprendizaje</li>
         <li class="temas" href="#sect2">Desarrollo web</li>
         <li class="temas" href="#sect4">JavaScript</li>
+        <li class="temas" href="#sect8">PWA</li>
+        <li class="temas" href="#sect10">Trading</li>
         <li class="temas" href="#sect3">Git y GitHub</li>
         <li class="temas" href="#sect5">React Js</li>
         <li class="temas" href="#sect6">Redux</li>
-        <li class="temas" href="#sect10">Trading</li>
         <li class="temas" href="#sect11">Node Js</li>
         <li class="temas" href="#sect13">IRC server</li>
         <li class="temas" href="#sect14">Eng Course</li>
@@ -1717,7 +1718,7 @@
     </div>
 
     <div class="encabezado" id="parametros">
-      <h3>Objetos como parametros y retornar nuevo objeto</h3>
+      <h3>Objetos como parametros</h3>
       <p>cuando se pasa un objeto como parametro, este se modificara fuera de la funcion (side effect), para evitar este
         comportamiento se puede regresar un objeto nuevo en vez de afectar al ya establecido</p>
       <pre><code>
@@ -1743,7 +1744,7 @@
       </code></pre>
     </div>
     <div class="encabezado" id="comparaciones">
-      <h3>comparacion y asignacion de valores de variables</h3>
+      <h3>comparacion de valores</h3>
       <pre><code>
     var x = 4
     var y = "4"
@@ -3785,7 +3786,144 @@
       <p>cuando el horno este caliente, el tiempo de coccion sera aproximadamente de 1 hora a fuego lento (180°) opcionalmente a los 20 minutos se pueden voltear</p>
     </div>
   </section>
+  <section id="sect8">
+    <div class="encabezado" id="pwa">
+      <h3>Progresive web apps</h3>
+      <p>Tiene que correr en protocolo HTTPS</p>
+      <p>La aplicacion se comunicara primero con el SW, antes que de la red</p>
+      <p>El service worker corre en el background este o no activa la app, </p>
+    </div>
+    <div class="encabezado" id="pwarequerimentos">
+      <!-- the net nija PWA -->
+      <h3>Requerimentos basicos</h3>
+      <strong>html</strong>
+      <br>
+      <strong>Js SW</strong>
+      <p>Los pasos de funcionamiento del SW serian</p>
+      <ul>
+        <li>pre-cacheo: el momento en que guarda html, css y js para un uso futuro</li>
+      </ul>
+      <p>Despues de registrar el SW por medio de un script normal, el archivo <i>sw.js</i> deberia por convencion contener solo codigo relacionado a los servicios</p>
 
+      <strong>install event</strong>
+      <p>En el el el evento de instalacion, es el moomento es que debemos cachear las bases de nuestra PWA, que serian los archivos html, css, js</p>
+      <p>Cada vez que realicemos algun cambio al archivo del SW se realizara nuevamente el envento <i>install</i>, pero no sera instantaneo, ya que no se habra activado aun, hasta que eliminemos el cache viejo</p>
+      <pre><code>
+    var cacheEstatica = "nombre_del_cache"
+    var assets = [
+                  "/",                    //estamos guardadando las respuestas 
+                  "/css/main.css",        //de las urls de los request
+                  ...]
+
+    //self refiere al sw
+    self.addEventListener('install', function(event) {
+      //wait until es para evitar que el navegador interrumpa el cache
+      //ya que el evento de instalacion es mas rapido que el cacheo en si
+          event.waitUntil(
+          caches    
+          .open(CACHE_NAME)                         //el metodo open, abrira el cache, si             
+          .then(function(cache) {                   //no existe, lo creara
+            cache.addAll(assets);
+          })
+        )
+    });
+      </code></pre>
+      <p>El metodo caches.add() agrega un solo recurso, caches.addAll() agrega un array de recursos</p>
+      <p>evt.waitUntil() preserva la "vida" el evento hasta que termina su tarea</p>
+      <strong>activate event</strong>
+      <p>En el evento <i>Activate</i> sera en donde eliminaremos la cache vieja</p>
+      <pre><code>
+    self.addEventListener('activate', function(event) {
+          event.waitUntil(         
+                    //nombres de los caches
+              caches.keys().then(cacheNames=>{                      //accederemos a las llaves de los caches
+                return Promise.all(keys                             //promise.all recibe las llaves que son una promesa
+                    .filter(key => key !==cacheEstatica)            //filtraremos del array la version actual o (&& key !== dinamicCache)
+                    .map(key => caches.delete(key))                 //y eliminaremos las restantes
+                  )
+                console.log(cacheNames)
+              })
+          );
+    });
+      </code></pre>
+      <strong>fetch event</strong>
+      <p>Cuando un evento de peticion se dispara desde la app, es interceptada por el el evento "fetch" del service worker, si la respuesta se encuentra en el cache, regresara ese asset desde el cache</p>
+      <pre><code>
+    self.addEventListener('fetch', function(event) {
+      //responderemos con un recurso de el cache
+      event.respondWith(
+            //si algo en el cache iguala al request (recordar que son urls
+            caches.match(event.request)
+                .then(function(cacheResponse) {
+              //si hay respuesta del cache || si no, ve y busca
+                  return cacheResponse || fetch(event.request);
+            })
+        );
+    });
+      </code></pre>
+    </div>
+    <div class="encabezado" id="cachedinamico">
+      <h3>Cacheo dinamico</h3>
+      <strong>fetch event para cache dinamico</strong>
+      <p>Si queremos cachear dinamicamente alguno recurso extra que no este en la cache estatica, esto lo podemos hacer en el evento fetch</p>
+      <pre><code>
+    var staticCache = "cache_estatico"
+    var dinamicCache = "cache_dinamico"
+
+    self.addEventListener('fetch', function(event) {
+      event.respondWith(
+            caches.match(event.request)
+                .then(function(cacheResponse) {
+                  return cacheResponse || fetch(event.request).then(fetchRes => {
+                      return caches.open(dinamicCache).then(cache =>{ 
+                        //podremos el url de la peticion, y la copia de la respuesta de esta
+                        cache.put(event.request.url, fetchRes.clone())
+                        //para poder regresar el original al usuario
+                        return fetchRes;
+                      })
+                  });
+            })
+        );
+    });
+      </code></pre>
+    </div>
+    <div class="encabezado" id="pwafallback">
+      <h3>Offline fallback</h3>
+      <p>Para evitar errores cuando el usuario intente navegar en un enlace de nuestra aplicacion, pero este no pueda ser visitado porque el usuario se encuentra offline, podemos utilizarr el siguiente recurso</p>
+      <p>Nuevamente, en el metodo <i>fetch</i> haremos el fallback en caso de que el recurso solicitado no se encuentre en el cache del sitio, o no se pueda cargar porque este offline</p>
+      <pre><code>
+    var staticCache = "cache_estatico"
+    var dinamicCache = "cache_dinamico"
+
+    self.addEventListener('fetch', function(event) {
+      event.respondWith(
+            caches.match(event.request)
+                .then(function(cacheResponse) {
+                  return cacheResponse || fetch(event.request).then(fetchRes => {
+                      return caches.open(dinamicCache).then(cache =>{ 
+                        cache.put(event.request.url, fetchRes.clone())
+                        return fetchRes;
+                      })
+                  });
+            }).catch(()=> caches.match('paginas/fallback.html')               //si la cache y el fetch fallan, damos una pagina
+        );                                                                    //de error pre cacheada
+    });
+    </code></pre>
+    </div>
+    <div class="encabezado" id="cachesizelimit">
+      <h3>Limitar el tamaño del cache</h3>
+    </div>
+    <div class="encabezado" id="pwapush">
+      <h3>Push</h3>
+      <pre><code>
+    onpush = function(event){
+      var data = event.data.json();
+      self.registration
+          .showNotification(data.title, data.options)
+    }
+      </code></pre>
+    </div>
+  </section>
   <div class="welcome">
     <p id="mensaje"></p>
     <div class="encabezado">

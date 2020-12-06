@@ -179,6 +179,7 @@ section{
   /*  */
   flex-flow: row;
   overflow: hidden;
+  transition: all .3s ease;
 }
 .welcome{
   max-width: 80%;
@@ -454,9 +455,10 @@ pre {
 #sect16{
   background-color: #376f9c;
 }
-#sect17{
-  background-color: #d88771;
+#sect8{
+  background-color: #7cb2ec;
 }
+
 .listado_temas{
   position: fixed;
   display: flex;

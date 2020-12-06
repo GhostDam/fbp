@@ -1,6 +1,6 @@
-const CACHE_NAME = "Memorial V10.2";         //nombre de cache
+const CACHE_NAME = "Memorial V1.1";         //nombre de cache
 const DataToCache = [                     //datos a guardar
-  './',
+  './',                                    //requests urls 
   'index.html',
   'game.html',
   'js/main.js',
@@ -16,7 +16,8 @@ const DataToCache = [                     //datos a guardar
 ];
 
 self.addEventListener('install', function(event) {
-      //perform install steps
+      //wait until es para evitar que el navegador interrumpa el cache
+      //ya que el evento de instalacion es mas rapido que el cacheo en si
       event.waitUntil(
         caches
           .open(CACHE_NAME) 
@@ -24,6 +25,7 @@ self.addEventListener('install', function(event) {
             console.log('abriendo cache');
             return cache.addAll(DataToCache);
           })
+          .then(()=> self.skipWaiting())
       );
 });
 
@@ -31,6 +33,7 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', e =>{
   e.waitUntil(
     caches.keys().then(cachesNames =>{
+      console.log(cachesNames)
       return Promise.all(
         cachesNames.map(cache =>{
           if (cache!==CACHE_NAME) {

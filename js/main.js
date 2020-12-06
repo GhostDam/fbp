@@ -10,12 +10,6 @@ if('serviceWorker' in navigator){
 
 //* Navegacion de pestañas
 document.addEventListener("DOMContentLoaded", function(){
-    if(navigator.onLine) {
-        var reload = document.querySelector(".icon-home")
-        reload.addEventListener('click', function(){
-            window.location.reload(true)
-          })
-    }
   //selectores
   var link = document.querySelectorAll(".temas")
   var secciones = document.querySelectorAll("section")
@@ -64,20 +58,36 @@ document.addEventListener("DOMContentLoaded", function(){
       })
     })
 
-
+    
     var prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
+    window.addEventListener('scroll', function(){
       var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        document.querySelector('.listado_temas').style.bottom = "3rem";
-      } else {
-        document.querySelector('.listado_temas').style.bottom = "0";
-      }
+      var menuListadoTemas = document.querySelectorAll('.listado_temas')
+
+      menuListadoTemas.forEach(function(menu){
+        if (prevScrollpos > currentScrollPos) {
+          menu.style.bottom = "3rem";
+        } else {
+          menu.style.bottom = "0";
+        }
+      })
       prevScrollpos = currentScrollPos;
-    }
-
-
+    })
   }
+
+
+  // var clientX, clientY;
+  // window.addEventListener('touchstart', function(e){ 
+  //   clientX = e.touches[0].clientX;
+  //   clientY = e.touches[0].clientY;
+  // })
+  // window.addEventListener('touchend', function(e){ 
+  //   var deltaX, deltaY;
+  //   deltaX = e.changedTouches[0].clientX - clientX;
+  //   deltaY = e.changedTouches[0].clientY - clientY;
+
+  //   console.log("x" + deltaX.toFixed(2), "y" + deltaY.toFixed(2))
+  // })  
 
   
   link.forEach(function (e) {
