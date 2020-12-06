@@ -10,10 +10,12 @@ if('serviceWorker' in navigator){
 
 //* Navegacion de pestañas
 document.addEventListener("DOMContentLoaded", function(){
-  var reload = document.querySelector(".icon-home")
-  reload.addEventListener('click', function(){
-    window.location.reload(true)
-  })  
+    if(navigator.onLine) {
+        var reload = document.querySelector(".icon-home")
+        reload.addEventListener('click', function(){
+            window.location.reload(true)
+          })
+    }
   //selectores
   var link = document.querySelectorAll(".temas")
   var secciones = document.querySelectorAll("section")

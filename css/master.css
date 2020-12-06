@@ -1,27 +1,16 @@
-/*Este Snippet "Corrige" un buen uso del paddin sin afectar el width */
 *, *:before, *:after {
   box-sizing: border-box;
 }
 html, body, section{
-  /* font-size: 62.5%; */
   scroll-behavior: smooth;
 }
- body{
+body{
   margin: 0;
   padding: 0;
   min-height: 100vh;
   background-image: linear-gradient(to bottom, gray, black);
 }
-/*
-p{
-  font-size: 1.2rem;
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-pre, code{
-  overflow: auto;
-} */
-/* Menu de navegacion */
+/* MENU */
 .navegacion{
   position: fixed;
   display: flex;
@@ -30,9 +19,6 @@ pre, code{
   width: 100%;
   z-index: 3;
 }
-/* .nav-fix{
-  height: 3rem;
-} */
 .icon-home{
   color: whitesmoke;
   line-height: 3rem;
@@ -116,7 +102,6 @@ pre, code{
 .search-form.focus::after, .search-form.focus::before{
   width: 50%;
 }
-
 .search-form .icon-search{
   display: flex;
   justify-content: flex-end;
@@ -138,11 +123,6 @@ pre, code{
     font-size: 1.2rem;
     color: #d9d9d9; 
 }
-
-
-/* .icon-search{
-  pointer-events: none;
-} */
 .search-form span{
   display: inline-flex;
   align-items: center;
@@ -155,26 +135,7 @@ pre, code{
   color: whitesmoke;
 }
 
-/* .search-form input, .search-form button{
-  padding: 0.5rem;
-  border: none;
-  background: none;
-} */
-/* .search-form input{
-  max-width: 100%;
-  color: wheat;
-}
-.search-form input:hover{
-  border-bottom: oldlace 1px solid;
-}
-.search-form:hover input{
-  max-width: 150%;
-} */
-
 @media(max-width: 720px){
-  .nav-fix{
-    display: none;
-  }
   .buscador{
     display: none;
     margin-left: auto;
@@ -247,7 +208,7 @@ section{
 @media(max-width: 720px){
   .encabezado{
     margin-top: 5px;
-    padding: 0 0 6rem;    
+    padding: 0 10px 6rem;    
   }
 }
 
@@ -266,7 +227,6 @@ section{
 .lista_cursos::-webkit-scrollbar{
   height: 5px;
 }
-
 /*fondo de barra*/
 .lista_cursos::-webkit-scrollbar-track{
   background: rgba(0, 0, 0, .1);
@@ -280,13 +240,30 @@ section{
 .lista_cursos::-webkit-scrollbar-thumb:hover{
   background: steelblue;
 }
-
 pre {
   background: #333333;
   color: #ffffff;
   tab-size: 2;
 }
-
+/* VELAS JAPONESAS */
+.velasjaponesas{
+  display: flex;
+  justify-content: space-evenly;
+}
+.velasjaponesas ul{
+  list-style: none;
+}
+.vela{
+  writing-mode: vertical-lr;
+  letter-spacing: -2px;
+  display: inline-block;
+}
+.vela .alcista{
+  color: #026e00;
+}
+.vela .bajista{
+  color: red;
+}
 
 /*  LAYOUT EXAMPLE  */
 #layout{
@@ -605,6 +582,10 @@ pre {
 .todo-form input{
   color: powderblue;
   width: 100%;
+  transition: .3s;
+}
+.todo-form input:focus{
+  box-shadow: 0px -10px 10px -10px #ff6f47 inset;
 }
 .todo-form::before{
   content: '';

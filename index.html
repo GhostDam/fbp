@@ -67,7 +67,6 @@
       </div>
     </nav>
   </header>
-  <div class="nav-fix"></div>
   <section id="sect1"> <!-- Aprendizaje -->
     <div class="encabezado" id="que_es">
       <h3>¿Qué es el aprendizaje?</h3>
@@ -410,7 +409,51 @@
         <li><strong>::selection</strong> Afectara a elementos seleccionados por el usuario</li>
       </ul>
 
-    </div>
+      <p><strong>Pseudo-clases</strong></p>
+      <p>La sintaxis es :pseudo-clase{ estilos } <i>: pseudo-clase, ::pseudo-elemento</i></p>
+      <p>Las pseudo-clases son selectores que interactuan en tiempo real, detectando la interaccion del usuario con algunos elementos, como si de un listener de JS se tratara</p>
+      <strong>pseudo-clases dinamicas</strong>
+      <ul>
+        <li><strong>:link (link){}</strong> Se utiliza cuando el enlace no ha sido visitado</li>
+        <li><strong>:visited (link){}</strong> Se utiliza cuando el enlace ha sido visitado por ejemplo el historial de busqueda Google</li>
+        <li><strong>:active (link){}</strong> Se dispara mientras el elemento esta siendo presionado por un click</li>
+        <li><strong>:hover{}</strong> Cuando el raton esta por encima el elemento</li>
+        <li><strong>:focus{}</strong> Cuando el elemento tiene el foco, es decir, esta seleccionado, por ejemplo un input</li>
+        <li><strong>:target{}</strong> Cuando el elemento es el objetivo de un marcador o ancla</li>
+        <li><strong>:lang(){}</strong> Elemento que contiene el atributo de lenguaje especificado</li>
+      </ul>
+
+      <strong>Pseudo-clases de estado (formulario)</strong>
+      <ul>
+        <li><strong>:enabled{}</strong> El estado por defecto de un formulario, caso contrario especificr con disabled</li>
+        <li><strong>:checked{}</strong> Para un input tipo checkbox, marcado, con este se suelen hacer muchos efectos visuales ocultando el checkbox y pasando los estilos al label</li>
+        <li><strong>:in-range{}</strong> Para inputs con valores en rango</li>
+        <li><strong>:out-of-range{}</strong> Para inputs con valores fuera de rango</li>
+        <li><strong>:optional{}</strong> Por defecto todos los campos son opcionales, caso contrario es required</li>
+        <li><strong>:required{}</strong> Para elementos obligatorios de un formulario</li>
+        <li><strong>:valid{}</strong> Por si el input cumple con los requerimentos de su tipo, por ejemplo tipo numero, o tipo texto</li>
+        <li><strong>:invalid{}</strong> Caso contrario de valid</li>
+        <li><strong>:read-only{}</strong> Solo lectura</li>
+        <li><strong>:read-write{}</strong> Todos los campos, innecesario</li>
+      </ul>
+
+        <strong>pseudo-clases Estructurales</strong>
+        <ul>
+          <li><strong>:root{}</strong> La raiz del documento, mas especifico que usar el tag html</li>
+          <li><strong>:empty{}</strong> Para etiquetas sin contenido</li>
+          <li><strong>:first-child{}</strong> Selecciona (que sea) al primer hijo</li>
+          <li><strong>:last-child{}</strong> selecciona el ultimo hijo</li>
+          <li><strong>:nth-child(n){}</strong> Selecciona al hijo n 
+                <li>odd - impares</li>
+                <li>even - impares</li>
+                <li>2, 3, 4 - numeros enteros</li>
+                <li>(1n, 3n, 4n+1) - ecuaciones, n se multiplica hasta llegar al valor, 3n es igual a (3x0, 3x1, 3x2, 3x3)</li>
+            </li>
+          <li><strong>:nth-last-child()</strong> Lo mismo que child, pero empezando de atras hacia delante</li>
+          <li><strong>:only-child{}</strong> Elemento que sea hijo unico</li>
+          <li><strong>:not(excludes){}</strong> excluye al elemento seleccionado</li>
+        </ul>
+      </div>
     <div class="encabezado" id="snippets">
       <h3>snippets</h3>
       <pre><code>
@@ -3119,7 +3162,7 @@
           </div>
         </div> 
       </div>
-        <div class="encabezado" id="ciclo">
+        <div class="encabezado" id="cicloprecio">
         <h3>Ciclo del precio</h3>
           <div class="cornell">
             <div class="tema">
@@ -3160,16 +3203,51 @@
           <h3>Secuencia de maximos y minimos</h3>
           <div class="cornell">
             <div class="tema">
-              <h5>Ciclo del precio</h5>
+              <h5>Secuencias</h5>
             </div>
             <div class="contenido">
               <div class="glosario">
               </div>
               <div class="notas">
-                  <p>En una tendencia alcista el precio cada vez creara maximos mayores y niveles minimos, suele haber "trampas" en las que el precio rompera el precio minimo, y volvera a crear u nuevo pico</p>
-              </div>
+                <p>En una tendencia alcista el precio cada vez creara maximos mayores y niveles minimos, suele haber "trampas" en las que el precio rompera el precio minimo, y volvera a crear u nuevo pico</p>
+                <p>Pero para que un nuevo "minimo" se forme, tiene qu haber sido creado por 2 maximos</p>
+                </div>
             </div>
             <div class="resumen">
+            </div>
+          </div>
+        </div>
+        <div class="encabezado" id="velasjaponesas">
+          <h3>Velas Japonesas</h3>
+          <!-- min 2:19 -->
+          <p>Las velas japonesas se componen de 4 puntos, precio inicial, precio final, precio mas alto, y precio mas bajo de la sesion, y estas son alcistas (verde) o bajistas (rojo)</p>
+          <div class="velasjaponesas">
+            <ul>
+              <li>precio mas alto</li>
+              <li>Precio Final</li>
+              <li>Precio inicial</li>
+              <li>Precio mas bajo</li>
+            </ul>
+            <div class="vela">-----<span class="alcista">█████</span>-----</div>
+            <div class="vela">-----<span class="bajista">█████</span>-----</div>
+            <ul>
+              <li>precio mas alto</li>
+              <li>Precio inicial</li>
+              <li>Precio Final</li>
+              <li>Precio mas bajo</li>
+            </ul>
+          </div>
+          <p>Los tipos de vela suelen ser representativos a algunas tendicias, por ejemplo</p>
+          <div class="velasjaponesas">
+            <div class="vela"><span class="alcista">█</span>----------</div>
+              <div>
+                <strong>Martillo</strong>
+                <p>El martillo suele ser un precendente a una tendencia alcista</p>
+              </div>
+            <div class="vela">----------<span class="bajista">█</span></div>
+            <div>
+              <strong>Colgado</strong>
+              <p>suele ser un precendente a una tendencia bajista</p>
             </div>
           </div>
         </div>
@@ -3182,6 +3260,7 @@
         <p>El tercero es la cotizacion del precio en la posicion del cursor</p>
         <strong>Click derecho en linea</strong> 
         <p>Personalizar - agrega opciones de dibujado ala interfaz</p>
+        <p>Para lineas rectas, quitar la marca "rayo" en las opciones de linea de tendencia</p>
         <p>130 pips con un lotaje de 0.01 es aproximadamente un dolar, a lo cual, con un spread de 30 pips, requiero generar 130 pips por trade para generar un dolar</p>
       </div>
         <div class="encabezado" id="consejos">
