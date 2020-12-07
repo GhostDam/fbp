@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="librerias/styles.css">
 
   <link rel="stylesheet" href="css/master.css">
-  <script src="js/main.js?ver=102" charset="utf-8"></script>
+  <script src="js/main.js" charset="utf-8"></script>
   <title>FB Beca Developer Circles</title>
 </head>
 
@@ -3786,7 +3786,7 @@
       <p>cuando el horno este caliente, el tiempo de coccion sera aproximadamente de 1 hora a fuego lento (180°) opcionalmente a los 20 minutos se pueden voltear</p>
     </div>
   </section>
-  <section id="sect8">
+  <section id="sect8">  <!-- PWA -->
     <div class="encabezado" id="pwa">
       <h3>Progresive web apps</h3>
       <p>Tiene que correr en protocolo HTTPS</p>
@@ -3888,7 +3888,7 @@
       </code></pre>
     </div>
     <div class="encabezado" id="pwafallback">
-      <h3>Offline fallback</h3>
+      <h3>Offline fallbacks</h3>
       <p>Para evitar errores cuando el usuario intente navegar en un enlace de nuestra aplicacion, pero este no pueda ser visitado porque el usuario se encuentra offline, podemos utilizarr el siguiente recurso</p>
       <p>Nuevamente, en el metodo <i>fetch</i> haremos el fallback en caso de que el recurso solicitado no se encuentre en el cache del sitio, o no se pueda cargar porque este offline</p>
       <pre><code>
@@ -3910,11 +3910,45 @@
     });
     </code></pre>
     </div>
-    <div class="encabezado" id="cachesizelimit">
-      <h3>Limitar el tamaño del cache</h3>
+    <div class="encabezado" id="pwanotif">
+      <h3>Notificaciones</h3>
+      <strong>No confundir con notificaciones push</strong>
+      <p>En primera instancia, las notificaciones deben estar permitidas en el SO, Config-> notificaciones y acciones->activado</p>
+      <pre><code>
+    if ('Notification' in window) {
+      console.log(Notification.permission)
+    
+      if (Notification.permission !=="denied") {
+          let title = "Hey you...";
+          let options = {
+            body: "Tienes un recordatorio x2"
+          }
+          let n = new Notification(title, options)
+    
+          //cierre automatico
+          setTimeout(n.close.bind(n), 2000)
+
+      } else{
+    
+        Notification.requestPermission()
+            .then(function(result) {
+                console.log(result)
+            }).catch(err => console.log(err))
+      }
+    }
+        
+      </code></pre>
     </div>
     <div class="encabezado" id="pwapush">
       <h3>Push</h3>
+      <p>Los pasos a seguir para notificaciones push son ls siguientes</p>
+      <ul>
+        <li>El usuario se suscribe a notificaciones push</li>
+        <li>El servicio push regresa un "objeto de suscripcion"</li>
+        <li>La app guarda el objeto de suscripción en el servidor</li>
+        <li>Mandar la notificacion del servidor al usuario via el servicio push</li>
+        <li>El service worker maneja la notificacion</li>
+      </ul>
       <pre><code>
     onpush = function(event){
       var data = event.data.json();

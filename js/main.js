@@ -7,6 +7,25 @@ if('serviceWorker' in navigator){
 }else{
 	console.log('No tienes acceso a los serviceWorker en tu navegador');
 }
+//*Notifications
+// if ('Notification' in window) {
+//   console.log(Notification.permission)
+
+//   if (Notification.permission !=="denied") {
+//       let title = "Hey you...";
+//       let options = {
+//         body: "Tienes un recordatorio x2"
+//       }
+//       let n = new Notification(title, options)
+//       setTimeout(n.close.bind(n), 2000)
+
+//   } else{
+//     Notification.requestPermission()
+//         .then(function(result) {
+//             console.log(result)
+//         }).catch(err => console.log(err))
+//   }
+// }
 
 //* Navegacion de pestañas
 document.addEventListener("DOMContentLoaded", function(){
@@ -291,8 +310,17 @@ document.addEventListener("DOMContentLoaded", function () {
         todoDiv.appendChild(trashButton)
         //apend to list
         todoList.appendChild(todoDiv)
-
     })
+
+    if (todos[0] !==undefined) {
+        let title = "Hey tu";
+        let options = {
+          body: `Tienes tareas pendientes ${todos[0]}`
+        }
+        let n = new Notification(title, options)
+        setTimeout(n.close.bind(n), 3000)      
+    }
+
   }  
 
   //remove todos
