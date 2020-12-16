@@ -7,144 +7,136 @@ if('serviceWorker' in navigator){
 }else{
 	console.log('No tienes acceso a los serviceWorker en tu navegador');
 }
-//*Notifications
-// if ('Notification' in window) {
-//   console.log(Notification.permission)
 
-//   if (Notification.permission !=="denied") {
-//       let title = "Hey you...";
-//       let options = {
-//         body: "Tienes un recordatorio x2"
-//       }
-//       let n = new Notification(title, options)
-//       setTimeout(n.close.bind(n), 2000)
-
-//   } else{
-//     Notification.requestPermission()
-//         .then(function(result) {
-//             console.log(result)
-//         }).catch(err => console.log(err))
-//   }
-// }
 
 //* Navegacion de pestañas
 document.addEventListener("DOMContentLoaded", function(){
   //selectores
-  var link = document.querySelectorAll(".temas")
-  var secciones = document.querySelectorAll("section")
-  var home = document.querySelector(".welcome")
   var goHome = document.querySelector(".icon-home")
+  var home = document.querySelector(".welcome")
+  var secciones = document.querySelectorAll("section")
+  var link = document.querySelectorAll(".temas")
   var mensaje = document.querySelector("#mensaje")
 
-
-  //funciones
-  function hideAll() {
-    secciones.forEach(function (sect) {
-      sect.style.display = "none";
-    })    
-  }
-
-  function listarTemas(div) {
-    //var seccion =  div
-    var temas =  div.querySelectorAll('h3')
-    //crear Div con clase
-    const lista_temas = document.createElement('div')
-    lista_temas.classList.add('listado_temas')
-
-    if (!div.querySelector('.listado_temas')) {
-      div.appendChild(lista_temas)
-    }
-     temas.forEach(function (tema) {
-      var id = tema.parentElement.getAttribute('id')
-      var enlace = document.createElement('a')
-
-      enlace.innerText = tema.innerText;
-      enlace.setAttribute("href", `#${id}`)
-      lista_temas.appendChild(enlace)
-    })
-
-    var enlace = div.querySelectorAll('a')
-
-    enlace.forEach(function (e) {
-      e.addEventListener('click', ()=>{
-        var style = window.getComputedStyle(div);
-        var color = style.backgroundColor
-          
-        enlace.forEach(function (h) {
-          h.style.backgroundColor = "lightslategrey"
-        })
-          e.style.backgroundColor = color
-      })
-    })
-
-    
-    var prevScrollpos = window.pageYOffset;
-    window.addEventListener('scroll', function(){
-      var currentScrollPos = window.pageYOffset;
-      var menuListadoTemas = document.querySelectorAll('.listado_temas')
-
-      menuListadoTemas.forEach(function(menu){
-        if (prevScrollpos > currentScrollPos) {
-          menu.style.bottom = "3rem";
-        } else {
-          menu.style.bottom = "0";
-        }
-      })
-      prevScrollpos = currentScrollPos;
-    })
-  }
-
-
-  // var clientX, clientY;
-  // window.addEventListener('touchstart', function(e){ 
-  //   clientX = e.touches[0].clientX;
-  //   clientY = e.touches[0].clientY;
-  // })
-  // window.addEventListener('touchend', function(e){ 
-  //   var deltaX, deltaY;
-  //   deltaX = e.changedTouches[0].clientX - clientX;
-  //   deltaY = e.changedTouches[0].clientY - clientY;
-
-  //   console.log("x" + deltaX.toFixed(2), "y" + deltaY.toFixed(2))
-  // })  
-
-  
+  // listar temas
   link.forEach(function (e) {
-    e.addEventListener('click', ()=>{
-      hideAll()
+    var anchor = e.getAttribute("href")
+    var sect = document.querySelector(anchor)
+    var style = window.getComputedStyle(sect);
+    var color = style.backgroundColor
 
-      var anchor = e.getAttribute("href")
-      var sect = document.querySelector(anchor)
-      var style = window.getComputedStyle(sect);
-      var color = style.backgroundColor
+      e.addEventListener('click', ()=>{  
+          secciones.forEach(function (sect) {
+            sect.style.display = "none";
+          })
 
-      link.forEach(function (h) {
-        h.style.backgroundColor = "#333333"
+          link.forEach(function (h3) {
+            h3.style.backgroundColor = "#333333"
+          })
+
+          sect.style.display = "flex";
+          e.style.backgroundColor = color
+          home.style.display = "none";
+          //listar subtemas
+          listarTemas(sect)
       })
-
-      sect.style.display = "flex";
-      e.style.backgroundColor = color
-      home.style.display = "none";
-
-      listarTemas(sect)
-    })
   })
 
-  //animacion buscador
-  const input = document.querySelector('#searcher')
-  function focusFunc() {
-    let parent = this.parentNode;
-    parent.classList.add('focus')
+
+  //listado de subtemas
+  function listarTemas(div) {
+      var temas =  div.querySelectorAll('h3')
+      const lista_temas = document.createElement('div')
+      lista_temas.classList.add('listado_temas')
+
+      if (!div.querySelector('.listado_temas')) {
+          div.appendChild(lista_temas)
+      }
+      
+      temas.forEach(function (tema) {
+          var id = tema.parentElement.getAttribute('id')
+          var enlace = document.createElement('a')
+
+          enlace.innerText = tema.innerText;
+          enlace.setAttribute("href", `#${id}`)
+          lista_temas.appendChild(enlace)
+      })
+
+    //colorear subtema activo
+    var enlace = div.querySelectorAll('a')
+    enlace.forEach(function (e, i) {
+      var style = window.getComputedStyle(div);
+      var color = style.backgroundColor
+
+      e.addEventListener('click', ()=>{
+            enlace.forEach(function (h) {
+              h.style.backgroundColor = "lightslategrey"
+            })
+              e.style.backgroundColor = color
+        })
+    })
+
+  
+    //ocultar-mostrar menu de subtemas
+    var prevScrollpos = window.pageYOffset;
+    window.addEventListener('scroll', function(){
+        var currentScrollPos = window.pageYOffset;
+        var menuListadoTemas = document.querySelectorAll('.listado_temas')
+
+        if (window.matchMedia("(max-width: 720px)").matches) {
+              menuListadoTemas.forEach(function(menu){
+                if (prevScrollpos > currentScrollPos) {
+                  menu.style.bottom = "3rem";
+                } else {
+                  menu.style.bottom = "0";
+                }
+              })
+        } else {
+              menuListadoTemas.forEach(function(menu){
+                if (prevScrollpos > currentScrollPos) {
+                  menu.style.top = "3rem";
+                } else {
+                  menu.style.top = "0";
+                }
+              })
+        }
+        prevScrollpos = currentScrollPos;
+    })
   }
 
-  function blurFunc() {
-    let parent = this.parentNode;
-      parent.classList.remove('focus')
-      this.value = "";
-    }
-  input.addEventListener('focus', focusFunc)
-  input.addEventListener('blur', blurFunc)
+    //buscar entre temas
+    //animacion buscador
+    const input = document.querySelector('#searcher')
+    let list = document.querySelectorAll('ul.lista_cursos li')
 
+    function focusFunc() {
+      this.parentNode.classList.add('focus')
+          list.forEach(function(tema){
+                  tema.style.display = "block"
+          })
+    }
+  
+    function blurFunc() {
+        this.parentNode.classList.remove('focus')
+        this.value = "";
+    }
+    
+    function filtrar() {
+      let value = this.value.toLowerCase()
+            list.forEach(function(tema){
+                    let text = tema.innerText.toLowerCase()
+                      if (text.includes(value)) {
+                          tema.style.display = "block"
+                      }else{
+                          tema.style.display = "none"
+                      }
+                  })
+    }
+  
+    input.addEventListener('focus', focusFunc)  
+    input.addEventListener('input', filtrar)
+    input.addEventListener('blur', blurFunc)
+  
 
   //frases
   const motivaciones = [
@@ -167,8 +159,6 @@ document.addEventListener("DOMContentLoaded", function(){
   var frase = motivaciones[Math.floor(Math.random() * motivaciones.length)]
   mensaje.innerText = `"${frase}"`
 
-
-  hideAll()
 })
 
 

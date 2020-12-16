@@ -303,13 +303,14 @@
     &lt;meta name="keywords" content="palabras, clave, de la , pagina"/&gt;
           </code></pre>
           <p>Algunas de las etiquetas más conocidas y usadas son:</p>
-          <p><strong>Etiquetas de cabecera (head):</strong></p>
+          <p><strong>Etiquetas de esquema de documento (head):</strong></p>
           <ul>
-            <li>doctype: indica al navegador el tipo de documento que se está mostrando.</li>
-            <li>html: es la etiqueta que envuelve todo el documento</li>
+            <li>!DOCTYPE: indica al navegador el tipo de documento y version que se está mostrando (X/HTML).</li>
+            <li>html: es la etiqueta que envuelve todo el documento, documento html</li>
             <li>head: es la cabecera del documento y contiene sub etiquetas que describen al documento o incluyen recursos
-              adicionales.</li>
-          </ul>
+              adicionales, ademas de la información.</li>
+            <li>body: Cuerpo del documento</li>
+            </ul>
           <p><strong>Etiquetas del cuerpo del documento (body):</strong></p>
           <ul>
             <li>header: cabecera del documento.</li>
@@ -318,11 +319,64 @@
             <li>h1 - h6: títulos de nuestro sitio web.</li>
             <li>section: sirve para diferenciar las secciones principales del contenido.</li>
             <li>div: cualquier división para organizar el contenido.</li>
+            <li>p: parrafos</li>
+            <li>span: seccion en linea de texto</li>
             <li>article: diferencia partes del contenido que pueden vivir por sí mismas.</li>
+            <li>br: rompimiento de linea</li>
+            <li>hr: linea horizontal</li>
             <li>aside: contenido menos relevante, como publicidad, etc.</li>
             <li>table: tablas de contenidos, similar a la estructura de las hojas de calculo.</li>
             <li>footer: pie de página del documento.</li>
           </ul>
+          <p><strong>Tablas</strong></p>
+          <ul>
+            <li>table: inicio de la tabla</li>
+            <li>caption: titulo descriptivo de tablas</li>
+            <li>thead: cabeza de la tabla</li>
+            <li>tbody: cuerpo de la tabla</li>
+            <li>tfoot: pie de la tabla</li>
+            <li>colgroup: grupo de columnas</li>
+            <li>col: columna</li>
+            <li>tr: fila de tabla</li>
+            <li>th: encabezado de celda</li>
+            <li>td: celda de tabla</li>
+          </ul>
+          <strong>Ejemplo</strong>
+            <table>
+              <caption>Caption</caption>
+              <thead>
+                <tr>
+                  <th>encabezado 1</th>
+                  <th>encabezado 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>celda cuerpo 1</td>
+                  <td>celda cuerpo 2</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>celda footer 1</td>
+                  <td>celda footer 2</td>
+                </tr>
+              </tfoot>
+            </table>
+          <p><strong>Formularios</strong></p>
+          <ul>
+            <li>form: formulario</li>
+            <li>fieldset: grupo de campos</li>
+            <li>legend: leyenda</li>
+            <li>label: etiqueta del input</li>
+            <li>input: campo de captura</li>
+            <li>select: campo de opciones</li>
+            <li>option: opcion</li>
+            <li>optgroup: grupo de opciones</li>
+            <li>textarea: campo de texto</li>
+            <li>button: boton, por defecto de envio</li>
+          </ul>
+          </form>
           <strong>Inline y Bloque</strong>
           <p>Las propiedades de bloque y de linea son propiedades que dependeran por defecto de la etiqueta que se use aunque se pueden modificar por medio de CSS, las descripciones son las siguientes</p>
           <ul>
@@ -346,32 +400,33 @@
           <p>Para declarar variables en CSS se declaran de la siguiente manera</p>
         <strong>variables</strong>
           <pre><code>
-    /* las variables se declaran en root*/
+    <span>/* las variables se declaran en root*/</span>
     :root{
       --color: red
     }
 
-    /* y su uso seria */
+    <span>/* y su uso seria */</span>
     body{
       background: var(--color)
     }
+
     h1{
       color: var(--color)
     }
             </code></pre>      
       <p><strong>Selectores CSS</strong></p>
           <pre><code>
-    /* por tag */
+    <span>/* por tag */</span>
     h1 { 
       color: blue;
     }
 
-    /* por clase */
+    <span>/* por clase */</span>
     .clase {
       color: blue;
     }
 
-    /* universal */
+    <span>/* universal */</span>
     * {
       color: blue;
     }
@@ -459,10 +514,10 @@
       <h3>snippets</h3>
       <pre><code>
     html{
-       font-size: 62.5%; /* reset para rems (unidad de medida para mejorar calidad visual en pantallas) = 10px de 16 px */
+       font-size: 62.5%; <span>/* reset para rems (unidad de medida para mejorar calidad visual en pantallas) = 10px de 16 px */</span>
     }
 
-    *, *:before, *:after{ /**esto hace que agregar un padding no cambien el ancho **/
+    *, *:before, *:after{  <span>/* esto hace que agregar un padding no cambien el ancho */</span> 
       box-sizing: inherit;
       margin: 0;
       border: 0;
@@ -483,8 +538,8 @@
     #main .post p{
       color: red
     }
-    /* a pesar de la cascada, la declaracion anterior
-        tiene mas peso debido a especificidad */
+    <span>/* a pesar de la cascada, la declaracion anterior
+    tiene mas peso debido a especificidad */</span>
     p{
       color: green
     }
@@ -512,30 +567,30 @@
       <li><strong>outline: </strong>No forma parte del modelo de caja, se dibuja siempre fuera de este</li>
     </ul>
       <pre><code>
-    *, *::before, *::after{             /* este snippet hace el uso de padding y border
-      box-sizing: border-box;            * no aumente el tamaño de caja como lo haria
-    }                                   /* por defecto 
+    *, *::before, *::after{
+      box-sizing: border-box;
+    }
 
     #box-model{
-      padding: 1px;                      /* padding "simbolico" para evitar el colapsado de margen vertical */
+      padding: 1px;                      <span>/* padding "simbolico" para evitar el colapsado de margen vertical */</span>
       height: 300px;
       background-color: whitesmoke;
     }
     .box{
-      margin-top: 50px;                  /* si el padre no tiene un padding, este margen se encima verticalmente */
-      width: 150px;                      /* ancho fijo */
-      height: 150px;                     /* altura fija */
-      background-color: red;             /* color de fondo */
-      border: 10px dotted black;         /* el borde se crea dentro del modelo de caja (box-sizing: border-box;) */
-      padding: 10px;                     /* el padding es espaciado entre contenido y borde */ 
-      margin-left: auto;                 /* teoricamente, es la manera correcta de centrar un elemento */
+      margin-top: 50px;                  <span>/* si el padre no tiene un padding, este margen se encima verticalmente */</span>
+      width: 150px;                      
+      height: 150px;                     
+      background-color: red;             
+      border: 10px dotted black;         <span>/* el borde se crea dentro del modelo de caja (box-sizing: border-box;) */</span>
+      padding: 10px;                     <span>/* el padding es espaciado entre contenido y borde */ </span>
+      margin-left: auto;                 <span>/* teoricamente, es la manera correcta de centrar un elemento */</span>
       margin-right: auto;
     }
-    .box-2{                              /* triangulo */
-      background-color: transparent;     /* reseteo el color de fondo */
-      padding: 0;                        /* elimino padding */
-      border: 75px solid;                /* doy color al borde */
-      border-color: teal transparent transparent;  /* solo dejo el triangulo */
+    .box-2{                              <span>/* triangulo */</span>
+      background-color: transparent;     <span>/* reseteo el color de fondo */</span>
+      padding: 0;                        <span>/* elimino padding */</span>
+      border: 75px solid;                <span>/* doy color al borde */</span>
+      border-color: teal transparent transparent;  <span>/* solo dejo el triangulo */</span>
     }
 
     El tamaño declarado por width y height sera el border box, es decir la caja externa 
@@ -692,11 +747,11 @@
       </code></pre>
       <strong>sticky</strong>
       <pre><code>
-  .sticky {
-    position: sticky;
-    width: 600px;
-    height: 400px;
-  }
+    .sticky {
+      position: sticky;
+      width: 600px;
+      height: 400px;
+    }
     </code></pre>
       <p>sticky se comportara como relative, hasta que llegue a una coordenada especifica (top, right, left, bottom) en la cual comenzara a comportarse como fixed</p>
         <p>Un Ejemplo mas detallado <a target="_blank" href="https://es.learnlayout.com/position.html">Aqui</a></p>
@@ -1557,9 +1612,9 @@
           <li>drag(Arrastrar y soltar): Se arrastra un elemento o selección de texto (se dispara continuamente cada 350 ms).</li>
           <li>drop(Arrastrar y soltar): Un elemento se deja caer o se suelta en un objetivo de caída válido.</li>
         </ul>
+        <strong>event.preventDefaul()</strong>
+        <p>Esta propiedad detiene al evento sin detener el resto de su funcionamiento, esto quiere decir que podemos volver a ejecutar la acción sin problema. Es usado cuando no queremos que un elemento DOM se comporte de la manera en que se debe comportar, como por ejemplo cuando se usa la etiqueta &lt;a>, la mayoría de los casos es para redirigirlo a otra página, con event.preventDefault podemos evitar que se vaya a otra página y mejor haga otra cosa</p>
       </div>
-      <strong>event.preventDefaul()</strong>
-      <p>Esta propiedad detiene al evento sin detener el resto de su funcionamiento, esto quiere decir que podemos volver a ejecutar la acción sin problema. Es usado cuando no queremos que un elemento DOM se comporte de la manera en que se debe comportar, como por ejemplo cuando se usa la etiqueta &lt;a>, la mayoría de los casos es para redirigirlo a otra página, con event.preventDefault podemos evitar que se vaya a otra página y mejor haga otra cosa</p>
     <div class="encabezado" id="objetos">
       <h3>Objetos y arreglos</h3>
       <p>un objeto es una relacion clave - valor</p>
@@ -1716,7 +1771,80 @@
   }
           </code></pre>
     </div>
+    <div class="encabezado" id="peticionesapi">
+      <h3>Peticiones a Apis</h3>
+      <p>El metodo para eso es <i>fetch()</i>, este metodo devolvera una promesa</p>
+      <pre><code>
+    fetch('url', {                          //url = entrypoint
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify({                //JSON.str convierte el objeto en un string
+        name :'me',
+        age: 26
+      })
+    })
+      .then((response)=> response.json())
+      .then((data) => console.log(data))
 
+    //el codigo anterior por defecto no funcionara, por la codificacion de envio
+    //que deberia ser
+    // 'Content-Type': 'application/json',
+    </code></pre>
+    <strong>Diferencia entre JQuery Ajax y Fetch()</strong>
+      <p>para emular una peticion ajax, agrear en los headers el tipo de peticion 'X-Requested-With': 'XMLHttpRequest'</p>
+      <p>cuando se usa jQuery se envia WWW URL Form Encoded data (el codificado por defeto de jQuery).</p>
+      <p>Pero al cambiar al metodo fetch, tambien se convierte el object enviado a JSON, ¡JSON no esta codificado como WWW URL Form!
+        entonces, seguramente, no se ha escrito el codigo en PHP para esperar un JSON, y seguramente esperamos leer datos de $_POST (que estara vabio, ya que PHP no soporta peticiones por codificacion JSON por defecto, entonces podemos construir un objeto FormData que estara codificado de una manera que PHP analizara por defecto.</p>
+
+      <strong>tipos de dato</strong>
+      <pre><code>
+    //dato a enviar
+    'Content-Type': 'application/x-www-form-urlencoded',
+
+    //procesarlo
+    var data = new URLSearchParams();
+    data.append('to', 'fill');
+    data.append('usr', usr);
+
+    //Envio
+    body: data
+    </code></pre>
+    <p>Lo anterior simplifica lo que es la codificacion del <i>Content-Type/x-www-form-urlencoded</i> de la cual, una manera complicada de codificarla seria la siguiente</p>
+    <pre><strong>
+    // var details = {
+    //   'to': 'fill',
+    //   'usr': usr
+    // };
+  
+    // var formBody = [];
+  
+    // for (var property in details) {
+    //   var encodedKey = encodeURIComponent(property);
+    //   var encodedValue = encodeURIComponent(details[property]);
+    //   formBody.push(encodedKey + "=" + encodedValue);
+    // }
+    // formBody = formBody.join("&");      
+    </strong></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
     <div class="encabezado" id="parametros">
       <h3>Objetos como parametros</h3>
       <p>cuando se pasa un objeto como parametro, este se modificara fuera de la funcion (side effect), para evitar este
@@ -3282,9 +3410,87 @@
       </div>
   </section>
   <section id="sect11"> <!-- NodeJS -->
-    <div class="encabezado">
+    <div class="encabezado" id="queesnode">
+      <h3>Que es node</h3>
+      <p>Para comprender las bases de Node, la descripcion de node es "Un entorno de ejecicion de JS"<i>(vease entorne de ejecucion JS)</i> construido en un motor de JS de Chrome v8</p>
+      <p>Node fue creado por Ryan Dahl como una alternativa al problema de "saturacion" de memoria en servidores debido a multiples usuarios, es decir, por ejemplo en un servidor en Java, al momento de que se conecta un nuevo usuario al servidor, este crea un espacio en memoria especificamente para el, creando problemas al momento de recibir muchos usuarios simultaneamente, esto lo logra mediante la delegacion de tareas</p>
+      <p>Para ejecutar un archivo JS desde node, lo que se hace es escribir</p>
+      <pre><code>
+    node nombre_archivo.js          
+      </code></pre>
+    </div>
+    <div class="encabezado" id="imports">
+      <h3>Importar/Exportar modulos</h3>
+      <p>En node se puede hacer lo que es la importacion de archivos, cuando manejamos scripts desde el navegador, lo que se suele hacer es importar estos archivos mediante etiquetas <i>&lt;script></i> pero en node se hace de otra manera, que es la palabra <i>require()</i> que a su vez es una funcion, ya que como tal sigue siendo codigo JS</p>
+      <strong>index.js</strong>
+      <pre><code>
+    const math = require('./math.js');
+
+    console.log(math.sumar(1, 2))
+    
+    //dado que Node interpreta las rutas desde el SO
+    //el './' se utiliza para indicar que esta al mismo nivel
+    //y se guardan los datos de math, en una constante
+      </code></pre>
+      <p>Y por el lado de el archivo importado, requiero especificar que seccion del archivo voy a exportar, y para esto se usa <i>exports</i></p>
+      <strong>math.js</strong>
+      <pre><code>
+    function sumar(n1, n2){
+      return n1+n2;
+    }
+
+    exports.sumar = sumar; //exporta una propiedad de un objeto
+      </code></pre>
+      <p>Al momento de hacer un console.log() del modulo math, lo que podremos ver de este es que es importado como un objeto</p>
+      <pre><code>
+        { sumar: [function: sumar],
+          restar: [function: restar],
+          dividir: [function: dividir],
+          multiplicar: [function: multiplicar] }
+      </code></pre>
+      <p>En cuyo caso, podemos nosotros mismos hacer nuestro propio objeto que dara el mismo resultado, creando la variable math como un objeto, enlistando las funciones dentro del objeto, y exportando unicamente el objeto</p>
+      <pre><code>
+    const math = {}
+
+    function sumar(n1, n2){
+      return n1+n2;
+    }
+
+    math.sumar = sumar
+  
+    module.exports = math //permite exportar objetos/funciones/variables
+  </code></pre>
+      <p>Node cuenta con modulos ya preinstalados para facilitar el desarrollo, llamados modulos core, su importacion es de la misma manera que cualquier modulo, solo que estos no estar entre comillas, indicando que son modulos ya instalados en Node que no requieren una ruta para ubicarlos</p>
+      <p>La asincronia de Node es lo que lo hace tan eficaz al momento de delegar tareas, esto lo hace mediante los callbacks que veremos un poco mas a detalle.</p>
+      <pre><code>
+    const fs = require('fs')
+    fs.writeFile('./texto.txt', 'Creado desde Nodejs', function (err) {
+        if (err) {
+            console.log(err)
+        }
+        console.log('archivo creado')
+    })
+
+    console.log('ultima linea de codigo')
+
+    //el codigo de abajo es ineficiente, porque estamos pausando la ejecucion hasta que se tenga la respuesta
+    const respuesta = fs.writeFile('./texto.txt', 'Creado desde Nodejs')
+      </code></pre>
+      <p>Lo que haremos sera, Node se comunicará con el SO para que cree el archivo <i>texto.txt</i> mediante el modulo fs, y una vez que el SO haya terminado, enviara a node una respuesta que node recibira mediante la fn con el parametro err, mientras tanto, seguira con la ejecucion del codigo, ya que delego la tarea, sin ser node el encargado de ejecutarla, dando como resultado que veamos primero el texto <i>ultima linea de codigo</i> antes de <i>archivo creado</i>, ya que mando la tarea, ejecuto el codigo, y recibio la respuesta</p>
+    </div>
+    <div class="encabezado" id="nodenpm">
+      <h3>Package manager</h3>
+      <p>Ademas de los modulos preinstalados por defecto en Node, podemos descargar y hacer uso de modulos creados por la comunidad, esto generara la carpeta <i>node_modules</i> y el archivo <i>package-lock.json</i>, la carpeta contendra los nuevos modulos instalados, y el archivo enlistara los modulos instalados y su procedencia</p>
+    </div>
+    <div class="encabezado" id="comandos">
         <h3>Comandos y estructura package json</h3>
-        <p>Para checar la version instalada de Node se utiliza node -v</p>
+        <p>El archivo pacakge.json, es la manera en que Node obtiene un listado de modulos requeridos para su correcto funcionamiento ademas de la posibilidad de ejecutar mas comandos, esta se crea mediante el siguiente comando</p>
+        <dl>
+          <dt>npm init</dt>
+          <dd>Este comando pide informacion acerca del proyeto, y los modulos que necesita  </dd>
+          <dt>node -v</dt>
+          <dd>Checa la version instalada de Node</dd>
+        </dl>
         <ul>
           <li><strong>npx create-react-app name_app</strong> crea la aplicacion localmente sin la necesidad de intalar
             globalmente <i>create-react-app</i></li>
@@ -3297,14 +3503,6 @@
           <li><strong>packaje.json -DevDependencies:</strong>Modulos de ayuda para el desarrollo (por ejemplo Nodemon en
             desarrollo)</li>
           <li><strong>npx Nodemon</strong> es que no esta instalado en todo el sistema</li>
-        </ul>
-        <h3>Iniciar Package.json desde terminal</h3>
-        <p><strong>npm init -y</strong></p>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
         </ul>
     </div>
   </section>
@@ -3728,6 +3926,132 @@
     $cfg['Servers'][$i]['password']      = 'password';
       </code></pre>
     </div>
+    <div class="encabezado" id="SQL">
+      <h3>SQL</h3>
+      <p>SQL significa Structured Query Languaje y es un lenguaje de programacion orientado al manejo de base de datos , este cuenta con doble licencia, una que es de uso gratuito y otro gestionado por Oracle algunos de los gestores de bases de datos que utilizan SQL son</p>
+      <ul>
+        <li>Firebird</li>
+        <li>Sybase</li>
+        <li>PostgreSQL</li>
+        <li>Oracle</li>
+        <li>SQL-SERVER</li>
+        <li>MySQL</li>
+      </ul>
+      <p>MySQL Workbench, creara una instancia del servicio SQL instalado en el equipo, o bien uno de acceso remoto (AWS por ejemplo), en cuyo caso funcionamiento sera similar a PMA</p>
+      <p>Al trabajar con scripts SQL, estos archivos tendran la extension .sql</p>
+    </div>
+    <div class="encabezado" id="sqlquerys">
+      <h3>Comandos basicos SQL</h3>
+      <p>En MySQL WB, se escribe el comando y para correrlo, se dará click en el icono del rayito</p>
+      <strong>Generales</strong>
+      <pre><code>
+    <span>#mostrar bases de datos</span>
+    SHOW DATABASES 
+
+    <span>#crear BD</span>
+    CREATE SCHEMA `curso` ;
+    CREATE DATABASE `curso` ;
+
+    <span>#borrar</span>
+    DROP DATABASE curso
+    DROP TABLE nombre_tabla
+    
+    <span>#usar</span>
+    USE curso
+  
+    <span>#crear tabla de datos
+    #esta debe contener al menos una columna
+    #y los campos pueden estar entre comillas ` para evitar bugs</span>
+    CREATE TABLE `usuarios` (`nombres` VARCHAR(50), `edad` INT(15)) 
+
+    <span>#mostrar tablas</span>
+    SHOW TABLES
+
+    <span>#info detallada de tabla</span>
+    DESCRIBE nombre_tabla    
+    </code></pre>
+      <strong>inserciones</strong>
+    <pre><code>
+    <span>#insertar datos dentro de tabla (campos) VALORES (datos)</span>
+    INSERT INTO alumnos (nombre, apellido, direccion, telefono, edad) VALUES ('Juan', 'martinez', 'barrio duarte', '844532455', '35')
+    
+    <span>#se pueden solo especificar campos</span>
+    INSERT INTO alumnos (nombre, telefono, edad) VALUES ('mihuel', '556887432', '29')
+
+    <span>#o se pueden omitir los campos, insertando en orden los valores</span>
+    INSERT INTO alumnos VALUES ('sandro', 'hernad', ' direccion', '868755125', '29')  
+    </code></pre>
+
+    <strong>Selecciones</strong>
+    <pre><code>
+    <span>#Seleccionar todo de una tabla</span>
+    SELECT * FROM alumnos
+
+    <span>#solo campos requeridos</span>
+    SELECT nombre, direccion, edad FROM alumnos
+
+    <span>#Selecciones condicionales</span>
+    SELECT * FROM alumnos WHERE nombre = 'Juan'
+    </code></pre>
+
+    <strong>Eliminacion de datos</strong>
+    <pre><code>
+    <span>#Eliminar todos los datos, esto en SQLWB
+    #genera un error si tiene un safe update mode, ya que requiere un WHERE </span>
+    DELETE FROM alumnos
+
+    <span>#Eliminar datos especificos</span>
+    DELETE FROM alumnos WHERE edad = '25'
+    </code></pre>
+    <strong>Actualizacion de datos</strong>
+    <pre><code>
+    <span>#Actualizar todo el campo con un dato</span>
+    UPDATE alumnos SET edad = '25'
+
+    <span>#Actualizar datos especificos</span>
+    UPDATE alumnos SET edad = '5' WHERE nombre = 'lalo'
+    </code></pre>
+      <p>Para la creacion de DBs se puede hacer mediante codigo o la misma interfaz proporcionada por el gesto (PMA o MSQLWB), <i>create a new Schema</i>, SCHEMA Y DATABASE son sinonimos en el comando create, y al momento de crear tablas, mediante USE indicaremos que BD se usara, ademas en MSQLWB, el modo seguro impide la eliminacion o actualizacion de datos si estos con cuentan con un <i>Key</i>, esto se deshabilita en edit -> preferences -> SQL editor -> safe updates</p>
+    </div>
+    <div class="encabezado" id="sqloperators">
+      <h3>Operadores relacionales</h3>
+      <p>En SQL tambien se puede agregar operadores</p>
+      <dl>
+        <dt>= igual</dt>
+        <dd>
+    <pre><code><span>    #nombre igual a </span>
+    SELECT * FROM alumnos WHERE nombre = 'Juan'</code></pre>
+        </dd>
+        <dt>&lt;> distinto</dt>
+        <dd>
+    <pre><code><span>    #nombre distinto de </span>
+    SELECT * FROM alumnos WHERE nombre &lt;> 'Juan'</code></pre>        
+        </dd>
+        <dt>> mayor que</dt>
+        <dd>
+    <pre><code><span>    #edad mayor a </span>
+    SELECT * FROM alumnos WHERE edad > '29'</code></pre>
+        </dd>
+        <dt>&lt; menor que</dt>
+        <dd>
+    <pre><code><span>    #edad menor a </span>
+    SELECT * FROM alumnos WHERE edad &lt; '29'</code></pre>
+        </dd>
+        <dt>>= mayor o igual que</dt>
+        <dd></dd>
+        <dt>&lt;= menor o igual que</dt>
+        <dd></dd>
+      </dl>
+    </div>
+    <div class="encabezado" id="datatypessql">
+      <h3>Tipos de datos</h3>
+      <dl>
+        <dt>VARCHAR</dt>
+        <dd>cualquier tipo de datos</dd>
+        <dt>INT</dt>
+        <dd>Solo acepta numeros enteros</dd>
+      </dl>
+    </div>
   </section>
   <section id="sect16"> <!-- Nutricion & Ejercicios-->
     <div class="encabezado">
@@ -3960,6 +4284,12 @@
   </section>
   <div class="welcome">
     <p id="mensaje"></p>
+    <div class="slider">
+      <div class="riel">
+        <div class="riel-item"></div>
+        <div class="riel-item"></div>
+      </div>
+    </div>
     <div class="encabezado">
       <h3>Lista de tareas</h3>
         <div class="todo-class">

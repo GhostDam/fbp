@@ -1,3 +1,20 @@
+:root{
+  --aprendizaje: #fd7d7a;
+  --desarrolloweb: #14A466;
+  --javascript: #f6e01c;
+  --github: #95c73f;
+  --react: #68e4f9;
+  --redux: #65f49f;
+  --trading: #d7972c;
+  --nodejs: #026e00;
+  --ircserver: #4B86EE;
+  --engcourse:#aa3d36;
+  --xamppstack: #fb7a24;
+  --fitness: #376f9c;
+  --recetas: peachpuff;
+  --pwa: #7cb2ec;
+  --commentColor: #699754;
+}
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -7,8 +24,8 @@ html, body, section{
 body{
   margin: 0;
   padding: 0;
-  min-height: 100vh;
   background-image: linear-gradient(to bottom, gray, black);
+  background-size: 100%;
 }
 /* MENU */
 .navegacion{
@@ -25,10 +42,11 @@ body{
   font-size: 1.5rem; 
   margin-left: .5rem;
   transition: all .3s ease;
-}
-.icon-home:hover{
   cursor: pointer;
-  color: #fb7a24;
+}
+.icon-home:active{
+  cursor: pointer;
+  color: var(--xamppstack);
 }
 .hamburguer{
   display: none;
@@ -68,6 +86,7 @@ body{
   padding: .5rem;
   color: whitesmoke;
   cursor: pointer;
+  transition: all .3s ease;
 }
 
 .buscador{
@@ -171,7 +190,7 @@ body{
 }
 /* Menu de navegacion */
 section{
-  display: flex;
+  display: none;
   position: relative;
   max-width: 80%;
   margin: 0 auto;
@@ -182,6 +201,7 @@ section{
   transition: all .3s ease;
 }
 .welcome{
+  min-height: 100vh;
   max-width: 80%;
   padding-top: 6rem;
   margin: 0 auto;
@@ -192,7 +212,6 @@ section{
   font-size: 1rem;
   text-align: center;
 }
-
 @media(max-width: 720px){
   section{
     max-width: 100%;
@@ -204,6 +223,7 @@ section{
   padding: 6rem 20px;
   margin-right: 20px;
   min-width: 100%;
+  min-height: 100vh;
   font-family: serif;
 }
 @media(max-width: 720px){
@@ -245,6 +265,9 @@ pre {
   background: #333333;
   color: #ffffff;
   tab-size: 2;
+}
+pre span{
+  color: var(--commentColor);
 }
 /* VELAS JAPONESAS */
 .velasjaponesas{
@@ -420,43 +443,46 @@ pre {
 }
 
 #sect1{
-  background-color: #fd7d7a;
+  background-color: var(--aprendizaje);
 }
 #sect2{
-  background-color: #14A466;
+  background-color: var(--desarrolloweb);
 }
 #sect3{
-  background-color: #95c73f;
+  background-color: var(--github);
 }
 #sect4{
-  background-color: #f6e01c;
+  background-color: var(--javascript);
 }
 #sect5{
-  background-color: #68e4f9;
+  background-color: var(--react);
 }
 #sect6{
-  background-color: #65f49f;
+  background-color: var(--redux);
 }
 #sect10{
-  background-color: #d7972c;
+  background-color: var(--trading);
 }
 #sect11{
-  background-color: #026e00;
+  background-color: var(--nodejs);
 }
 #sect13{
-  background-color: #4B86EE;
+  background-color: var(--ircserver);
 }
 #sect14{
-  background-color: #aa3d36;
+  background-color: var(--engcourse);
 }
 #sect15{
-  background-color: #fb7a24;
+  background-color: var(--xamppstack);
 }
 #sect16{
-  background-color: #376f9c;
+  background-color: var(--fitness);
+}
+#sect17{
+  background-color: var(--recetas);
 }
 #sect8{
-  background-color: #7cb2ec;
+  background-color: var(--pwa);
 }
 
 .listado_temas{
@@ -464,11 +490,10 @@ pre {
   display: flex;
   overflow: auto;
   height: 3rem;
-  left: 10vw;
   top: 3rem;
   width: 80%;
   background-color: lightslategrey;
-  transition: bottom .3s;
+  transition: all .3s;
 }
 .listado_temas a{
   display: block;
@@ -562,7 +587,7 @@ pre {
     text-align: center;
   }
   .glosario:hover{
-    height: 100%;
+    height: auto;
   }
 }
 /* ToDo class */
