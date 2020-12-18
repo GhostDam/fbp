@@ -68,7 +68,7 @@
       </div>
     </nav>
   </header>
-  <section id="sect1"> <!-- Aprendizaje -->
+  <section id="sect1">  <!-- Aprendizaje -->
     <div class="encabezado" id="que_es">
       <h3>¿Qué es el aprendizaje?</h3>
       <p>Aprender es la capacidad de adquirir conocimiento.</p>
@@ -280,7 +280,7 @@
     </div>
 
   </section>
-  <section id="sect2">    <!-- HTML & CSS -->
+  <section id="sect2">  <!-- HTML & CSS -->
     <div class="encabezado" id="html">
         <h3>HTML</h3>
           <strong>Etiquetas</strong>
@@ -759,8 +759,9 @@
     <div class="encabezado" id="responsive">
         <h3>Responsive design</h3>
       <p>Para el responsive design es imprescindible contar con la siguiente etiqueta</p>
-      <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1" />
-          </code></pre>
+      <pre><code>
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" />
+      </code></pre>
       <p>el cual puede recibir 3 parametros</p>
       <ul>
         <li><i>width</i> ancho de pantalla</li>
@@ -773,10 +774,10 @@
       </ul>
       <strong>Media Queries</strong>
       <pre><code>
-        @media media type and (condition){
-          
-        }
-              </code></pre>
+    @media media type and (condition){
+      
+    }
+      </code></pre>
           <p>conceptos</p>
           <ul>
             <li><i>media type</i> screen (pantalla) print (crtl-p, impresion)</li>
@@ -787,7 +788,9 @@
           <p><strong>implementar queries en hojas de estilos</strong></p>
           <p>Para llamar una hoja de estilos de manera condicional, se debe agrear el atributo <i>media</i> a la etiqueta link
           </p>
-          <pre><code>&lt;link rel="stylesheet" href="css/main.css" media="screen and (max-width: 720px)"</code></pre>
+      <pre><code>
+    &lt;link rel="stylesheet" href="css/main.css" media="screen and (max-width: 720px)"
+      </code></pre>
         </div>
     <div class="encabezado" id="devtools">
       <h3>Remote debbug</h3>
@@ -1023,7 +1026,7 @@
       </div>
     </div>
     <pre><code>
-    /* HTML */
+    <span>/* HTML */</span>
 
     &lt;strong>Cornell&lt;/strong>
     &lt;div class="cornell">
@@ -1045,7 +1048,7 @@
       &lt;/div>
     &lt;/div>  
     
-    /* CSS */
+    <span>/* CSS */</span>
     .cornell{
       display: flex;
       flex-direction: column;
@@ -1086,7 +1089,7 @@
     </code></pre>
   </div>
   </section>
-  <section id='sect3'>    <!-- Git & GitHub -->
+  <section id='sect3'>  <!-- Git & GitHub -->
     <div class='encabezado' id="git">
       <h3>¿Que es Git?</h3>
         <p>Git es un sistema de control de versiones que nos permite llevar un control de cambios y desarrollo de
@@ -1442,7 +1445,7 @@
       </p>
     </div>
   </section>
-  <section id="sect4"> <!-- JavaScript -->
+  <section id="sect4">  <!-- JavaScript -->
     <div class="encabezado" id="bases">
         <h3>Bases</h3>
         <strong>Variables</strong>
@@ -1499,32 +1502,32 @@
       <p>El arbol de nodos se podria dividir en 3 elementos, Root node (document), Element Node (tags) y Text Node (texto) y estos son accesibles para JS mediante la comprension sus padres (parents), hermanos (siblings) e hijos(descendants) y podremos obtener sus valores, atributos y propiedades de cada nodo, para esto dependera del identificador de cada nodo y usaremos los:</p>
       <strong>Selectores especifico</strong>
       <pre><code>
-    //seleccion por id - obtiene un elemento unico
-    let idNode = document.getElementById('id');  
+    <span>//seleccion por id - obtiene un elemento unico</span>
+    let idNode = document.getElementById('id');
 
-    //seleccion por tags - obtiene un arreglo de tags
+    <span>//seleccion por tags - obtiene un arreglo de tags</span>
     let tagNodes = document.getElementsByTagName('li');
 
-    //seleccion por clase - obtiene un arreglo de con la clase
+    <span>//seleccion por clase - obtiene un arreglo de con la clase</span>
     let classNodes = document.getElementsByClassName('col');
 
-    //seleccion por nombre - obtiene un arreglo de elementos con el nombre 
+    <span>//seleccion por nombre - obtiene un arreglo de elementos con el nombre </span>
     let nameNodes = document.getElementsByName('nombre');
       </code></pre>
       <p>Hasta ahora, las funciones vistas solo hacen foco en un tipo de nodo que se busca en todo el documento, y así también solo se pueden seleccionar TODOS o UNO de los elementos que estén en todo el documento, y no sólo ciertos elementos que estén contenidos en otro de nuestro interés.</p>
       <strong>Selector compuesto</strong>
       <pre><code>
-    //a pesar de ser mas especifico, solo regresa el primer resultado 
+    <span>//a pesar de ser mas especifico, solo regresa el primer resultado </span>
     let firstNode = document.querySelector('.col [name="list"] li');
 
-    //este por lo contrario retornara un array de elementos encontrados
+    <span>//este por lo contrario retornara un array de elementos encontrados</span>
     let allNodes = document.querySelectorAll('#menu nav[class="temas"] a');
       </code></pre>
       <p>Una vez que hayamos seleccionado los elemetos de nuestro interes, tal vez requeramos tambien encontrar sus:</p>
       <strong>Nodos Padres</strong>
       <pre><code>
-    //nodo padre
-    div.parentNode.parentNode         //se puede subir tanto como querramos    
+    <span>//nodo padre</span>
+    div.parentNode.parentNode         <span>//se puede subir tanto como querramos</span>
       </code></pre>
     <p>Qué pasaría si nos pasamos de parentNode, simplemente nos retorna null y después un error Cannot read property ‘parentNode’ of null ya que null no tiene propiedades</p>
     <strong>Nodos Hijos</strong>
@@ -1534,10 +1537,10 @@
     let body = document.querySelector('body');
 
     console.log(body.children);
-    //output HTMLCollection(4) [h1, p, h2, ul]
+    <span>//output HTMLCollection(4) [h1, p, h2, ul]</span>
     
     console.log(body.childNodes);
-    //output odeList(11) [text, h1, text, p, text, h2, text, ul, text, text, text]
+    <span>//output odeList(11) [text, h1, text, p, text, h2, text, ul, text, text, text]</span>
     </code></pre>
     <strong>nodos hermanos</strong>
       <p>Los nodos hermanos, son aquellos que se encuentran en el mismo nivel del árbol jerárquico en el DOM, pueden ser o no del mismo tipo div,span,etc, al igual que los nodos hijos, este tiene dos tipos de búsqueda</p>
@@ -1545,13 +1548,13 @@
       <p>Nodos de elementos: Son los que incluyen solamente la colección de nodos de elementos (no toma en cuenta a los nodos no elementos) — previousElementSibling,nextElementSibling</p>
       <pre><code>
     console.log(div); 
-    //un div "enmedio"
+    <span>//un div "enmedio"</span>
     
     console.log(div.nextElementSibling); 
-    //siguiente (tercer) hermano
+    <span>//siguiente (tercer) hermano</span>
     
     console.log(div.previousElementSibling); 
-    //previo (primer) hermano
+    <span>//previo (primer) hermano</span>
       </code></pre>
       <strong>Eventos (handlers and listener)</strong>
       <p>Para activar la interaccion con la pagina, se necesita de disparadores, y estos pueden ser de 2 tipos</p>
@@ -1560,27 +1563,27 @@
         <li>Oyente de eventos: Event Listeners, espera o escucha a que se realice una accion</li>
       </ul>
        <pre><code>
-    //Event handler
+    <span>//Event handler</span>
     function saludar(){
       alert('hi!')
     }
 
-    //en el html se llama a la funcion - se llama inline event handler, no recomendado
+    <span>//en el html se llama a la funcion - se llama inline event handler, no recomendado</span>
     &lt;button onclick="saludar()">btn&lt;/button>
 
-    //en el JS
+    <span>//en el JS</span>
     btn.onClick = saludar
        </code></pre> 
        <p>para este tipo de disparador se referencia al evento como "onClick" yLa desventaja de los handlers, es que os eventos se almacenan como propiedad dentro del elemento DOM y solo podemos tener un evento por accion (se sobreescriben), ademas de no poder removerse</p>
       <pre><code>
-    //event Listeners
+    <span>//event Listeners</span>
     function saludar(){
       alert('hi!')
     }
 
-    //agregar
+    <span>//agregar</span>
     target.addEventListener('click', saludar)
-    remover
+    <span>//remover</span>
     target.removeEventListener('click', saludar)
         </code></pre>
         <p>La ventaja de los listeners es que se pueden agregar varios disparadores a un elemento, y tambien se pueden remover los disparadores</p>
@@ -1674,7 +1677,7 @@
       </code></pre>
         <p>para declarar un array se utilizan corchetes <i>[]</i> y es una coleccion de objetos, y se recorre en los
           arrays por medio de la estructura <i>for</i></p>
-        <p>array.lenght indica el conteo de elementos en el array</p>
+        <p>array.length indica el conteo de elementos en el array</p>
         <p>Tambien para filtrar elementos en un array se utiliza la palabra <i>filter</i></p>
         <pre><code>
       //var estanGordos = people.filter(condicion)
@@ -2406,7 +2409,7 @@
       <h3>Closures</h3>
     </div>
   </section>
-  <section id="sect5"> <!-- ReactJS -->
+  <section id="sect5">  <!-- ReactJS -->
     <div class="encabezado" id="requerimentos">
       <h3>Requerimentos</h3>
       <p>Para inicializar un proyecto con React JS se Necesita primeramente instalar, eso se hace mediante el CMD y ejecutar los siguientes comandos (forma "clasica"), posterior a la instalacion, se crea la app igual mediante la linea de comandos EN EL DIRECTORIO A USAR</p>
@@ -2976,8 +2979,8 @@
       </p>
     </div>
   </section>
-  <section id="sect6"> <!-- Redux -->
-    <div class="encabezado">
+  <section id="sect6">  <!-- Redux -->
+    <div class="encabezado" id="redux">
         <h3>Redux</h3>
         <p>Redux es utilizado para almacenar informacion de la aplicacion de manera centralizada, y de igual manera
           inmutable (se crearan nuevos estados en lugar de sobreescribir los existentes)</p>
@@ -2990,9 +2993,13 @@
         </ul>
         <p>El Componente se comunica con el Action Creator, y el Action Creator se comunica con el reducer y da la
           informacion requerida, este ultimo obtiene la información y la regresa al componente</p>
-        <h3>Requerimentos</h3>
+     </div>
+    <div class="encabezado" id="reqredux">
+      <h3>Requerimentos</h3>
         <p>iniciar una app de react</p>
-        <pre><code>npx create-react-app app_name</code></pre>
+        <pre><code>
+    npx create-react-app app_name
+      </code></pre>
         <p>esto crea una app de React sin la necesidad de instalar <i>npm i -g create-react-app</i> ademas de asegurar
           que se estara usando la ultima version de CRA</p>
         <p>Para accesar a Redux se requiere la instalacion de Redux y su middleware</p>
@@ -3000,17 +3007,18 @@
     npm install redux react-redux
     npm install redux-thunk  
         </code></pre>
-
         <p>Actions must be plain objects. Use custom middleware for async actions.</p>
         <p>este error es porque las actions deben ser objetos planos y nosotros estamos regresando otra funcion en
           usuariosActions, esto se soluciona con un middleware redux-thunk</p>
         <p><small>i dunno wtf is middleware</small></p>
-        <h3>CICLO BASICO DE REDUX</h3>
+      </div>
+      <div class="encabezado" id="cicloredux">
+      <h3>Ciclo basico redux</h3>
         <strong>1.- Store</strong>
         <p>Una vez instalado Redux, para accesar a las funcionalidades, se crea el <i>store</i> en el index.js de la
           aplicacion</p>
         <pre><code>
-                          //middleware -- redux-thunk
+                          <span>//middleware -- redux-thunk</span>
     import { createStore , applyMiddleware} from 'redux'
     import { Provider } from 'react-redux'
     
@@ -3019,18 +3027,18 @@
     import reducers from './reducers'
 
     
-    //createStore es una funcion que recibe 2 parametros principales, y un tercero como middleware
+    <span>//createStore es una funcion que recibe 2 parametros principales, y un tercero como middleware</span>
     const store = createStore(
-      reducers,                     //reducers de la app
-      {},                           //estado incial de la app
-      applyMiddleware(reduxThunk)   //middleware de la app
+      reducers,                     <span>//reducers de la app</span>
+      {},                           <span>//estado incial de la app</span>
+      applyMiddleware(reduxThunk)   <span>//middleware de la app</span>
     )
 
-    //y aqui proveemos la store a la App
+    <span>//y aqui proveemos la store a la App</span>
     ReactDOM.render(
-      &lt;Provider store={store}>         //al poner App dentro del provider, le estamos 
+      &lt;Provider store={store}>         <span>//al poner App dentro del provider, le estamos</span>
         &lt;App />  
-      &lt;/Provider>,                     //dando acceso a todo el contenido de la store
+      &lt;/Provider>,                     <span>//dando acceso a todo el contenido de la store</span>
       document.getElementById('root')
     )
             </code></pre>
@@ -3049,7 +3057,7 @@
         <pre><code>
     import { combineReducers } from 'redux' 
     import usuariosReducer from './usuariosReducer'
-    //crear un objeto vacio es "valido" para usarse como reducer
+    <span>//crear un objeto vacio es "valido" para usarse como reducer</span>
     export default combineReducers({
         usuariosReducer
     })
@@ -3057,25 +3065,25 @@
         <p>reducer del Componente, que contendra la información del componente (Usuarios) (reducers/usuariosReducer.js)
         </p>
         <pre><code>
-    //se importan los types para evitar errores
+    <span>//se importan los types para evitar errores</span>
     import { TRAER_TODOS } from '../types/usuariosTypes'
     
-    //se declara un estado inicial para el componente
+    <span>//se declara un estado inicial para el componente</span>
     const INITIAL_STATE = {
-      usuarios:[],            //los reducers deben manejar
-      cargando : false,       //los 3 estados de una peticion
-      error: ""               //cargando, datos y error
+      usuarios:[],            <span>//los reducers deben manejar</span>
+      cargando : false,       <span>//los 3 estados de una peticion</span>
+      error: ""               <span>//cargando, datos y error</span>
     }
 
-    //se manda por defecto el estado inicial y action
+    <span>//se manda por defecto el estado inicial y action</span>
     export default (state = INITIAL_STATE, action) =>{
 
 
-      //switch es setup por default y action
-      //action se evaluara y sin datos por defecto se retorna state
-      switch (action.type){
-        case TRAER_TODOS:
-          //recibe la accion, y recibe todo el estado(...) cambiando solo usuarios por el payload del action
+    <span>//switch es setup por default y action
+    //action se evaluara y sin datos por defecto se retorna state</span>
+    switch (action.type){
+      case TRAER_TODOS:
+          <span>//recibe la accion, y recibe todo el estado(...) cambiando solo usuarios por el payload del action</span>
           return {
               ...state, 
               usuarios: action.payload,
@@ -3097,11 +3105,11 @@
         <p><small>el dispatch es el que va a disparar la llamada y va a contactar al reducer para que haga el cambio de
             estado</small></p>
         <pre><code>
-    //esto tendra 2 funciones, la segunda funcion tendra
-    //como parametro el dispatch
+    <span>//esto tendra 2 funciones, la segunda funcion tendra
+    //como parametro el dispatch</span>
     import axios from 'axios'
-    import { TRAER_TODOS, CARGANDO, ERROR} from '../types/usuariosTypes //variable traida de types para evitar
-                                                        //error de syntaxis
+    import { TRAER_TODOS, CARGANDO, ERROR} from '../types/usuariosTypes <span>//variable traida de types para evitar
+                                                                        //error de syntaxis</span>
 
 
     export const traerTodos = () => async (dispatch) =>{
@@ -3428,9 +3436,9 @@
 
     console.log(math.sumar(1, 2))
     
-    //dado que Node interpreta las rutas desde el SO
+    <span>//dado que Node interpreta las rutas desde el SO
     //el './' se utiliza para indicar que esta al mismo nivel
-    //y se guardan los datos de math, en una constante
+    //y se guardan los datos de math, en una constante</span>
       </code></pre>
       <p>Y por el lado de el archivo importado, requiero especificar que seccion del archivo voy a exportar, y para esto se usa <i>exports</i></p>
       <strong>math.js</strong>
@@ -3439,14 +3447,14 @@
       return n1+n2;
     }
 
-    exports.sumar = sumar; //exporta una propiedad de un objeto
+    exports.sumar = sumar; <span>//exporta una propiedad de un objeto</span>
       </code></pre>
       <p>Al momento de hacer un console.log() del modulo math, lo que podremos ver de este es que es importado como un objeto</p>
       <pre><code>
-        { sumar: [function: sumar],
-          restar: [function: restar],
-          dividir: [function: dividir],
-          multiplicar: [function: multiplicar] }
+    { sumar: [function: sumar],
+      restar: [function: restar],
+      dividir: [function: dividir],
+      multiplicar: [function: multiplicar] }
       </code></pre>
       <p>En cuyo caso, podemos nosotros mismos hacer nuestro propio objeto que dara el mismo resultado, creando la variable math como un objeto, enlistando las funciones dentro del objeto, y exportando unicamente el objeto</p>
       <pre><code>
@@ -3458,7 +3466,7 @@
 
     math.sumar = sumar
   
-    module.exports = math //permite exportar objetos/funciones/variables
+    module.exports = math <span>//permite exportar objetos/funciones/variables</span>
   </code></pre>
       <p>Node cuenta con modulos ya preinstalados para facilitar el desarrollo, llamados modulos core, su importacion es de la misma manera que cualquier modulo, solo que estos no estar entre comillas, indicando que son modulos ya instalados en Node que no requieren una ruta para ubicarlos</p>
       <p>La asincronia de Node es lo que lo hace tan eficaz al momento de delegar tareas, esto lo hace mediante los callbacks que veremos un poco mas a detalle.</p>
@@ -3473,7 +3481,7 @@
 
     console.log('ultima linea de codigo')
 
-    //el codigo de abajo es ineficiente, porque estamos pausando la ejecucion hasta que se tenga la respuesta
+    <span>//el codigo de abajo es ineficiente, porque estamos pausando la ejecucion hasta que se tenga la respuesta</span>
     const respuesta = fs.writeFile('./texto.txt', 'Creado desde Nodejs')
       </code></pre>
       <p>Lo que haremos sera, Node se comunicará con el SO para que cree el archivo <i>texto.txt</i> mediante el modulo fs, y una vez que el SO haya terminado, enviara a node una respuesta que node recibira mediante la fn con el parametro err, mientras tanto, seguira con la ejecucion del codigo, ya que delego la tarea, sin ser node el encargado de ejecutarla, dando como resultado que veamos primero el texto <i>ultima linea de codigo</i> antes de <i>archivo creado</i>, ya que mando la tarea, ejecuto el codigo, y recibio la respuesta</p>
@@ -3730,7 +3738,7 @@
     </div>
   </section>
   <section id="sect14"> <!-- English Course -->
-    <div class="encabezado">
+    <div class="encabezado" id="engglosario">
         <h3>Glosario basico </h3>
         <p>Analysis: Detailed examination of something</p>
         <p>Bachelor degree: Is an undergraduate degree awarded by universities</p>
@@ -3830,6 +3838,8 @@
             translate didn´t help too much) at the IMJUVE development area </li>
           <li><strong>What do you want to be in the future?</strong>i would love to be a videogames designer </li>
         </ul>
+      </div>
+      <div class="encabezado" id="engprofile">
         <h3>hot to create my professional profile</h3>
         <ul>
           <li><strong>i can</strong></li>
@@ -3840,25 +3850,25 @@
           developer of the reports sistem <a
             href="https://es.quora.com/Cuales-son-las-diferencias-entre-un-programador-y-un-desarrollador"
             target="_blank">so check this</a></p>
-        <h3>My profile</h3>
+        <strong>My profile</strong>
         <p>Junior Frontend programmer with experience in the basics HTML, CSS & responsive design, and JS (JQuery.
           AJAX), including experience on JS library ReactJS, include small knowledge of the framwork bootstrap, </p>
         <p>also have experience on backend programing with PHP and its framework CodeIgniter, and MySQL Databases on
           Xammp and control version git</p>
         <p>proactive and Goal-oriented</p>
-        <h3>My experience</h3>
+        <strong>My experience</strong>
         <p>i have 1 year as a scholar (or fellow, google translate didn´t help too much) at the IMJUVE
           sistems/development area, i was the main developert at their reports sistem</p>
-        <h3>Personal information</h3>
+        <strong>Personal information</strong>
         <p><strong>City of residence:</strong> Ciudad de México</p>
         <p><strong>Telephone number: </strong> 55 22 55 44 33</p>
         <p><strong>Facebook: </strong> facebook/Lrs</p>
         <p><strong>LinkedIn: </strong> Luis Ramirez</p>
-        <h3>Software</h3>
+        <strong>Software</strong>
         <p><strong>VS Code</strong></p>
         <p><strong>Xammp</strong></p>
         <p><strong>Git & GitHub</strong></p>
-        <h3>Skills</h3>
+        <strong>Skills</strong>
         <p><strong>Programming languajes</strong></p>
         <ul>
           <li><strong>html</strong>+++++</li>
@@ -3871,16 +3881,16 @@
           <li><strong>bootstrap</strong>+++</li>
           <li><strong>JS</strong>++++</li>
         </ul>
-        <h3>Courses</h3>
+        <strong>Courses</strong>
         <p><strong>Platzi</strong></p>
         <ul>
           <li><strong>Prog Basica</strong>+++++</li>
           <li><strong>React</strong>+++</li>
           <li><strong>Fundamentos de JavaScript</strong>++++</li>
         </ul>
-        <h3>Then realizaed proyects</h3>
+        <strong>Then realizaed proyects</strong>
         <a href="https://reactivejs.netlify.com" target="_blank">Check this</a>
-        <h3>Job Interview</h3>
+        <strong>Job Interview</strong>
         <p>Strengths</p>
         <ul>
           <li>goal Goal-oriented</li>
@@ -3896,7 +3906,7 @@
     </div>
   </section>
   <section id="sect15"> <!-- Xammp Stack -->
-    <div class="encabezado">
+    <div class="encabezado" id="phpma">
       <h3>PhpMyAdmin</h3>
       <p>Para configurar PMA para inicio mediante login y seleccion de servidores</p>
       <strong>Inicio mediante login</strong>
@@ -3912,7 +3922,7 @@
       <p>en el mismo archivo de configuracion, agregar estas lineas con su correspondiente configuracion antes de
         terminar el contenido del archivo <i>/* End of servers configuration */</i></p>
       <pre><code>
-    /* adding custom conections */
+    <span>/* adding custom conections */</span>
 
     $i++;
     $cfg['Servers'][$i]['host']          = 'noop';
@@ -3954,14 +3964,16 @@
 
     <span>#borrar</span>
     DROP DATABASE curso
+    DROP DATABASE IF EXISTS curso     
     DROP TABLE nombre_tabla
-    
+    <span>#if (not) exists retornara warn en vez de error</span>    
+
     <span>#usar</span>
     USE curso
   
     <span>#crear tabla de datos
     #esta debe contener al menos una columna
-    #y los campos pueden estar entre comillas ` para evitar bugs</span>
+    #y los campos pueden estar entre acentos ` para evitar bugs</span>
     CREATE TABLE `usuarios` (`nombres` VARCHAR(50), `edad` INT(15)) 
 
     <span>#mostrar tablas</span>
@@ -3972,7 +3984,9 @@
     </code></pre>
       <strong>inserciones</strong>
     <pre><code>
-    <span>#insertar datos dentro de tabla (campos) VALORES (datos)</span>
+    <span>#insertar datos dentro de tabla (campos) VALORES (datos), las inserciones deben ser 
+    esstrictamente comillas '', no acentos `
+    </span>
     INSERT INTO alumnos (nombre, apellido, direccion, telefono, edad) VALUES ('Juan', 'martinez', 'barrio duarte', '844532455', '35')
     
     <span>#se pueden solo especificar campos</span>
@@ -4002,7 +4016,13 @@
 
     <span>#Eliminar datos especificos</span>
     DELETE FROM alumnos WHERE edad = '25'
-    </code></pre>
+
+    <span>#Eliminar datos TRUNCATE</span>
+    TRUNCATE alumnos        <span>#aunque al parecer usar solo truncate es aceptado, lo correcto es tr table</span>
+    TRUNCATE TABLE alumnos  
+
+  </code></pre>
+    <p>La diferencia entre TRUNCATE y DELETE, es que en teoria truncate es mas rapido que delete, ademas de que TRUNCATE resetea el conteo de registros autoincrementables</p>
     <strong>Actualizacion de datos</strong>
     <pre><code>
     <span>#Actualizar todo el campo con un dato</span>
@@ -4014,8 +4034,9 @@
       <p>Para la creacion de DBs se puede hacer mediante codigo o la misma interfaz proporcionada por el gesto (PMA o MSQLWB), <i>create a new Schema</i>, SCHEMA Y DATABASE son sinonimos en el comando create, y al momento de crear tablas, mediante USE indicaremos que BD se usara, ademas en MSQLWB, el modo seguro impide la eliminacion o actualizacion de datos si estos con cuentan con un <i>Key</i>, esto se deshabilita en edit -> preferences -> SQL editor -> safe updates</p>
     </div>
     <div class="encabezado" id="sqloperators">
-      <h3>Operadores relacionales</h3>
+      <h3>Operadores SQL</h3>
       <p>En SQL tambien se puede agregar operadores</p>
+      <strong>Operadores Relacionales</strong>
       <dl>
         <dt>= igual</dt>
         <dd>
@@ -4041,17 +4062,274 @@
         <dd></dd>
         <dt>&lt;= menor o igual que</dt>
         <dd></dd>
+        <dt>BETWEEN val1 AND val2</dt>
+        <dd>
+    <pre><code><span>    #edad menor a </span>
+    SELECT * FROM alumnos WHERE edad BEWTEEN 10 AND 30</code></pre>
+        </dd>
+      <dt>IN(valor1, 'valor2', ...)</dt>
+        <dd>
+    <pre><code><span>    #alternativa a OR, como un filtro de busquedas </span>
+    SELECT * FROM libros WHERE titulo in ('learn js', 'learn java')</code></pre>
+        </dd>
+
       </dl>
+      <strong>Operadores logicos</strong>
+      <dl>
+        <dt>AND</dt>
+        <dd>
+    <pre><code><span>    #2 condiciones, aunque no es necesario, se recomienda parentesis para claridad en el codigo</span>
+    SELECT * FROM productos WHERE (proveedor = 'coca cola') AND (precio >= '9.99')</code></pre>
+        </dd>
+        <dt>OR</dt>
+        <dd>
+    <pre><code><span>    #Una y/o otra condicion </span>
+    SELECT * FROM productos WHERE (proveedor = 'coca cola') OR (precio >= '9.99')</code></pre>
+      </dd>
+      <dt>XOR</dt>
+      <dd>
+      <pre><code><span>    #Una o otra condicion </span>
+    SELECT * FROM productos WHERE (proveedor = 'coca cola') XOR (precio >= '9.99')</code></pre>
+    </dd>
+      <dt>NOT</dt>
+        <dd>
+    <pre><code><span>    #donde no </span>
+    SELECT * FROM productos WHERE NOT (cantidad = 30)</code></pre>
+      </dd>
+      <dt>LIKE / NOT LIKE '% valor %'</dt>
+        <dd>
+    <pre><code><span>    #donde haya / no haya algo como '% valor %', el porcentaje indica donde se puede encontrar el valor
+    'a%' empieze con a, '%a' termine con a, '%a%' contenga a en cualquier parte
+    </span>
+    SELECT * FROM libros WHERE titulo LIKE '%learn%'</code></pre>
+      </dd>
+    </dl>
+
+    </div>
+    <div class="encabezado" id="sqlprym">
+      <h3>Primary key</h3>
+      <p>La clave es una llave unica para un tipo de dato, no puede repetirse ni tampoco tampoco ser null, en el siguiente codigo crearemos una tabla cuya primary key sera el dato nombre</p>
+      <pre><code>
+    CREATE TABLE usuarios(
+        nombre VARCHAR(50),
+        apellido VARCHAR(50),
+        correo VARCHAR(100),
+        
+        PRIMARY KEY(nombre)
+    )
+      </code></pre>
+      <p>E instertamos datos, recordar que los datos ingresados deben ir entre comillas <i>''</i> no entre acentos <i>``</i></p>
+    <pre><code>
+    INSERT INTO usuarios VALUES('luis','ramirez','luis@gmail.com');
+    </code></pre>
+      <p>Esto causara, que tratar de agregar otro dato en el cual el campo nombre sea igual a <i>luis</i> nos de un error, ya que el campo nombre cuenta con la primary Key, y esta debe ser unica</p>
+      <p>Para esto crearemos otra tabla, en la cual el dato <i>id</i> sera la primari key, ademas contara con al propiedad <i>AUTO_INCREMENT</i>, lo que hara que los registros incremente de uno en uno, sin tener nosotros que ingresar el numero de registro manualmente</p>
+    <pre><code>
+    CREATE TABLE productos(
+      id INT(11) AUTO_INCREMENT,
+        producto VARCHAR(50),
+        descripcion TEXT,
+        precio FLOAT(11,2),
+        
+        PRIMARY KEY(id)
+    );
+      
+    <span>#al agregar datos, si no se especifica el dato del campo id, retornara un error</span>
+    INSERT INTO productos VALUES('laptop','acer e 15',11.50);
+
+    <span>#dejar el dato vacio, como un string, sera valido pero regresara una advertencia, pero el registro sera exitoso
+    #lo correcto para esto, es dejar el dato como null</span>
+    INSERT INTO productos VALUES('','telefono','moto e 15', 141.555555); <span>#al ser el tipo de dato float, ingresar mas decimales solo registrara 2 y redondeara el valor</span>
+    INSERT INTO productos VALUES(null,'telefono','moto e 15','141.505');
+    </code></pre>
     </div>
     <div class="encabezado" id="datatypessql">
       <h3>Tipos de datos</h3>
+      <p>Como anticipacion, datos de tipo texto iran entre comillas, mientras que los datos numericos no</p>
+      <strong>Numericos Enteros</strong>
       <dl>
-        <dt>VARCHAR</dt>
-        <dd>cualquier tipo de datos</dd>
+        <dt>TINYINT</dt>
+        <dd>Tipo de dato numero que va desde -127 hasta 128</dd>
+        <dt>SMALLINT</dt>
+        <dd>No mayor a 32,000</dd>
+        <dt>MEDIUMINT</dt>
+        <dd></dd>
         <dt>INT</dt>
-        <dd>Solo acepta numeros enteros</dd>
+        <dd>enteros, permite hasta 200,000,000</dd>
+        <dt>BIGINT</dt>
+        <dd></dd>
+        <dt>UNSIGNED</dt>
+        <dd>Tipo de dato numerico positivo, usandose con TINYINT se suman y se vuelve uno solo (255), para usar por ejemplo con edades</dd>
       </dl>
+      <strong>Numericos decimales</strong>
+      <dl>
+        <dt>FLOAT(6,24)</dt>
+        <dd>El primer parametro seran los datos enteros, y el segundo los decimales, ademas de que suelen redondear valores</dd>
+        <dt>DOUBLE(4,25)</dt>
+        <dd>Similar a float pero con mayor precision</dd>
+        <dt>DECIMAL(34,30)</dt>
+        <dd>No redondea valores y el maximo digitos son 64, siendo 30 el numero de decimales permitidos</dd>
+      </dl>
+      <strong>Alfanumericos o Textos</strong>
+      <dl>
+        <dt>CHAR(255)</dt>
+        <dd>Permite almacenar textos breves con longitud de hasta 255 caracteres, un detalle a considerar es que si se da un parametro de longitud, esta ocupara ese espacio, aunque no sea utilizado, es decir, especificamos char(100) y solo se usa un caracter, este campo seguira "utilizando" la memoria de 100 caracteres, cosa que no pasa con varchar</dd>
+        <dt>VARCHAR</dt>
+        <dd>cualquier tipo de datos de longitud desconocida, soporta hasta 65,535 (a partir de MySQL 5.0.3)</dd>
+        <dt>BINARY - VARBINARY</dt>
+        <dd>Similares a char y varchar, con la diferencia que en vez de almacenar caracteres almacenan bites</dd>
+        <dt>TEXT</dt>
+        <dd>No se le puede asignar un valor predeterminado y es dificil de indexar, se solia utilizar antes de la actualizacion de espacio de varchar para descripciones de productos por ejemplo, es decir para textos muy largos por ejemplo blogs</dd>
+        <dt>BLOB(65,535)</dt>
+        <dd>Almacena datos en formato binario (imagenes, zips), aunque esto no se recomienda por motivos de carga</dd>
+        <dt>TINYBLOB(255), MEDIUMBLOB(16,000,000), LARGEBLOB(4GB)</dt>
+        <dd>Similares a blob, diferencia de tamaños</dd>
+        <dt>ENUM</dt>
+        <dd>Una lista de valores permitidos, no se permitira un valor diferente al de la lista</dd>
+        <dt>SET("","")</dt>
+        <dd>Simlitudes con enum pero con limite de 64 y permite espacios en blanco, ademas de opciones multiples</dd>
+      </dl>
+      <strong>Fechas y horas</strong>
+      <dl>
+        <dt>DATE</dt>
+        <dd>Permite almacenar fechas en formato AAAA-MM-DD, aunque nos regresara los datos de manera separada por guines, nos permite instertar los datos como numeros continuos (20201217) o separados por guion (2020-12-17), el rango es desde (1000-01-01) hasta (10000-12-31)</dd>
+        <dt>DATETIME</dt>
+        <dd>Permite almacenar fecha junto al horario en formato (AAAA-MM-DD HH:MM:SS), rango similar de fecha al de date, y hora en formato de 24 hrs</dd>
+        <dt>TIME</dt>
+        <dd>Hora en formato (HH:MM:SS) en formato 35 dias atras ((?)</dd>
+        <dt>TIMESTAMP</dt>
+        <dd>Almacena fecha y horario pero en formato y rango de valores diferente (AAAA-MM-DD) o (AA-MM-DD)</dd>
+      </dl>
+      <strong>Atributos</strong>
+      <dl>
+        <dt>DEFAULT</dt>
+        <dd>Si el usuario no introduce un dato, este campo tendra un valor por defecto </dd>
+        <dt>ZEROFILL</dt>
+        <dd>Solo trabaja con tipos de datos numericos y rellena con ceros a la izquierda en base al total de caracteres otorgados</dd>
+      </dl>
+      <pre><code>
+    CREATE TABLE IF NOT EXISTS libro (
+      id INT AUTO_INCREMENT,
+        titulo VARCHAR(40) NOT NULL,                <span>#a pesar del not null, puede regresar solo un warning</span>
+        editorial VARCHAR(15),
+        autor VARCHAR(30) DEFAULT 'desconocido',    <span>#de no ingresar datos, por defecto será 'desconocido'</span>
+        precio DECIMAL(5,2) UNSIGNEDdefault 8.25,
+        cantidad MEDIUMINT UNSIGNEDNOT NULL,
+        
+        PRIMARY KEY(id)
+    );
+      </code></pre>
     </div>
+    <div class="encabezado" id="sqlfunctions">
+      <h3>Funciones SQL</h3>
+      <strong>Columnas calculadas</strong>
+      <p>Una columna calculada es una columna virtual que no "existe" fisicamente en la base de datos, pero se pueden utilizar datos de otras columnas para calcular un valor, ejemplo:</p>
+      <pre><code>
+    <span>#La columna precio*cantidad, no existe en la tabla libros</span>
+    SELECT autor, precio, cantidad, precio*cantidad FROM libros;
+    <span>#Pero ejecutar la consulta, nos regresara la columna con la operacion precio*cantidad</span>
+
+    <span>#Aqui un ejemplo usandola misma operacion para obtener un precio con 10% de descuento</span>
+    SELECT nombre, precio, precio*0.1, precio-(precio*0.1) FROM libros;
+    <span>#lo que regresara</span>
+    titulo   -   precio   -   precio*0.1 - precio-(precio*0.1);
+    LearnSQL      100         10.00        90.00 
+      </code></pre>
+    <strong>Funciones de cadenas</strong>
+      <p>Ademas de las funciones para crear columnas, tenemos tambien funciones para trabajar con cadenas de texto como son</p>
+      <dl>
+        <dt>CONCAT('string', columna)</dt>
+        <dd>Concatenará la cadena de texto indicada con el valor de la columna indicada</dd>
+        <dt>CONCAT_WS('-','string', columna)</dt>
+        <dd>Lo mismo que concat, pero el primer parametro sera un separador definido</dd>
+        <dt>LENGTH(columna)</dt>
+        <dd>Contara la cantidad de caracteres de la columna dada</dd>
+        <dt>LEFT, RIGHT(columna, 5)</dt>
+        <dd>Cortara la cantidad de caracteres de una columna, en base al segundo parametro dado, y la orientacion sera depeniendo del nombre de la funcion</dd>
+        <dt>LTRIM, RTRIM, TRIM('  string  ')</dt>
+        <dd>Eliminara los espacios en blanco a la izquierda, derecha o ambos de una cadena de texto</dd>
+        <dt>REPLACE('dato', 'que', 'conque')</dt>
+        <dd>Reemplazara un caracter (o varios) de un dato por otro</dd>
+        <dt>REPEAT('dato', 5)</dt>
+        <dd>Repetira un dato la cantidad de veces indicada en el segundo parametro</dd>
+        <dt>REVERSE('Dato')</dt>
+        <dd>otaD</dd>
+        <dt>LOWER-LCASE, UPPER-UCASE('Dato CON MAYUS')</dt>
+        <dd>como Upper y LowerCase de JS</dd>
+      </dl>
+      <p>usar alguna <i>FUNCION(columna) columna FROM...</i> sin usar una , como separador, regresara la columna como titulo de la misma con el contenido como resultado de la funcion, mientras que <i>FUNCION(columna), columna FROM...</i> regresara el nombre de la funcion como titulo, para esto <i>SELECT LENGTH(autor) 'letras', autor FROM libro;
+      </i> nos dara 'letras' como titulo de la columna que contiene el conteo de letras</p>
+      <pre><code>
+    <span>concat puede usarse de 2 maneras para concatenar texto con columnas
+    #concat('string', columna) columna FROM tabla, que regresara la columna con el contenido concatenado</span>
+    SELECT CONCAT('Escrito por ', autor) autor FROM libro;
+    
+    autor
+    Escrito por Damousm
+
+
+    <span>#o bien
+    #concat('string', columna) FROM tabla, que regresara una nueva columna con el titulo del concat</span>
+    SELECT CONCAT('Escrito por ', autor)FROM libro;
+    
+    CONCAT('Escrito por ', autor)
+    Escrito por Damousm
+
+    <span>#length</span>
+    SELECT LENGTH(autor) <span>#as</span> autor, autor FROM libro;
+      
+    autor   autor
+    12      Einar Selvik
+
+    <span>#LEFT() y RIGHT()</span>
+    SELECT LEFT(autor, 5) 'left', autor FROM libro;
+    left   autor
+    Einar   Einar Selvik
+
+    SELECT RIGHT(autor, 5) 'right', autor FROM libro;
+    right   autor
+    elvik   Einar Selvik
+
+    <span>#replace</span>
+    SELECT REPLACE('mmm.gfx.com', 'm', 'w');
+    www.gfx.cow  <span>#notar que tambien reemplazo la 'm' de '.com'</span>
+  </code></pre>
+    <strong>Funciones matematicas</strong>
+    <dl>
+      <dt>CEILING(12.1)</dt>
+      <dd>Redondeara el dato hacia arriba</dd>
+      <dt>FLOOR(12.1)</dt>
+      <dd>Redondeara el dato hacia abajo</dd>
+      <dt>MOD(7 ,2)</dt>
+      <dd>Regresa el residuo de una division, en este caso 1</dd>
+      <dt>POWER(3 , 3)</dt>
+      <dd>Para trabajar con potencias, en este caso 27</dd>
+      <dt>ROUND(2.5)</dt>
+      <dd>Redondea dependiendo del decimal, en este caso a 3</dd>
+    </dl>
+  </div>
+  <div class="encabezado" id="sqlclausulas">
+    <h3>Clausulas</h3>
+    <p>Para ordenar mejor nuestros datos despues de una consulta, podemos utilizar clausulas</p>
+    <dl>
+      <dt>ORDER BY(columna) ASC/DESC</dt>
+      <dd>Ordena los resultados de una cosulta en base a la columna dada, asc y desc son las opciones ascendente y descendente</dd>
+      <dt></dt>
+      <dd></dd>
+      <dt></dt>
+      <dd></dd>
+      <dt></dt>
+      <dd></dd>
+      <dt></dt>
+      <dd></dd>
+    </dl>
+  </div>
+  <div class="encabezado" id="sqlwbshortcuts">
+      <h3>SQLWB Shortcuts</h3>
+      <ul>
+        <li>CTRL + ENTER: ejecutar el Query Seleccinado</li>
+      </ul>
+  </div>
   </section>
   <section id="sect16"> <!-- Nutricion & Ejercicios-->
     <div class="encabezado">
@@ -4282,7 +4560,7 @@
       </code></pre>
     </div>
   </section>
-  <div class="welcome">
+  <div class="welcome"> <!-- Wlcome -->
     <p id="mensaje"></p>
     <div class="slider">
       <div class="riel">
