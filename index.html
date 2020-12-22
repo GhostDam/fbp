@@ -3427,6 +3427,85 @@
     node nombre_archivo.js          
       </code></pre>
     </div>
+    <div class="encabezado" id="njsexpress">
+      <h3>Express & SQL</h3>
+      <p>Para iniciar una aplicacion con express JS, primeramento usaremos el comando <i>npm init</i> para crear el archivo Package.json</p>
+      <p>Posterior a ello, instalaremos nuestras dependencias <i>npm i express mysql</i></p>
+      <p>Necesitaremos crear nuestro entry point, es decir el archivo principial de la aplicacion, en este caso <i>index.js</i>, en el cual ira el siguiente codigo.</p>
+    <pre><code>
+    <span>//llamaremos a nuestras dependencias express y mysql</span>
+    const express = require('express');
+    const mysql = require('mysql');
+
+    const app = express();
+    <span>//con esto, al ejecutar node index.js ya tendremos nuestra app corriendo</span>
+    app.listen('3000', ()=>{      
+        console.log('cannot Get /')
+    })
+    </code></pre>
+    <p>Tener este codigo, mantendra un server que tendremos que abrir y cerrar cada vez que realicemos algun cambion, para solucionar esto existe nodemon, el cual tendremos que instalar de manera global <i>npm i -g nodemon</i>, tras esto, podemos solo correr nodemon en la consola y solo hara el trabajo, otra forma de correr la App es crear la carpeta src, y dentro de ella el archivo app/index.js, y en package.json, en scripts <i>"start": "nodemon src/index.js"</i></p>
+    <strong>MySQL</strong>
+    <p>Para ejecutar las consultas o acciones SQL, primero configuraremos nuestra coneccion</p>
+    <pre><code>
+    const mysql = require('mysql');
+
+    <span>//configurar coneccion</span>
+    const db = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'portfolio'
+    })
+    <span>//ejecutar, esta contendra el error</span>
+    db.connect((err)=>{
+      if (err) {
+          throw err
+      }
+      console.log('MySQL conectado')
+    })
+    </code></pre>
+    <p>Esto solo creara u ejecutara la coneccion, pero no se hara nada, para esto hay que ejecutar la consulta en algun sitio, en este caso, al acceder a la ruta <i>/consulta</i></p>
+      <strong>Consulta</strong>
+      <pre><code>
+    <span>//al acceder a la ruta consulta, se hara la consulta</span>
+    app.get('/consulta', (req, res)=>{
+      let sql = 'SHOW TABLES';        <span>//este sera el query a ejecutar</span>
+      db.query(sql, (err, result)=>{  <span>//se ejecuta, teniendo como callback error y resultado</span>
+          if (err) throw err;
+          res.send(result)            <span>//si da resultado, en enviara en la ruta</span>
+      })
+    })
+      </code></pre>
+      <strong>Insercion</strong>
+        <pre><code>
+    app.get('/insert', (req, res)=>{
+      let sql = 'INSERT INTO libros SET ?';   <span>//en SET, ? es como placeholder esperando la informacion</span>
+      let data = {titulo: 'Learn NodeJS', editorial:'Traversy media', autor:'Travis'}   <span>//un json con la info a ingresar</span>
+      let query = db.query(sql, data, (err, result)=>{                                  <span>//la ejecucion del query</span>
+        if (err) throw err;
+        res.send(result)
+      })
+    })
+        </code></pre>
+
+    <strong>Actualizacion</strong>
+        <pre><code>
+    app.get('/update/:id', (req, res)=>{
+      let updatedInfo = 'dato actualizado'
+      let sql = `UPDATE libros SET titulo = '${updatedInfo}' where id = ${req.params.id}`;   <span>//recordar que el dato  actalizar debe estar dentro de comillas ''</span>
+      let query = db.query(sql, (err, result)=>{                                  <span>//la ejecucion del query</span>
+        if (err) throw err;
+        console.log(result)
+        res.send(result)
+      })
+    })
+    </code></pre>
+
+
+
+
+
+    </div>
     <div class="encabezado" id="imports">
       <h3>Importar/Exportar modulos</h3>
       <p>En node se puede hacer lo que es la importacion de archivos, cuando manejamos scripts desde el navegador, lo que se suele hacer es importar estos archivos mediante etiquetas <i>&lt;script></i> pero en node se hace de otra manera, que es la palabra <i>require()</i> que a su vez es una funcion, ya que como tal sigue siendo codigo JS</p>
@@ -3955,8 +4034,17 @@
       <p>En MySQL WB, se escribe el comando y para correrlo, se dará click en el icono del rayito</p>
       <strong>Generales</strong>
       <pre><code>
+    <span>#usar base de datos</span>
+    USE databasename
+
     <span>#mostrar bases de datos</span>
     SHOW DATABASES 
+
+    <span>#mostrar tablas</span>
+    SHOW TABLES
+
+    <span>#mostrar indices</span>
+    SHOW INDEX FROM columna;
 
     <span>#crear BD</span>
     CREATE SCHEMA `curso` ;
@@ -3967,17 +4055,11 @@
     DROP DATABASE IF EXISTS curso     
     DROP TABLE nombre_tabla
     <span>#if (not) exists retornara warn en vez de error</span>    
-
-    <span>#usar</span>
-    USE curso
   
     <span>#crear tabla de datos
     #esta debe contener al menos una columna
     #y los campos pueden estar entre acentos ` para evitar bugs</span>
     CREATE TABLE `usuarios` (`nombres` VARCHAR(50), `edad` INT(15)) 
-
-    <span>#mostrar tablas</span>
-    SHOW TABLES
 
     <span>#info detallada de tabla</span>
     DESCRIBE nombre_tabla    
@@ -3985,8 +4067,7 @@
       <strong>inserciones</strong>
     <pre><code>
     <span>#insertar datos dentro de tabla (campos) VALORES (datos), las inserciones deben ser 
-    esstrictamente comillas '', no acentos `
-    </span>
+    esstrictamente comillas '', no acentos `</span>
     INSERT INTO alumnos (nombre, apellido, direccion, telefono, edad) VALUES ('Juan', 'martinez', 'barrio duarte', '844532455', '35')
     
     <span>#se pueden solo especificar campos</span>
@@ -3994,7 +4075,11 @@
 
     <span>#o se pueden omitir los campos, insertando en orden los valores</span>
     INSERT INTO alumnos VALUES ('sandro', 'hernad', ' direccion', '868755125', '29')  
-    </code></pre>
+
+    <span>#Insertar indices en tabla existente</span>
+    CREATE INDEX i_name ON tabla (columna);        <span>#comun</span>
+    CREATE UNIQUE INDEX uq_name ON tabla (columna);<span>#unico</span>
+  </code></pre>
 
     <strong>Selecciones</strong>
     <pre><code>
@@ -4021,6 +4106,8 @@
     TRUNCATE alumnos        <span>#aunque al parecer usar solo truncate es aceptado, lo correcto es tr table</span>
     TRUNCATE TABLE alumnos  
 
+    <span>#Eliminar indices, indices de tipo primary se requiere otra forma</span>
+    DROP INDEX i_name ON table
   </code></pre>
     <p>La diferencia entre TRUNCATE y DELETE, es que en teoria truncate es mas rapido que delete, ademas de que TRUNCATE resetea el conteo de registros autoincrementables</p>
     <strong>Actualizacion de datos</strong>
@@ -4032,6 +4119,35 @@
     UPDATE alumnos SET edad = '5' WHERE nombre = 'lalo'
     </code></pre>
       <p>Para la creacion de DBs se puede hacer mediante codigo o la misma interfaz proporcionada por el gesto (PMA o MSQLWB), <i>create a new Schema</i>, SCHEMA Y DATABASE son sinonimos en el comando create, y al momento de crear tablas, mediante USE indicaremos que BD se usara, ademas en MSQLWB, el modo seguro impide la eliminacion o actualizacion de datos si estos con cuentan con un <i>Key</i>, esto se deshabilita en edit -> preferences -> SQL editor -> safe updates</p>
+
+    <strong>Modificaciones de tabla</strong>
+    <p>La manera de trabajar con Alter table, es que crea una copia de la tabla original, realiza las modificaciones a la copia, y borra la originial, a lo cual debemos tener cuidado con los registros ya existentes que pueden sufrir modificaciones</p>
+    <pre><code>
+    <span>#Renombrar tablas</span>
+    ALTER TABLE tabla RENAME nuevo_nombre_tabla;
+    RENAME TABLE tabla TO nuevo_nombre_tabla <span>#, tabla2 TO nombre2</span>;
+
+    <span>#agregar columnas, esta se pondra de ultimo</span>
+    ALTER TABLE tabla ADD columna <span>#propiedades</span> INT;
+  
+    <span>#Eliminar columnas</span>
+    ALTER TABLE tabla DROP columna <span>#, DROP columna2</span>;
+
+    <span>#Modificar</span>
+    ALTER TABLE tabla MODIFY columna <span>#propiedades nuevas</span> INT(3) ZEROFILL;
+
+    <span>#Cambiar, funciona similar a MODIFY con opcion a cambiar nombre de columna</span>
+    ALTER TABLE tabla CHANGE columna <span>#nuevonombre y propiedades</span> renombrecolumna INT(2) ZEROFILL;
+
+    <span>#agregar indice primario, primero agregamos indice a la columna, y despues usamos modify para agregar el AUTO_INCREMENT</span>
+    ALTER TABLE tabla ADD PRIMARY KEY (columna);
+
+    <span>#agregar / borrar indice </span>
+    ALTER TABLE tabla ADD INDEX i_nombre (columna);
+    ALTER TABLE libros DROP INDEX i_nombre;
+
+  </code></pre>
+    <p>Para trabajar con los indices en las modificaciones, se hace en conjuto con ADD/DROP, y en caso de tener atributos como AI, primero se deben retirar estos antes de poder hacer un DROP</p>
     </div>
     <div class="encabezado" id="sqloperators">
       <h3>Operadores SQL</h3>
@@ -4103,11 +4219,44 @@
     </span>
     SELECT * FROM libros WHERE titulo LIKE '%learn%'</code></pre>
       </dd>
+      <dt>REGEXP</dt>
+        <dd>
+    <pre><code><span>    #Similar a Like pero permitiendo regexp
+    </span>
+    SELECT * FROM libros WHERE titulo REGEXP 'learn'
+    
+    <span>#que contenga 's' o 'h'</span>
+    SELECT * FROM libros WHERE titulo REGEXP '[sh]' <span>#'[a-d]', '^D'</span>
+  </code></pre>
+      </dd>
     </dl>
 
     </div>
-    <div class="encabezado" id="sqlprym">
-      <h3>Primary key</h3>
+    <div class="encabezado" id="sqlindexs">
+      <h3>Indices y Primary key</h3>
+      <p>A pesar de que los indices ocupan espacio en memoria, son extremadamente utiles para indexar la informacion y acceder mas rapidamente a ella, y los hay de 3 tipos, una tabla puede tener hasta 64 indices, los nombres de indices aceptan todos los caracteres y pueden contener hasta 64</p>
+      <dl>
+        <dt>primary</dt>
+        <dd>Es el que definimos como clave primaria, no se puede repetir ni ser nulo, y solo habra una primary por tabla</dd>
+        <dt>index</dt>
+        <dd>Crea un index comun y no necesariamente es unico, ademas de aceptar valores nulo y podemos darle nombre, si no se le otorga obtendra uno por defecto y puede haber varios por tabla</dd>
+        <dt>unique</dt>
+        <dd>Crea un indice cuyos valores deben ser unicos y diferentes, y dara error si damos un valor ya existente</dd>
+      </dl>
+      <pre><code>
+    <span>#index comun</span>
+    CREATE TABLE usuarios(
+      id INT AUTO_INCREMENT NOT NULL,
+      nombre VARCHAR(50),
+      apellido VARCHAR(50),
+      correo VARCHAR(100),
+      
+      PRIMARY KEY(id),      <span>#primary</span>
+      index i_autor (autor, editorial), <span>#index, i_autor es del tipo comun, i_col es para dar un nombre de index</span>
+      unique uq_titulo (titulo)         <span>#unique, uq_titulo es del tipo unico, uq_col es para dar nombre al index</span>
+      <span>#index i_editorial (editoria)</span>
+    )
+      </code></pre>
       <p>La clave es una llave unica para un tipo de dato, no puede repetirse ni tampoco tampoco ser null, en el siguiente codigo crearemos una tabla cuya primary key sera el dato nombre</p>
       <pre><code>
     CREATE TABLE usuarios(
@@ -4143,6 +4292,48 @@
     INSERT INTO productos VALUES(null,'telefono','moto e 15','141.505');
     </code></pre>
     </div>
+    <div class="encabezado" id="foreignkey">
+      <h3>Foreign Key</h3>
+      <p>Para realizar relaciones en las bases de datos, ocuparemos lo que es la llave foranea o <i>foreign key</i>, una llave foranea es la representacion de un campo que es la clave primaria de otra tabla, una vez hecha la relacion, para las consultas usaremos la palabra JOIN</p>
+      <pre><code>
+    <span>#crearemos la tabla productos, relacionada con la tabla proveedor ya existente</span>
+    CREATE TABLE IF NOT EXISTS productos(
+        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        nombre varchar(50) NOT NULL,
+        descripcion TEXT,
+        proveedorid INT UNSIGNED NOT NULL,
+        precio DECIMAL (5,2),
+        cantidad INT DEFAULT 0,
+        PRIMARY KEY(id),
+        UNIQUE INDEX(nombre),
+        FOREIGN KEY(proveedorid) REFERENCES proveedor(id)<span>#indicamos que la columna proveedorid referenciara a</span>
+    );                                                   <span>la columna id de la tabla proveedor</span>
+
+    <span>#y para hacer la consulta con el dato adjunado, se usara</span>
+    SELECT * FROM productos JOIN proveedor ON productos.proveedorid = proveedor.id;
+    <span>#Que retornara algo como esto</span>                                <span>#a partir de aqui, son datos de a tabla proveedor</span>
+    # id	nombre	    descripcion	proveedorid	precio	cantidad  |	id	nombre	  descripcion
+    1	Tablet	        de acer	    1	          100.00	20	      |  1	  Acer	    computadores
+    2	Pc escritorio	  de hp	      2	          100.00	20	      |  2	  HP	      computadores
+    3	smartphone	    de samsung	3	          100.00	20	      |  3	  Samsung	  computadores
+    </code></pre>
+    <p>Para evitar traer toda la informacion irrelevante, usaremos un prefijo para las tablas de la siguiente manera</p>
+    <pre><code>
+    <span>#producto.nombre..., provedor.nombre, se pueden usar '' para dar el encabezado de la tabla</span>
+    SELECT p.nombre, p.descripcion, p.precio, prov.nombre 'nombre prov' FROM productos AS p       <span>#productos como p</span>
+                                                                        JOIN proveedor AS prov    <span>#proveedor como prov</span>
+                                                                        ON p.proveedorid = prov.id;
+
+
+    <span>#que arrojara el siguiente resultado</span>
+    # nombre	     descripcion	precio	nombre prov  <span>#encabezado dado en la consulta</span>
+    Tablet	       de acer    	100.00	Acer
+    Pc escritorio	 de hp	      100.00	HP
+    smartphone	   de samsung	  100.00	Samsung
+
+  </code></pre>
+
+  </div>
     <div class="encabezado" id="datatypessql">
       <h3>Tipos de datos</h3>
       <p>Como anticipacion, datos de tipo texto iran entre comillas, mientras que los datos numericos no</p>
@@ -4307,29 +4498,81 @@
       <dt>ROUND(2.5)</dt>
       <dd>Redondea dependiendo del decimal, en este caso a 3</dd>
     </dl>
-  </div>
-  <div class="encabezado" id="sqlclausulas">
-    <h3>Clausulas</h3>
-    <p>Para ordenar mejor nuestros datos despues de una consulta, podemos utilizar clausulas</p>
+    <strong>Funciones sobre registros</strong>
     <dl>
-      <dt>ORDER BY(columna) ASC/DESC</dt>
-      <dd>Ordena los resultados de una cosulta en base a la columna dada, asc y desc son las opciones ascendente y descendente</dd>
-      <dt></dt>
-      <dd></dd>
-      <dt></dt>
-      <dd></dd>
-      <dt></dt>
-      <dd></dd>
+      <dt>COUNT(*)</dt>
+      <dd>Conteo de una condicion</dd>
+      <dt>SUM(columna)</dt>
+      <dd>Te da la suma de los datos dentro de una columna</dd>
+      <dt>MAX, MIN(columna)</dt>
+      <dd>Regresa el valor maximo/minimo en una comluman</dd>
+      <dt>AVG(columna)</dt>
+      <dd>El promedio de los valores de una columna</dd>
       <dt></dt>
       <dd></dd>
     </dl>
-  </div>
-  <div class="encabezado" id="sqlwbshortcuts">
-      <h3>SQLWB Shortcuts</h3>
-      <ul>
-        <li>CTRL + ENTER: ejecutar el Query Seleccinado</li>
-      </ul>
-  </div>
+    <pre><code>
+    <span>#COUNT()</span>
+    SELECT COUNT(*) 'libros sin titulo' FROM libros WHERE titulo ="";
+
+    <span>#SUM()</span>
+    SELECT SUM(cantidad) FROM libro;
+
+    <span>#max/min</span>
+    SELECT MAX(precio) FROM libro;
+
+    </code></pre>
+    </div>
+    <div class="encabezado" id="sqlclausulas">
+      <h3>Clausulas</h3>
+      <p>Para ordenar mejor nuestros datos despues de una consulta, podemos utilizar clausulas, como nota, los parentesis no son necesarios, pero pueden usarse para claridad del codigo.</p>
+      <dl>
+        <dt>ORDER BY columna ASC/DESC</dt>
+        <dd>Ordena los resultados de una cosulta en base a la columna dada, asc y desc son las opciones ascendente y descendente</dd>
+        <dt>GROUP BY columna1, columna2 </dt>
+        <dd>Agrupra los resultados de una busqueda, en base a la columna dada</dd>
+        <dt>DISTINCT columna</dt>
+        <dd>Omite (o agrupa) datos repetidos de una tabla</dd>
+        <dt></dt>
+        <dd></dd>
+        <dt></dt>
+        <dd></dd>
+      </dl>
+      <pre><code>
+      <span>#agrupa los visitantes en base las ciudades</span>
+      SELECT COUNT(*) 'cuantos', ciudad FROM visitantes GROUP BY ciudad;
+
+      cuantos       ciudad
+      4             CDMX
+      6             GTO
+      1             MTY
+
+      <span>#En esta operacion mas compleja, haremos un consulta que nos agrupara los libros por autor
+      el precio y el valor total de los libros (Einar selvik posee 2 libros con precio de 8.25)</span>
+      SELECT autor, COUNT(*) 'libros', precio, SUM(precio) 'valor total' FROM libros GROUP BY autor, precio;
+      # autor	          libros	precio	valor total
+      Damous M	        1	      100.00	100.00
+      Eivar Selvik	    1	      15.99	  32.49
+      Eivar Selvik	    2	      8.25	  8.25
+      Eleanor rigby	    1	      100.00	100.00
+      William McKenzie	3	      100.00	300.00    
+
+      <span>#Omitira los datos que se repitan</span>
+      SELECT DISTINCT autor from libros;
+      # autor
+      Eivar Selvik
+      Damous M
+      Eleanor rigby
+      William McKenzie
+      
+    </code></pre>
+    </div>
+    <div class="encabezado" id="sqlwbshortcuts">
+        <h3>SQLWB Shortcuts</h3>
+        <ul>
+          <li>CTRL + ENTER: ejecutar el Query Seleccinado</li>
+        </ul>
+    </div>
   </section>
   <section id="sect16"> <!-- Nutricion & Ejercicios-->
     <div class="encabezado">

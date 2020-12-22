@@ -302,16 +302,31 @@ document.addEventListener("DOMContentLoaded", function () {
         todoList.appendChild(todoDiv)
     })
 
+    function displayNotification(data) {
+      if (Notification.permission === 'granted') {
+        navigator.serviceWorker.getRegistration()
+          .then(reg =>{
+            reg.showNotification(data)
+          })
+      }
+    }
+  
     if (todos[0] !==undefined) {
-        let title = "Hey tu";
-        let options = {
-          body: `Tienes tareas pendientes ${todos[0]}`
-        }
-        let n = new Notification(title, options)
-        setTimeout(n.close.bind(n), 3000)      
+          let options = {
+            body: `Tienes tareas pendientes ${todos[0]}`
+          }
+        displayNotification('hey', options)
     }
 
-  }  
+      // if (todos[0] !==undefined) {
+      //     let title = "Hey tu";
+      //     let options = {
+      //       body: `Tienes tareas pendientes ${todos[0]}`
+      //     }
+      //     let n = new Notification(title, options)
+      //     setTimeout(n.close.bind(n), 3000)      
+      // }
+  }
 
   //remove todos
   function removeLocalTodos(todo) {
