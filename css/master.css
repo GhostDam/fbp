@@ -134,7 +134,7 @@ body{
     height: 100%;
     top: 0;
     left: 0;
-    border: none;        /* con estos 3 teoricamente desaparece el inpur */
+    border: none;        /* con estos 3 teoricamente desaparece el input */
     outline: none;         
     background: none;   
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
@@ -223,7 +223,6 @@ section{
   padding: 6rem 20px;
   margin-right: 20px;
   min-width: 100%;
-  /* min-height: 100vh; */
   font-family: serif;
 }
 @media(max-width: 720px){
@@ -250,7 +249,7 @@ section{
 }
 /*fondo de barra*/
 .lista_cursos::-webkit-scrollbar-track{
-  background: rgba(0, 0, 0, .1);
+  background: #6c757d;
 }
 /*posicion en la barra*/
 .lista_cursos::-webkit-scrollbar-thumb{
@@ -660,6 +659,8 @@ pre span{
   margin: 0.5rem;
   color: cadetblue;
   transition: all .5s ease;
+  background-color: #081b2b;
+  border-radius: 5px;
 }
 .todo li{
   flex: 1;
@@ -672,6 +673,9 @@ pre span{
   outline: none;
 }
 .trash-btn{
+  background-color: #555;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   color: crimson;
 }
 .complete-btn{

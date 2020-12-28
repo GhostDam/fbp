@@ -376,7 +376,12 @@
             <li>textarea: campo de texto</li>
             <li>button: boton, por defecto de envio</li>
           </ul>
-          </form>
+          <strong>Información</strong>
+          <ul>
+            <li>meter: barra progresiva, lleva atributos <i>max="100" value="95" title="info"</i></li>
+            <li>input type="color": despliega un selector de color</li>
+          </ul>
+
           <strong>Inline y Bloque</strong>
           <p>Las propiedades de bloque y de linea son propiedades que dependeran por defecto de la etiqueta que se use aunque se pueden modificar por medio de CSS, las descripciones son las siguientes</p>
           <ul>
@@ -393,7 +398,7 @@
           </ul>
       
         </div>
-      <div class="encabezado" id="css">
+    <div class="encabezado" id="css">
         <h3>CSS</h3>
           <p>CSS 1 se consolido en el 96</p>
           <p>Una pequeña guia <a target="_blank" href="http://apps.workflower.fi/vocabs/css/es#comment">Aqui</a></p>
@@ -455,9 +460,11 @@
         <li><strong>de atributos contiene [class*="button"] </strong>Selecciona los elementos cuyo atributo contenga...
         </li>
       </ul>
-      <p><strong>Pseudo-elementos</strong></p>
+      <strong>Pseudo-elementos</strong>
+      <p>Los pseudo elementos son representan elementos del DOM, por ejemplo un placeholder de un input</p>
       <p>La sintaxis es ::pseudo-elemento{ estilos } <i>:: es para diferenciarlos de las pseudo-clases</i></p>
       <ul>
+        <li><strong>input::placeholder {css} </strong> Elemento placeholder de un input</li>
         <li><strong>::first-line {css} </strong> solo elementos de bloque, afectara solo a la primera letra</li>
         <li><strong>::first-letter {css} </strong> solo elementos de bloque, afectara la primera linea de un texto</li>
         <li><strong>::before</strong> Junto con ::after son elementos inline (sin dimension) cuya propiedad <i>content: '';</i> Es obligatoria</li>
@@ -465,7 +472,8 @@
         <li><strong>::selection</strong> Afectara a elementos seleccionados por el usuario</li>
       </ul>
 
-      <p><strong>Pseudo-clases</strong></p>
+      <strong>Pseudo-clases</strong>
+      <p>Las pseudo-clases son estados temporales basados en la interaccion del usuario</p>
       <p>La sintaxis es :pseudo-clase{ estilos } <i>: pseudo-clase, ::pseudo-elemento</i></p>
       <p>Las pseudo-clases son selectores que interactuan en tiempo real, detectando la interaccion del usuario con algunos elementos, como si de un listener de JS se tratara</p>
       <strong>pseudo-clases dinamicas</strong>
@@ -527,8 +535,8 @@
       box-sizing: border-box;
     }
       </code></pre>
-    </div>
-      <div class="encabezado" id="especificidad">
+     </div>
+    <div class="encabezado" id="especificidad">
         <h3>Especificidad, herencia y cascada</h3>
           <p>En caso de usar Frameworks, NO ES RECOMENDABLE agregar mas css para problemas con CSS</p>
           <blockquote>es como poner curita sobre curita mientras la herida en el fondo se infecta</blockquote>
@@ -629,8 +637,8 @@
 
     box-shadow: 0 0 0 10px green inset: /* interno */ 
     </code></pre>
-    </div>
-      <div class="encabezado" id="background">
+      </div>
+    <div class="encabezado" id="background">
         <h3>Background</h3>
       <ul>
         <li><strong>background-image: </strong>url('image.jpg')</li>
@@ -791,11 +799,11 @@
       <pre><code>
     &lt;link rel="stylesheet" href="css/main.css" media="screen and (max-width: 720px)"
       </code></pre>
-        </div>
+     </div>
     <div class="encabezado" id="devtools">
       <h3>Remote debbug</h3>
       <p>Para hacer un debbug remoto con Chrome dev tools, necesitamos conectar nuestro dispositivo android por medio de usb a nuestro equipo, y en chrome abrir <a href="chrome://inspect">chrome://inspect</a> ademas de activar el modo desarrollador en el dispositivo android </p>
-    </div>
+     </div>
     <div class="encabezado" id="premades">
       <h3>Premades</h3>
       <!-- Basic input -->
@@ -806,10 +814,70 @@
         </div>
         <div>
             <label>placeholder</label>
-            <input type="text"class="input" id="usuario" name="usuario" required>          
+            <input type="text"class="input" id="usuario" name="usuario" required autocomplete="off">
         </div>
       </div>
-
+      <pre><code>
+    .input{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border: none;        /* con estos 3 teoricamente desaparece el inpur */
+      outline: none;         
+      background: none;   
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+      padding: .5rem .7rem;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .input-div{
+      position: relative;
+      display: grid;
+      grid-template-columns: 7% 93%;
+      margin: 25px 0;
+      padding: 5px 0;
+      border-bottom: 2px solid #d9d9d9;
+    }
+    .input-div::after, .input-div::before{
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      width: 0;                        /*este efecto se aregara con js*/
+      height: 2px;
+      background-color: #32d39f;   /*cubre el fondo gris del bottom del div */
+      transition: .3s;
+    }
+    .input-div::after{
+      right: 50%;
+    }
+    .input-div::before{
+      left: 50%;
+    }
+    .input-div.focus .i i{
+      color: #38d39f;
+    }
+    .input-div.focus div label{
+      top: -5px;
+      font-size: 15px;
+    }
+    .input-div.focus::after, .input-div.focus::before{
+      width: 50%;
+    }
+    .input-div > div{
+      position: relative;
+    }
+    .input-div > div label{
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: gray;
+      font-size: 18px;   
+      transition: .3s;
+    }        
+      </code></pre>
       <!-- CSS toggler -->
       <strong>Ejemplo de input checked toggle con CSS sin JS</strong>
       <div class="css-toggler">
@@ -848,7 +916,6 @@
         </div>
         <div class='footer'>footer</div>
       </div>
-
       <pre><code>
     &lt;div class='layout'>
         &lt;section class='container'>&lt;/section>
@@ -1686,7 +1753,7 @@
       var estanGordos = people.filter(condicion)
         </code></pre>
       </div>
-          <div class="encabezado" id="loops">
+    <div class="encabezado" id="loops">
       <h3>Loops</h3>
       <strong>For</strong>
       <p>mientras que <i>i</i> empezada en 0, sea menor que <i>array.length</i> aumentas <i>i</i></p>
@@ -2405,8 +2472,53 @@
     }
           </code></pre>
     </div>
-    <div class="encabezado">
-      <h3>Closures</h3>
+    <div class="encabezado" id="jsapis">
+      <h3>Apis</h3>
+      <strong>Fechas</strong>
+    <pre><code>
+    var fechaActual = new Date();
+    <span>//Devuelve fecha actual, esta queda grabada y no se actualiza</span>
+
+    var fechaTexto = new Date("dec 07, 2020")
+    <span>//Devuelve la fecha que indiquemos en el string</span>
+
+    var fechaNumeros = new Date(2020, 11, 26)
+    <span>//Devuelve la fecha que indiquemos en numeros, con la diferencia de que 
+    los meses empiezan en 0</span>
+
+    fechaActual.getDate();
+    <span>//Da el numero de dia</span>
+
+    fechaActual.getDay();
+    <span>//dia de la semana, siendo 0 el domingo</span>
+
+    fechaActual.getMonth();
+    <span>//mes del año, empezando en 0</span>
+
+    fechaActual.getFullYear();
+    <span>//año con 4 digitos</span>
+
+    fechaActual.getHours();
+    <span>//hora formato 24hrs</span>
+
+    fechaActual.getMinutes();
+    <span>//minutos</span>
+
+    fechaActual.getSeconds();
+    <span>//segundos</span>
+
+    fechaActual.getMilliseconds();
+    <span>//milisegundos</span>
+
+    fechaActual.toLocaleDateString()
+    <span>//nos da un string con la fecha formato "27/12/2020"</span>
+
+    fechaActual.toLocaleTimeString()
+    <span>//nos da un string con la hora formato "17:44:09"</span>
+    
+    fechaActual.getTime()
+    <span>//cuenta los milisegundos pasados desde 01/01/1970, en base a eso calcularemos el dato requerido</span>
+    </code></pre>
     </div>
   </section>
   <section id="sect5">  <!-- ReactJS -->
@@ -4061,6 +4173,10 @@
     #y los campos pueden estar entre acentos ` para evitar bugs</span>
     CREATE TABLE `usuarios` (`nombres` VARCHAR(50), `edad` INT(15)) 
 
+    <span>#crear tabla a partir de otra tabla en base a los resultados de una
+    consulta</span>
+    CREATE TABLE tabla SELECT DISTINCT columna AS nombre_columna FROM tabla 
+  
     <span>#info detallada de tabla</span>
     DESCRIBE nombre_tabla    
     </code></pre>
@@ -4074,7 +4190,13 @@
     INSERT INTO alumnos (nombre, telefono, edad) VALUES ('mihuel', '556887432', '29')
 
     <span>#o se pueden omitir los campos, insertando en orden los valores</span>
-    INSERT INTO alumnos VALUES ('sandro', 'hernad', ' direccion', '868755125', '29')  
+    INSERT INTO alumnos VALUES ('sandro', 'hernad', ' direccion', '868755125', '29')
+
+    <span>#Insertar datos buscando en otra tabla</span>
+    INSERT INTO tabla (nombre, descripcion, precio, proveedorid, cantidad)
+    SELECT 'teclado', 'descripcion', '99.90', id, '25'
+    FROM proveedor WHERE nombre ='logtitech';
+
 
     <span>#Insertar indices en tabla existente</span>
     CREATE INDEX i_name ON tabla (columna);        <span>#comun</span>
@@ -4102,9 +4224,18 @@
     <span>#Eliminar datos especificos</span>
     DELETE FROM alumnos WHERE edad = '25'
 
+    <span>#Eliminar datos en cascada</span>
+    DELETE productos FROM productos JOIN proveedor ON productos.proveedorid = proveedor.id WHERE proveedor.nombre = 'HP'
+
+
     <span>#Eliminar datos TRUNCATE</span>
     TRUNCATE alumnos        <span>#aunque al parecer usar solo truncate es aceptado, lo correcto es tr table</span>
     TRUNCATE TABLE alumnos  
+
+    <span>#Eliminar datos en cascada</span>
+    DELETE productos, proveedor FROM productos JOIN proveedor 
+                                                 ON productos.proveedorid=proveedor.id 
+                                                 WHERE proveedor.nombre = 'lenovo';
 
     <span>#Eliminar indices, indices de tipo primary se requiere otra forma</span>
     DROP INDEX i_name ON table
@@ -4117,7 +4248,14 @@
 
     <span>#Actualizar datos especificos</span>
     UPDATE alumnos SET edad = '5' WHERE nombre = 'lalo'
-    </code></pre>
+
+    <span>#Actualizar datos en base a una cosulta</span>
+    UPDATE productos JOIN proveedor ON productos.proveedorid = proveedor.id SET productos.proveedor = proveedor.nombre
+
+    <span>#Actualizar datos en cascada</span>
+    UPDATE productos AS p JOIN proveedor AS pro ON p.proveedorid = pro.id SET p.proveedorid = 8, pro.id = 8 WHERE pro.nombre ='logitech'
+
+  </code></pre>
       <p>Para la creacion de DBs se puede hacer mediante codigo o la misma interfaz proporcionada por el gesto (PMA o MSQLWB), <i>create a new Schema</i>, SCHEMA Y DATABASE son sinonimos en el comando create, y al momento de crear tablas, mediante USE indicaremos que BD se usara, ademas en MSQLWB, el modo seguro impide la eliminacion o actualizacion de datos si estos con cuentan con un <i>Key</i>, esto se deshabilita en edit -> preferences -> SQL editor -> safe updates</p>
 
     <strong>Modificaciones de tabla</strong>
@@ -4185,7 +4323,7 @@
         </dd>
       <dt>IN(valor1, 'valor2', ...)</dt>
         <dd>
-    <pre><code><span>    #alternativa a OR, como un filtro de busquedas </span>
+    <pre><code><span>    #alternativa a OR, como un filtro de busquedas, admite mutiples valore en el WHERE</span>
     SELECT * FROM libros WHERE titulo in ('learn js', 'learn java')</code></pre>
         </dd>
 
@@ -4331,9 +4469,21 @@
     Pc escritorio	 de hp	      100.00	HP
     smartphone	   de samsung	  100.00	Samsung
 
-  </code></pre>
-
-  </div>
+    </code></pre>
+    </div>
+    <div class="encabezado" id="sqljoins">
+      <h3>Joins</h3>
+      <dl>
+        <dt>Join</dt>
+        <dd>Busqueda de 2 tablas por medio de un campo común</dd>
+        <dt>Left Join</dt>
+        <dd>Coincidir registros de una tabla izquierda con otra tabla derecha, pero si no hay valor en la tabla izquierda con coincidencia en la derecha, generará una fila extra por cada valor no encontrado</dd>
+        <dt>Right Join</dt>
+        <dd>Similar a Left Join </dd>
+        <dt>Inner/straight Join</dt>
+        <dd>Mismo que Join, si hay datos que no concuerden son descartados</dd>
+      </dl>
+    </div>
     <div class="encabezado" id="datatypessql">
       <h3>Tipos de datos</h3>
       <p>Como anticipacion, datos de tipo texto iran entre comillas, mientras que los datos numericos no</p>
@@ -4522,7 +4672,15 @@
     SELECT MAX(precio) FROM libro;
 
     </code></pre>
-    </div>
+    <strong>Variables</strong>
+    <p>Asi como MySQL cuenta con funciones, tambien tiene variables, las cuales se declaran con un <i>@</i></p>
+    <pre><code>
+    <span>@variable:= valor;</span>
+    SELECT @areas:=COUNT(area) FROM areas;
+
+    SELECT * FROM areas WHERE id_area = @areas;
+    </code></pre>
+  </div>
     <div class="encabezado" id="sqlclausulas">
       <h3>Clausulas</h3>
       <p>Para ordenar mejor nuestros datos despues de una consulta, podemos utilizar clausulas, como nota, los parentesis no son necesarios, pero pueden usarse para claridad del codigo.</p>
@@ -4533,40 +4691,132 @@
         <dd>Agrupra los resultados de una busqueda, en base a la columna dada</dd>
         <dt>DISTINCT columna</dt>
         <dd>Omite (o agrupa) datos repetidos de una tabla</dd>
-        <dt></dt>
-        <dd></dd>
+        <dt>Funciones IF CASE</dt>
+        <dd>Son funciones condicionales para las busqueda PENDIENTE VERIFICAR SU USO</dd>
         <dt></dt>
         <dd></dd>
       </dl>
       <pre><code>
-      <span>#agrupa los visitantes en base las ciudades</span>
-      SELECT COUNT(*) 'cuantos', ciudad FROM visitantes GROUP BY ciudad;
+    <span>#agrupa los visitantes en base las ciudades</span>
+    SELECT COUNT(*) 'cuantos', ciudad FROM visitantes GROUP BY ciudad;
 
-      cuantos       ciudad
-      4             CDMX
-      6             GTO
-      1             MTY
+    cuantos       ciudad
+    4             CDMX
+    6             GTO
+    1             MTY
 
-      <span>#En esta operacion mas compleja, haremos un consulta que nos agrupara los libros por autor
-      el precio y el valor total de los libros (Einar selvik posee 2 libros con precio de 8.25)</span>
-      SELECT autor, COUNT(*) 'libros', precio, SUM(precio) 'valor total' FROM libros GROUP BY autor, precio;
-      # autor	          libros	precio	valor total
-      Damous M	        1	      100.00	100.00
-      Eivar Selvik	    1	      15.99	  32.49
-      Eivar Selvik	    2	      8.25	  8.25
-      Eleanor rigby	    1	      100.00	100.00
-      William McKenzie	3	      100.00	300.00    
+    <span>#En esta operacion mas compleja, haremos un consulta que nos agrupara los libros por autor
+    el precio y el valor total de los libros (Einar selvik posee 2 libros con precio de 8.25)</span>
+    SELECT autor, COUNT(*) 'libros', precio, SUM(precio) 'valor total' FROM libros GROUP BY autor, precio;
+    # autor	          libros	precio	valor total
+    Damous M	        1	      100.00	100.00
+    Eivar Selvik	    1	      15.99	  32.49
+    Eivar Selvik	    2	      8.25	  8.25
+    Eleanor rigby	    1	      100.00	100.00
+    William McKenzie	3	      100.00	300.00    
 
-      <span>#Omitira los datos que se repitan</span>
-      SELECT DISTINCT autor from libros;
-      # autor
-      Eivar Selvik
-      Damous M
-      Eleanor rigby
-      William McKenzie
+    <span>#Omitira los datos que se repitan</span>
+    SELECT DISTINCT autor from libros;
+    # autor
+    Eivar Selvik
+    Damous M
+    Eleanor rigby
+    William McKenzie
       
+    <span>#Group by y Count() en un Query, de no usar LEFT JOIN, los equipos que no cuenten
+    con usuarios no saldrian en los resultadosde la consulta</span>
+    SELECT nombre_equipo, COUNT(nombre_usuario) 'total usuarios' FROM equipos JOIN cpu ON equipos.id_equipo = cpu.id_equipo 
+                                                                          LEFT JOIN usuarios ON usuarios.id_equipo = equipos.id_equipo 
+                                                                          GROUP BY (nombre_equipo);
+    <span>#nos dara la siguiente tabla</span>
+    # nombre_equipo	total usuarios
+    LAPDS1          0
+    MPCSISTEMAS1	  1
+    PC1SINDICATO	  2
+    PCDIRGRAL1	    1                                                                           
     </code></pre>
     </div>
+    <div class="encabezado" id="checkrpr">
+      <h3>Check-Repair</h3>
+      <p>Verifica si una o mas tablas tiene errores</p>
+      <dl>
+        <dt>quick</dt>
+        <dd></dd>
+        <dt>fast</dt>
+        <dd></dd>
+        <dt>changed</dt>
+        <dd></dd>
+        <dt>medium (por defecto)</dt>
+        <dd></dd>
+        <dt>extented</dt>
+        <dd></dd>
+      </dl>
+      <pre><code>
+    CHECK TABLE productos;
+
+    CHECK TABLE productos FAST QUICK;
+
+    REPAIR TABLE productos;
+    </code></pre>
+    </div>
+    <div class="encabezado" id="encrypt">
+      <h3>Encriptado de datos</h3>
+      <p>Anteriormente se usaba Encode y Decode los cuales ahora son vulnerables, a partir de MySQL al parecer fueron eliminados, y se introdujo <i>AES_ENCRYPT/DECRYPT()</i></p>
+      <pre><code>
+    <span>#sintaxis</span>
+    AES_ENCRYPT("dato a encriptar", "clave de encriptacion  ")
+
+    <span>#guardar dato encriptado</span>
+    INSERT INTO login (id, usuario, contraseña) VALUES (null, 'usuario', aes_encrypt('contraseña', 'contraseña para contr'));
+
+    <span>#visualizar dato encriptado</span>
+    SELECT id, usuario, cast(aes_decrypt(contraseña, '123') as char) 'contraseña' FROM login;
+      </code></pre>
+    </div>
+    <div class="encabezado" id="subconsultas">
+      <h3>Subconsultas</h3>
+      <p>Una subconsulta es una consulta anidada dentro de otra consulta, y estas son de 3 tipos, las que retornan un solo valor, las que retornan listas, se combinan con <i>in, any, some, all</i> y las que testean la existencia de otros valores con <i>exists</i></p>
+      <strong>Sintaxis</strong>
+    <pre><code>
+    <span>#sintaxis consultas</span>
+    SELECT campo FROM tabla WHERE campo OPERADOR(SUBCONSULTA)
+    SELECT campo OPERADOR(SUBCONSULTA) FROM tabla
+    <span>#sintaxis ediciones</span>
+    UPDATE tabla SET campo = 'nuevo valor' WHERE campo = (SUBCONSULTA)
+    DELET FROM tabla WHERE campo = (SUBCONSULTA)
+
+    <span>#ejemplo en el cual checaremos la diferencia de precio entre 2 libros</span>
+    SELECT titulo, precio, precio-(SELECT MAX(PRECIO) from libros) as 'diferencia' from libros;
+
+    <span>#ejemplo en el cual seleccionaremos los libros con menor precio de una lista</span>
+    SELECT titulo, precio FROM libros WHERE precio = (SELECT MIN(PRECIO) from libros);
+
+    <span>#In, esto al parecer sirve para "concatenar" JOIN simples, haciendo todo mas facil en una sola linea</span>
+    SELECT nombre FROM editoriales WHERE codigo IN (SELECT codigoeditorial FROM libros WHERE autor = 'E. Alla Poe');
+
+    <span>#Un ejemplo de la linea anterior usando JOIN</span>
+    SELECT DISTINCT nombre FROM editoriales AS e JOIN LIBROS ON codigoeditorial = e.codigo WHERE autor = 'E. Alla Poe';
+
+    <span>#ANY</span>
+    SELECT titulo FROM libros WHERE autor = 'E. Alla Poe' AND codigoeditorial = ANY
+    (SELECT e.codigo FROM editoriales AS e JOIN libros AS l ON codigoeditorial = e.codigo WHERE l.autor = 'Bach');
+
+    <span>#ANY, par libros de precio mayor al de </span>
+    SELECT titulo, precio FROM libros WHERE autor = 'E. Alla Poe' AND precio > ANY
+    (SELECT precio FROM libros WHERE l.autor = 'Bach');
+
+    <span>#EXISTS, donde algun cliente haya comprado un lapiz </span>
+    SELECT cliente, numero FROM facturas AS f WHERE EXISTS
+    (SELECT * FROM detalles AS d WHERE f.numero=d.numerofactura AND d.articulo ='lapiz');
+
+    <span>#Actualizar el precio de los libros donde la editorial sea ='valor'</span>
+    UPDATE libros SET precio = precio+(precio*0.1) 
+    WHERE codigoeditorial = (SELECT codigo FROM editoriales WHERE nombre = 'esta editorial')
+
+
+  </code></pre>
+      <p>En la cosulta <i>ANY</i>, lo que estamos haciendo es que buscaremos los titulos que han publicado editoriales, las cuales tambein han publicado libros de Bach, la cosulta interna retorna una lista de valores de un solo campo, y la consulta externa compara cada valor del codigo editorial con cada valor de la lista devolviendo los titulos de Poe que coinciden</p>
+      </div>
     <div class="encabezado" id="sqlwbshortcuts">
         <h3>SQLWB Shortcuts</h3>
         <ul>
@@ -4804,18 +5054,14 @@
     </div>
   </section>
   <div class="welcome"> <!-- Wlcome -->
+    <!-- <p>USDJPY - 6-9:00, Pound Euro - 7-10:00, </p> -->
     <p id="mensaje"></p>
-    <div class="slider">
-      <div class="riel">
-        <div class="riel-item"></div>
-        <div class="riel-item"></div>
-      </div>
-    </div>
+    <meter max="100" value="65" title="kilos de brg">Meter</meter>
+    <input type="color">
     <div class="encabezado">
       <h3>Lista de tareas</h3>
         <div class="todo-class">
           <form class="todo-form" autocomplete="off">
-
             <input type="text" class="todo-input">
             <button class="todo-button" type="submit"><div class="icon-plus"></div></button>
 

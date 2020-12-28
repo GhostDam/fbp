@@ -162,9 +162,9 @@ document.addEventListener("DOMContentLoaded", function(){
 })
 
 
-// // ToDo Class
+// // Tareas
 document.addEventListener("DOMContentLoaded", function () {
-  //Selectors
+  //Selectores
   const todoInput = document.querySelector('.todo-input')
   const todoButton = document.querySelector('.todo-button')
   const todoList = document.querySelector('.todo-list')
@@ -184,9 +184,11 @@ document.addEventListener("DOMContentLoaded", function () {
     newTodo.innerText = todoInput.value;
     newTodo.classList.add('todo-item')
     todoDiv.appendChild(newTodo)
-
+ 
+    var todo = todoInput.value
+    console.log(todo)
     //Add TODO to local storage
-    saveLocalTodos(todoInput.value)
+    saveLocalTodos(todo)
 
     //check mark button
     const completedButton = document.createElement('button')
@@ -312,10 +314,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     if (todos[0] !==undefined) {
-          let options = {
+      console.log(todos)
+      let options = {
             body: `Tienes tareas pendientes ${todos[0]}`
           }
-        displayNotification('hey', options)
+        displayNotification(`Hey, ${options}`)
     }
 
       // if (todos[0] !==undefined) {
