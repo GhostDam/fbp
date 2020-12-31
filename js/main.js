@@ -3,7 +3,6 @@ if('serviceWorker' in navigator){
 	navigator.serviceWorker.register('sw.js')
 							// .then(registration => console.log('serviceWorker registrado ', registration))
 							.catch(err => console.log('No se ha podido regsitrar el serviceWorker', err));
-
 }else{
 	console.log('No tienes acceso a los serviceWorker en tu navegador');
 }
@@ -372,7 +371,4 @@ document.addEventListener("DOMContentLoaded", function () {
     input.addEventListener('focus', focusFunc)
     input.addEventListener('blur', blurFunc)
   });
-
-
-
 })

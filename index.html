@@ -1687,20 +1687,21 @@
       </div>
     <div class="encabezado" id="objetos">
       <h3>Objetos y arreglos</h3>
+      <strong>Objetos</strong>
       <p>un objeto es una relacion clave - valor</p>
       <pre><code>
-    var objeto = {
+    <span class="fn">var</span> objeto = {
           llave : "valor",
           llave2: "valor2"
           }
 
-    var objeto2 = {
-      "llave" : "valor",
-      "llave2": "valor2"
-      }
+    <span class="fn">var</span> objeto2 = {
+          "llave" : "valor",
+          "llave2": "valor2"
+          }
   
-    console.log(objeto.llave)  //"valor" 
-    console.log({llave})       //"valor" 
+    console.log(objeto.llave)  <span>//"valor"</span> 
+    console.log({objeto})       <span>//{objeto: {llave: "valor"}}</span> 
 
     function darObjeto(objeto){
       console.log(objeto.llave)
@@ -1708,7 +1709,7 @@
       </code></pre>
       <p>y se puede acceder a ellos mediante un punto, objeto.llave = "valor", o bien mediante desestructuracion </p>
       <pre><code>
-    var persona = {
+    <span class="fn">var</span> persona = {
       nombre: "luis",
       edad: 25
     }          
@@ -1720,37 +1721,36 @@
 
     verEdad(persona)
         </code></pre>
-        <strong>Arrays</strong>
+    <strong>Arrays</strong>
         <pre><code>
-      var bryan = {
-        nombre: "bryan",
-        apellido: "reyes",
-        edad: 23,
-        peso: 70
-      };
-      var angus = {
-        nombre: "angus",
-        apellido: "Valen",
-        edad: 20,
-        peso: 60
-      };
-  
-      var people = [bryan, angus]
-  
-      console.log(people[0]) // {...}
-      console.log(people[0].nombre) // "bryan"
-  
-      people[0].nombre === people[0]['nombre']          
+    var bryan = {
+      nombre: "bryan",
+      apellido: "reyes",
+      edad: 23,
+      peso: 70
+    };
+    var angus = {
+      nombre: "angus",
+      apellido: "Valen",
+      edad: 20,
+      peso: 60
+    };
+
+    var people = [bryan, angus]
+
+    console.log(people[0]) // {...}
+    console.log(people[0].nombre) // "bryan"
+
+    people[0].nombre === people[0]['nombre']          
       </code></pre>
-        <p>para declarar un array se utilizan corchetes <i>[]</i> y es una coleccion de objetos, y se recorre en los
-          arrays por medio de la estructura <i>for</i></p>
-        <p>array.length indica el conteo de elementos en el array</p>
-        <p>Tambien para filtrar elementos en un array se utiliza la palabra <i>filter</i></p>
+    <p>para declarar un array se utilizan corchetes <i>[]</i> y es una coleccion de objetos, y se recorre en los arrays por medio de la estructura <i>for</i></p>
+    <p>array.length indica el conteo de elementos en el array</p>
+    <p>Tambien para filtrar elementos en un array se utiliza la palabra <i>filter</i></p>
         <pre><code>
-      //var estanGordos = people.filter(condicion)
-  
-      const condicion = (people) => people.peso > 60
-      var estanGordos = people.filter(condicion)
+    //var estanGordos = people.filter(condicion)
+
+    const condicion = (people) => people.peso > 60
+    var estanGordos = people.filter(condicion)
         </code></pre>
       </div>
     <div class="encabezado" id="loops">
@@ -1758,42 +1758,43 @@
       <strong>For</strong>
       <p>mientras que <i>i</i> empezada en 0, sea menor que <i>array.length</i> aumentas <i>i</i></p>
       <pre><code>
+    const array = [1, 2, 3, 4, 5];
+
     for (let i = 0; i &lt; array.length; i++) {
-      const element = array[i];
       console.log(array[i])
     }
-      </code></pre>
-      <strong>ForEach</strong>
+
+    <span>//1 2 3 4 5</span>
+    </code></pre>
+
+    <strong>ForEach</strong>
       <p>Por cada elemento en el array</p>
       <pre><code>
-    array.forEach(element => {
-        console.log(element)
-    });
-      </code></pre>
-      <strong>While</strong>
-      <p>El codigo se ejecutara y dira cuanto tiempo paso hasta que la persona llego a su meta</p>
-      <pre><code>
-    const incremento = 5000
-    const ahorra = persona =>   persona.dinero += incremento
-    const gasta = persona =>   persona.dinero -= incremento
-    const paga = () => Math.random() &lt; .25
-    const cobra = () => Math.random() &lt; .50
-    const meta = 400000
-    var dias = 0
+    var array = [1,2,3,4,5]
 
-    while (persona.dinero &lt; meta) {
-      //debugger ejemplo del debugger
-      if (cobra()) {
-        ahorra(persona)
-      }
-      if (paga()) {
-        gasta(persona)
-      }
-      dias += 1
-    }
-    console.log(`pasaron ${dias} quincenas hasta que ${persona.nombre} compro el terreno`)
-      </code></pre>
-      <strong>Do While</strong>
+    array.forEach(function (current_value, index) {
+        console.log(current_value)
+        console.log(index)
+    })
+    <span>//1 2 3 4 5   //valores</span>
+    <span>//0 1 2 3 4   //indices</span>
+
+  </code></pre>
+
+    <strong>While</strong>
+      <p>El codigo se ejecutara y dira cuanto tiempo paso hasta que la persona llego a su meta</p>
+    <pre><code>
+    var index = 0;
+    var array = [1,2,3,4,5]
+    
+    while (index&lt;array.length) {
+      console.log(array[index])
+      index++;                        <span>//si no incrementamos el index, sera un bucle infinito</span>
+    }         
+    <span>//1 2 3 4 5</span>
+    </code></pre>
+
+    <strong>Do While</strong>
       <pre><code>
     var contador = 0
     const lluvia = () => Math.Random() > 25
@@ -1808,6 +1809,56 @@
     //}mientras(no llueva)
     console.log(`se checo ${contador} veces si llovia`)
       </code></pre>
+
+    <strong>Map</strong>
+    <p>Map recibe una funcion que toma los valores de un array, y regresa uno nuevo valor por cada entrada del arreglo sin alterar el original</p>
+    <pre><code>
+    const array = [1,2,3,4,5]
+    const alCuadrado = (n) => Math.pow(n, 2)
+
+    const cuadrados = array.map(alCuadrado)
+
+    console.log(array)  
+    <span>//1, 2, 3, 4, 5</span>
+    
+    console.log(cuadrados)
+    <span>//1, 4, 9, 16, 25</span>
+    </code></pre>
+
+    <strong>Reduce</strong>
+    <p>Reduce toma cada una de las entradas del array y las simplifica en un solo resultado</p>
+    <pre><code>
+    const array = [1,2,3,4,5]
+
+    const total = array.reduce( (contador, valor) => 
+      contador + valor
+    , 0) //el 0 es el primer valor del contador
+
+    console.log(total) <span>//15</span>
+  </code></pre>
+
+  <strong>Filter</strong>
+  <p>Reduce recibe una funcion con una condicion, y filtra los resultados que cumplan esa condicion</p>
+  <pre><code>
+    const array = [1,2,3,4,5]
+
+    const pares = array.filter( (n) =>  n % 2 === 0)  <span>//si el residuo de n/2 es 0 el numero es par</span>
+    
+    console.log(pares)  // [2, 4]
+  </code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <strong>ejemplos</strong>
       <pre><code>
@@ -1835,11 +1886,68 @@
 
     console.log(`y ${yo.nombre} termino con ${yo.dinero} pesos al final`)
 
-  //si la condicional esta en elementos de un Array
-  for(var i in response){
-    ....
-  }
-          </code></pre>
+    //si la condicional esta en elementos de un Array
+    for(var i in response){
+      ....
+    }
+
+
+    <span>//while</span>
+    const incremento = 5000
+    const ahorra = persona =>   persona.dinero += incremento
+    const gasta = persona =>   persona.dinero -= incremento
+    const paga = () => Math.random() &lt; .25
+    const cobra = () => Math.random() &lt; .50
+    const meta = 400000
+    var dias = 0
+
+    while (persona.dinero &lt; meta) {
+      //debugger ejemplo del debugger
+      if (cobra()) {
+        ahorra(persona)
+      }
+      if (paga()) {
+        gasta(persona)
+      }
+      dias += 1
+    }
+    console.log(`pasaron ${dias} quincenas hasta que ${persona.nombre} compro el terreno`)
+
+    <span>Reduce</span>
+    const almuerzos = [
+      {principal: 'tacos', postre:'helado'},
+      {principal: 'hamburguesa', postre:'dulces'},
+      {principal: 'burritos', postre:'chamoyada'},
+      {principal: 'tacos', postre:'pastel'}
+    ]
+
+    const totalTacos = almuerzos.reduce(function (contador, almuerzo) {
+      if (almuerzo.principal === 'tacos') {
+        return contador +1
+      }else{
+        return contador
+      }
+    }, 0)
+
+    console.log(`El total de tacos es ${totalTacos}`) //2
+
+
+    <span>Map</span>
+    const almuerzos = [
+      {principal: 'tacos', postre:'helado'},
+      {principal: 'hamburguesa', postre:'dulces'},
+      {principal: 'burritos', postre:'chamoyada'},
+      {principal: 'tacos', postre:'pastel'}
+    ]
+    
+    const principales = almuerzos.map((plato)=>{
+      return plato.postre
+    })
+    
+    console.log(principales) //["helado", "dulces", "chamoyada", "pastel"]
+    
+
+  </code></pre>
     </div>
     <div class="encabezado" id="peticionesapi">
       <h3>Peticiones a Apis</h3>
@@ -4138,6 +4246,7 @@
         <li>SQL-SERVER</li>
         <li>MySQL</li>
       </ul>
+      <p>MySQL es un sistema de gestion de bases de datos, la base de datos de codigo abierto mas utilizada del mundo</p>
       <p>MySQL Workbench, creara una instancia del servicio SQL instalado en el equipo, o bien uno de acceso remoto (AWS por ejemplo), en cuyo caso funcionamiento sera similar a PMA</p>
       <p>Al trabajar con scripts SQL, estos archivos tendran la extension .sql</p>
     </div>
@@ -4147,25 +4256,25 @@
       <strong>Generales</strong>
       <pre><code>
     <span>#usar base de datos</span>
-    USE databasename
+    <span class="fn">USE</span> databasename;
 
     <span>#mostrar bases de datos</span>
-    SHOW DATABASES 
+    <span class="fn">SHOW DATABASES</span>;
 
     <span>#mostrar tablas</span>
-    SHOW TABLES
+    <span class="fn">SHOW TABLES</span>;
 
     <span>#mostrar indices</span>
-    SHOW INDEX FROM columna;
+    <span class="fn">SHOW INDEX FROM </span>columna;
 
     <span>#crear BD</span>
-    CREATE SCHEMA `curso` ;
-    CREATE DATABASE `curso` ;
+    <span class="fn">CREATE SCHEMA</span> `curso` ;
+    <span class="fn">CREATE DATABASE</span> `curso` ;
 
     <span>#borrar</span>
-    DROP DATABASE curso
-    DROP DATABASE IF EXISTS curso     
-    DROP TABLE nombre_tabla
+    <span class="fn">DROP DATABASE</span> curso;
+    <span class="fn">DROP DATABASE IF EXISTS</span> curso;
+    <span class="fn">DROP TABLE</span> nombre_tabla; 
     <span>#if (not) exists retornara warn en vez de error</span>    
   
     <span>#crear tabla de datos
@@ -4817,6 +4926,145 @@
   </code></pre>
       <p>En la cosulta <i>ANY</i>, lo que estamos haciendo es que buscaremos los titulos que han publicado editoriales, las cuales tambein han publicado libros de Bach, la cosulta interna retorna una lista de valores de un solo campo, y la consulta externa compara cada valor del codigo editorial con cada valor de la lista devolviendo los titulos de Poe que coinciden</p>
       </div>
+    <div class="encabezado" id="vistassql">
+      <h3>Vistas SQL</h3>
+      <p>Las vistas SQL son tablas proporcionadas para visualizar información, y se pueden crear vistas basadas en vistas,si se modifican datos en vista, tambien lo hara en tabla base</p>
+    <pre><code>
+    <span>#Sintaxis de las vistas</span>
+    CREATE VIEW nombrevista AS sentenciaselect FROM tabla;
+
+    <span>#otra opcion</span>
+    CREATE VIEW nombrevista (nombredeencabezados) AS senteniciaselect FROM tabla;
+
+    <span>#borrar vista</span>
+    DROP VIEW IF EXISTS nombrevista
+    </code></pre>
+    <strong>Crear una vista</strong>
+    <pre><code>
+    <span>#Crearemos una vista en la que se cargara un nombre de usuario y su area</span>
+    CREATE VIEW vista_usuarios AS SELECT nombre_usuario, area FROM usuarios JOIN areas ON usuarios.id_area = areas.id_area;
+    </code></pre>
+    <p>Esto creara una vista en la seccion <i>views</i> en la base de datos, a la cual se accesará como si fuese una tabla existente</p>
+    <pre><code>
+    <span>#visualizar la vista creada</span>
+    SELECT * FROM vista_usuarios;
+    </code></pre>
+    </div>
+    <div class="encabezado" id="proceduresql">
+      <h3>Procedimientos almacenados</h3>
+      <p>Un procedimiento almacenado es un conjunto de comandos SQL almacenados en el servidor </p>
+      <pre><code>
+    <span>#sintaxis</span>
+    DELIMITER //
+    CREATE PROCEDURE nombreProcedimiento()
+      BEGIN 
+        instrucciones
+      END;
+    DELIMITER //
+
+    CALL nombreProcedimiento();
+
+    DROP PROCEDURE IF EXISTS nombreProcedimiento();
+  </code></pre>
+  <p>Los parametros como funciones aceptan parametros de entrada</p>
+  <pre><code>
+    <span>#Ejemplo de parametros de entrada</span>
+    delimiter //
+    CREATE PROCEDURE selectUser(IN pa_usuario VARCHAR(30))
+      BEGIN
+        SELECT id_equipo, nombre_responsable FROM usuarios WHERE nombre_usuario = pa_usuario;
+      END//
+    delimiter ;
+  </code></pre>
+  <p>Y tambien retornar información</p>
+  <pre><code>
+    <span>#Sintaxis Salida</span>
+    CREATE PROCEDURE nombreProcedure(OUT nombreParametro TipoDeDato)
+        BEGIN
+        END
+    <span>#Creacion del procedimiento</span>
+    delimiter //
+    CREATE PROCEDURE pa_autor_totalYpromedio(
+        IN p_autor VARCHAR(30),
+        OUT suma DECIMAL(6,2),
+        OUT promedio DECIMAL(6,2)
+        )
+      BEGIN
+        SELECT titulo, editorial, precio FROM libros WHERE autor = p_autor;
+        SELECT SUM(precio) INTO suma FROM libros WHERE autor = p_autor;
+        SELECT AVG(precio) INTO promedio FROM libros WHERE autor = p_autor;
+      END//
+    delimiter ;
+
+    <span>#Llamado</span>
+    CALL pa_autor_totalYpromedio('Alln P', @s, @p);    <span>#@s y @p seran variables que obtendran sus valores del procedure</span>
+    <span>#Hasta aqui solo dara el primer Query</span>
+   
+    SELECT @s, @p;
+    <span>#Aqui tendremos la suma y el promedio</span>
+    </code></pre>
+
+
+
+
+    <strong>Trigger</strong>
+    <p>Los triggers o disparadores son objetos que se asocian con tablas y se almacenan en las bases de datos, estos se activan cuando se realiza algun cambio en las bases de datos, un trigger no sirve para 2 o mas tablas</p>
+    <pre><code>
+    <span>#sintaxis</span>
+    CREATE TRIGGER nombreTrigger
+    [BEFORE/AFTER] [INSERT/DELETE/UPDATE] 
+    ON tabla
+    FOR EACH NOW
+    BEGIN
+      SQLQUERY
+    END
+
+    DROP TRIGGER IF EXISTS nombreTrigger
+
+    SHOW TRIGGERS
+    </code></pre>
+    <p>Ejemplo de trigger que registrara la eliminacion de usuarios del sistema</p>
+    <pre><code>
+    delimiter //
+    CREATE TRIGGER usuario_borrado
+    BEFORE DELETE
+    ON usuarios
+    for each row
+    BEGIN 
+      INSERT INTO registro_borrado(usuario_borrado, fecha) VALUES (old.nombre_usuario, now());  <span>#old.value hace referencia al valor de la tabla a la cual aplicamos el trigger</span>
+    END //
+    delimiter ;
+  </code></pre>
+
+
+    <p>Actualizar datos de otra tabla con cambios en una, venta de libros</p>
+    <pre><code>
+    delimiter //
+    CREATE TRIGGER before_ventas_insert
+    BEFORE INSERT
+    ON ventas
+    for each row
+    BEGIN 
+      UPDATE libros SET stock=libros.stock-NEW.cantidad <span>#NEW.value referencia al valor de la tabla afectada</span>
+      WHERE NEW.codigoLibro=libros.codigo;
+    END //
+    delimiter ;
+  </code></pre>
+    <p>Trigger con DELETE</p>
+    <pre><code>
+    delimiter //
+    CREATE TRIGGER before_ventas_delete
+    BEFORE delete
+    ON ventas
+    for each row
+    BEGIN 
+      UPDATE libros SET stock=libros.stock+OLD.cantidad <span>#NEW.value referencia al valor de la tabla afectada</span>
+      WHERE OLD.codigoLibro=libros.codigo;
+    END //
+    delimiter ;
+  </code></pre>
+
+  </div>
     <div class="encabezado" id="sqlwbshortcuts">
         <h3>SQLWB Shortcuts</h3>
         <ul>
@@ -5056,8 +5304,6 @@
   <div class="welcome"> <!-- Wlcome -->
     <!-- <p>USDJPY - 6-9:00, Pound Euro - 7-10:00, </p> -->
     <p id="mensaje"></p>
-    <meter max="100" value="65" title="kilos de brg">Meter</meter>
-    <input type="color">
     <div class="encabezado">
       <h3>Lista de tareas</h3>
         <div class="todo-class">

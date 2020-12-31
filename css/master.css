@@ -14,6 +14,7 @@
   --recetas: peachpuff;
   --pwa: #7cb2ec;
   --commentColor: #699754;
+  --code_fn: #be70d4;
 }
 *, *:before, *:after {
   box-sizing: border-box;
@@ -27,6 +28,15 @@ body{
   background-image: linear-gradient(to bottom, gray, black);
   background-size: 100%;
 }
+strong{
+  margin-bottom: 1rem;
+}
+/* dl{
+
+}
+dl.inline{
+
+} */
 /* MENU */
 .navegacion{
   position: fixed;
@@ -262,11 +272,32 @@ section{
 }
 pre {
   background: #333333;
-  color: #ffffff;
+  color: #c7cedb;
   tab-size: 2;
 }
 pre span{
   color: var(--commentColor);
+}
+pre span.fn{
+  color: var(--code_fn);
+}
+
+/*barra general*/
+pre::-webkit-scrollbar{
+  height: 5px;
+}
+/*fondo de barra*/
+pre::-webkit-scrollbar-track{
+  background: #6c757d;
+}
+/*posicion en la barra*/
+pre::-webkit-scrollbar-thumb{
+  background: var(--commentColor);
+  border-radius: 10px;
+}
+/*hover posicion de barra*/
+pre::-webkit-scrollbar-thumb:hover{
+  background: steelblue;
 }
 /* VELAS JAPONESAS */
 .velasjaponesas{
