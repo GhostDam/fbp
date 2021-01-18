@@ -14,45 +14,42 @@ document.addEventListener("DOMContentLoaded", function(){
   var goHome = document.querySelector(".icon-home")
   var home = document.querySelector(".welcome")
   var secciones = document.querySelectorAll("section")
-  var link = document.querySelectorAll(".temas")
+  var temas = document.querySelectorAll(".temas")
   var mensaje = document.querySelector("#mensaje")
 
   // listar temas
-  link.forEach(function (e) {
+  temas.forEach(function (e) {
     var anchor = e.getAttribute("href")
     var sect = document.querySelector(anchor)
     var style = window.getComputedStyle(sect);
     var color = style.backgroundColor
 
       e.addEventListener('click', ()=>{  
-          secciones.forEach(function (sect) {
-            sect.style.display = "none";
-          })
-
-          link.forEach(function (h3) {
-            h3.style.backgroundColor = "#333333"
-          })
-
-          sect.style.display = "flex";
-          e.style.backgroundColor = color
-          home.style.display = "none";
+        //ocultar secciones
+        secciones.forEach(sect => sect.style.display = "none")
+        //resetear colores
+        temas.forEach((h3)=> h3.style.backgroundColor = "#333333" )
+        //mostrar las secciones
+        sect.style.display = "flex";
+        e.style.backgroundColor = color
+        home.style.display = "none";
           //listar subtemas
-          listarTemas(sect)
+          listarSubTemas(sect)
       })
   })
 
 
   //listado de subtemas
-  function listarTemas(div) {
-      var temas =  div.querySelectorAll('h3')
+  function listarSubTemas(tema) {
+      var subtemas =  tema.querySelectorAll('h3')
       const lista_temas = document.createElement('div')
       lista_temas.classList.add('listado_temas')
 
-      if (!div.querySelector('.listado_temas')) {
-          div.appendChild(lista_temas)
+      if (!tema.querySelector('.listado_temas')) {
+          tema.appendChild(lista_temas)
       }
       
-      temas.forEach(function (tema) {
+      subtemas.forEach(function (tema) {
           var id = tema.parentElement.getAttribute('id')
           var enlace = document.createElement('a')
 
@@ -62,16 +59,14 @@ document.addEventListener("DOMContentLoaded", function(){
       })
 
     //colorear subtema activo
-    var enlace = div.querySelectorAll('a')
-    enlace.forEach(function (e, i) {
-      var style = window.getComputedStyle(div);
+    var enlace = tema.querySelectorAll('a')
+    enlace.forEach(function (e) {
+      var style = window.getComputedStyle(tema);
       var color = style.backgroundColor
 
       e.addEventListener('click', ()=>{
-            enlace.forEach(function (h) {
-              h.style.backgroundColor = "lightslategrey"
-            })
-              e.style.backgroundColor = color
+            enlace.forEach(h => h.style.backgroundColor = "lightslategrey" )
+            e.style.backgroundColor = color
         })
     })
 
@@ -165,9 +160,9 @@ document.addEventListener("DOMContentLoaded", function(){
 document.addEventListener("DOMContentLoaded", function () {
   //Selectores
   const todoInput = document.querySelector('.todo-input')
-  const todoButton = document.querySelector('.todo-button')
-  const todoList = document.querySelector('.todo-list')
-  const filterOption = document.querySelector('.filter-todo')
+  todoButton = document.querySelector('.todo-button'),
+  todoList = document.querySelector('.todo-list'),
+  filterOption = document.querySelector('.filter-todo')
   //Event listeners
   todoButton.addEventListener('click', addTodo)
   todoList.addEventListener('click', deleteCheck)
@@ -313,7 +308,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     if (todos[0] !==undefined) {
-      console.log(todos)
       let options = {
             body: `Tienes tareas pendientes ${todos[0]}`
           }
@@ -366,9 +360,53 @@ document.addEventListener("DOMContentLoaded", function () {
       parent.classList.remove('focus')
     }
   }
-
   inputs.forEach(input => {
     input.addEventListener('focus', focusFunc)
     input.addEventListener('blur', blurFunc)
   });
+
+
+
+  // //LISTA de tareas
+  // var guardar_tarea = document.getElementById('guardar_tarea')
+  //     tarea = document.getElementById('tarea'),
+  //     date = new Date(),
+  //     lista = document.getElementById('lista_tareas')
+
+  // const TAREAS = []
+
+  // //GUARDAR TAREA
+  // guardar_tarea.addEventListener('click', guardar)
+  // function guardar(e) {
+  //   e.preventDefault()
+  //   TAREAS.push({ tarea: tarea.value, fecha: date.toLocaleDateString() })
+  //   tarea.value = "";
+  //   enlistar(TAREAS)
+  //   console.log(TAREAS)
+  // }
+
+  // //BORRAR TAREA
+
+  // //EnLISTAR TAREAS
+  // function enlistar(totalTareas) {
+  //       lista.innerHTML = ""
+  //       totalTareas.forEach(function (tarea) {
+  //                     lista.innerHTML += `<div class="tarea">                
+  //                               <div class="id_tarea">ID</div>
+  //                               <div class="nombre_tarea">${tarea.tarea}</div>
+  //                               <div class="fecha_tarea">${tarea.fecha}</div>
+  //                               <button class="borrarTarea">X</button>
+  //                             </div>`
+  //       })    
+  // }
+
 })
+
+
+var arr = ["convert", "this", "one"]
+
+var fn = arr.shift()
+var fn2 = arr.pop()
+
+console.log(fn)  
+console.log(arr)

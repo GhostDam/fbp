@@ -368,7 +368,7 @@
             <li>form: formulario</li>
             <li>fieldset: grupo de campos</li>
             <li>legend: leyenda</li>
-            <li>label: etiqueta del input</li>
+            <li>label: etiqueta del input, trabaja sobre el id</li>
             <li>input: campo de captura</li>
             <li>select: campo de opciones</li>
             <li>option: opcion</li>
@@ -380,8 +380,8 @@
           <ul>
             <li>meter: barra progresiva, lleva atributos <i>max="100" value="95" title="info"</i></li>
             <li>input type="color": despliega un selector de color</li>
+            <li>input inputmode="tel": especifico para numeros</li>
           </ul>
-
           <strong>Inline y Bloque</strong>
           <p>Las propiedades de bloque y de linea son propiedades que dependeran por defecto de la etiqueta que se use aunque se pueden modificar por medio de CSS, las descripciones son las siguientes</p>
           <ul>
@@ -1167,7 +1167,7 @@
           algunas veces los cambios pueden ser solo una palabra o una parte específica de un archivo específico. Git
           está optimizado para guardar todos estos cambios de forma atómica e incremental, o sea, aplicando cambios
           sobre los últimos cambios, estos sobre los cambios anteriores y así hasta el inicio de nuestro proyecto.</p>
-        <p>Para ello, requerimos descargar e instalar <strong> <a href="https://git-scm.com/">Git</a></strong>, el cual
+        <p>Para ello, requerimos descargar e instalar <strong> <a href="https://git-scm.com/" target="_blank">Git</a></strong>, el cual
           funciona principalmente por medio de comandos mediante la consola, auunque tambien cuenta con el apoyo de una
           interfaz grafica</p>
         <p>Diferencias entre la estructura de archivos de Windows, Mac o Linux.</p>
@@ -1515,6 +1515,31 @@
   <section id="sect4">  <!-- JavaScript -->
     <div class="encabezado" id="bases">
         <h3>Bases</h3>
+        <p>Para integrar JS en una pagina html se utiliza el tag <i>script</i></p>
+        <pre><code>
+    <span>//Codigo dentro</span>
+    &lt;script tye="text/javascript">
+          console.log("estoy dentro...")
+    &lt;/script>
+
+    <span>//Codigo externo</span>
+    &lt;script src="app.js">&lt;/script>
+
+    <span>//Ademas de sus 3 propiedades</span>
+    &lt;script src="app.js">&lt;/script>  
+    <span>//Cuando se accede al archivo JS, el análisis de HTML se pausara y se llamara y ejecutara el archivo 
+    inmediatamente, el análisis del HTML se reanudara cuando el script sea ejecutado</span>
+
+    &lt;script async src="app.js">&lt;/script>  
+    <span>//Async descargara el script paralelo al analizis del HTML, tan pronto se tenga el script, el análisis
+    se detendra para ejecutarse</span>
+
+    &lt;script defer src="app.js">&lt;/script>  
+    <span>//Defer descargara el script en paralelo al análisis del HTMl y solo se ejecutara cuando el análisis
+    se haya completado, si hay multiples defer, se ejecutaran en el orden en que fueron encontrados</span>
+          
+
+        </code></pre>
         <strong>Variables</strong>
         <p>Una variable es un espacio en memoria que te permite almacenar información, y esta puede ser de varios tipos
           y contener tipos distintos de información</p>
@@ -1533,7 +1558,20 @@
     function nombreFuncion(parametro) {
       alert(parametro)
     }
-        </code></pre>
+
+    <span>//funcion de expresion, ejecutada en tiempo de ejecucion</span>
+    foo()                     <span>//llamada aqui generará un error</span>
+    const foo = function (){
+      console.log('funct')
+    }
+
+    <span>//declaracion de funcion, ejecutada al momento de analizis (parse)</span>
+    foo()                     <span>//llamada aqui NO generará un error</span>
+    function foo(){
+      console.log('funct')
+    }
+
+  </code></pre>
         <strong>Ejecucion de funciones</strong>
         <p>se llama la funcion con una actividad establecida, y le aplica el parametro</p>
         <pre><code>
@@ -1684,7 +1722,7 @@
         </ul>
         <strong>event.preventDefaul()</strong>
         <p>Esta propiedad detiene al evento sin detener el resto de su funcionamiento, esto quiere decir que podemos volver a ejecutar la acción sin problema. Es usado cuando no queremos que un elemento DOM se comporte de la manera en que se debe comportar, como por ejemplo cuando se usa la etiqueta &lt;a>, la mayoría de los casos es para redirigirlo a otra página, con event.preventDefault podemos evitar que se vaya a otra página y mejor haga otra cosa</p>
-      </div>
+    </div>
     <div class="encabezado" id="objetos">
       <h3>Objetos y arreglos</h3>
       <strong>Objetos</strong>
@@ -1752,9 +1790,9 @@
     const condicion = (people) => people.peso > 60
     var estanGordos = people.filter(condicion)
         </code></pre>
-      </div>
+    </div>
     <div class="encabezado" id="loops">
-      <h3>Loops</h3>
+      <h3>Loops & metodos</h3>
       <strong>For</strong>
       <p>mientras que <i>i</i> empezada en 0, sea menor que <i>array.length</i> aumentas <i>i</i></p>
       <pre><code>
@@ -1847,9 +1885,44 @@
     console.log(pares)  // [2, 4]
   </code></pre>
 
+  <strong>shift() // pop()</strong>
+  <p>Shift extrae el primer elemento de un arreglo y devuelve el resto, pop() el ultimo elemento</p>
+  <pre><code>
+    var arr = ['convert', "this", "one"]
+
+    var fn = arr.shift()
+    var fn2 = arr.pop()
+    
+    console.log(fn)      <span>//convert</span>
+    console.log(fn2)      <span>//one</span>
+    console.log(arr)      <span>//["this"]</span>
+  </code></pre>
 
 
+  <strong>Slice</strong>
+  <p>Slice tomara una porcion de un arreglo o un string, recibiendo como primer parametro posicion inicial y como opcional la posicion final</p>
+  <pre><code>
+    var cadena = "esta"
+    var arr = [0, 1, 2, 3, 4]
+    
+    var fn = cadena.slice(2)
+    var fn2 = arr.slice(2)
 
+    
+    console.log(fn)   <span>//ta</span>
+    console.log(fn2)   <span>//[2, 3, 4]</span>
+    </code></pre>
+
+    <strong>toString</strong>
+    <p>Convierte el contenido de un arreglo a una cadena de texto, considerar que no dejara espacios en blanco, ademas e tambien tomar los separadores <i>','</i></p>
+    <pre><code>
+      var arr = ['convert', "this", "one"]
+
+      var fn = arr.toString()
+      
+      console.log(fn)      <span>//convert, this, oe</span>
+    </code></pre>
+  
 
 
 
@@ -1951,46 +2024,58 @@
     </div>
     <div class="encabezado" id="peticionesapi">
       <h3>Peticiones a Apis</h3>
-      <p>El metodo para eso es <i>fetch()</i>, este metodo devolvera una promesa</p>
+      <strong>fetch()</strong>
+      <p>El metodo <i>fetch()</i> devuelve una promesa que contiene un <i>Readablestream</i>, esto quiere decir que para poder acceder a ella necesitamos llamar a alguno de los metodos de conversion, esto es para el elemento <i>body</i> de la respuesta, y declarara el tipo de contenido en esta y como manipularse</p>
+      <p>Recordar que por defecto PHP no acepta formatos json, el formato admisible por php es <i>'Content-Type': 'application/x-www-form-urlencoded'</i>, el cual debe especificarse en los headers de la peticion</p>
       <pre><code>
-    fetch('url', {                          //url = entrypoint
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: JSON.stringify({                //JSON.str convierte el objeto en un string
-        name :'me',
-        age: 26
-      })
+    var form = document.getElementById('form')
+    var formData = new FormData(form)
+    
+
+    fetch('feth.php', {                          <span>//url/archivo = entrypoint</span>
+      method: 'POST',
+      body: formData,                <span>//el contenido del body debe ser igual al contentType header, en caso de new FormData no es necesario</span>
+      <span>//headers: {
+      //  'Content-Type': 'application/x-www-form-urlencoded'
+      //}</span>
     })
-      .then((response)=> response.json())
-      .then((data) => console.log(data))
-
-    //el codigo anterior por defecto no funcionara, por la codificacion de envio
-    //que deberia ser
-    // 'Content-Type': 'application/json',
+      .then((response)=> {
+            if(response.ok){      <span>//con esto verificamos que la respuesta sea OK </span>
+              console.log('ok')
+            }else{
+              console.log('fallo')
+            }
+        response.text()           <span>//formateamos la respuesta que es 'ReadableStream'</span>
+      })
+      .then((data) => console.log(data))    <span>//Array
+                                                    (
+                                                        [id] => 1
+                                                        [nombre] => Luis
+                                                        [apellido] => Ramirez
+                                                    )</span>
     </code></pre>
+    <p>Para enviar un metodo POST correctamente, necesitamos especificar en los headers el tipo de dato enviado, los headers son cabeceras de informacion para lo que estamos enviando</p>
     <strong>Diferencia entre JQuery Ajax y Fetch()</strong>
+      <p>La Promesa devuelta de fetch() no se rechazará en el estado de error HTTP incluso si la respuesta es HTTP 404 o 500. En cambio, se resolverá normalmente (con el estado ok establecido en falso) y solo se rechazará en caso de falla de red o si algo impidió completar la solicitud.</p>
       <p>para emular una peticion ajax, agrear en los headers el tipo de peticion 'X-Requested-With': 'XMLHttpRequest'</p>
-      <p>cuando se usa jQuery se envia WWW URL Form Encoded data (el codificado por defeto de jQuery).</p>
+      <p>cuando se usa jQuery se envia <i>WWW URL Form Encoded data</i> (el codificado por defeto de jQuery).</p>
       <p>Pero al cambiar al metodo fetch, tambien se convierte el object enviado a JSON, ¡JSON no esta codificado como WWW URL Form!
-        entonces, seguramente, no se ha escrito el codigo en PHP para esperar un JSON, y seguramente esperamos leer datos de $_POST (que estara vabio, ya que PHP no soporta peticiones por codificacion JSON por defecto, entonces podemos construir un objeto FormData que estara codificado de una manera que PHP analizara por defecto.</p>
-
+        entonces, seguramente, no se ha escrito el codigo en PHP para esperar un JSON, y seguramente esperamos leer datos de $_POST (que estara vacio, ya que PHP no soporta peticiones por codificacion JSON por defecto, entonces podemos construir un objeto FormData que estara codificado de una manera que PHP analizara por defecto.</p>
       <strong>tipos de dato</strong>
       <pre><code>
-    //dato a enviar
+    <span>//dato a enviar</span>
     'Content-Type': 'application/x-www-form-urlencoded',
 
-    //procesarlo
+    <span>//procesarlo</span>
     var data = new URLSearchParams();
     data.append('to', 'fill');
     data.append('usr', usr);
 
-    //Envio
+    <span>//Envio</span>
     body: data
     </code></pre>
     <p>Lo anterior simplifica lo que es la codificacion del <i>Content-Type/x-www-form-urlencoded</i> de la cual, una manera complicada de codificarla seria la siguiente</p>
-    <pre><strong>
+    <pre><code>
     // var details = {
     //   'to': 'fill',
     //   'usr': usr
@@ -2004,7 +2089,64 @@
     //   formBody.push(encodedKey + "=" + encodedValue);
     // }
     // formBody = formBody.join("&");      
-    </strong></pre>
+    </code></pre>
+
+    <strong>Ajax con jQuery</strong>
+    <p>El primer parametro de evento Ajax es la url o el archivo al que se realizara la llamada, y el segundo sera un objeto en el cual se puede hacer cierta variedad de cosas, por ejemplo</p>
+    <ul>
+      <li>beforeSend: accion a ejecutarse antes de realizar la llamada</li>
+    </ul>
+    <pre><code>
+      $(document).ready(function(){
+
+          $('#example').on('click', 'button.class', function(){
+            $.ajax('fetch', {
+              dataType: 'json',                   <span>//tipo de dato que se recibira, a veces no es necesario especificarse</span>
+              contentType: 'application/json',    <span>//Dira al servidor el tipo de dato que estas pidiendo</span>  
+              cache: false,                       <span>//forzara que cada peticion sea unica sin cachear</span>
+              beforeSend: function(){
+                $('#status').text('loading...')
+              }
+              <span>// success: function(response){
+              //     console.log(response);
+              // },
+              // error: function(e){
+              //     console.error(e);
+              // }</span>
+              })
+              .done(function(response){                      <span>//Done se ejecuta cuando es exitosa la llamada</span>
+                $('#result').html(response)
+                form.reset()
+              })
+              .fail(function(request, errType, errMessage){  <span>//Solo se ejecuta si hay error</span>
+
+              })
+              .always(function(){
+                $('#status').text('completed')               <span>//Se ejecutara haya un error o no</span>
+              })
+          })
+
+      });
+    </code></pre>
+    <p>Ajax con Jquery cuenta con 3 opciones para manejar los estados de las llamadas, estos son</p>
+    <dl>
+      <dt>done</dt>
+      <dd>Cuando la llamada se ejecuta correctamente, done se ejecutara permitiendonos manipular los datos de la respuesta</dd>
+      <dt>fail</dt>
+      <dd>Cuando haya algun error, fail contendra una funcion con 3 parametros que seran, la peticion, el tipo de error, y el mensaje del error, en este caso jQuery maneja 4 tipos de errores por defecto, que son <i>timeout, error, abort, parseerror</i>Timeout es cuando la conexion no se completo, error, cuando el servidor manda un mensaje de error, Abort que es cuando hay algun aborto, y parseerror que se ejecuta cuando se espera un formato en especifico y se recibe otro, por ejemplo un Json y obtienes algo que no puede ser convertido al formato</dd>
+      <dt>Always</dt>
+      <dd>Es un fragmento de codigo que se ejecutara sea cual sea el resultado</dd>
+    </dl>
+    <p>Por defecto se envia una peticion de tipo Get, que es una peticion para pedir información interpretada como <i>read-only</i>, tambien <i>cache</i> lo que hace es que agrega un timestamp a la url de la peticion, para que cada vez que se haga una peticion sea interpretada como "diferente" y el navegador no almacene la respuesta en caché en caso de cambiar</p>
+    <strong>ContentTypes</strong>
+    <dl>
+      <dt>application/x-www-form-urlencoded</dt>
+      <dd>Los valores son codificados en tuplas llave-valor separadas por '&', con un '='  entre la llave y el valor. <i>id=1&nombre=luis&apellido=ramirez</i></dd>
+      <dt>multipart/form-data</dt>
+      <dd>Cada valor es enviado como un dato de bloque ("input de un formulario"), con un delimitador como separador definido por el usuario ("espacio entre campos") <i>--boundary Content-Disposition: form-data; name="field1"</i></dd>
+      <dt>application/json</dt>
+      <dd>Se mandará un objeto json para el cual sera necesario pasar la funcion JSON.stringify(data) <i>{dato:'valor'}</i></dd>
+    </dl>
 
 
 
@@ -2012,17 +2154,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-      </div>
+    </div>
     <div class="encabezado" id="parametros">
       <h3>Objetos como parametros</h3>
       <p>cuando se pasa un objeto como parametro, este se modificara fuera de la funcion (side effect), para evitar este
@@ -2146,49 +2278,6 @@
     }
       </code></pre>
     </div>
-    <div class="encabezado" id="arrMethods">
-      <h3>Metodos en Arrays</h3>
-      <strong>Array Map</strong>
-      <p>array.map() devuelve un nuevo array con elementos modificados del array original</p>
-      <pre><code>            
-    //nuevo array de = people.map(condicion)
-    //condicion      //recibe el array
-    const setMayus = persona => ({
-        //lo desglosa
-        ...persona,
-        //modifica o pisa el atributo nombre
-        nombre: persona.nombre.toUpperCase()
-        //y retorna un nuevo array con datos modificados
-    })
-
-    //manera original, usar parentesis evita doble return
-    // const setMayus = persona => {
-    //   return{
-    //     ...persona,
-    //     nombre: persona.nombre.toUpperCase()
-    //   }
-    // }
-
-    //modificacion de array existente
-    const setMayus = persona => {
-        persona.nombre = persona.nombre.toUpperCase()
-        return persona
-    }
-    var peopleMys = people.map(setMayus)
-          </code></pre>
-      <strong>Array Reduce</strong>
-      <p>reduce los elementos de un array a un solo objeto</p>
-      <pre><code> 
-            //acumulador, cada una de las personas
-    const  reducer =  ( acumulador,  personas ) => {
-      return acumulador + persona.peso 
-    }
-
-
-    //                             reducer, valor inicial acumulador 
-    var totalKilos = people.reduce(reducer, 0)
-        </code></pre>
-      </div>
     <div class="encabezado" id="jsprototype">
       <h3>Prototype en JS</h3>
       <p>Las clases como tal no existen en JS, si no que se utiliza algo llamado prototipos</p>
@@ -5323,7 +5412,24 @@
             <ul class="todo-list"></ul>
           </div>
         </div>
-      </div> 
+
+        <!-- <div class="lista">
+          <form>
+            <label for="tarea">tarea</label>
+            <input type="text" id="tarea">
+            <button id="guardar_tarea">s</button>
+          </form>
+          <div class="lista_tareas" id="lista_tareas">
+              <!-- <div class="tarea">                
+                <div class="id_tarea">ID</div>
+                <div class="nombre_tarea">tarea</div>
+                <div class="fecha_tarea">fecha</div>
+                <button>X</button>
+              </div> -->
+          </div>
+        </div> -->
+
+      </div>
   </div>
 </body>
 </html>

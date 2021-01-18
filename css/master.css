@@ -299,6 +299,21 @@ pre::-webkit-scrollbar-thumb{
 pre::-webkit-scrollbar-thumb:hover{
   background: steelblue;
 }
+
+/* TABLEs */
+table{
+  min-width: 100%;
+  background-color: #c7cedb;
+}
+table th{
+  text-align: right;
+}
+table td{
+  padding: 10px;
+}
+
+
+
 /* VELAS JAPONESAS */
 .velasjaponesas{
   display: flex;
@@ -819,4 +834,10 @@ select{
   padding: .5rem .7rem;
   font-size: 1.2rem;
   color: #555;
+}
+
+.tarea{
+  display: flex;
+  color: white;
+  justify-content: space-evenly;
 }
